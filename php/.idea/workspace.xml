@@ -20,20 +20,6 @@
   <component name="FavoritesManager">
     <favorites_list name="php" />
   </component>
-  <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="mongodb.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mongodb.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="32" column="22" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -81,14 +67,24 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="php" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -99,6 +95,7 @@
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -114,11 +111,12 @@
       <option name="presentableId" value="Default" />
       <updated>1492843095386</updated>
       <workItem from="1492843097523" duration="3527000" />
+      <workItem from="1492849621310" duration="128000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3527000" />
+    <option name="totallyTimeSpent" value="3655000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -126,19 +124,19 @@
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14128843" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -159,30 +157,18 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/mongodb.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="32" column="22" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/mongodb/mongodb/tests/Operation/CreateCollectionTest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-216">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1492842857213" expanded="true" signature="127:2342" placeholder="{...}" />
-            <marker date="1492842857213" expanded="true" signature="137:266" placeholder=" @expectedException MongoDB\Exception\InvalidArgumentException ..." />
-            <marker date="1492842857213" expanded="true" signature="336:442" placeholder="{...}" />
-            <marker date="1492842857213" expanded="true" signature="498:2340" placeholder="{...}" />
-            <marker date="1492842857213" expanded="true" signature="591:654" placeholder="..." />
-            <marker date="1492842857213" expanded="true" signature="719:777" placeholder="..." />
-            <marker date="1492842857213" expanded="true" signature="843:904" placeholder="..." />
-            <marker date="1492842857213" expanded="true" signature="969:1026" placeholder="..." />
-            <marker date="1492842857213" expanded="true" signature="1092:1163" placeholder="..." />
-            <marker date="1492842857213" expanded="true" signature="1228:1283" placeholder="..." />
-            <marker date="1492842857213" expanded="true" signature="1348:1409" placeholder="..." />
-            <marker date="1492842857213" expanded="true" signature="1474:1530" placeholder="..." />
-            <marker date="1492842857213" expanded="true" signature="1596:1661" placeholder="..." />
-            <marker date="1492842857213" expanded="true" signature="1724:1783" placeholder="..." />
-            <marker date="1492842857213" expanded="true" signature="1847:1915" placeholder="..." />
-            <marker date="1492842857213" expanded="true" signature="1979:2046" placeholder="..." />
-            <marker date="1492842857213" expanded="true" signature="2112:2173" placeholder="..." />
-            <marker date="1492842857213" expanded="true" signature="2243:2307" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -191,7 +177,6 @@
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="-303">
             <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding />
           </first_editor>
           <second_editor />
         </state>
@@ -201,28 +186,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
-          <folding>
-            <marker date="1492842855284" expanded="false" signature="37:152" placeholder="..." />
-            <marker date="1492842855284" expanded="true" signature="157:195" placeholder=" Unit tests for the Client class. ..." />
-            <marker date="1492842855284" expanded="true" signature="231:6742" placeholder="{...}" />
-            <marker date="1492842855284" expanded="true" signature="281:397" placeholder="{...}" />
-            <marker date="1492842855284" expanded="true" signature="406:541" placeholder=" @expectedException MongoDB\Exception\InvalidArgumentException ..." />
-            <marker date="1492842855284" expanded="true" signature="623:692" placeholder="{...}" />
-            <marker date="1492842855284" expanded="true" signature="754:937" placeholder="{...}" />
-            <marker date="1492842855284" expanded="true" signature="845:904" placeholder="..." />
-            <marker date="1492842855284" expanded="true" signature="973:1095" placeholder="{...}" />
-            <marker date="1492842855284" expanded="true" signature="1154:2416" placeholder="{...}" />
-            <marker date="1492842855284" expanded="true" signature="1272:1432" placeholder="..." />
-            <marker date="1492842855284" expanded="true" signature="1462:1517" placeholder="..." />
-            <marker date="1492842855284" expanded="true" signature="2473:3685" placeholder="{...}" />
-            <marker date="1492842855284" expanded="true" signature="2510:2795" placeholder="..." />
-            <marker date="1492842855284" expanded="true" signature="3749:4226" placeholder="{...}" />
-            <marker date="1492842855284" expanded="true" signature="4283:5511" placeholder="{...}" />
-            <marker date="1492842855284" expanded="true" signature="4401:4561" placeholder="..." />
-            <marker date="1492842855284" expanded="true" signature="4591:4646" placeholder="..." />
-            <marker date="1492842855284" expanded="true" signature="5566:6740" placeholder="{...}" />
-            <marker date="1492842855284" expanded="true" signature="5601:5886" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -230,44 +193,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="67" column="20" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="20" />
-          <folding>
-            <marker date="1492842851474" expanded="false" signature="8:603" placeholder="..." />
-            <marker date="1492842851474" expanded="true" signature="631:1104" placeholder="..." />
-            <marker date="1492842851474" expanded="true" signature="1118:7669" placeholder="{...}" />
-            <marker date="1492842851474" expanded="true" signature="1159:1310" placeholder="..." />
-            <marker date="1492842851474" expanded="true" signature="1478:2628" placeholder=" Constructs a new Client instance. ..." />
-            <marker date="1492842851474" expanded="true" signature="2744:3353" placeholder="{...}" />
-            <marker date="1492842851474" expanded="true" signature="2904:3033" placeholder="..." />
-            <marker date="1492842851474" expanded="true" signature="3362:3545" placeholder=" Return internal properties for debugging purposes. ..." />
-            <marker date="1492842851474" expanded="true" signature="3581:3787" placeholder="{...}" />
-            <marker date="1492842851474" expanded="true" signature="3604:3779" placeholder="..." />
-            <marker date="1492842851474" expanded="true" signature="3796:4251" placeholder=" Select a database. ..." />
-            <marker date="1492842851474" expanded="true" signature="4294:4359" placeholder="{...}" />
-            <marker date="1492842851474" expanded="true" signature="4368:4451" placeholder=" Return the connection string (i.e. URI). ..." />
-            <marker date="1492842851474" expanded="true" signature="4486:4525" placeholder="{...}" />
-            <marker date="1492842851474" expanded="true" signature="4534:5037" placeholder=" Drop a database. ..." />
-            <marker date="1492842851474" expanded="true" signature="5108:5649" placeholder="{...}" />
-            <marker date="1492842851474" expanded="true" signature="5159:5218" placeholder="..." />
-            <marker date="1492842851474" expanded="true" signature="5462:5531" placeholder="..." />
-            <marker date="1492842851474" expanded="true" signature="5658:5721" placeholder=" Return the Manager. ..." />
-            <marker date="1492842851474" expanded="true" signature="5756:5799" placeholder="{...}" />
-            <marker date="1492842851474" expanded="true" signature="5808:6184" placeholder=" List databases. ..." />
-            <marker date="1492842851474" expanded="true" signature="6241:6445" placeholder="{...}" />
-            <marker date="1492842851474" expanded="true" signature="6454:6879" placeholder=" Select a collection. ..." />
-            <marker date="1492842851474" expanded="true" signature="6971:7124" placeholder="{...}" />
-            <marker date="1492842851474" expanded="true" signature="7133:7460" placeholder=" Select a database. ..." />
-            <marker date="1492842851474" expanded="true" signature="7533:7667" placeholder="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mongodb.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="32" column="22" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/mongodb.php" />
   </component>
 </project>
