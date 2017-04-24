@@ -267,6 +267,8 @@ def count():
 f1, f2, f3 = count()
 print f1(), f2(), f3()
 
-# lambda
+# lambda:表示匿名函数，冒号前面的 x 表示函数参数,只能有一个表达式,也可以把匿名函数赋值给一个变量，再利用变量来调用该函数
 f = lambda x, y, z: x + y + z
 print f(2,4,5)
+
+# 装饰器
