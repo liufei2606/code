@@ -1,0 +1,6 @@
+x <- c(1,9,2,8,3,9,4,5,7,6)
+mean(x)
+median(x)
+var(x)
+sd(x)
+summary(x)
