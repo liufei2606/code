@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript</title>
+  </head>
+  <body>
+
+  </body>
+  <script type="text/javascript">
+    console.log('This is a statement');
+    var myGlobalVar = 'apples';
+    var bool = false;
+    var daysInWeek = 7;
+    function myFunc(name, weather) {
+      var myLocalVar = 'sunny';
+      console.log("This is a function");
+      console.log("Hello " + name + ". ")
+      console.log("It is " + weather + "today")
+      return "Hello " + name + ". ";
+    }
+    console.log(myFunc("Adam", 'sunny'));
+
+    // 数组
+    var arr = [3, 'henry', true];
+    for (var i = 0; i < arr.length; i++) {
+      console.log('Index ' + i + ':' + arr[i]);
+    }
+    // 添加数组，返回新数组
+    console.log(arr);
+    console.log('Concat: ' + arr.concat([5, 8]));
+    // 拼接，返回字符串
+    console.log(arr);
+    console.log('Join: ' + arr.join('\\'));
+    // 截取字符串
+    console.log(arr);
+    console.log('Slice(1, 3): ' + arr.slice(1, 3));
+    //排序
+    console.log(arr);
+    console.log('Sort: ' + arr.sort());
+
+    //删除元素片段
+    console.log(arr);
+    console.log('Splice: ' + arr.splice(0, 1));
+    // 取出最后一个值
+    console.log(arr);
+    console.log('Pop:' + arr.pop());
+
+    // 取出第一个值
+    console.log(arr);
+    console.log('shift:' + arr.shift());
+    // 压入到头部
+    console.log(arr);
+    console.log('shift:' + arr.unshift('Begin'));
+    // 压栈
+    console.log(arr);
+    console.log('Push:' + arr.push('World'));
+
+
+    // 对象
+    var myData = {
+        name: 'Adam',
+        weather: 'Sunny',
+        printMessages: function(){
+          console.log("hello " + this.name + ". ")
+        }
+      };
+      myData.printMessages();
+      // 修改
+      myData.name = 'Joe';
+      myData['name'] = 'Joe2';
+      // 添加
+      myData.dayOfWeek = 'Monday';
+      myData.SayHello = function() {
+        console.write('hello');
+      }
+      for (var prop in myData) {
+        console.log('Name: ' + prop + " Value: "  + myData[prop]);
+      }
+      var hasName = 'name' in myData;
+      var hasDate = 'date' in myData;
+      console.log('HasName: ' + hasName);
+      console.log('HasData: ' + hasDate);
+
+      // if switch statment
+      // 优先级高的判断放前面
+      // 对详见对比是引用
+      var firstVal = 5;
+      var secondtVal = '5';
+      if (firstVal === secondtVal) {
+        console.log('They are  forever same');
+      } else if (firstVal == secondtVal){
+        console.log('They are  same');
+      } else {
+        console.log('They are not same');
+      }
+      var name = 'Adam';
+      switch (name) {
+        case 'Adam':
+          console.log('Name is Adam');
+          break;
+        case 'Jacqui':
+          console.log('Name is Jacqui');
+          break;
+        default:
+            console.log('Name is neither Adam or Jacqui');
+            break;
+      }
+  </script>
+</html>
