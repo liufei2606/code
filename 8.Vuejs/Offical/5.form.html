@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>表单控件</title>
+	<script src="vue.js"></script>
+</head>
+<body>
+<label>1.单行文本</label>
+<div id="example-1">
+	<p>Message is {{ message }}</p>
+	<input v-model.lazy.trim="message" placeholder="edit me">
+	<br>
+	<label>Age:</label>
+	<br>
+	<input v-model.number="age" placeholder="Age">
+</div>
+<br>
+
+<label>2.多行文本</label>
+<div id="example-2">
+	<span>Multiline info is:</span>
+	<p style="white-space: pre-line;">{{ message }}</p>
+	<br>	
+	<textarea v-model='message' placeholder="add Multiline lines"></textarea>
+</div>
+<br>
+
+<label>3.复选框</label>
+<div id="example-3">
+	<label>单个勾选框</label>
+	<br>
+	<input type="checkbox" id="checkbox" v-model="checked">
+	<label for="checkbox">{{ checked }}</label>	
+	<br>
+	<label>多个勾选框</label>
+	<br>
+	<input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+	<label for="jack">Jack</label>
+	<input type="checkbox" id="jack" value="John" v-model="checkedNames">
+	<label for="john">John</label>
+	<input type="checkbox" id="jack" value="Mike" v-model="checkedNames">
+	<label for="mike">Mike</label>
+	<br>
+	<span>Checked names:{{ checkedNames }}</span>
+</div>
+<hr>
+
+<label>4.单选按钮</label>
+<div id="example-4">
+	<input type="radio" id="one" value="one" v-model='picked'>
+	<label for="one">One</label>
+	<br>
+	<input type="radio" id="two" value="two" v-model='picked' value="two">
+	<label for="two">Two</label>
+	<br>
+	<span>Picked:{{ picked }}</span>
+</div>
+<br>
+
+<label>5.选择列表</label>
+<div id="example-5">
+	<br>
+	<label>单选列表</label>
+	<br>
+	<select v-model='selected'>
+		<option disabled value="">Please choose：</option>
+		<option value="abc">China</option>
+		<option>U.S.A</option>
+		<option>U.K</option>
+	</select>
+	<br>
+	<span>Selected:{{ selected }}</span>
+	<br>
+	<label>多选列表</label>
+	<br>
+	<select v-model='multiple_selected' multiple style="width: 150px">
+		<option>China</option>
+		<option>U.S.A</option>
+		<option>Japan</option>
+		<option>Hongkong</option>
+		<option>Korea</option>
+		<option>France</option>
+	</select>
+	<br>
+	<span>Selected:{{ multiple_selected }}</span>
+	<br>
+	<label>动态列表</label>
+	<br>
+	<select v-model='dynatic_selected' style="width: 150px">
+		<option v-for="option in options" v-bind:value='option.value'>
+			{{ option.text }}
+		</option>
+	</select>
+	<br>
+	<span>Selected:{{ dynatic_selected }}</span>
+</div>
+</body>
+<script>
+	new	Vue({
+		el: '#example-1',
+		data:{
+			message: '',
+			age: 0,
+		}
+	})
+	new	Vue({
+		el: '#example-2',
+		data:{
+			message: ''
+		}
+	})
+	new	Vue({
+		el: '#example-3',
+		data:{
+			checked: false,
+			checkedNames: []
+		}
+	})
+	new	Vue({
+		el: '#example-4',
+		data:{
+			picked: ''
+		}
+	})
+	new	Vue({
+		el: '#example-5',
+		data:{
+			selected: '',
+			multiple_selected: [],
+			dynatic_selected: 1,
+			options: [
+				{ text:'China', value: 1 },
+				{ text:'Germany', value: 2 },
+				{ text:'Spanish', value: 3 },
+			]
+		}
+	})
+</script>
+</html>
