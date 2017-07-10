@@ -1651,6 +1651,240 @@ Bootstrap 中的面包屑导航（Breadcrumbs）是一个简单的带有 .breadc
             </div>
             <span id="activeitem" style="color:red;"></span>
 
+            
+            <hr>
+            <p class="active-tab"><strong>激活的标签页</strong>：<span></span></p>
+            <p class="previous-tab"><strong>前一个激活的标签页</strong>：<span></span></p>
+            <hr>
+            <ul id="myTab" class="nav nav-tabs">
+                <li class="active"><a href="#home" data-toggle="tab">通过TAB切内容</a></li>
+                <li><a href="#ios" data-toggle="tab">iOS</a></li>
+                <li class="dropdown">
+                    <a href="#" id="myTabDrop1" class="dropdown-toggle"
+                       data-toggle="dropdown">
+                        Java <b class="caret"></b></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+                        <li><a href="#jmeter" tabindex="-1" data-toggle="tab">jmeter</a></li>
+                        <li><a href="#ejb" tabindex="-1" data-toggle="tab">ejb</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade in active" id="home">
+                    <p>菜鸟教程是一个提供最新的web技术站点，本站免费提供了建站相关的技术文档，帮助广大web技术爱好者快速入门并建立自己的网站。菜鸟先飞早入行——学的不仅是技术，更是梦想。</p>
+                </div>
+                <div class="tab-pane fade" id="ios">
+                    <p>iOS 是一个由苹果公司开发和发布的手机操作系统。最初是于 2007 年首次发布 iPhone、iPod Touch 和 Apple
+                        TV。iOS 派生自 OS X，它们共享 Darwin 基础。OS X 操作系统是用在苹果电脑上，iOS 是苹果的移动版本。</p>
+                </div>
+                <div class="tab-pane fade" id="jmeter">
+                    <p>jMeter 是一款开源的测试软件。它是 100% 纯 Java 应用程序，用于负载和性能测试。</p>
+                </div>
+                <div class="tab-pane fade" id="ejb">
+                    <p>Enterprise Java Beans（EJB）是一个创建高度可扩展性和强大企业级应用程序的开发架构，部署在兼容应用程序服务器（比如 JBOSS、Web Logic 等）的 J2EE 上。
+                    </p>
+                </div>
+            </div>
+
+            <div style="padding: 100px 100px 10px;">
+                这是一个 <a href="#" class="tooltip-show" data-toggle="tooltip" title="show">Tooltip 方法 show</a>.
+             
+                这是一个 <a href="#" class="tooltip-hide" data-toggle="tooltip" data-placement="left" title="hide">Tooltip 方法 hide</a>.
+             
+                这是一个 <a href="#" class="tooltip-destroy" data-toggle="tooltip" data-placement="top" title="destroy">Tooltip 方法 destroy</a>.
+             
+                这是一个 <a href="#" class="tooltip-toggle" data-toggle="tooltip" data-placement="bottom" title="toggle">Tooltip 方法 toggle</a>.
+
+                <p class="tooltip-options" >这是一个 <a href="#" data-toggle="tooltip" title="<h2>'am Header2</h2>">Tooltip 方法 options</a>.
+                </p>
+            </div>
+
+            <div class="container" style="padding: 100px 50px 10px;" >
+                <button type="button" class="btn btn-default popover-show"
+                        title="Popover title" data-container="body"
+                        data-toggle="popover" data-placement="left"
+                        data-content="左侧的 Popover 中的一些内容 —— show 方法">
+                    左侧的 Popover
+                </button>
+                <button type="button" class="btn btn-primary popover-hide"
+                        title="Popover title" data-container="body"
+                        data-toggle="popover" data-placement="top"
+                        data-content="顶部的 Popover 中的一些内容 —— hide 方法">
+                    顶部的 Popover
+                </button>
+                <button type="button" class="btn btn-success popover-destroy"
+                        title="Popover title" data-container="body"
+                        data-toggle="popover" data-placement="bottom"
+                        data-content="底部的 Popover 中的一些内容 —— destroy 方法">
+                    底部的 Popover
+                </button>
+                <button type="button" class="btn btn-warning popover-toggle"
+                        title="Popover title" data-container="body"
+                        data-toggle="popover" data-placement="right"
+                        data-content="右侧的 Popover 中的一些内容 —— toggle 方法">
+                    右侧的 Popover
+                </button><br>
+                <p class="popover-options">
+                    <a href="#" type="button" class="btn btn-warning" title="<h2>Title</h2>"
+                       data-container="body" data-toggle="popover" data-content="
+                     <h4>Popover 中的一些内容 —— options 方法</h4>">
+                        Popover
+                    </a>
+                </p>
+            </div>
+            <hr>
+
+            <h3>警告框（Alert）插件 alert() 方法</h3>
+            <div id="row">
+                <div id="myAlert" class="alert alert-success">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <strong>成功！</strong>结果是成功的。
+                </div>
+            </div>
+            <div id="row">
+                <div id="myAlert" class="alert alert-warning">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <strong>警告！</strong>您的网络连接有问题。
+                </div>
+            </div>
+            <div id="row">
+            <h4>点击每个按钮查看方法效果</h4>
+            <h4>演示 .button('toggle') 方法</h4>
+                <div id="myButtons1" class="bs-example">
+                    <button type="button" class="btn btn-primary">原始</button>
+                </div>
+             </div>
+            <div id="row">
+                <h4>演示 .button('loading') 方法</h4>
+                <div id="myButtons2" class="bs-example">
+                    <button type="button" class="btn btn-primary" 
+                        data-loading-text="Loading...">原始
+                    </button>
+                </div>
+             </div>
+            <div id="row">
+            <h4>演示 .button('reset') 方法</h4>
+                <div id="myButtons3" class="bs-example">
+                    <button type="button" class="btn btn-primary" 
+                        data-loading-text="Loading...">原始
+                    </button>
+                </div>
+            </div>
+            <div id="row">
+                <h4>演示 .button(string) 方法</h4>
+                <button type="button" class="btn btn-primary" id="myButton4" 
+                    data-complete-text="Loading finished">请点击我
+                </button>
+            </div>
+            <hr>
+
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" 
+                            href="#collapseOne">
+                            点击我进行展开，再次点击我进行折叠。第 1 部分--hide 方法
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred 
+                            nesciunt sapiente ea proident. Ad vegan excepteur butcher vice 
+                            lomo.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" 
+                            href="#collapseTwo">
+                            点击我进行折叠，再次点击我进行展开。第 2 部分--show 方法
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred 
+                            nesciunt sapiente ea proident. Ad vegan excepteur butcher vice 
+                            lomo.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" 
+                            href="#collapseThree">
+                            点击我进行展开，再次点击我进行折叠。第 3 部分--toggle 方法
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred 
+                            nesciunt sapiente ea proident. Ad vegan excepteur butcher vice 
+                            lomo.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" 
+                            href="#collapseFour">
+                            点击我进行展开，再次点击我进行折叠。第 4 部分--options 方法
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred 
+                            nesciunt sapiente ea proident. Ad vegan excepteur butcher vice 
+                            lomo.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="myCarousel" class="carousel slide">
+                <!-- 轮播（Carousel）指标 -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" 
+                        class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>   
+                <!-- 轮播（Carousel）项目 -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="./src/img/1.jpg" alt="First slide">
+                    </div>
+                    <div class="item">
+                        <img src="./src/img/2.jpg" alt="Second slide">
+                    </div>
+                    <div class="item">
+                        <img src="./src/img/3.jpg" alt="Third slide">
+                    </div>
+                </div>
+                <!-- 轮播（Carousel）导航 -->
+                <a class="carousel-control left" href="#myCarousel" 
+                    data-slide="prev">&lsaquo;</a>
+                <a class="carousel-control right" href="#myCarousel" 
+                    data-slide="next">&rsaquo;</a>
+                <!-- 控制按钮 -->
+                <div style="text-align:center;">
+                    <input type="button" class="btn start-slide" value="Start">
+                    <input type="button" class="btn pause-slide" value="Pause">
+                    <input type="button" class="btn prev-slide" value="Previous Slide">
+                    <input type="button" class="btn next-slide" value="Next Slide">
+                    <input type="button" class="btn slide-one" value="Slide 1">
+                    <input type="button" class="btn slide-two" value="Slide 2">            
+                    <input type="button" class="btn slide-three" value="Slide 3">
+                </div>
+            </div> 
 <!-- container end -->
         </div> 
         
@@ -1687,6 +1921,83 @@ Bootstrap 中的面包屑导航（Breadcrumbs）是一个简单的带有 .breadc
             var currentItem = $(".nav li.active > a").text();
             $("#activeitem").html("目前您正在查看 - " + currentItem);
         })
+
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            // 获取已激活的标签页的名称
+            var activeTab = $(e.target).text();
+            // 获取前一个激活的标签页的名称
+            var previousTab = $(e.relatedTarget).text();
+            $(".active-tab span").html(activeTab);
+            $(".previous-tab span").html(previousTab);
+        });
+
+        $('.tooltip-show').tooltip('show');
+        $('.tooltip-hide').tooltip('hide');
+        $('.tooltip-destroy').tooltip('destroy');
+        $('.tooltip-toggle').tooltip('toggle');
+        $(".tooltip-options a").tooltip({html : true });
+
+        $('.popover-show').popover('show');
+        $('.popover-hide').popover('hide');
+        $('.popover-destroy').popover('destroy');
+        $('.popover-toggle').popover('toggle');
+        $(".popover-options a").popover({html : true });
+
+        $(".close").click(function(){
+            $("#myAlert").alert('close');
+        });
+
+        $("#myButtons1 .btn").click(function(){
+            $(this).button('toggle');
+        });
+        $("#myButtons2 .btn").click(function(){
+            $(this).button('loading').delay(1000).queue(function() {
+            });        
+        });
+        $("#myButtons3 .btn").click(function(){
+            $(this).button('loading').delay(1000).queue(function() {
+                $(this).button('reset');
+            });        
+        });
+        $("#myButton4").click(function(){
+            $(this).button('loading').delay(1000).queue(function() {
+                $(this).button('complete');
+            });        
+        });
+
+        $('#collapseFour').collapse({
+            toggle: false
+        });
+        $('#collapseTwo').collapse('show');
+        $('#collapseThree').collapse('toggle');
+        $('#collapseOne').collapse('hide');
+
+        // 初始化轮播
+        $(".start-slide").click(function(){
+            $("#myCarousel").carousel('cycle');
+        });
+        // 停止轮播
+        $(".pause-slide").click(function(){
+            $("#myCarousel").carousel('pause');
+        });
+        // 循环轮播到上一个项目
+        $(".prev-slide").click(function(){
+            $("#myCarousel").carousel('prev');
+        });
+        // 循环轮播到下一个项目
+        $(".next-slide").click(function(){
+            $("#myCarousel").carousel('next');
+        });
+        // 循环轮播到某个特定的帧 
+        $(".slide-one").click(function(){
+            $("#myCarousel").carousel(0);
+        });
+        $(".slide-two").click(function(){
+            $("#myCarousel").carousel(1);
+        });
+        $(".slide-three").click(function(){
+            $("#myCarousel").carousel(2);
+        });
     });
     </script>
 </html>
