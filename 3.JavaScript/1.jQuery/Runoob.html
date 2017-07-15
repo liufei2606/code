@@ -9,6 +9,38 @@
 </script>
 </head>
 <body>
+<div class="row">
+  <button type="button" name="停止学习">隐藏p标签</button>
+  <input type="text" name="" value="">
 
+    <h4>选择器</h4>
+    <p>p标签</p>
+    <p id="test">id为test</p>
+</div>
 </body>
+
+<script>
+// 为了防止文档在完全加载（就绪）之前运行 jQuery 代码。如果在文档没有完全加载之前就运行函数，操作可能失败
+$(function(){
+
+  $("button").click(function(){
+    // $("p:first").toggle();
+    // $("p:first").fadeToggle('slow');
+    $("p:first").css('color', 'red').slideDown(500).slideUp(1000);
+  });
+
+  $("button").mouseleave(function(){
+    alert('再见，您的鼠标离开了该段落。');
+  });
+  $("button").mouseenter(function(){
+    $("#test").hide();
+  });
+  $("input").focus(function(){
+    $(this).css("background-color","red");
+  });
+  $("input").blur(function(){
+    $(this).css("background-color","purple");
+  });
+});
+</script>
 </html>
