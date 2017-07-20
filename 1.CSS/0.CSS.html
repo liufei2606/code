@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CSS基础</title>
+    <style>
+    /*基础样式   选择器：属性：值； 属性：值；*/
+    body
+    {
+        background-color:#d0e4fe;
+    }
+    h1
+    {
+        color:orange;
+        text-align:center;
+    }
+    p
+    {
+        font-family:"Times New Roman";
+        font-size:20px;
+    }
+/*id选择器 与class选择器*/
+    #para1
+    {
+    text-align:center;
+    color:red;
+    }
+    .right
+    {
+      text-align: right;
+    }
+
+    /*背景选择器：颜色与image设置*/
+    .bg-color
+    {
+      background-color: yellow;
+    }
+    .bg-image
+    {
+      background-image: url(./1.Bootstrap/src/img/7.jpg);
+      height: 400px;
+      /*设置背景图像是否及如何重复。*/
+      background-repeat:no-repeat;
+      /*设置背景图像的起始位置。*/
+      background-position: top right;
+      /*设置背景图像是否固定或者随着页面的其余部分滚动 fixed scroll*/
+      background-attachment:fixed;
+    }
+
+    /*链接效果*/
+    a:link {background-color:#B2FF99;text-decoration:none;}    /* 未访问链接 */
+    a:visited {background-color:#FFFF85;} /* 已访问链接 */
+    a:hover {text-decoration:underline;background:#66ff66;background:#66ff66;font-size:150%;}   /* 鼠标移动到链接上 */
+    a:active {background-color:#FF704D;text-decoration:underline;}  /* 鼠标点击时 */
+
+    ul
+    {
+    	list-style-type:none;
+    	padding:0px;
+    	margin:0px;
+      /*list-style: square url("sqpurple.gif");*/
+    }
+    ul li
+    {
+    	background-image:url(./1.Bootstrap/src/img/6.jpg);
+    	background-repeat:no-repeat;
+    	background-position:0px 5px;
+    	padding-left:14px;
+    }
+
+    table
+    {
+      /*边框是否被折叠成一个单一的边框或隔开*/
+      border-collapse:collapse;
+      width:100%;
+      font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+    }
+    table, th, td
+    {
+    border: 1px solid green;
+    height:50px;
+    padding:3px 7px 2px 7px;
+    }
+    th
+    {
+    background-color:green;
+    color:white;
+    }
+    td
+    {
+      text-align: right;
+      vertical-align:bottom;
+      padding:25px;
+      color:#000000;
+	    background-color:#EAF2D3;
+    }
+    caption {caption-side:bottom;}
+
+    /*盒子模型*/
+    div {
+        background-color: lightgrey;
+        width: 300px;
+        border: 25px solid green;
+        /*指定一个元素边框的样式和颜色。*/
+        border-top-style:dotted;
+        border-right-style:solid;
+        border-bottom-style:double;
+        border-left-style:dashed;
+        /*定义元素边框与元素内容之间的空间*/
+        padding-top:25px;
+        padding-bottom:25px;
+        padding-right:50px;
+        padding-left:50px;
+        /*定义元素周围的空间*/
+        margin-top:100px;
+        margin-bottom:100px;
+        margin-right:50px;
+        margin-left:50px;
+        /*元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用*/
+        outline:green dotted thick;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>h1样式</h1>
+    <p>p样式</p>
+    <p id="para1" style="color:blue">id选择元素样式,内联样式优先级高  </p>
+    <p class="right">class选择元素样式</p>
+    <h3 class="right">class选择元素样式</h3>
+
+    <h4>背景backgrounds</h4>
+    <p class="bg-color">背景颜色属性</p>
+    <p class="bg-image">背景图片配置</p>
+
+    <h4>文本Text</h4>
+    <p style="text-decoration:overline;text-align:center;color:red">文本颜色与对齐方式</p>
+    <p style="text-decoration:line-through;text-align:right;color:#00ff00">文本颜色与对齐方式</p>
+    <p style="text-decoration:underline;text-align:justify;color:rgb(255,0,0)">文本颜色与对齐方式</p>
+
+    <p style="text-transform:uppercase;text-indent:50px;letter-spacing:5px;">Once gunner forever gunner! 大写并缩进</p>
+    <p style="text-transform:lowercase;word-spacing:30px;direction:rtl;">Once gunner forever gunner!小写</p>
+    <p style="text-transform:capitalize;text-shadow: 2px 2px #ff0000;">Once gunner forever gunner!首字母大写</p>
+    <p style="line-height:70%;">
+      这是一个更小行高的段落。<br>
+      这是一个更小行高的段落。<br>
+    </p>
+
+    <h4>字体fonts</h4>
+    <h4>字体系列:多种备选</h4>
+    <p style="font-family:Times, serif;">Times New Roman,serif符在行的末端拥有额外的装饰</p>
+    <p style="font-family:Arial,Helvetica,sans-serif;">Arial Sans-serif字体在末端没有额外的装饰</p>
+
+    <p style="font-size:40px;">字体绝对大小</p>
+    <p style="font-size:0.875em;">字体相对大小16px=1em</p>
+    <p style="font-size:150%;">字体相对大小16px=1em</p>
+    <p style="font:italic bold 12px/30px Georgia, serif;"> 字体综合设置</p>
+
+    <h4>链接link</h4>
+    <p><b><a href="#">这是一个链接</a></b></p>
+
+    <h4>列表</h4>
+    <ul>
+      <li>Coffee</li>
+      <li>Tea</li>
+      <li>Coca Cola</li>
+    </ul>
+
+    <h4>表格</h4>
+    <table>
+    <caption>Table 1.1 Customers</caption>
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+    </tr>
+    <tr>
+      <td>Peter</td>
+      <td>Griffin</td>
+    </tr>
+    <tr>
+      <td>Lois</td>
+      <td>Griffin</td>
+    </tr>
+  </table>
+
+  <h4>盒子模型：content内容>padding内边距>border边框>外边距margin>outline</h4>
+  <div class="">这里是盒子内的实际内容。有 25px 内间距，25px 外间距、25px 绿色边框。</div>
+
+  </body>
+</html>
