@@ -3,36 +3,45 @@
 <head>
   <script type="text/javascript" src="src/jquery-3.2.1.js"></script>
   <script type="text/javascript" src="src/jquery.validate.js"></script>
+  <script type="text/javascript" src="src/messages_zh.js"></script>
+  <style media="screen">
+    .error {
+      color: green;
+    }
+  </style>
 </head>
 
 <body>
-  <p class="intro">class is intro If you click on me, I will disappear.</p>
-  <button type="button" class="class">element selector with class</button>
-
-  <p id="demo"> id is demo If you click on me, I will disappear.</p>
-  <button type="button" id="id">element selector with id</button>
-
-
-  <p>If you click on me, I will disappear.</p>
-  <button type="button" class="all">隐藏所有p标签</button>
-  <button type="button" name="button" id="show">显示所有p标签</button>
-  <button type="button" name="button" id="toggle">toggle所有p标签</button>
-
-  <p>If you click on me, I will disappear.</p>
-
-  <a href="#"># herf</a>
-  <a href="hello"># herf</a>
-  <a href="hello.jpg"># herf</a>
-
-  <p>这是一个段落。</p>
-  <button>解决jQuery冲突</button>
-  <hr>
-
-  <input type="text" name="" value="" id="focus">
-  <p id="mouseover">mouseover</p>
+  <form class="cmxform" id="commentForm" method="get" action="">
+    <fieldset>
+      <legend>输入您的名字，邮箱，URL，备注。</legend>
+      <p>
+        <label for="cname">Name (必需, 最小两个字母)</label>
+        <input id="cname" name="name" minlength="2" type="text" required>
+      </p>
+      <p>
+        <label for="cemail">E-Mail (必需)</label>
+        <input id="cemail" type="email" name="email" required>
+      </p>
+      <p>
+        <label for="curl">URL (可选)</label>
+        <input id="curl" type="url" name="url">
+      </p>
+      <p>
+        <label for="ccomment">备注 (必需)</label>
+        <textarea id="ccomment" name="comment" required></textarea>
+      </p>
+      <p>
+        <input class="submit" type="submit" value="Submit">
+      </p>
+    </fieldset>
+  </form>
 </body>
 
-<script type="text/javascript">
+<script>
+  $().ready(function() {
+    $("#commentForm").validate();
+  });
 </script>
 
 </html>
