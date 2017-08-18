@@ -72,7 +72,7 @@ console.log('Height of Shape: ' + square.height);
 var Shape3D = (function (_super) {
     __extends(Shape3D, _super);
     function Shape3D(name, width, height, length) {
-        var _this = 
+        var _this =
         // super 方法调用了基类 Shape 的构造函数 Shape
         _super.call(this, name, width, height) || this;
         _this.name = name;

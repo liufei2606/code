@@ -8,4 +8,3 @@ RUN     /bin/echo -e "LANG=\"en_US.UTF-8\"" >/etc/default/local
 EXPOSE  22
 EXPOSE  80
 CMD     /usr/sbin/sshd -D
-

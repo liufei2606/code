@@ -6,7 +6,7 @@
 使用：1.本文件引入jQuery文件为前提
       2.引入文件<script src="http://xy-sh-plat.oss-cn-shanghai.aliyuncs.com/platform/common/js/linkStatistics.js"></script>
       3.获取元素赋值下载链接：linkStatstics.getLinks('#down2');
-      4.通过元素操作增加下载次数：linkStatstics.downloadCountIncr('#down2');  
+      4.通过元素操作增加下载次数：linkStatstics.downloadCountIncr('#down2');
 
 */
 
@@ -22,62 +22,62 @@ linkStatstics=new Object();
 // 获取链接
 linkStatstics.getLinks=function(linkTag){
     var ua = navigator.userAgent.toLowerCase();
-    $.ajax(  
-    {   
-        type:'get',  
-        url : 'http://actsapi.xianyugame.com/getlinks?' + param,  
-        dataType : 'jsonp',  
+    $.ajax(
+    {
+        type:'get',
+        url : 'http://actsapi.xianyugame.com/getlinks?' + param,
+        dataType : 'jsonp',
         jsonp:"jsoncallback",
-        success  : function(data) {    
+        success  : function(data) {
             var linksObj = data.data;
-            console.log(linksObj); 
+            console.log(linksObj);
             if (/iphone|ipad|ipod/.test(ua)) {
                     $(linkTag).attr('href', data.data.ios_url);
                 } else if (/android/.test(ua)) {
                     $(linkTag).attr('href', data.data.android_url);
-                }         
-           
-        },  
-        error : function() {  
-            alert(data.msg);  
-        }  
-    }); 
+                }
+
+        },
+        error : function() {
+            alert(data.msg);
+        }
+    });
 }
 
 // 点击增加
-$.ajax(  
-    {  
-        type:'get',  
-        url : 'http://actsapi.xianyugame.com/click/increase?' + param,  
-        dataType : 'jsonp',  
-        jsonp:"jsoncallback",  
-        success  : function(data) {  
+$.ajax(
+    {
+        type:'get',
+        url : 'http://actsapi.xianyugame.com/click/increase?' + param,
+        dataType : 'jsonp',
+        jsonp:"jsoncallback",
+        success  : function(data) {
             console.log(data);
-        },  
-        error : function() {  
-            alert(data.msg);  
-        }  
-    }  
-);  
+        },
+        error : function() {
+            alert(data.msg);
+        }
+    }
+);
 
-// 下载增加 
+// 下载增加
 linkStatstics.downloadCountIncr=function(downloadTag){
     $(downloadTag).click(function(){
 
-        $.ajax(  
-            {  
+        $.ajax(
+            {
                 async:false,
-                type:'get',  
-                url : 'http://actsapi.xianyugame.com/download/increase?' + param,  
-                dataType : 'jsonp',  
-                jsonp:"jsoncallback",  
-                success  : function(data) { 
-                    console.log(data);  
-                },  
-                error : function() {  
-                    alert(data.msg);  
-                }  
+                type:'get',
+                url : 'http://actsapi.xianyugame.com/download/increase?' + param,
+                dataType : 'jsonp',
+                jsonp:"jsoncallback",
+                success  : function(data) {
+                    console.log(data);
+                },
+                error : function() {
+                    alert(data.msg);
+                }
             }
-        )  
-    }); 
-}  
+        )
+    });
+}

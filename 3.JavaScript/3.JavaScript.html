@@ -1,43 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>JavaScript</title>
-  </head>
-  <body>
-    <!-- 显示标签 -->
-    <p id="demo" style="height:50px"></p>
 
-    <button type="button" onclick="displayDate()">点击显示日期</button>
-    <button type="button" onclick="alert('欢迎!')">Alert!</button>
+<head>
+  <meta charset="utf-8">
+  <title>JavaScript</title>
+</head>
 
-    <button onclick="getElementById('demo2').innerHTML=Date()">现在的时间是?</button>
-    <p id="demo2"></p>
-    <p id="demo1"></p>
+<body>
+  <!-- 显示标签 -->
+  <p id="demo" style="height:50px"></p>
 
-    <button onclick="myFunction()">点我</button>
-    <p id="regexp"></p>
+  <button type="button" onclick="displayDate()">点击显示日期</button>
+  <button type="button" onclick="alert('欢迎!')">Alert!</button>
 
-    <p>请输出一个 5 到 10 之间的数字:</p>
-    <input id="errors" type="text">
-    <button type="button" onclick="myFunction()">测试输入</button>
-    <p id="message"></p>
+  <button onclick="getElementById('demo2').innerHTML=Date()">现在的时间是?</button>
+  <p id="demo2"></p>
+  <p id="demo1"></p>
+
+  <button onclick="myFunction()">点我</button>
+  <p id="regexp"></p>
+
+  <p>请输出一个 5 到 10 之间的数字:</p>
+  <input id="errors" type="text">
+  <button type="button" onclick="myFunction()">测试输入</button>
+  <p id="message"></p>
 
 
-    <p>输入数字并点击验证按钮:</p>
-    <input id="id1" type="number" min="100" max="300" required>
-    <button onclick="validation()">验证</button>
-    <p>如果输入的数字小于 100 或大于300，会提示错误信息。</p>
-    <p id="validation"></p>
+  <p>输入数字并点击验证按钮:</p>
+  <input id="id1" type="number" min="100" max="300" required>
+  <button onclick="validation()">验证</button>
+  <p>如果输入的数字小于 100 或大于300，会提示错误信息。</p>
+  <p id="validation"></p>
 
-    <div id="div1">
-    </div>
-  </body>
+  <div id="div1">
+  </div>
+</body>
 
-  <script type="text/javascript">
-  function displayDate(){
-    document.getElementById("demo").innerHTML=Date();
-    document.getElementById("demo").style.color="#ff0000";
+<script type="text/javascript">
+  function displayDate() {
+    document.getElementById("demo").innerHTML = Date();
+    document.getElementById("demo").style.color = "#ff0000";
   }
 
   // 代码位置决定输出位置
@@ -53,181 +55,177 @@
   z = (x + y) * 10;
   document.getElementById("demo1").innerHTML = z;
   document.getElementById("demo1").innerHTML = 16 + "Volvo";
-// 数组
+  // 数组
   var cars = [40, 100, 1, 5, 25, 10];
   document.write(cars + ' ');
-//对象
-  var person =  {
-    firstName:"John",
-    lastName:"Doe",
-    age:50,
-    eyeColor:"blue",
-    fullName : function()
-  	{
-         return this.firstName + " " + this.lastName;
-      }
+  //对象
+  var person = {
+    firstName: "John",
+    lastName: "Doe",
+    age: 50,
+    eyeColor: "blue",
+    fullName: function() {
+      return this.firstName + " " + this.lastName;
+    }
   };
   document.write(person.lastName + ' ');
   document.write(person.fullName() + ' ');
   document.write(person['lastName'] + '<br>');
 
-  txt1="What a very ";
-  txt2="nice day";
-  document.write('字符串拼接：' + txt1+txt2);
+  txt1 = "What a very ";
+  txt2 = "nice day";
+  document.write('字符串拼接：' + txt1 + txt2);
 
   function myFunction() {
-      var str = "Visit Runoob!";
-      var n = str.search(/Runoob/i);
-      document.getElementById("regexp").innerHTML = n;
+    var str = "Visit Runoob!";
+    var n = str.search(/Runoob/i);
+    document.getElementById("regexp").innerHTML = n;
   }
 
   function myFunction() {
-      var message, x;
-      message = document.getElementById("validation");
-      message.innerHTML = "";
-      x = document.getElementById("errors").value;
-      try {
-          if(x == "")  throw "值为空";
-          if(isNaN(x)) throw "不是数字";
-          x = Number(x);
-          if(x < 5)    throw "太小";
-          if(x > 10)   throw "太大";
-      }
-      catch(err) {
-          message.innerHTML = "错误: " + err;
-      }
+    var message, x;
+    message = document.getElementById("validation");
+    message.innerHTML = "";
+    x = document.getElementById("errors").value;
+    try {
+      if (x == "") throw "值为空";
+      if (isNaN(x)) throw "不是数字";
+      x = Number(x);
+      if (x < 5) throw "太小";
+      if (x > 10) throw "太大";
+    } catch (err) {
+      message.innerHTML = "错误: " + err;
+    }
   }
 
-    function validation() {
-        var inpObj = document.getElementById("id1");
-        if (inpObj.checkValidity() == false) {
-            document.getElementById("demo").innerHTML = inpObj.validationMessage;
-        } else {
-            document.getElementById("demo").innerHTML = "输入正确";
-        }
+  function validation() {
+    var inpObj = document.getElementById("id1");
+    if (inpObj.checkValidity() == false) {
+      document.getElementById("demo").innerHTML = inpObj.validationMessage;
+    } else {
+      document.getElementById("demo").innerHTML = "输入正确";
     }
+  }
 
-    var para=document.createElement("p");
-    var node=document.createTextNode("这是一个新段落。");
-    para.appendChild(node);
-    var element=document.getElementById("div1");
-    element.appendChild(para);
+  var para = document.createElement("p");
+  var node = document.createTextNode("这是一个新段落。");
+  para.appendChild(node);
+  var element = document.getElementById("div1");
+  element.appendChild(para);
 
-    var str="Hello world!";
-    document.write(str.match("world") + "<br>");
+  var str = "Hello world!";
+  document.write(str.match("world") + "<br>");
 
-    str="Please visit Microsoft!"
-    var n=str.replace("Microsoft","w3cschool");
+  str = "Please visit Microsoft!"
+  var n = str.replace("Microsoft", "w3cschool");
 
-    console.log('This is a statement');
-    var myGlobalVar = 'apples';
-    // 不要创建 String 对象。它会拖慢执行速度，并可能产生其他副作用：
-    var y = new String("John");
-    var bool = false;
-    var daysInWeek = 7;
+  console.log('This is a statement');
+  var myGlobalVar = 'apples';
+  // 不要创建 String 对象。它会拖慢执行速度，并可能产生其他副作用：
+  var y = new String("John");
+  var bool = false;
+  var daysInWeek = 7;
 
-    function myFunc(name, weather) {
-      var myLocalVar = 'sunny';
-      console.log("This is a function");
-      console.log("Hello " + name + ". ")
-      console.log("It is " + weather + "today")
-      return "Hello " + name + ". ";
+  function myFunc(name, weather) {
+    var myLocalVar = 'sunny';
+    console.log("This is a function");
+    console.log("Hello " + name + ". ")
+    console.log("It is " + weather + "today")
+    return "Hello " + name + ". ";
+  }
+  console.log(myFunc("Adam", 'sunny'));
+
+  // 数组
+  var arr = [3, 'henry', true];
+  for (var i = 0; i < arr.length; i++) {
+    console.log('Index ' + i + ':' + arr[i]);
+  }
+
+  // 添加数组，返回新数组
+  console.log(arr);
+  console.log('Concat: ' + arr.concat([5, 8]));
+
+  // 拼接，返回字符串
+  console.log(arr);
+  console.log('Join: ' + arr.join('\\'));
+
+  // 截取字符串
+  console.log(arr);
+  console.log('Slice(1, 3): ' + arr.slice(1, 3));
+
+  //排序
+  console.log(arr);
+  console.log('Sort: ' + arr.sort());
+
+  //删除元素片段
+  console.log(arr);
+  console.log('Splice: ' + arr.splice(0, 1));
+
+  // 取出最后一个值
+  console.log(arr);
+  console.log('Pop:' + arr.pop());
+
+  // 取出第一个值
+  console.log(arr);
+  console.log('shift:' + arr.shift());
+
+  // 压入到头部
+  console.log(arr);
+  console.log('shift:' + arr.unshift('Begin'));
+
+  // 压栈
+  console.log(arr);
+  console.log('Push:' + arr.push('World'));
+
+  // 对象
+  var myData = {
+    name: 'Adam',
+    weather: 'Sunny',
+    printMessages: function() {
+      console.log("hello " + this.name + ". ")
     }
-    console.log(myFunc("Adam", 'sunny'));
+  };
+  myData.printMessages();
+  // 修改
+  myData.name = 'Joe';
+  myData['name'] = 'Joe2';
+  // 添加
+  myData.dayOfWeek = 'Monday';
+  myData.SayHello = function() {
+    console.write('hello');
+  }
+  for (var prop in myData) {
+    console.log('Name: ' + prop + " Value: " + myData[prop]);
+  }
+  var hasName = 'name' in myData;
+  var hasDate = 'date' in myData;
+  console.log('HasName: ' + hasName);
+  console.log('HasData: ' + hasDate);
 
-    // 数组
-    var arr = [3, 'henry', true];
-    for (var i = 0; i < arr.length; i++) {
-      console.log('Index ' + i + ':' + arr[i]);
-    }
+  // if switch statment
+  // 优先级高的判断放前面
+  // 对详见对比是引用
+  var firstVal = 5;
+  var secondtVal = '5';
+  if (firstVal === secondtVal) {
+    console.log('They are  forever same');
+  } else if (firstVal == secondtVal) {
+    console.log('They are  same');
+  } else {
+    console.log('They are not same');
+  }
+  var name = 'Adam';
+  switch (name) {
+    case 'Adam':
+      console.log('Name is Adam');
+      break;
+    case 'Jacqui':
+      console.log('Name is Jacqui');
+      break;
+    default:
+      console.log('Name is neither Adam or Jacqui');
+      break;
+  }
+</script>
 
-    // 添加数组，返回新数组
-    console.log(arr);
-    console.log('Concat: ' + arr.concat([5, 8]));
-
-    // 拼接，返回字符串
-    console.log(arr);
-    console.log('Join: ' + arr.join('\\'));
-
-    // 截取字符串
-    console.log(arr);
-    console.log('Slice(1, 3): ' + arr.slice(1, 3));
-
-    //排序
-    console.log(arr);
-    console.log('Sort: ' + arr.sort());
-
-    //删除元素片段
-    console.log(arr);
-    console.log('Splice: ' + arr.splice(0, 1));
-
-    // 取出最后一个值
-    console.log(arr);
-    console.log('Pop:' + arr.pop());
-
-    // 取出第一个值
-    console.log(arr);
-    console.log('shift:' + arr.shift());
-
-    // 压入到头部
-    console.log(arr);
-    console.log('shift:' + arr.unshift('Begin'));
-
-    // 压栈
-    console.log(arr);
-    console.log('Push:' + arr.push('World'));
-
-    // 对象
-    var myData = {
-        name: 'Adam',
-        weather: 'Sunny',
-        printMessages: function(){
-          console.log("hello " + this.name + ". ")
-        }
-      };
-      myData.printMessages();
-      // 修改
-      myData.name = 'Joe';
-      myData['name'] = 'Joe2';
-      // 添加
-      myData.dayOfWeek = 'Monday';
-      myData.SayHello = function() {
-        console.write('hello');
-      }
-      for (var prop in myData) {
-        console.log('Name: ' + prop + " Value: "  + myData[prop]);
-      }
-      var hasName = 'name' in myData;
-      var hasDate = 'date' in myData;
-      console.log('HasName: ' + hasName);
-      console.log('HasData: ' + hasDate);
-
-      // if switch statment
-      // 优先级高的判断放前面
-      // 对详见对比是引用
-      var firstVal = 5;
-      var secondtVal = '5';
-      if (firstVal === secondtVal) {
-        console.log('They are  forever same');
-      } else if (firstVal == secondtVal){
-        console.log('They are  same');
-      } else {
-        console.log('They are not same');
-      }
-      var name = 'Adam';
-      switch (name) {
-        case 'Adam':
-          console.log('Name is Adam');
-          break;
-        case 'Jacqui':
-          console.log('Name is Jacqui');
-          break;
-        default:
-            console.log('Name is neither Adam or Jacqui');
-            break;
-      }
-
-
-
-  </script>
 </html>

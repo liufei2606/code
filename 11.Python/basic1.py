@@ -36,7 +36,7 @@ print 'Hi, %s, you have $%d.' % ('Michael', 100000)
 print 'Today:%2d-%02d' % (3,1)
 print 'Growth rate:%d%%' %  7
 
-# list 
+# list
 classmates = ['henry', 'lily', 123]
 print classmates[len(classmates)-1]
 classmates.append('code')
@@ -72,7 +72,7 @@ elif age >= 18:
 else:
 	print 'kid'
 
-sum1 = 0 
+sum1 = 0
 for x in xrange(1,10):
 	sum1 = sum1 + x
 print sum1
@@ -92,7 +92,7 @@ print d['henry']
 d.pop('michael')
 print d
 
-# set 
+# set
 s = set([1, 1, 2, 2, 3, 3])
 print s
 s.add(4)
@@ -198,7 +198,7 @@ def fib(max):
 		n = n + 1
 		pass
 for n in fib(6):
-	print n 
+	print n
 
 # functional programming:允许把函数本身作为参数传入另一个函数，还允许返回一个函数.没有变量
 # 函数名其实就是指向函数的变量

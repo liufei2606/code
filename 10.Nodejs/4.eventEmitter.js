@@ -13,7 +13,7 @@ var listener1 = function() {
 }
 
 var listener2 = function() {
-	console.log('监听器listener2执行');
+	console.log('监听器listener2执行');	
 }
 
 event.on('some_event', listener1);

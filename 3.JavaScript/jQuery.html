@@ -1,60 +1,62 @@
 <html>
+
 <head>
-<script type="text/javascript" src="src/jquery-3.2.1.js"></script>
+  <script type="text/javascript" src="src/jquery-3.2.1.js"></script>
 </head>
 
 <body>
-<p class="intro">class is intro If you click on me, I will disappear.</p>
-<button type="button" class="class">element selector with class</button>
+  <p class="intro">class is intro If you click on me, I will disappear.</p>
+  <button type="button" class="class">element selector with class</button>
 
-<p id="demo"> id is demo If you click on me, I will disappear.</p>
-<button type="button" id="id">element selector with id</button>
+  <p id="demo"> id is demo If you click on me, I will disappear.</p>
+  <button type="button" id="id">element selector with id</button>
 
 
-<p>If you click on me, I will disappear.</p>
-<button type="button" class="all">隐藏所有p标签</button>
-<button type="button" name="button" id="show">显示所有p标签</button>
-<button type="button" name="button" id="toggle">toggle所有p标签</button>
+  <p>If you click on me, I will disappear.</p>
+  <button type="button" class="all">隐藏所有p标签</button>
+  <button type="button" name="button" id="show">显示所有p标签</button>
+  <button type="button" name="button" id="toggle">toggle所有p标签</button>
 
-<p>If you click on me, I will disappear.</p>
+  <p>If you click on me, I will disappear.</p>
 
-<a href="#"># herf</a>
-<a href="hello"># herf</a>
-<a href="hello.jpg"># herf</a>
+  <a href="#"># herf</a>
+  <a href="hello"># herf</a>
+  <a href="hello.jpg"># herf</a>
 
-<p>这是一个段落。</p>
-<button>解决jQuery冲突</button><hr>
+  <p>这是一个段落。</p>
+  <button>解决jQuery冲突</button>
+  <hr>
 
-<input type="text" name="" value="" id="focus">
-<p id="mouseover">mouseover</p>
+  <input type="text" name="" value="" id="focus">
+  <p id="mouseover">mouseover</p>
 </body>
 
 <script type="text/javascript">
-// 为了防止文档在完全加载（就绪）之前运行 jQuery 代码,documnet绑定到ready事件
-  $(document).ready(function(){
+  // 为了防止文档在完全加载（就绪）之前运行 jQuery 代码,documnet绑定到ready事件
+  $(document).ready(function() {
     // $(selector).action()
     // 元素选择器
 
-    $("button.class").click(function(){
+    $("button.class").click(function() {
       $("p.intro").hide();
     });
 
-    $("button#id").click(function(){
+    $("button#id").click(function() {
       $("p#demo").hide();
     });
 
     // 隐藏与显示
-    $("button.all").click(function(){
+    $("button.all").click(function() {
       $("p").hide(3000);
     });
-    $('button#show').click(function(){
+    $('button#show').click(function() {
       $('p').show(1000);
     });
-    $('button#toggle').click(function(){
+    $('button#toggle').click(function() {
       $('p').toggle(2000);
     });
 
-    $("p").click(function(){
+    $("p").click(function() {
       $(this).hide();
     });
 
@@ -70,7 +72,7 @@
     // });
 
     // CSS 选择器
-    $("p").css("background-color","red");
+    $("p").css("background-color", "red");
 
     //jQuery 使用 $ 符号作为 jQuery 的简介方式,冲突解决方法,新变量替换,默认jQuery
     // var jq = $.noConflict();
@@ -80,15 +82,14 @@
     //   });
     // });
 
-    $("#mouseover").mouseover(function(){
+    $("#mouseover").mouseover(function() {
       $(this).css('background-color', 'purple');
     });
 
-    $("#focus").focus(function(){
+    $("#focus").focus(function() {
       $(this).css('background-color', 'yellow');
     });
   });
-
-
 </script>
+
 </html>

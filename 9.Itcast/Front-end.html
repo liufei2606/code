@@ -1,163 +1,186 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Itcast前端</title>
-    <style>
-    /*通配符*/
-      *
-      {
-        color: red;
-      }
-      /*标签选择器*/
-      p
-      {
-        color: green;
-        font-size: 24px;
-      }
-      /*类选择器*/
-      .box
-      {
-        /*文本属性*/
-        color: blue;
-        /*字体属性*/
-        font-size: 36px;
-        /*边框熟悉*/
-        border-left: 10px solid blue;
-        border-right: 10px dotted red;
-        border-top: 10px dashed green;
-        border-bottom: 10px double #ff00ff;
-        /*填充属性:边线到内容距离*/
-        padding:5px 10px 15px 20px;
-        /*外边距属性:边框线往外的距离*/
-        margin:5px 10px 15px 20px;
-        /*尺寸属性*/
-        width: 200px;
-        height: : 60px;
 
-        background-color: yellow;
-        padding: 20px;
-      }
-      /*id选择器*/
-      #box
-      {
-        color: purple;
-        border: 5px solid blue;
-        background-color: red;
-        padding: 20px;
-        width: 200px;
-      }
-      /*后代元素选择器*/
-      .box h4
-      {
-        color: orange;
-      }
-      /*子元素选择器*/
-      div > h4
-      {
-        color: #000;
-      }
-      /*块元素属性*/
-      h5
-      {
-        border: 5px solid red;
-        width: 100%;
-        height: auto;
-      }
-      /*行内元素属性*/
-      span
-      {
-        border: 5px solid blue;
-        height: 100px;
-        width: 300px;
-      }
-      /*伪选择器
+<head>
+  <meta charset="utf-8">
+  <title>Itcast前端</title>
+  <style>
+    /*通配符*/
+
+    * {
+      color: red;
+    }
+    /*标签选择器*/
+
+    p {
+      color: green;
+      font-size: 24px;
+    }
+    /*类选择器*/
+
+    .box {
+      /*文本属性*/
+      color: blue;
+      /*字体属性*/
+      font-size: 36px;
+      /*边框熟悉*/
+      border-left: 10px solid blue;
+      border-right: 10px dotted red;
+      border-top: 10px dashed green;
+      border-bottom: 10px double #ff00ff;
+      /*填充属性:边线到内容距离*/
+      padding: 5px 10px 15px 20px;
+      /*外边距属性:边框线往外的距离*/
+      margin: 5px 10px 15px 20px;
+      /*尺寸属性*/
+      width: 200px;
+      height: : 60px;
+
+      background-color: yellow;
+      padding: 20px;
+    }
+    /*id选择器*/
+
+    #box {
+      color: purple;
+      border: 5px solid blue;
+      background-color: red;
+      padding: 20px;
+      width: 200px;
+    }
+    /*后代元素选择器*/
+
+    .box h4 {
+      color: orange;
+    }
+    /*子元素选择器*/
+
+    div>h4 {
+      color: #000;
+    }
+    /*块元素属性*/
+
+    h5 {
+      border: 5px solid red;
+      width: 100%;
+      height: auto;
+    }
+    /*行内元素属性*/
+
+    span {
+      border: 5px solid blue;
+      height: 100px;
+      width: 300px;
+    }
+    /*伪选择器
       :link 正常链接效果。 与visited一致
       :hover 鼠标放上的效果单独加
       :visited 访问过的效果
       :active 激活状态 时间太短不写
       */
-      /*全局样式*/
-      a:link, a:visited {color: blue; text-decoration: none;}
-      a:hover { color: red; text-decoration: underline;}
-      /*局部样式*/
-      a.al:link, a.al:visited {color: green; font-size: 24px;}
-      a.al:hover{color: #ff00ff; background-color: yellow;}
-      /*浮动*/
-      #news
-      {
-        border: 5px solid blue;
-        height: 100px;
-        width: 300px;
-        float: left;
-        margin: 10px;
-      }
-      /*背景属性
+    /*全局样式*/
+
+    a:link,
+    a:visited {
+      color: blue;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: red;
+      text-decoration: underline;
+    }
+    /*局部样式*/
+
+    a.al:link,
+    a.al:visited {
+      color: green;
+      font-size: 24px;
+    }
+
+    a.al:hover {
+      color: #ff00ff;
+      background-color: yellow;
+    }
+    /*浮动*/
+
+    #news {
+      border: 5px solid blue;
+      height: 100px;
+      width: 300px;
+      float: left;
+      margin: 10px;
+    }
+    /*背景属性
       background-color background-image background-repeat
       平铺方式:no-repeat：不平铺。repeat-x：水平方向平铺。repeat-y：垂直方向平铺。repeat：水平和垂直都平铺(默认)。
       background-position：背景图片的定位方式 left、center、right、top、center、bottom 0% 50%; 5px 5px
       */
-      #background
-      {
-        background: blue url(../1.CSS/1.Bootstrap/src/img/1.jpg) repeat 490px bottom
-      }
-    </style>
-  </head>
-  <body>
-    <h3>HTML</h3>
-    <a href="https://blog.bluebird89.com/" target="_blank">a链接我的博客</a>
-    <a href="mailto:liboming88@yeah.net" target="_blank">a链接给我发邮件</a>
-    <img src="../1.CSS/1.Bootstrap/src/img/1.jpg" alt="显示文字" width="250px" height="250px"><br>
 
-    <h3>CSS</h3>
-    <h4>基本选择器</h4>
-    <p>P标签属性设置</p>
-    <div class="box">class为box标签属性设置</div><hr>
-    <div id="box">id为box标签属性设置</div>
+    #background {
+      background: blue url(../1.CSS/1.Bootstrap/src/img/1.jpg) repeat 490px bottom
+    }
+  </style>
+</head>
 
-    <h4>组合选择器</h4>
-    <div class="box">
-      <h4>class为box的后代h4元素(用空格分开,所有后代)</h4>
-      <h4>class为box的后代h4元素</h4>
+<body>
+  <h3>HTML</h3>
+  <a href="https://blog.bluebird89.com/" target="_blank">a链接我的博客</a>
+  <a href="mailto:liboming88@yeah.net" target="_blank">a链接给我发邮件</a>
+  <img src="../1.CSS/1.Bootstrap/src/img/1.jpg" alt="显示文字" width="250px" height="250px"><br>
+
+  <h3>CSS</h3>
+  <h4>基本选择器</h4>
+  <p>P标签属性设置</p>
+  <div class="box">class为box标签属性设置</div>
+  <hr>
+  <div id="box">id为box标签属性设置</div>
+
+  <h4>组合选择器</h4>
+  <div class="box">
+    <h4>class为box的后代h4元素(用空格分开,所有后代)</h4>
+    <h4>class为box的后代h4元素</h4>
+  </div>
+  <div>
+    <h4>div的子元素h4(通过&lt;分开,只有子一级)<span>孙子元素没有应用属性</span></h4>
+  </div>
+
+  <h5>块元素属性</h5>
+  <span>行内元素熟悉</span>
+  <span>行内元素熟悉</span>
+  <span>行内元素熟悉</span>
+  <span>行内元素熟悉</span>
+  <span>行内元素熟悉</span>
+
+  <h4>伪选择器</h4>
+  <a href="#">全局样式</a>
+  <a class="al">局部样式</a>
+
+  <h2 class="box">CSS属性</h2>
+  <span>今日新闻</span>
+  <span id="news">左浮动</span>
+  <hr>
+
+  <!-- 实例,清除浮动 -->
+  <div class="box" style="width:100%;">
+    <div class="title">
+      <h2>培训信息</h2>
     </div>
-    <div>
-      <h4>div的子元素h4(通过&lt;分开,只有子一级)<span>孙子元素没有应用属性</span></h4>
+    <div class="content">
+      <h4>基础班</h4>
+      <ul>
+        <li><a href="#"></a><span>第一期</span></li>
+        <li><a href="#"></a><span>第二期</span></li>
+        <li><a href="#"></a><span>第三期</span></li>
+        <li><a href="#"></a><span>第四期</span></li>
+      </ul>
     </div>
+  </div>
+  <div id="background">
+    <p>CSS背景属性</p>
+    <p>北京时间8月10日19点35分，2017赛季中超第21轮的焦点战在秦皇岛奥体中心展开角逐，河北华夏幸福坐镇主场迎战上海上港。上半场埃尔克森首开纪录，下半场拉维奇扳平，高准翼反超，胡尔克助攻贺惯绝平。最终全场比赛结束，河北华夏幸福主场2-2战平上海上港，武磊屡失良机。积分榜方面，上港积42分落后恒大5分，华夏积33分升至第6。</p>
+  </div>
 
-    <h5>块元素属性</h5>
-    <span>行内元素熟悉</span>
-    <span>行内元素熟悉</span>
-    <span>行内元素熟悉</span>
-    <span>行内元素熟悉</span>
-    <span>行内元素熟悉</span>
+</body>
 
-    <h4>伪选择器</h4>
-    <a href="#">全局样式</a>
-    <a class="al">局部样式</a>
-
-    <h2 class="box">CSS属性</h2>
-    <span>今日新闻</span>
-    <span id="news">左浮动</span><hr>
-
-<!-- 实例,清除浮动 -->
-    <div class="box" style="width:100%;">
-        <div class="title">
-          <h2>培训信息</h2>
-        </div>
-        <div class="content">
-          <h4>基础班</h4>
-          <ul>
-            <li><a href="#"></a><span>第一期</span></li>
-            <li><a href="#"></a><span>第二期</span></li>
-            <li><a href="#"></a><span>第三期</span></li>
-            <li><a href="#"></a><span>第四期</span></li>
-          </ul>
-        </div>
-    </div>
-    <div id="background">
-      <p>CSS背景属性</p>
-      <p>北京时间8月10日19点35分，2017赛季中超第21轮的焦点战在秦皇岛奥体中心展开角逐，河北华夏幸福坐镇主场迎战上海上港。上半场埃尔克森首开纪录，下半场拉维奇扳平，高准翼反超，胡尔克助攻贺惯绝平。最终全场比赛结束，河北华夏幸福主场2-2战平上海上港，武磊屡失良机。积分榜方面，上港积42分落后恒大5分，华夏积33分升至第6。</p>
-    </div>
-
-  </body>
 </html>
