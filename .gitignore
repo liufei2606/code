@@ -2,3 +2,4 @@ info.php
 /.phpintel
 /.idea
 /node_modules
+.gitignore
