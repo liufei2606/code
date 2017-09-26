@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+      // 获取url参数
+        function GetUrlPars(){
+            var url=location.search;
+            var theRequest = new Object();
+            if(url.indexOf("?")!=-1)
+            {
+               var str = url.substr(1);
+               strs = str.split("&");
+               for(var i=0;i<strs.length;i++)
+              {
+                  var sTemp = strs[i].split("=");
+                  theRequest[sTemp[0]]=(sTemp[1]);
+              }
+            }
+            return theRequest;
+         }
+        var mYRequest = GetUrlPars();
+        console.log(mYRequest);
+    </script>
+</body>
+</html>
