@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vue.js——60分钟快速入门</title>
+        <link rel="stylesheet" href="./styles/demo.css" />
+    </head>
+    <body>
+        <!--这是我们的View-->
+        <div id="app">
+            <p>{{ message }}</p>
+            <input type="text" v-model="message"/>
+
+            <h1 v-if="yes">Yes!</h1>
+            <h1 v-if="no">No!</h1>
+            <h1 v-if="age >= 25">Age: {{ age }}</h1>
+            <h1 v-if="name.indexOf('jack') >= 0">Name: {{ name }}</h1>
+
+            <h1 v-show="yes">Yes!</h1>
+            <h1 v-show="no">No!</h1>
+            <h1 v-show="age >= 25">Age: {{ age }}</h1>
+            <h1 v-show="name.indexOf('jack') >= 0">Name: {{ name }}</h1>
+
+            <h1 v-if="age >= 25">Age: {{ age }}</h1>
+            <h1 v-else>Name: {{ name }}</h1>
+            <h1>---------------------分割线---------------------</h1>
+            <h1 v-show="name.indexOf('keep') >= 0">Name: {{ name }}</h1>
+            <!-- <h1 v-else>Sex: {{ sex }}</h1> -->
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Sex</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="person in people">
+                        <td>{{ person.name  }}</td>
+                        <td>{{ person.age  }}</td>
+                        <td>{{ person.sex  }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <ul class="pagination">
+                <li v-for="n in pageCount">
+                    <a href="javascripit:void(0)" v-bind:class="activeNumber === n + 1 ? 'active' : ''">{{ n + 1 }}</a>
+                </li>
+            </ul>
+
+            <p><input type="text" v-model="message"></p>
+            <p>
+                <!--click事件直接绑定一个方法-->
+                <button v-on:click="greet">Greet</button>
+            </p>
+            <p>
+                <!--click事件使用内联语句-->
+                <button v-on:click="say('Hi')">Hi</button>
+            </p>
+
+            <!--完整语法-->
+            <a href="javascripit:void(0)" v-bind:class="activeNumber === n + 1 ? 'active' : ''">{{ n + 1 }}</a>
+            <!--缩写语法-->
+            <a href="javascripit:void(0)" :class="activeNumber=== n + 1 ? 'active' : ''">{{ n + 1 }}</a>
+
+            <!--完整语法-->
+            <button v-on:click="greet">Greet</button>
+            <!--缩写语法-->
+            <button @click="greet">Greet</button>
+
+            <fieldset>
+                    <legend>
+                        Create New Person
+                    </legend>
+                    <div class="form-group">
+                        <label>Name:</label>
+                        <input type="text" v-model="newPerson.name"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Age:</label>
+                        <input type="text" v-model="newPerson.age"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Sex:</label>
+                        <select v-model="newPerson.sex">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                    </div>
+                    <div class="form-group">
+                        <label></label>
+                        <button @click="createPerson">Create</button>
+                    </div>
+            </fieldset>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Sex</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="person in people">
+                        <td>{{ person.name }}</td>
+                        <td>{{ person.age }}</td>
+                        <td>{{ person.sex }}</td>
+                        <td :class="'text-center'"><button @click="deletePerson($index)">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </body>
+    <script src="../src/vue.js"></script>
+    <script>
+    // 这是我们的Model
+    var exampleData = {
+        message: 'Hello World!',
+        yes: true,
+        no: false,
+        age: 28,
+        name: 'keepfool',
+        sex: 'Male',
+        newPerson: {
+            name: '',
+            age: 0,
+            sex: 'Male'
+        },
+        people: [{
+                    name: 'Jack',
+                    age: 30,
+                    sex: 'Male'
+                }, {
+                    name: 'Bill',
+                    age: 26,
+                    sex: 'Male'
+                }, {
+                    name: 'Tracy',
+                    age: 22,
+                    sex: 'Female'
+                }, {
+                    name: 'Chris',
+                    age: 36,
+                    sex: 'Male'
+                }],
+                activeNumber: 1,
+                pageCount: 10,
+
+
+    }
+    // 创建一个 Vue 实例或 "ViewModel"
+    // 它连接 View 与 Model
+    var vm = new Vue({
+        el: '#app',
+        data: exampleData,
+        // 在 `methods` 对象中定义方法
+        methods: {
+            greet: function() {
+                // // 方法内 `this` 指向 vm
+                alert(this.message)
+            },
+            say: function(msg) {
+                alert(msg)
+            },
+            createPerson: function(){
+                this.people.push(this.newPerson);
+                // 添加完newPerson对象后，重置newPerson对象
+                this.newPerson = {name: '', age: 0, sex: 'Male'}
+            },
+            deletePerson: function(index){
+                // 删一个数组元素
+                this.people.splice(index,1);
+            }
+        }
+    })
+    </script>
+</html>
