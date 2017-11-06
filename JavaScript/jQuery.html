@@ -29,6 +29,27 @@
 
   <input type="text" name="" value="" id="focus">
   <p id="mouseover">mouseover</p>
+
+<!--  -->
+  <form id="test-form" action="test">
+    <legend>请选择想要学习的编程语言：</legend>
+    <fieldset>
+        <p>
+            <label class="selectAll">
+                <input type="checkbox">
+                <span class="selectAll">全选</span>
+                <span class="deselectAll">全不选</span>
+            </label>
+            <a href="#0" class="invertSelect">反选</a>
+        </p>
+        <p><label><input type="checkbox" name="lang" value="javascript"> JavaScript</label></p>
+        <p><label><input type="checkbox" name="lang" value="python"> Python</label></p>
+        <p><label><input type="checkbox" name="lang" value="ruby"> Ruby</label></p>
+        <p><label><input type="checkbox" name="lang" value="haskell"> Haskell</label></p>
+        <p><label><input type="checkbox" name="lang" value="scheme"> Scheme</label></p>
+        <p><button type="submit">Submit</button></p>
+    </fieldset>
+</form>
 </body>
 
 <script type="text/javascript">
@@ -56,9 +77,9 @@
       $('p').toggle(2000);
     });
 
-    $("p").click(function() {
-      $(this).hide();
-    });
+    // $("p").click(function() {
+    //   $(this).hide();
+    // });
 
     // 属性选择器
     // $("[herf = '#']").mouseover(function(){
@@ -90,6 +111,82 @@
       $(this).css('background-color', 'yellow');
     });
   });
+
+
+  var
+      form = $('#test-form'),
+      langs = form.find('[name=lang]'),
+      selectAll = form.find('label.selectAll :checkbox'),
+      selectAllLabel = form.find('label.selectAll span.selectAll'),
+      deselectAllLabel = form.find('label.selectAll span.deselectAll'),
+      invertSelect = form.find('a.invertSelect');
+
+  // 重置初始化状态:
+  form.find('*').show().off();
+  form.find(':checkbox').prop('checked', false).off();
+  deselectAllLabel.hide();
+  // 拦截form提交事件:
+  form.off().submit(function (e) {
+      e.preventDefault();
+      alert(form.serialize());
+  });
+
+  selectAll.off().on('change',function(){
+      if(this.checked){
+          checkedAll();
+      }else{
+          deCheckedAll();
+      }
+  });
+  //反选事件
+  invertSelect.off().on('click',function(){
+      invert();
+  });
+  //单选事件
+  langs.each(function(){
+      $(this).off().on('change',function(){
+          oneChecked();
+      });
+  });
+  //单选函数
+  function oneChecked(){
+      if(checkAll()){
+          checkedAll();
+      }else{
+          deselectAllLabel.hide();
+          selectAllLabel.show();
+          selectAll.prop('checked',false);
+      }
+  }
+  //全选函数
+  function checkedAll(){
+      deselectAllLabel.show();
+      selectAllLabel.hide();
+      selectAll.prop('checked',true);
+      langs.each(function(){
+          this.checked=true;
+      });
+  }
+  //全不选函数
+  function deCheckedAll(){
+      deselectAllLabel.hide();
+      selectAllLabel.show();
+      selectAll.prop('checked',false);
+      langs.each(function(){
+          this.checked=false;
+      });
+  }
+  //反选函数
+  function invert(){
+      langs.each(function(){
+          this.checked=!this.checked;
+      });
+      oneChecked();
+  }
+  //检测是否全选
+  function checkAll(){
+      return langs.length===langs.filter(':checked').length;
+  }
 </script>
 
 </html>
