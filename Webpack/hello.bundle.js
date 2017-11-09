@@ -74,7 +74,7 @@ function hello(str){
     alert(str);
 }
 
-hello('webpack test');
+hello('webpack testworld ');
 
 /***/ }),
 /* 1 */
