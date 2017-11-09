@@ -24,5 +24,9 @@
   "bugs": {
     "url": "https://github.com/bluebird89/code/issues"
   },
-  "homepage": "https://github.com/bluebird89/code#readme"
+  "homepage": "https://github.com/bluebird89/code#readme",
+  "devDependencies": {
+    "css-loader": "^0.28.7",
+    "style-loader": "^0.19.0"
+  }
 }
