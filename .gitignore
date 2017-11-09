@@ -4,3 +4,4 @@ info.php
 /node_modules
 .gitignore
 /python/__pycache__
+.DS_Store
