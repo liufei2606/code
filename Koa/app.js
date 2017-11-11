@@ -44,6 +44,21 @@ app.use(async(ctx, next) => {
 app.use(async(ctx, next) => {
     if (ctx.request.path === '/template') {
         var s = env.render('hello.html', { name: '<script>alert("小明")</script>' });
+        ctx.response.body = s;
+        console.log(s);
+        await next();
+    } else if (ctx.request.path === '/template/list') {
+        var s = env.render('list.html', ['apple', 'banana', 'orange']);
+        ctx.response.body = s;
+        console.log(s);
+        await next();
+    } else if (ctx.request.path === '/template/block') {
+        var s = env.render('block.html', {
+            header: 'Hello',
+            body: 'bla bla bla...',
+            footer: 'Arseanl'
+        });
+        ctx.response.body = s;
         console.log(s);
         await next();
     }
