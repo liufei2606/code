@@ -1,6 +1,9 @@
 {
   "lockfileVersion": 1,
   "dependencies": {
+    "koa": "^2.4.1",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.2.1",
     "live-server": "^1.2.0"
   },
   "name": "test-code",
