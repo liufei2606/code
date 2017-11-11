@@ -74,7 +74,7 @@ function hello(str){
     alert(str);
 }
 
-hello('webpack testworld ');
+hello('webpack testworld dfddfd');
 
 /***/ }),
 /* 1 */
