@@ -1,0 +1,18 @@
+{
+    "name": "mocha",
+    "version": "1.0.0",
+    "description": "Mocha test code",
+    "main": "hello.js",
+    "directories": {
+        "test": "test"
+    },
+    "scripts": {
+        "test": "../node_modules/.bin/mocha ./test/hello-test.js"
+    },
+    "keywords": [
+        "mocha",
+        "test"
+    ],
+    "author": "Henry",
+    "license": "ISC"
+}

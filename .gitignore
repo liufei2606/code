@@ -1,8 +1,8 @@
 info.php
-/.phpintel
-/.idea
-/node_modules
+.phpintel/
+.idea/
 .gitignore
 /python/__pycache__
 .DS_Store
-/.vscode
+.vscode/
+node_modules/
