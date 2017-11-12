@@ -21,7 +21,13 @@ app.use(staticFiles('/static/', __dirname + '/static'));
 
 // redirect to /static/index.html:
 app.use(async(ctx, next) => {
-    ctx.response.redirect('/static/index.html');
+    if (ctx.request.path === '/todo') {
+        ctx.response.redirect('/static/todo.html');
+    } else if (ctx.request.path === '/form') {
+        ctx.response.redirect('/static/form-vue.html');
+    } else {
+        ctx.response.redirect('/static/index.html');
+    }
 });
 
 app.listen(3000);
