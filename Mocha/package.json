@@ -7,7 +7,9 @@
         "test": "test"
     },
     "scripts": {
-        "test": "../node_modules/.bin/mocha ./test/hello-test.js"
+        "test": "../node_modules/.bin/mocha ./test/hello-test.js",
+        "test-async": "../node_modules/.bin/mocha ./test/await-test.js"
+
     },
     "keywords": [
         "mocha",
