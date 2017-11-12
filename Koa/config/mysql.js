@@ -1,4 +1,5 @@
 var mysql_config = {
+    dialect: 'mysql',
     database: 'test',
     username: `www`,
     password: `123456aC$`,
