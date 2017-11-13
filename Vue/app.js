@@ -1,4 +1,7 @@
 const Koa = require('koa');
+const bodyParser = require('koa-bodyparser');
+const controller = require('./controller');
+const rest = require('./rest');
 
 const app = new Koa();
 
@@ -23,12 +26,25 @@ app.use(staticFiles('/static/', __dirname + '/static'));
 app.use(async(ctx, next) => {
     if (ctx.request.path === '/todo') {
         ctx.response.redirect('/static/todo.html');
-    } else if (ctx.request.path === '/form') {
+    } else if (ctx.request.path === '/form-vue') {
         ctx.response.redirect('/static/form-vue.html');
-    } else {
+    } else if (ctx.request.path === '/form') {
+        ctx.response.redirect('/static/form.html');
+    } else if (ctx.request.path === '/') {
         ctx.response.redirect('/static/index.html');
+    } else {
+        await next();
     }
 });
+
+// parse request body:
+app.use(bodyParser());
+
+// bind .rest() for ctx:
+app.use(rest.restify());
+
+// add controllers:
+app.use(controller());
 
 app.listen(3000);
 console.log('app started at port 3000...');
