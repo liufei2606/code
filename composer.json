@@ -1,0 +1,13 @@
+{
+    "name": "henry/code",
+    "description": "PHP code test",
+    "authors": [
+        {
+            "name": "Henry",
+            "email": "liboming88@yeah.net"
+        }
+    ],
+    "require": {
+        "twig/twig": "~2.0"
+    }
+}

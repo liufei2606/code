@@ -6,3 +6,5 @@ info.php
 .DS_Store
 .vscode/
 node_modules/
+
+/vendor/
