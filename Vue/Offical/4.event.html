@@ -1,59 +1,62 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>sample</title>
-	<script src="vue.js"></script>
+    <title>sample</title>
+    <script src="vue.js"></script>
 </head>
+
 <body>
-<h3>事件处理器</h3>
-<label>1.监听事件：</label>
-<div id="example-1">
-  <button v-on:click="counter += 1">增加 1</button>
-  <p>这个按钮被点击了 {{ counter }} 次。</p>
-</div>
+    <h3>事件处理器</h3>
+    <label>1.监听事件：</label>
+    <div id="example-1">
+        <button v-on:click="counter += 1">增加 1</button>
+        <p>这个按钮被点击了 {{ counter }} 次。</p>
+    </div>
 
-<label>2.事件方法处理器：</label>
-<div id="example-2">
-	<button v-on:click="greet">Greet</button>
-</div>
+    <label>2.事件方法处理器：</label>
+    <div id="example-2">
+        <button v-on:click="greet">Greet</button>
+    </div>
 
-<label>3.内联处理器方法</label>
-<div id="example-3">
-	<button v-on:click="say('PHP')">Say Hi</button>
-	<button v-on:click="say('JavaScript')">Say what</button>
-</div>
+    <label>3.内联处理器方法</label>
+    <div id="example-3">
+        <button v-on:click="say('PHP')">Say Hi</button>
+        <button v-on:click="say('JavaScript')">Say what</button>
+    </div>
 </body>
 
 <script>
-	var example1 = new Vue({
-	  el: '#example-1',
-	  data: {
-	    counter: 0
-	  }
-	})
+    var example1 = new Vue({
+        el: '#example-1',
+        data: {
+            counter: 0
+        }
+    })
 
-	var example2 = new Vue({
-	  el: '#example-2',
-	  data: {
-	    name: 'Vue.js'
-	  },
-	  methods: {
-	  	greet: function (event) {
-	  		alert('Hello ' + this.name + '!')
-	  		if (event) {
-	  			alert(event.target.tagName)
-	  		}
-	  	}
-	  }
-	})
+    var example2 = new Vue({
+        el: '#example-2',
+        data: {
+            name: 'Vue.js'
+        },
+        methods: {
+            greet: function(event) {
+                alert('Hello ' + this.name + '!')
+                if (event) {
+                    alert(event.target.tagName)
+                }
+            }
+        }
+    })
 
-	var example3 = new Vue({
-		el: '#example-3',
-		methods: {
-			say: function (message) {
-				alert(message)
-			}
-		}
-	})
+    var example3 = new Vue({
+        el: '#example-3',
+        methods: {
+            say: function(message) {
+                alert(message)
+            }
+        }
+    })
 </script>
+
 </html>
