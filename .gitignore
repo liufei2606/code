@@ -6,5 +6,5 @@ info.php
 .DS_Store
 .vscode/
 node_modules/
-
-/vendor/
+lavas-pwd-demo/dist
+/vendor
