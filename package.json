@@ -16,6 +16,7 @@
     "supertest": "^3.0.0",
     "url": "^0.11.0",
     "uuid": "^3.1.0",
+    "whitestormjs": "^0.11.2",
     "ws": "^1.1.5"
   },
   "name": "test-code",
@@ -42,6 +43,12 @@
   "homepage": "https://github.com/bluebird89/code#readme",
   "devDependencies": {
     "css-loader": "^0.28.7",
+    "eslint-config-google": "^0.9.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
     "style-loader": "^0.19.0"
   }
 }
