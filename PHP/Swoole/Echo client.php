@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * Undocumented class
+ */
+
 class Client
 {
     private $client;
