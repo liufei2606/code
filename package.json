@@ -1,6 +1,7 @@
 {
   "lockfileVersion": 1,
   "dependencies": {
+    "driver.js": "^0.5.2",
     "hyperapp": "^1.0.1",
     "koa": "^2.4.1",
     "koa-bodyparser": "^4.2.0",
