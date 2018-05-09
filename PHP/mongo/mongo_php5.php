@@ -12,7 +12,7 @@ foreach ($cursor as $doc) {
     var_dump($doc);
 }
 
-// 搜索甜的产品 Taste is a child of Details. 
+// 搜索甜的产品 Taste is a child of Details.
 $sweetQuery = array('detail.gender' => 'male');
 echo "Sweet\n";
 $cursor = $collection->find($sweetQuery);

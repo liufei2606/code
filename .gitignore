@@ -8,3 +8,4 @@ info.php
 node_modules/
 lavas-pwd-demo/dist
 /vendor
+Go/bin

@@ -25,24 +25,24 @@ var_dump($array);
 
 <?php
 setcookie("user", "Maxsu");
-?>  
+?>
 <html>
 <body>
 <?php
-if(!isset($_COOKIE["user"])) {  
-    echo "Sorry, cookie is not found!";  
+if (!isset($_COOKIE["user"])) {
+    echo "Sorry, cookie is not found!";
 } else {
-    echo "<br/>Cookie Value: " . $_COOKIE["user"];  
+    echo "<br/>Cookie Value: " . $_COOKIE["user"];
 }
 ?>
 </body>
 </html>
 <?php
-session_start();  
+session_start();
 
-if (!isset($_SESSION['counter'])) {  
-	$_SESSION['counter'] = 1;  
-} else {  
-	$_SESSION['counter']++;
-}  
-echo ("Page Views: ".$_SESSION['counter']);
+if (!isset($_SESSION['counter'])) {
+    $_SESSION['counter'] = 1;
+} else {
+    $_SESSION['counter']++;
+}
+echo("Page Views: ".$_SESSION['counter']);

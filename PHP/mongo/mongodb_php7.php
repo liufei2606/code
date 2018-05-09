@@ -39,4 +39,3 @@ echo "<pre/>";
 foreach ($cursor as $document) {
     print_r($document);
 }
-?>
