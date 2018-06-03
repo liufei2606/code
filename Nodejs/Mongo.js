@@ -14,5 +14,168 @@ MongoClient.connect(url, function(err, client) {
 
     const db = client.db(dbName);
 
-    client.close();
+    // create collection
+    // db.createCollection('site', function(err, client) {
+    //     assert.equal(null, err);
+    //     console.log("Create collection success");
+    //     client.close();
+    // })
+
+    // insert one item
+    // const item = {
+    //     name: 'henry',
+    //     age: '45'
+    // };
+    // db.collection('site').insertOne(item, function(err, res) {
+    //     assert.equal(null, err);
+    //     console.log("Collection insert item success");
+    //     client.close();
+    // })
+
+    // insert items
+    // const items = [{
+    //         name: 'Google',
+    //         country: 'US'
+    //     },
+    //     {
+    //         name: 'Apple',
+    //         country: 'US'
+    //     }, {
+    //         name: 'Alibaba',
+    //         country: 'CN'
+    //     }
+    // ];
+    // db.collection('site').insertMany(items, function(err, res) {
+    //     assert.equal(null, err);
+    //     console.log("Collection insert items count:" + res.insertedCount);
+    //     client.close();
+    // })
+
+    // find sort limit skip
+    // db.collection('site').find({}).sort({
+    //     name: -1
+    // }).skip(4).limit(2).toArray(function(err, res) {
+    //     assert.equal(null, err);
+    //     console.log(res);
+    //     client.close();
+    // });
+
+    // find by condition
+    // const where = {
+    //     name: 'Google'
+    // };
+    // db.collection('site').find(where).toArray(function(err, res) {
+    //     assert.equal(null, err);
+    //     console.log(res);
+    //     client.close();
+    // });
+
+    // update one item by condition
+    // const where = {
+    //     name: 'Google'
+    // };
+    // const updateData = {
+    //     $set: {
+    //         country: 'USA'
+    //     }
+    // };
+    // db.collection('site').updateOne(where, updateData, function(err, res) {
+    //     assert.equal(null, err);
+    //     console.log('Update success');
+    //     client.close();
+    // });
+
+    // update items by condition
+    // const where = {
+    //     country: 'U.S'
+    // };
+    // const updateData = {
+    //     $set: {
+    //         country: 'US'
+    //     }
+    // };
+    // db.collection('site').updateMany(where, updateData, function(err, res) {
+    //     assert.equal(null, err);
+    //     console.log(res.result.nModified + ' items update');
+    //     client.close();
+    // });
+
+    // delete item
+    // const where = {
+    //     name: 'Google'
+    // };
+    // db.collection('site').deleteOne(where, function(err, res) {
+    //     assert.equal(null, err);
+    //     console.log('Delete one item');
+
+    //     client.close();
+    // });
+
+    // delete items
+    // const where = {
+    //     country: 'CN'
+    // };
+    // db.collection('site').deleteMany(where, function(err, res) {
+    //     assert.equal(null, err);
+    //     console.log(res.result.n + ' item deleted');
+    //     client.close();
+    // });
+
+    // 左连接
+    // db.createCollection('products', function(err, client) {
+    //     assert.equal(null, err);
+    //     console.log("Create collection success");
+
+    //     db.collection('products').insertMany([{
+    //             _id: 154,
+    //             name: '笔记本电脑'
+    //         }, {
+    //             _id: 155,
+    //             name: '耳机'
+    //         }, {
+    //             _id: 156,
+    //             name: '台式电脑'
+    //         }
+
+    //     ], function(err, res) {
+    //         assert.equal(null, err);
+    //         console.log(res.result.n + ' items insert');
+    //         // client.close();
+    //     });
+    // });
+
+    // db.createCollection('orders', function(err, res) {
+    //     assert.equal(null, err);
+    //     console.log("Create collection success");
+
+    //     db.collection('orders').insertMany([{
+    //         _id: 1,
+    //         product_id: 154,
+    //         status: 1
+    //     }], function(err, res) {
+    //         assert.equal(null, err);
+    //         console.log(res.result.n + ' items insert');
+    //         client.close();
+    //     });
+    // });
+
+    // db.collection('orders').aggregate([{
+    //     $lookup: {
+    //         from: 'products',
+    //         localField: 'product_id',
+    //         foreignField: '_id',
+    //         as: 'orderdetails'
+    //     }
+    // }], function(err, res) {
+    //     assert.equal(null, err);
+    //     // console.log(JSON.stringify(res));
+    //     console.log(res);
+    //     client.close();
+    // });
+
+    // drop collection
+    db.collection('products').drop(function(err, res) {
+        if (res) console.log('Collection deleted')
+        client.close();
+    });
 });
