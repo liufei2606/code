@@ -2,6 +2,7 @@
   "lockfileVersion": 1,
   "dependencies": {
     "driver.js": "^0.5.2",
+    "eslint": "^4.19.1",
     "fsevents": "^1.2.4",
     "hyperapp": "^1.2.6",
     "koa": "^2.5.1",
@@ -10,6 +11,7 @@
     "live-server": "^1.2.0",
     "mime": "^2.3.1",
     "mocha": "^4.1.0",
+    "mongodb": "^3.0.10",
     "mysql": "^2.15.0",
     "mysql2": "^1.5.3",
     "mz": "^2.7.0",
