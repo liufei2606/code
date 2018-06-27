@@ -15,7 +15,7 @@ console.log('代码执行结束2');
 
 
 /*unblock sample*/
-fs.readFile('input1.txt', function(err, data) {
+fs.readFile('input.txt', function(err, data) {
     if (err) {
         console.log(err.stack);
         return;

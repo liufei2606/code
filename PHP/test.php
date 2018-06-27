@@ -46,3 +46,6 @@ if (!isset($_SESSION['counter'])) {
     $_SESSION['counter']++;
 }
 echo("Page Views: ".$_SESSION['counter']);
+
+
+var_dump(!empty($world));

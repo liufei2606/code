@@ -17,16 +17,13 @@ var listener2 = function() {
 }
 
 event.on('some_event', listener1);
-
 event.addListener('some_event', listener2);
 
 var eventListeners = require('events').EventEmitter.listenerCount(event, 'some_event');
 
 console.log(eventListeners + '个监听器监听连接事件');
 
-
 event.emit('some_event', 'hello', 'world');
-
 
 event.removeListener('some_event', listener1);
 console.log('监听器1 不在受监听');

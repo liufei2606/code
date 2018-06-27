@@ -8,7 +8,6 @@ var connectHandler = function connected() {
 }
 
 eventEmitter.on('connection', connectHandler);
-
 eventEmitter.on('data_received', function() {
     console.log('数据接收成功.')
 });
