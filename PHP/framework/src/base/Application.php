@@ -5,7 +5,7 @@ use Exception;
 
 abstract class Application
 {
-    public $controllerName = 'app\\controllers';
+    public $controllerNamespace = 'app\\controllers';
 
     public function run()
     {

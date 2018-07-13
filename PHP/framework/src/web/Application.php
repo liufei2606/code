@@ -10,9 +10,11 @@ class Application extends \sf\base\Application
         list($controllerName, $actionName) = explode('/', $router);
 
         $ucController = ucfirst($controllerName);
-        $controllerName = 'app\\controllers\\' . $ucController . 'Controller';
+        $controllerNameAll = $this->controllerNamespace . '\\' . $ucController . 'Controller';
 
-        $controller = new $controllerName;
+        $controller = new $controllerNameAll;
+        $controller->id = $controllerName;
+        $controller->action = $actionName;
 
         return call_user_func([$controller, 'action' . ucfirst($actionName)]);
     }
