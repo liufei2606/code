@@ -39,6 +39,7 @@ class Model implements ModelInterface
             static::$pdo = new \PDO("mysql:host=$host;dbname=$database", $userName, $password, $options);
             static::$pdo->exec('set names utf8');
         }
+
         return static::$pdo;
     }
 
@@ -52,20 +53,39 @@ class Model implements ModelInterface
         return ['id'];
     }
 
-    public static function findOne($condition = null)
+    public static function bindWhere($condition, $params = null)
     {
-        $sql = 'select * from ' . static::tableName() ;
-        $params = [];
+        if (is_null($params)) {
+            $params = [];
+        }
 
+        $where = '';
         if (!empty($condition)) {
-            $sql .= ' where ';
+            $where .= ' where ';
             $params = array_values($condition);
             $keys = [];
             foreach ($condition as $key => $value) {
                 array_push($keys, "$key = ?");
             }
-            $sql .= implode(' and ', $keys);
+            $where .= implode(' and ', $keys);
         }
+
+        return [$where, $params];
+    }
+
+    public static function arr2Model($row)
+    {
+        $model = new static();
+        foreach ($row as $rowKey => $rowValue) {
+            $model->$rowKey = $rowValue;
+        }
+        return $model;
+    }
+
+    public static function findOne($condition = null)
+    {
+        list($where, $params) = static::bindWhere($condition);
+        $sql = 'select * from ' . static::tableName() . $where;
 
         $stmt = static::getDb()->prepare($sql);
         $rs = $stmt->execute($params);
@@ -73,35 +93,122 @@ class Model implements ModelInterface
         if ($rs) {
             $row = $stmt->fetch(\PDO::FETCH_ASSOC);
             if (!empty($row)) {
-                $model = new static();
-                foreach ($row as $rowKey => $rowValue) {
-                    $model->$rowKey = $rowValue;
-                }
-                return $model;
+                return static::arr2Model($row);
             }
         }
         return null;
     }
 
-    public static function findAll($condition)
+    public static function findAll($condition = null)
     {
+        list($where, $params) = static::bindWhere($condition);
+        $sql = 'select * from ' . static::tableName() . $where;
+
+        $stmt = static::getDb()->prepare($sql);
+        $rs = $stmt->execute($params);
+        $models = [];
+
+        if ($rs) {
+            $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            foreach ($rows as $row) {
+                if (!empty($row)) {
+                    $model =  static::arr2Model($row);
+                    array_push($models, $model);
+                }
+            }
+        }
+        return $models;
     }
 
     public static function updateAll($condition, $attributes)
     {
+        $sql = 'update ' . static::tableName();
+        $params = [];
+
+        if (!empty($attributes)) {
+            $sql .= ' set ';
+            $params = array_values($attributes);
+            $keys = [];
+            foreach ($attributes as $key => $value) {
+                array_push($keys, "$key = ?");
+            }
+            $sql .= implode(',', $keys);
+        }
+        list($where, $params) = static::bindWhere($condition, $params);
+        $sql .= $where;
+
+        $stmt = static::getDb()->prepare($sql);
+        $execResult = $stmt->execute($params);
+        if ($execResult) {
+            $execResult = $stmt->rowCount();
+        }
+
+        return $execResult;
     }
 
     public static function deleteAll($condition)
     {
+        list($where, $params) = static::bindWhere($condition);
+        $sql .= 'delete from ' . static::tableName() . $where;
+
+        $stmt = static::getDb()->prepare($sql);
+        $execResult = $stmt->execute($params);
+        if ($execResult) {
+            $execResult = $stmt->rowCount();
+        }
+
+        return $execResult;
     }
 
     public function insert()
     {
+        $sql = 'insert into ' . static::tableName();
+        $params = [];
+        $keys = [];
+
+        foreach ($this as $key => $value) {
+            array_push($keys, $key);
+            array_push($params, $value);
+        }
+        $holders = array_fill(0, count($keys), '?');
+        $sql .= ' (' . implode(' , ', $keys) . ') values (' .implode(' , ', $holders) . ')';
+
+        $stmt = static::getDb()->prepare($sql);
+        $execResult = $stmt->execute($params);
+        $primaryKeys = static::primaryKey();
+        foreach ($primaryKeys as $name) {
+            $lastId = static::getDb()->lastInsertId($name);
+            $this->name = (int)$lastId;
+        }
+        return $execResult;
     }
+
     public function update()
     {
+        $primaryKeys = static::primaryKey();
+        $condition = [];
+        foreach ($primaryKeys as $key) {
+            $condition[$key] = isset($this->$key) ? $this->$key : null;
+        }
+
+        $attributes = [];
+        foreach ($this as $key => $value) {
+            if (!in_array($key, $primaryKeys, true)) {
+                $attributes[$key] = $value;
+            }
+        }
+        return static::updateAll($condition, $attributes) !== false;
     }
+
+
     public function delete()
     {
+        $primaryKeys = static::primaryKey();
+        $condition = [];
+        foreach ($primaryKeys as $key) {
+            $condition[$key] = isset($this->$key) ? $this->$key : null;
+        }
+
+        return static::deleteAll($condition) !== false;
     }
 }
