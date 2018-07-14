@@ -29,11 +29,14 @@ class Model implements ModelInterface
         if (empty(static::$pdo)) {
             $host = 'localhost';
             $database = 'test';
-
             $userName = 'lee';
             $password = '123456Ac&';
+            $options = [
+                \PDO::ATTR_EMULATE_PREPARES => false,
+                \PDO::ATTR_STRINGIFY_FETCHES => false
+            ];
 
-            static::$pdo = new \PDO("mysql:host=$host;dbname=$database", $userName, $password);
+            static::$pdo = new \PDO("mysql:host=$host;dbname=$database", $userName, $password, $options);
             static::$pdo->exec('set names utf8');
         }
         return static::$pdo;
@@ -49,16 +52,21 @@ class Model implements ModelInterface
         return ['id'];
     }
 
-    public static function findOne($condition)
+    public static function findOne($condition = null)
     {
-        $sql = 'select * from ' . static::tableName() . ' where ';
-        $params = array_values($condition);
-        $keys = [];
-        foreach ($condition as $key => $value) {
-            array_push($keys, "$key = ?");
+        $sql = 'select * from ' . static::tableName() ;
+        $params = [];
+
+        if (!empty($condition)) {
+            $sql .= ' where ';
+            $params = array_values($condition);
+            $keys = [];
+            foreach ($condition as $key => $value) {
+                array_push($keys, "$key = ?");
+            }
+            $sql .= implode(' and ', $keys);
         }
 
-        $sql .= implode(' and ', $keys);
         $stmt = static::getDb()->prepare($sql);
         $rs = $stmt->execute($params);
 
