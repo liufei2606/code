@@ -2,6 +2,8 @@
 
 namespace sf\db;
 
+use Sf;
+
 class Model implements ModelInterface
 {
     public static $pdo;
@@ -27,9 +29,7 @@ class Model implements ModelInterface
     public static function getDb()
     {
         if (empty(static::$pdo)) {
-            $config = require(SF_PATH . '/config/db.php');
-
-            static::$pdo = new $config['class']($config['dsn'], $config['username'], $config['password'], $config['options']);
+            static::$pdo = Sf::createObject('db')->getDb();
             static::$pdo->exec("set names 'utf8'");
         }
 
