@@ -11,8 +11,8 @@ class Model implements ModelInterface
      *
      * @return void
      *
-     * CREATE USER lee@localhost IDENTIFIED BY '123456Ac&'
-     * GRANT ALL PRIVILEGES ON test.* TO lee@'%' IDENTIFIED BY '123456Ac&';
+     * CREATE USER 'lee'@'localhost' IDENTIFIED WITH mysql_native_password BY '123456Ac&'
+     * GRANT ALL PRIVILEGES ON test.* TO lee@'localhost';
      * flush privileges
      *
      * CREATE TABLE IF NOT EXISTS `user` (
