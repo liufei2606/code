@@ -27,17 +27,10 @@ class Model implements ModelInterface
     public static function getDb()
     {
         if (empty(static::$pdo)) {
-            $host = 'localhost';
-            $database = 'test';
-            $userName = 'lee';
-            $password = '123456Ac&';
-            $options = [
-                \PDO::ATTR_EMULATE_PREPARES => false,
-                \PDO::ATTR_STRINGIFY_FETCHES => false
-            ];
+            $config = require(SF_PATH . '/config/db.php');
 
-            static::$pdo = new \PDO("mysql:host=$host;dbname=$database", $userName, $password, $options);
-            static::$pdo->exec('set names utf8');
+            static::$pdo = new $config['class']($config['dsn'], $config['username'], $config['password'], $config['options']);
+            static::$pdo->exec("set names 'utf8'");
         }
 
         return static::$pdo;
@@ -81,6 +74,7 @@ class Model implements ModelInterface
         }
         return $model;
     }
+
 
     public static function findOne($condition = null)
     {

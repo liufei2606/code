@@ -8,7 +8,7 @@ class SiteController extends Controller
 {
     public function actionTest()
     {
-        $user = \app\models\User::findOne();
+        $user = \app\models\User::findOne(['age' => 20]);
         $data = ['code' => 200, 'msg' => 'Success', 'data' => $user];
         echo $this->toJson($data);
     }
