@@ -10,3 +10,4 @@ lavas-pwd-demo/dist
 /vendor
 Go/bin
 /static
+/PHP/framework/runtime
