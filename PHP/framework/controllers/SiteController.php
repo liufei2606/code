@@ -21,11 +21,21 @@ class SiteController extends Controller
 
     public function actionCache()
     {
-        echo 'FileCache test start' .'</br>';
-
         $cache = Sf::createObject('cache');
-        $cache->set('test', 'Just a cache test');
-        echo 'FileCache store' . '</br>';
+        $cache->set('test', 'Just a filecache test');
+        echo 'FileCache store:' . '</br>';
+
+        $rs = $cache->get('test');
+        $cache->flush();
+
+        echo $rs;
+    }
+
+    public function actionRds()
+    {
+        $cache = Sf::createObject('redis');
+        $cache->set('test', 'Just a redisCache test');
+        echo 'RedisCache store:' . '</br>';
 
         $rs = $cache->get('test');
         $cache->flush();

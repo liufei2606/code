@@ -6,6 +6,11 @@ class FileCache implements CacheInterface
 {
     public $cachePath;
 
+    public function init()
+    {
+        # code...
+    }
+
     public function buildKey($key)
     {
         if (!is_string($key)) {
