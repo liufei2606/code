@@ -16,7 +16,7 @@ class SiteController extends Controller
     public function actionView()
     {
         $body = 'Test Body infomation ';
-        return $this->render('site/view', ['body' => $body]);
+        return $this->render('site/view', ['body' => $body, 'users' => [1, 2]]);
     }
 
     public function actionCache()

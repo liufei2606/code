@@ -2,12 +2,18 @@
 
 namespace sf\web;
 
+use sf\view\Compiler;
+
 class Controller extends \sf\base\Controller
 {
+    // public function render($view, $params = [])
+    // {
+    //     extract($params);
+    //     return require '../views/' . $view . '.php';
+    // }
     public function render($view, $params = [])
     {
-        extract($params);
-        return require '../views/' . $view . '.php';
+        (new Compiler())->compile($view, $params);
     }
 
     public function toJson($data)

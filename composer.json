@@ -9,6 +9,7 @@
     ],
     "require": {
         "twig/twig": "~2.0",
-        "php-amqplib/php-amqplib": "^2.7"
+        "php-amqplib/php-amqplib": "^2.7",
+        "webonyx/graphql-php": "^0.12.4"
     }
 }

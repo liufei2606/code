@@ -12,4 +12,6 @@ class Controller
      * @var Action the action that is currently being executed.
      */
     public $action;
+
+
 }
