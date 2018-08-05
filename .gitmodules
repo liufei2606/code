@@ -1,0 +1,6 @@
+[submodule "Resource/500lines"]
+	path = Resource/500lines
+	url = git@github.com:aosabook/500lines.git
+[submodule "CSS/hot-new-css-features"]
+	path = CSS/hot-new-css-features
+	url = git@github.com:danielcrisp/hot-new-css-features.git
