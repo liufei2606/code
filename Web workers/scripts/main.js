@@ -3,6 +3,7 @@ var workerFor = new Worker('../workers/for.js');
 workerFor.onmessage = function(event) {
     var div = document.getElementById('result');
     div.innerHTML = 'message received => ' + event.data;
+    workerFor.terminate();
 };
 // listen to error event of worker
 workerFor.onerror = function(event) {
