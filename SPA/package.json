@@ -1,0 +1,47 @@
+{
+    "name": "spa",
+    "version": "1.0.0",
+    "description": "webpack spa example",
+    "main": "index.js",
+    "repository": {},
+    "scripts": {
+        "test": "test"
+    },
+    "keywords": [
+        "spa",
+        "example"
+    ],
+    "author": "Henry <liboming88@yeah.net> (https://www.bluebird89.com)",
+    "license": "ISC",
+    "devDependencies": {
+        "babel-core": "^6.26.3",
+        "babel-eslint": "^8.2.6",
+        "babel-loader": "^7.1.5",
+        "babel-preset-env": "^1.7.0",
+        "css-loader": "^1.0.0",
+        "eslint": "^5.3.0",
+        "eslint-loader": "^2.1.0",
+        "file-loader": "^1.1.11",
+        "html-loader": "^0.5.5",
+        "html-webpack-plugin": "^3.2.0",
+        "style-loader": "^0.21.0",
+        "url-loader": "^1.0.1",
+        "webpack": "^4.16.5",
+        "webpack-cli": "^3.1.0",
+        "webpack-serve": "^2.0.2"
+    },
+    "scripts": {
+        "dev": "webpack-serve webpack.config.js",
+        "build": "webpack-cli"
+    },
+    "babel": {
+        "presets": [
+            "env"
+        ]
+    },
+    "dependencies": {
+        "bable-loader": "0.0.1-security",
+        "connect-history-api-fallback": "^1.5.0",
+        "koa-connect": "^2.0.1"
+    }
+}
