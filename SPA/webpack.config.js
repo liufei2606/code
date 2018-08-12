@@ -11,11 +11,18 @@ module.exports = {
     mode: dev ? 'development' : 'production',
     devtool: dev ? 'cheap-module-eval-source-map' : 'hidden-source-map',
 
-    entry: './src/index.js',
+    performance: {
+        hints: dev ? false : 'warning'
+    },
+
+    entry: {
+        main: ['./src/index.js']
+    },
     output: {
         publicPath: '/assets/',
         path: resolve(__dirname, 'dist'),
-        filename: 'index.js'
+        filename: dev ? '[name].js' : '[chunkhash].js',
+        chunkFilename: '[chunkhash].js'
     },
 
     module: {
@@ -26,7 +33,32 @@ module.exports = {
             },
             {
                 test: /\.html$/,
-                use: 'html-loader'
+                use: [{
+                    loader: 'html-loader',
+                    options: {
+                        attr: ['img:src', 'link:herf']
+                    }
+                }]
+            },
+            {
+                /*
+                匹配 favicon.png
+                上面的 html-loader 会把入口 index.html 引用的 favicon.png 图标文件解析出来进行打包
+                打包规则就按照这里指定的 loader 执行
+                */
+                test: /favicon\.png$/,
+
+                use: [{
+                    // 使用 file-loader
+                    loader: 'file-loader',
+                    options: {
+                        /*
+                        name：指定文件输出名
+                        [hash] 为源文件的hash值，[ext] 为后缀。
+                        */
+                        name: '[hash].[ext]'
+                    }
+                }]
             },
             {
                 test: /\.css$/,
@@ -37,7 +69,7 @@ module.exports = {
                 use: [{
                     loader: 'url-loader',
                     options: {
-                        limit: 1000
+                        limit: 10000
                     }
                 }]
             }
@@ -48,8 +80,16 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html',
             chunksSortMode: 'none'
-        })
+        }),
+        new wepack.HashModuleIdsPlugin()
     ],
+
+    optimization: {
+        runtimeChunk: true,
+        spiltChunks: {
+            chunks: 'all'
+        }
+    }
 }
 
 if (dev) {

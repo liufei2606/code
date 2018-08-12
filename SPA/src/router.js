@@ -1,30 +1,21 @@
-import foo from './views/foo'
-import bar from './views/bar'
-
+import 'regenerator-runtime/rumtime'
 const routes = {
-    '/foo': foo,
-    '/bae': bar
+    '/foo': () =>
+        import ('./views/foo'),
+    '/bar.do': () =>
+        import ('./views/bar.do')
 }
 
 class Router {
 
-    start() {
-        window.addEventListener('popstate', () => {
-            this.load(location.pathname)
-        })
-        this.load(location.pathname)
-    }
-
-    go(path) {
-        history.pushState({}, '', path)
-        this.load(path)
-    }
-
-    load(path) {
+    async load(path) {
         if (path === '/') {
             path = '/foo'
         }
-        const view = new routes[path]()
+
+        const View = (await routes[path]()).default
+
+        const view = new View()
         view.mount(document.body)
     }
 
