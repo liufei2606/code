@@ -49,3 +49,18 @@ echo("Page Views: ".$_SESSION['counter']);
 
 
 var_dump(!empty($world));
+?>
+
+<?php
+$arr1 = ['PHP', 'apache'];
+$arr2 = ['hello', 'MySQl', 'HTML', 'CSS'];
+$mergeArr = array_merge($arr1, $arr2);
+$plusArr = $arr1 + $arr2;
+var_dump($mergeArr);
+var_dump($plusArr);
+
+$arr2 = [["hello", "MySQl", "HTML", "CSS"]];
+echo json_encode($arr2, JSON_PRETTY_PRINT);
+
+// mcrypt_get_block_siz  This function has been DEPRECATED as of PHP 7.1.0 and REMOVED as of PHP 7.2.0
+echo mcrypt_get_block_size('tripledes', 'ecb');
