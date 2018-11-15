@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>get value</title>
+  <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <h5>插件数据传值</h5>
+
+  <table id="table" class="table table-bordered">
+    <tr>
+      <th>学号</th>
+      <th>密码</th>
+      <th>姓名</th>
+      <th>性别</th>
+      <th>编辑</th>
+    </tr>
+    <tr onclick="editInfo()">
+      <td>123421</td>
+      <td>24313</td>
+      <td>henry</td>
+      <td>male</td>
+      <td>
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#update">
+  			Launch demo modal
+			</button>
+      </td>
+    </tr>
+  </table>
+  <!-- Button trigger modal -->
+
+
+  <!-- 模态框（Modal） -->
+  <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title" id="myModalLabel">修改信息</h4>
+        </div>
+        <div class="modal-body">
+          学号：<input type="text" name="stuno" id="stuno" /> 密码：
+          <input type="text" name="pass" id="pass" /> 姓名：
+          <input type="text" name="stuname" id="stuname" /> 性别：
+          <input type="radio" name="sex" class="sex" id="man" value="男" />男
+          <input type="radio" name="sex" class="sex" id="women" value="女" />女
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+          <button type="button" class="btn btn-primary" onclick="update()">提交更改</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+  </div>
+
+  <script type="text/javascript">
+    //触发模态框的同时调用此方法
+    function editInfo(obj) {
+      var id = $(obj).attr("id");
+      //获取表格中的一行数据
+      var stuno = document.getElementById("table").rows[id].cells[0].innerText;
+      var pass = document.getElementById("table").rows[id].cells[1].innerText;
+      var name = document.getElementById("table").rows[id].cells[2].innerText;
+      var sex = document.getElementById("table").rows[id].cells[3].innerText;
+      //向模态框中传值
+      $('#stuno').val(stuno);
+      $('#pass').val(pass);
+      $('#stuname').val(name);
+      if (sex == '女') {
+        document.getElementById('women').checked = true;
+      } else {
+        document.getElementById('man').checked = true;
+      }
+      $('#update').modal('show');
+    }
+    //提交更改
+    function update() {
+      //获取模态框数据
+      var stuno = $('#stuno').val();
+      var pass = $('#pass').val();
+      var name = $('#stuname').val();
+      var sex = $('input:radio[name="sex"]:checked').val();
+      $.ajax({
+        type: "post",
+        url: "update.do",
+        data: "stuno=" + stuno + "&pass=" + pass + "&name=" + name + "&sex=" + sex,
+        dataType: 'html',
+        contentType: "application/x-www-form-urlencoded; charset=utf-8",
+        success: function(result) {
+          //location.reload();
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>
