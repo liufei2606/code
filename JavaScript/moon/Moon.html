@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Moon Sample</title>
+	<!-- <script type="./src/moon.js"></script> -->
+
+</head>
+
+<body>
+	<div id="app1">
+		<p>{{msg}}</p>
+	</div>
+
+	<div id="app2">
+		<p>{{msg}}</p>
+	</div>
+
+	<div id="app3">
+		<p>{{msg}}</p>
+	</div>
+
+	<div id="app4">
+		<p>{{reverse(msg)}}</p>
+	</div>
+
+	<div id="app5">
+		<p m-if='condition'>The Conditon is true!</p>
+	</div>
+
+	<div id="app6">
+		<ul>
+			<li m-for="item in list">{{item}}</li>
+		</ul>
+	</div>
+
+	<div id="app7">
+
+	</div>
+
+	<script src="https://unpkg.com/moonjs/dist/moon.js"></script>
+	<script>
+		const app1 = new Moon({
+			el: "#app1",
+			data: {
+				msg: "Hello Moon!"
+			}
+		});
+
+		const app2 = new Moon({
+			el: "#app2",
+			data: {
+				msg: "Hello Moon!"
+			}
+		});
+		// app2.set('msg', "Change Message!");
+
+		const app3 = new Moon({
+			el: "#app3",
+			data: {
+				msg: "Hello Moon!"
+			},
+			methods: {
+				changeMessage: function(msg) {
+					this.set('msg', msg)
+				}
+			}
+		});
+		// app3.callMethod('changeMessage', ['New Message!']);
+
+		const app4 = new Moon({
+			el: "#app4",
+			data: {
+				msg: "Hello Moon!"
+			},
+			methods: {
+				reverse: function(str) {
+					return str.split('').reverse().join('');
+				}
+			}
+		});
+
+		const app5 = new Moon({
+			el: "#app5",
+			data: {
+				condition: true
+			}
+		});
+		// app5.set('condition', false)
+
+		const app6 = new Moon({
+			el: "#app6",
+			data: {
+				list: ['Item -1', 'Item -2', 'Item -3', 'Item -4']
+			}
+		});
+		// app6.set('list', ['New Item', 'Another Item'])
+	</script>
+</body>
+
+</html>
