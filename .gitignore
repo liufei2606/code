@@ -7,7 +7,9 @@ info.php
 .vscode/
 node_modules/
 lavas-pwd-demo/dist
-/vendor
+
+/PHP/vendor
+
 Go/bin
 /static
 /PHP/framework/runtime
