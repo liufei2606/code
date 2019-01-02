@@ -13,3 +13,5 @@ lavas-pwd-demo/dist
 Go/bin
 /static
 /PHP/framework/runtime
+/Python/jupyter/.ipynb_checkpoints
+
