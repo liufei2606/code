@@ -11,6 +11,9 @@
             width: 100px;
             height: 80px;
             background-color: chocolate;
+            order: 9;
+            flex-grow: 2;
+            flex-basis: 160px;
         }
 
         .second {
@@ -19,66 +22,39 @@
             text-align: center;
             text-justify: newspaper;
             background-color: bisque;
+            order: 11;
+            flex-grow: 4;
+            align-self: flex-end;
+            flex-basis: 520px;
         }
 
         .third {
             width: 80px;
             height: 40px;
             background-color: blueviolet;
+            order: 5;
+            flex-shrink: 0.5;
         }
 
         .row {
             display: flex;
             flex-direction: row;
-            width: 500px;
+            width: 1200px;
             height: 150px;
             background-color: yellow;
-        }
-
-        .column {
-            display: flex;
-            flex-direction: column;
-            display: inline-flex;
-            width: 150px;
-            height: 300px;
-            background-color: rgb(198, 168, 198);
-        }
-
-        #container_11,
-        #container_21 {
-            align-items: flex-start;
-        }
-
-        #container_12,
-        #container_22 {
-            align-items: flex-end;
-        }
-
-        #container_13,
-        #container_23 {
-            align-items: center;
-        }
-
-        #container_14,
-        #container_24 {
-            align-items: stretch;
-        }
-
-        #container_15,
-        #container_25 {
-            align-items: baseline;
         }
     </style>
 </head>
 
 <body>
-    <h5>flex-direction: row > align-items: flex-start </h5>
-    <div class='row container' id='container_11'>
+    <h5>order >flex-grow</h5>
+    <div class='row' id='container_11'>
         <div class='first'>弹性元素1</div>
         <div class='second'>弹性元素2</div>
         <div class='third'>弹性元素3</div>
     </div>
-    <h5>flex-direction: row > align-items: flex-end </h5>
+
+    <!-- <h5>flex-direction: row > align-items: flex-end </h5>
     <div class='row container' id='container_12'>
         <div class='first'>弹性元素1</div>
         <div class='second'>弹性元素2</div>
@@ -128,7 +104,7 @@
         <div class='first' style="width:auto;">弹性元素1</div>
         <div class='second' style="width:auto;">弹性元素2</div>
         <div class='third' style="width:auto;">弹性元素3</div>
-    </div>
+    </div> -->
 </body>
 
 </html>

@@ -30,7 +30,8 @@
         .row {
             display: flex;
             flex-direction: row;
-            width: 500px;
+            flex-wrap: warp;
+            width: 400px;
             height: 150px;
             background-color: yellow;
         }
@@ -46,7 +47,8 @@
 
         #container_11,
         #container_21 {
-            align-items: flex-start;
+            /* flex-wrap: warp; */
+            /* align-items: flex-start; */
         }
 
         #container_12,
@@ -73,12 +75,19 @@
 
 <body>
     <h5>flex-direction: row > align-items: flex-start </h5>
-    <div class='row container' id='container_11'>
+    <div class='row' id='container_11'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
         <div class='first'>弹性元素1</div>
         <div class='second'>弹性元素2</div>
         <div class='third'>弹性元素3</div>
     </div>
-    <h5>flex-direction: row > align-items: flex-end </h5>
+
+    <!-- <h5>flex-direction: row > align-items: flex-end </h5>
     <div class='row container' id='container_12'>
         <div class='first'>弹性元素1</div>
         <div class='second'>弹性元素2</div>
@@ -128,7 +137,7 @@
         <div class='first' style="width:auto;">弹性元素1</div>
         <div class='second' style="width:auto;">弹性元素2</div>
         <div class='third' style="width:auto;">弹性元素3</div>
-    </div>
+    </div> -->
 </body>
 
 </html>
