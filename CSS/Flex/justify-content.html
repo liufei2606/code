@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .first,
+        .second,
+        .third {
+            width: 150px;
+            height: 60px;
+            text-align: center;
+        }
+        
+        .first {
+            background-color: chocolate;
+        }
+        
+        .second {
+            background-color: bisque;
+        }
+        
+        .third {
+            background-color: blueviolet;
+        }
+        
+        .row {
+            display: flex;
+            flex-direction: row;
+            width: 900px;
+            height: 80px;
+            background-color: yellow;
+        }
+        
+        .column {
+            flex-direction: column;
+            display: inline-flex;
+            width: 150px;
+            height: 300px;
+            background-color: rgb(198, 168, 198);
+        }
+        
+        #container_11,
+        #container_21 {
+            justify-content: flex-start;
+        }
+        
+        #container_12,
+        #container_22 {
+            justify-content: flex-end;
+        }
+        
+        #container_13,
+        #container_23 {
+            justify-content: center;
+        }
+        
+        #container_14,
+        #container_24 {
+            justify-content: space-between;
+        }
+        
+        #container_15,
+        #container_25 {
+            justify-content: space-around;
+        }
+    </style>
+</head>
+
+<body>
+    <h5>flex-direction: row > justify-content: flex-start </h5>
+    <div class='row container' id='container_11'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+    </div>
+    <h5>flex-direction: row > justify-content: flex-end </h5>
+    <div class='row container' id='container_12'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+    </div>
+    <h5>flex-direction: row > justify-content: flex-center </h5>
+    <div class='row container' id='container_13'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+    </div>
+    <h5>flex-direction: row > justify-content: space-between </h5>
+    <div class='row container' id='container_14'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+    </div>
+    <h5>flex-direction: row > justify-content: space-around </h5>
+    <div class='row container' id='container_15'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+    </div>
+
+    <h5>flex-direction: column</h5>
+    <!-- <div class="main"> -->
+    <div class='column container' id='container_21'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+    </div>
+    <div class='column container' id='container_22'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+    </div>
+    <div class='column container' id='container_23'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+    </div>
+    <div class='column container' id='container_24'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+    </div>
+    <div class='column container' id='container_25'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+    </div>
+    <!-- </div> -->
+</body>
+
+</html>
