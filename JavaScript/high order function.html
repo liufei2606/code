@@ -1,0 +1,44 @@
+<script>
+    function add(x, y, f) {
+        return f(x) + f(y)
+    }
+    console.log(add(-5, 4, Math.abs))
+
+    function pow(x) {
+        return x * x;
+    }
+    console.log([1, 3, 5, 7, 9].map(pow))
+    console.log([1, 3, 5, 7, 9].map(String))
+
+    console.log([1, 2, 3, 4, 5, 6, 7, 8, 9].reduce(function(x, y) {
+        return x + y
+    }))
+
+    console.log([1, 2, 3, 4, 5, 6, 7, 8, 9].filter(function(x) {
+        return x % 2 != 0;
+    }))
+
+    var arr = ['A', 'B', 'C'];
+    var r = arr.filter(function(element, index, self) {
+        console.log(index); // 依次打印0, 1, 2
+        console.log(element); // 依次打印'A', 'B', 'C'
+        console.log(self); // self就是变量arr
+        return true;
+    });
+    r = arr.filter(function(element, index, self) {
+        return self.indexOf(element) === index;
+    });
+    console.log(r.toString());
+
+    var arr = [10, 20, 1, 2];
+    console.log(arr.sort())
+    console.log(arr.sort(function(x, y) {
+        if (x < y) {
+            return -1;
+        }
+        if (x > y) {
+            return 1;
+        }
+        return 0;
+    }));
+</script>
