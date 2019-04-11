@@ -2,14 +2,13 @@
   "lockfileVersion": 1,
   "dependencies": {
     "driver.js": "^0.5.2",
-    "eslint": "^4.19.1",
     "express": "^4.16.3",
     "fsevents": "^1.2.4",
     "hyperapp": "^1.2.6",
     "koa": "^2.5.1",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
-    "live-server": "^1.2.0",
+    "live-server": "^1.2.1",
     "mime": "^2.3.1",
     "mocha": "^4.1.0",
     "mongodb": "^3.0.10",
@@ -50,12 +49,13 @@
   "homepage": "https://github.com/bluebird89/code#readme",
   "devDependencies": {
     "css-loader": "^0.28.11",
+    "eslint": "^5.16.0",
     "eslint-config-google": "^0.9.1",
-    "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-standard": "^3.1.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
     "style-loader": "^0.19.1"
   }
 }
