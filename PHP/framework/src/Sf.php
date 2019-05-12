@@ -31,9 +31,25 @@ class Sf
 
 		$patameters = $constructor->getParameters();
 		$dependencies = array_map(function($parameter) {
-			return $this->getInstance($parameter->get_class()->getName());
+			if (null === $parameter->getClass()) {
+				return $this->processNoHinted($parameter);
+			}else{
+				return $this->processHinted($parameter);
+			}
 		}, $patameters);
 
 		return $reflector->newInstanceArgs($dependencies);
+	}
+
+	protected function processNoHinted(\ReflectionParameter $parameter){
+		if ($parameter->isDefaultValueAvailable()) {
+			return $parameter->getName();
+		}else{
+			throw new \Exception($parameter->getName() . '不能为空', 1);
+		}
+	}
+
+	protected function processHinted($parameter){
+		return $this->getInstance($parameter->get_class()->getName());
 	}
 }
