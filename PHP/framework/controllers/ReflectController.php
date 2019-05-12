@@ -27,6 +27,13 @@ class ReflectController extends sf\Web\Controller{
 		echo 'FileName:'. $reflector->getFileName() . '<br>';
 		echo 'FileName With namespace:'. $reflector->getName() . '<br>';
 		echo 'Short FileName :'. $reflector->getShortName() . '<br>';
+		echo 'Is Enbale Instance :'. $reflector->isInstantiable() . '<br>';
+		echo 'Construtcor :'. $reflector->getConstructor() . '<br>';
+		echo 'Method Document :'. $reflector->getMethod('dirve')->getDocComment() . '<br>';
+		echo 'Parameters :<br>';
+		$parameters = $reflector->getConstructor->getParameters();
+		 var_dump( $parameters) ;
+		 var_dump($parameters[0]->getClass());
 
 
 		die;
