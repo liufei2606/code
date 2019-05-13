@@ -59,11 +59,11 @@ var_dump($mergeArr);
 var_dump($plusArr);
 
 $arr2 = [["hello", "MySQl", "HTML", "CSS"]];
-echo json_encode($arr2, JSON_PRETTY_PRINT);
+echo json_encode($arr2, JSON_PRETTY_PRINT) . '<br>';
 
 // mcrypt_get_block_siz  This function has been DEPRECATED as of PHP 7.1.0 and REMOVED as of PHP 7.2.0
 // echo mcrypt_get_block_size('tripledes', 'ecb');
 
 # char length eng and chn
-var_dump('hello world');
-var_dump('ｈｅｌｌｏ　ｗｏｒｌｄ');
+echo 'hello world' . '<br>';
+echo 'ｈｅｌｌｏ　ｗｏｒｌｄ' . ' length:' .strlen('ｈｅｌｌｏ　ｗｏｒｌｄ') . '<hr>';

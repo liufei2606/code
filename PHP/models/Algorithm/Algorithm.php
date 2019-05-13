@@ -4,257 +4,240 @@ namespace app\models\Algorithm;
 
 class Algorithm
 {
-	public static function quickSort($arr)
-	{
-		if (!is_array($arr)) {
-			return false;
-		}
-		$len = count($arr);
-		if ($len <= 1) {
-			return $arr;
-		}
-		$left = $right = [];
+    public static function quickSort($arr)
+    {
+        if (!is_array($arr)) {
+            return false;
+        }
+        $len = count($arr);
+        if ($len <= 1) {
+            return $arr;
+        }
+        $left = $right = [];
 
-		for ($i = 1; $i < $len; $i++) {
-			if ($arr[$i] < $arr[0]) {
-				$left[] = $arr[$i];
-			} else {
-				$right[] = $arr[$i];
-			}
-		}
-		$left = self::quickSort($left);
-		$right = self::quickSort($right);
+        for ($i = 1; $i < $len; $i++) {
+            if ($arr[$i] < $arr[0]) {
+                $left[] = $arr[$i];
+            } else {
+                $right[] = $arr[$i];
+            }
+        }
+        $left = self::quickSort($left);
+        $right = self::quickSort($right);
 
-		return array_merge($left, [$arr[0]], $right);
-	}
+        return array_merge($left, [$arr[0]], $right);
+    }
 
-	public static function arraySwap($arr, $l, $r)
-	{
-		$arr[$l] = $arr[$l] ^ $arr[$r];
-		$arr[$r] = $arr[$l] ^ $arr[$r];
-		$arr[$l] = $arr[$l] ^ $arr[$r];
+    public static function arraySwap($arr, $l, $r)
+    {
+        $arr[$l] = $arr[$l] ^ $arr[$r];
+        $arr[$r] = $arr[$l] ^ $arr[$r];
+        $arr[$l] = $arr[$l] ^ $arr[$r];
 
-		return $arr;
-	}
+        return $arr;
+    }
 
-	public static function bubbleSort($arr)
-	{
-		if (!is_array($arr)) {
-			return false;
-		}
-		$len = count($arr);
-		if ($len <= 1) {
-			return $arr;
-		}
+    public static function bubbleSort($arr)
+    {
+        if (!is_array($arr)) {
+            return false;
+        }
+        $len = count($arr);
+        if ($len <= 1) {
+            return $arr;
+        }
 
-		for ($i = 1; $i < $len; $i++) {
-			$max_j = $len - $i;
-			for ($j = 0; $j < $max_j; $j++) {
-				if ($arr[$j] > $arr[$j + 1]) {
-					$arr = self:: arraySwap($arr, $j, $j + 1);
-				}
-			}
-		}
+        for ($i = 1; $i < $len; $i++) {
+            $max_j = $len - $i;
+            for ($j = 0; $j < $max_j; $j++) {
+                if ($arr[$j] > $arr[$j + 1]) {
+                    $arr = self::arraySwap($arr, $j, $j + 1);
+                }
+            }
+        }
+        return $arr;
+    }
 
-		// function bubbleSort($array)
-		// {
-		// 	$length = count($array);
-		// 	for ($i = 0; $i < $length - 1; $i++) {
-		// 		for ($j = 0; $j < $length - $i - 1; $j++) {
-		// 			if ($array[$j] > $array[$j + 1]) {
-		// 				$temp = $array[$j];
-		// 				$array[$j] = $array[$j + 1];
-		// 				$array[$j + 1] = $temp;
-		// 			}
-		// 		}
-		// 	}
+    public static function selectionSort($arr)
+    {
+        if (!is_array($arr)) {
+            return false;
+        }
+        $len = count($arr);
+        if ($len <= 1) {
+            return $arr;
+        }
 
-		// 	return $array;
-		// }
+        for ($i = 0; $i < $len; $i++) {
+            $min_i = $arr[$i];
+            $index = $i;
+            $min_j = $i + 1;
+            for ($j = $min_j; $j < $len; $j++) {
+                if ($arr[$j] < $min_i) {
+                    $min_i = $arr[$j];
+                    $index = $j;
+                }
+            }
+            if ($i < $index) {
+                $arr = self::array_swap($arr, $i, $index);
+            }
+        }
 
-		return $arr;
-	}
+        return $arr;
+    }
 
-	public static function selectionSort($arr)
-	{
-		if (!is_array($arr)) {
-			return false;
-		}
-		$len = count($arr);
-		if ($len <= 1) {
-			return $arr;
-		}
+    public static function insertionSort($arr)
+    {
+        if (!is_array($arr)) {
+            return false;
+        }
+        $len = count($arr);
+        if ($len <= 1) {
+            return $arr;
+        }
 
-		for ($i = 0; $i < $len; $i++) {
-			$min_i = $arr[$i];
-			$index = $i;
-			$min_j = $i + 1;
-			for ($j = $min_j; $j < $len; $j++) {
-				if ($arr[$j] < $min_i) {
-					$min_i = $arr[$j];
-					$index = $j;
-				}
-			}
-			if ($i < $index) {
-				$arr = self::array_swap($arr, $i, $index);
-			}
-		}
+        for ($i = 0; $i < $len; $i++) {
+            $pre_i = $i - 1;
+            $current = $arr[$i];
+            while ($pre_i >= 0 && $arr[$pre_i] > $current) {
+                $arr[$pre_i + 1] = $arr[$pre_i];
+                $pre_i -= 1;
+            }
+            $arr[$pre_i + 1] = $current;
+        }
 
-		return $arr;
-	}
+        return $arr;
+    }
 
-	public static function insertionSort($arr)
-	{
-		if (!is_array($arr)) {
-			return false;
-		}
-		$len = count($arr);
-		if ($len <= 1) {
-			return $arr;
-		}
+    public static function shellSort($arr)
+    {
+        if (!is_array($arr)) {
+            return false;
+        }
+        $len = count($arr);
+        if ($len <= 1) {
+            return $arr;
+        }
 
-		for ($i = 0; $i < $len; $i++) {
-			$pre_i = $i - 1;
-			$current = $arr[$i];
-			while ($pre_i >= 0 && $arr[$pre_i] > $current) {
-				$arr[$pre_i + 1] = $arr[$pre_i];
-				$pre_i -= 1;
-			}
-			$arr[$pre_i + 1] = $current;
-		}
+        $gap = 1;
+        $pre_i = $len / 3;
+        while ($gap < $pre_i) {
+            $gap = $gap * 3 + 1;
+        }
 
-		return $arr;
-	}
+        while ($gap > 0) {
+            for ($i = 0; $i < $len; $i++) {
+                $temp = $arr[$i];
+                $j = $i - $gap;
 
-	public static function shellSort($arr)
-	{
-		if (!is_array($arr)) {
-			return false;
-		}
-		$len = count($arr);
-		if ($len <= 1) {
-			return $arr;
-		}
+                while ($j >= 0 and $arr[$j] > $temp) {
+                    $arr[$j + $gap] = $arr[$j];
+                    $j -= $gap;
+                }
 
-		$gap = 1;
-		$pre_i = $len / 3;
-		while ($gap < $pre_i) {
-			$gap = $gap * 3 + 1;
-		}
+                $arr[$j + $gap] = $temp;
+            }
 
-		while ($gap > 0) {
-			for ($i = 0; $i < $len; $i++) {
-				$temp = $arr[$i];
-				$j = $i - $gap;
+            $gap = floor($gap / 3);
+        }
 
-				while ($j >= 0 and $arr[$j] > $temp) {
-					$arr[$j + $gap] = $arr[$j];
-					$j -= $gap;
-				}
+        return $arr;
+    }
 
-				$arr[$j + $gap] = $temp;
-			}
+    public static function mergeSort(&$arr)
+    {
+        if (!is_array($arr)) {
+            return false;
+        }
+        $len = count($arr);
+        if ($len <= 1) {
+            return $arr;
+        }
 
-			$gap = floor($gap / 3);
-		}
+        $mid = $len >> 1;
+        $left = array_slice($arr, 0, $mid);
+        $right = array_slice($arr, $mid);
+        static::mergeSort($left);
+        static::mergeSort($right);
+        if (end($left) <= $right[0]) {
+            $arr = array_merge($left, $right);
+        } else {
+            for ($i = 0, $j = 0, $k = 0; $k <= $len - 1; $k++) {
+                if ($i >= $mid && $j < $len - $mid) {
+                    $arr[$k] = $right[$j++];
+                } elseif ($j >= $len - $mid && $i < $mid) {
+                    $arr[$k] = $left[$i++];
+                } elseif ($left[$i] <= $right[$j]) {
+                    $arr[$k] = $left[$i++];
+                } else {
+                    $arr[$k] = $right[$j++];
+                }
+            }
+        }
 
-		return $arr;
-	}
+        return $arr;
+    }
 
-	public static function mergeSort(&$arr)
-	{
-		if (!is_array($arr)) {
-			return false;
-		}
-		$len = count($arr);
-		if ($len <= 1) {
-			return $arr;
-		}
+    public static function countingSort($arr)
+    {
+        if (!is_array($arr)) {
+            return false;
+        }
+        $len = count($arr);
+        if ($len <= 1) {
+            return $arr;
+        }
 
-		$mid = $len >> 1;
-		$left = array_slice($arr, 0, $mid);
-		$right = array_slice($arr, $mid);
-		static::mergeSort($left);
-		static::mergeSort($right);
-		if (end($left) <= $right[0]) {
-			$arr = array_merge($left, $right);
-		} else {
-			for ($i = 0, $j = 0, $k = 0; $k <= $len - 1; $k++) {
-				if ($i >= $mid && $j < $len - $mid) {
-					$arr[$k] = $right[$j++];
-				} elseif ($j >= $len - $mid && $i < $mid) {
-					$arr[$k] = $left[$i++];
-				} elseif ($left[$i] <= $right[$j]) {
-					$arr[$k] = $left[$i++];
-				} else {
-					$arr[$k] = $right[$j++];
-				}
-			}
-		}
+        $count = $sorted = [];
+        $min = min($arr);
+        $max = max($arr);
+        for ($i = 0; $i < $len; $i++) {
+            $count[$arr[$i]] = isset($count[$arr[$i]]) ? $count[$arr[$i]] + 1 : 1;
+        }
+        for ($j = $min; $j <= $max; $j++) {
+            while (isset($count[$j]) && $count[$j] > 0) {
+                $sorted[] = $j;
+                $count[$j]--;
+            }
+        }
 
-		return $arr;
-	}
+        return $sorted;
+    }
 
-	public static function countingSort($arr)
-	{
-		if (!is_array($arr)) {
-			return false;
-		}
-		$len = count($arr);
-		if ($len <= 1) {
-			return $arr;
-		}
+    public static function heapSort($arr)
+    {
+        if (!is_array($arr)) {
+            return false;
+        }
+        global $len;
+        $len = count($arr);
+        if ($len <= 1) {
+            return $arr;
+        }
 
-		$count = $sorted = [];
-		$min = min($arr);
-		$max = max($arr);
-		for ($i = 0; $i < $len; $i++) {
-			$count[$arr[$i]] = isset($count[$arr[$i]]) ? $count[$arr[$i]] + 1 : 1;
-		}
-		for ($j = $min; $j <= $max; $j++) {
-			while (isset($count[$j]) && $count[$j] > 0) {
-				$sorted[] = $j;
-				$count[$j]--;
-			}
-		}
+        for ($i = $len; $i >= 0; $i--) {
+            self::heapify($arr, $i);
+        }
 
-		return $sorted;
-	}
+        return $arr;
+    }
 
-	public static function heapSort($arr)
-	{
-		if (!is_array($arr)) {
-			return false;
-		}
-		global $len;
-		$len = count($arr);
-		if ($len <= 1) {
-			return $arr;
-		}
+    public static function heapify($arr, $i)
+    {
+        $left = 2 * $i + 1;
+        $right = 2 * $i + 2;
+        $largest = $i;
 
-		for ($i = $len; $i >= 0; $i--) {
-			self::heapify($arr, $i);
-		}
-
-		return $arr;
-	}
-
-	public static function heapify($arr, $i)
-	{
-		$left = 2 * $i + 1;
-		$right = 2 * $i + 2;
-		$largest = $i;
-
-		global $len;
-		if ($left < $len && $arr[$left] > $arr[$largest]) {
-			$largest = $left;
-		}
-		if ($right < $len && $arr[$right] > $arr[$largest]) {
-			$largest = $right;
-		}
-		if ($largest != $i) {
-			self::array_swap($arr, $i, $largest);
-			self::heapify($arr, $largest);
-		}
-	}
+        global $len;
+        if ($left < $len && $arr[$left] > $arr[$largest]) {
+            $largest = $left;
+        }
+        if ($right < $len && $arr[$right] > $arr[$largest]) {
+            $largest = $right;
+        }
+        if ($largest != $i) {
+            self::array_swap($arr, $i, $largest);
+            self::heapify($arr, $largest);
+        }
+    }
 }
