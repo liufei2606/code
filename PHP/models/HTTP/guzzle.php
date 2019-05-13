@@ -11,7 +11,7 @@ ini_set('display_errors', 'on');
 $client = new GuzzleHttp\Client();
 
 $res = $client->request('GET', 'http://gitlab.smgtech.net/users/sign_in', [
-    'auth' => ['name', 'pass']
+	'auth' => ['name', 'pass']
 ]);
 echo $res->getStatusCode(); // "200"
 var_dump($res);  // 'application/json; charset=utf8'
