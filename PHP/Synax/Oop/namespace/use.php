@@ -1,7 +1,7 @@
 <?php
-// namespace Bar;
+namespace Bar;
 
-include './demo1/file1.php';
+// include './declare.php';
 
 use Bar\subnamespace;
 
@@ -35,4 +35,3 @@ echo \FOO; // 解析为常量 Foo\Bar\FOO
 \Bar\subnamespace\foo(); // 解析为函数 Foo\Bar\foo
 \Bar\subnamespace\foo::staticmethod(); // 解析为类 Foo\Bar\foo, 以及类的方法 staticmethod
 echo \Bar\subnamespace\FOO; // 解析为常量 Foo\Bar\FOO
-
