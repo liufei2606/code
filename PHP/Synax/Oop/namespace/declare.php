@@ -14,20 +14,21 @@ class foo
 
     public static function staticmethod()
     {
+		echo 'Static Method';
     }
 }
 
-new foo();
-echo '<br>';
-new \Bar\subnamespace\foo();
-echo '<br>';
-foo();
-echo '<br>';
-\Bar\subnamespace\foo();
-echo '<br>';
-namespace\foo();
+// new foo();
+// echo '<br>';
+// new \Bar\subnamespace\foo();
+// echo '<br>';
+// foo();
+// echo '<br>';
+// \Bar\subnamespace\foo();
+// echo '<br>';
+// namespace\foo();
 
-echo '<br>';
-echo namespace\FOO;
-echo '<br>';
-echo FOO;
+// echo '<br>';
+// echo namespace\FOO;
+// echo '<br>';
+// echo FOO;
