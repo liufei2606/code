@@ -67,3 +67,6 @@ echo json_encode($arr2, JSON_PRETTY_PRINT) . '<br>';
 # char length eng and chn
 echo 'hello world' . '<br>';
 echo 'ｈｅｌｌｏ　ｗｏｒｌｄ' . ' length:' .strlen('ｈｅｌｌｏ　ｗｏｒｌｄ') . '<hr>';
+
+
+var_dump(spl_autoload_functions());
