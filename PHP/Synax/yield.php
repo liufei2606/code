@@ -13,6 +13,7 @@ $my_gen = gen();
 echo $my_gen->current();
 echo $my_gen->send("main send");
 
+echo "\n";
 function xrange($start, $limit, $step = 1)
 {
 	if ($start < $limit) {
@@ -33,16 +34,35 @@ function xrange($start, $limit, $step = 1)
 		}
 	}
 }
-
 echo 'Single digit odd numbers from range():  ';
-foreach (range(1, 9, 2) as $number) {
+foreach (range(1, 19, 2) as $number) {
 	echo "$number ";
 }
-echo "\n";
-
 echo 'Single digit odd numbers from xrange(): ';
 
-foreach (xrange(1, 9, 2) as $number) {
+foreach (xrange(1, 19, 2) as $number) {
 	echo "$number ";
 }
 
+echo "\n";
+$input = <<<'EOF'
+1;PHP;Likes dollar signs
+2;Python;Likes whitespace
+3;Ruby;Likes blocks
+EOF;
+
+function input_parser($input)
+{
+    foreach (explode("\n", $input) as $line) {
+        $fields = explode(';', $line);
+        $id = array_shift($fields);
+
+        yield $id => $fields;
+    }
+}
+
+foreach (input_parser($input) as $id => $fields) {
+    echo "$id:\n";
+    echo "    $fields[0]\n";
+    echo "    $fields[1]\n";
+}
