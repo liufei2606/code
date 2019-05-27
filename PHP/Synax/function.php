@@ -24,3 +24,5 @@ $func('test');  // This calls bar()
 
 $func = 'echoit';
 $func('test');  // This calls echoit()
+
+# 匿名函数

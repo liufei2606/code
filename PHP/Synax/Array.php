@@ -20,3 +20,16 @@ $arr = array_map(
 
 echo '<pre>';
 var_dump($arr);
+
+# 遍历一个数组获取新的数据结构
+foreach ($arr as ＆$v) {
+    // 一系列判断得到你想要的数据
+    if (...) {
+        // 复写值为你想要的
+        $v['youwantbyjudge'] = 'TIGERB'
+    }
+    ...
+    // 干掉你不想要的结构
+    unset($v['youwantdel']);
+}
+unset($v);
