@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from "typeorm";
+import { CatalogTimestamp } from "./CatalogTimestamp";
 @Entity()
 export class Catalog {
 	@PrimaryGeneratedColumn()
@@ -23,4 +24,9 @@ export class Catalog {
 
 	@Column()
 	isPublished: boolean;
+
+	@OneToOne(type => CatalogTimestamp, timestamp => timestamp.catalog, {
+		cascade: true,
+	})
+	timestamp: CatalogTimestamp;
 }
