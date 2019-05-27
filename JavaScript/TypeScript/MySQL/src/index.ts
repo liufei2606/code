@@ -11,9 +11,11 @@ createConnection().then(async connection => {
 	catalog.edition = "March-April 2005";
 	catalog.title = "Starting with Oracle ADF";
 	catalog.author = "Steve Muench";
-	catalog.isPublished = true;;
-	await connection.manager.save(catalog);
+	catalog.isPublished = true;
 
+	let catalogRepository = connection.getRepository(Catalog);
+
+	await catalogRepository.save(catalog);
 	console.log("Saved a new user with id: " + catalog.id);
 
 	let catalog2 = new Catalog();
@@ -24,11 +26,12 @@ createConnection().then(async connection => {
 	catalog2.author = "David A. Kelly";
 	catalog2.isPublished = true;
 
-	await connection.manager.save(catalog2);
+	await catalogRepository.save(catalog2);
 	console.log("Saved a new user with id: " + catalog2.id);
+
     console.log("Loading users from the database...");
-    const Catalogs = await connection.manager.find(Catalog);
-    console.log("Loaded users: ", Catalogs);
+	let [all_catalog, CatalogsCount] = await catalogRepository.findAndCount();
+	console.log("Loaded users: ", CatalogsCount);
 
     console.log("Here you can setup and run express/koa/any other framework.");
 
