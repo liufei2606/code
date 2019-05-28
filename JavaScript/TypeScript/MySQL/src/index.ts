@@ -2,6 +2,7 @@ import "reflect-metadata";
 import {createConnection} from "typeorm";
 import {Catalog} from "./entity/Catalog";
 import {CatalogTimestamp} from "./entity/CatalogTimestamp";
+import { serialize } from "class-transformer";
 
 createConnection().then(async connection => {
 
