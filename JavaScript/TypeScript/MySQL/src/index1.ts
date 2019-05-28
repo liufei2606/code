@@ -9,7 +9,7 @@ createConnection({
 	host: "localhost",
 	port: 3306,
 	username: "root",
-	password: "123456Ac&",
+	password: "root",
 	database: "test",
 	entities: [
 		__dirname + "/entity/*.ts"
