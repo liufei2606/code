@@ -1,20 +1,22 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from "typeorm";
-import { Catalog } from "./Catalog";
+import {Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn} from "typeorm";
+import {Catalog} from "./Catalog";
+
 @Entity()
 export class CatalogTimestamp {
-	@PrimaryGeneratedColumn()
-	id: number;
 
-	@Column()
-	firstAdded: string;
-	@Column()
-	firstUpdated: string;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-	@Column()
-	lastUpdated: string;
+    @Column()
+    firstAdded: string;
 
-	@OneToOne(type => Catalog, catalog => catalog.timestamp)
-	@JoinColumn()
-	catalog: Catalog;
+    @Column()
+    firstUpdated: string;
 
+    @Column()
+    lastUpdated: string;
+
+    @OneToOne(type => Catalog, catalog => catalog.timestamp)
+    @JoinColumn()
+    catalog: Catalog;
 }

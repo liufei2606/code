@@ -26,12 +26,12 @@ createConnection().then(async connection => {
 	let catalogs = await catalogRepository.find({ relations: ["timestamp"] });
 	console.log(JSON.stringify(catalogs));
 
-	let catalogNews = await connection
-		.getRepository(Catalog)
-		.createQueryBuilder("catalog")
-		.innerJoinAndSelect("catalog.timestamp", "timestamp")
-		.getMany();
-	console.log(JSON.stringify(catalogNews));
+	// let catalogNews = await connection
+	// 	.getRepository(Catalog)
+	// 	.createQueryBuilder("catalog")
+	// 	.innerJoinAndSelect("catalog.timestamp", "timestamp")
+	// 	.getMany();
+	// console.log(JSON.stringify(catalogNews));
 
 	// await catalogRepository.save(catalog);
 	// console.log("Saved a new user with id: " + catalog.id);

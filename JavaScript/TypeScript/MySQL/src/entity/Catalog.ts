@@ -1,32 +1,35 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from "typeorm";
-import { CatalogTimestamp } from "./CatalogTimestamp";
+import {Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn} from "typeorm";
+import {CatalogTimestamp} from "./CatalogTimestamp";
+
 @Entity()
 export class Catalog {
-	@PrimaryGeneratedColumn()
-	id: number;
 
-	@Column()
-	journal: string;
+    @PrimaryGeneratedColumn()
+     id: number;
 
-	@Column()
-	publisher: string;
+    @Column()
+    journal: string;
 
-	@Column({
-		length: 25
-	})
-	edition: string;
+    @Column()
+    publisher: string;
 
-	@Column("text")
-	title: string;
+    @Column({
+        length: 25
+    })
+    edition: string;
 
-	@Column()
-	author: string;
+    @Column("text")
+    title: string;
 
-	@Column()
-	isPublished: boolean;
+    @Column()
+    author: string;
 
-	@OneToOne(type => CatalogTimestamp, timestamp => timestamp.catalog, {
-		cascade: true,
-	})
-	timestamp: CatalogTimestamp;
+    @Column()
+    isPublished: boolean;
+
+    @OneToOne(type => CatalogTimestamp, timestamp => timestamp.catalog,{
+        cascade: true,
+    })
+    timestamp: CatalogTimestamp;
+  
 }
