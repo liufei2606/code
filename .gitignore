@@ -1,17 +1,13 @@
-info.php
 .phpintel/
 .idea/
 .gitignore
-/python/__pycache__
 .DS_Store
 .vscode/
 node_modules/
 lavas-pwd-demo/dist
 
-/PHP/vendor
-
 Go/bin
 /static
 /PHP/framework/runtime
 *.ipynb_checkpoints
-
+__pycache__/

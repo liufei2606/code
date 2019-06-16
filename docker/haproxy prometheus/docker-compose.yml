@@ -1,0 +1,24 @@
+version: "3"
+services:
+  haproxy:
+    image: haproxy:1.7
+    ports:
+    - "5000:5000"
+    - "10080:10080"
+    volumes:
+    - "./conf/haproxy:/usr/local/etc/haproxy:ro"
+  exporter:
+    image: registry.cn-hangzhou.aliyuncs.com/kubeapps/quay-haproxy-exporter
+    command: --haproxy.scrape-uri="http://admin:password@haproxy:10080/haproxy?stats;csv"
+    ports:
+    - "9101:9101"
+  g:
+    image: grafana/grafana
+    ports:
+    - "3000:3000"
+  p:
+    image: prom/prometheus
+    volumes:
+    - "./conf/prometheus.yml:/etc/prometheus/prometheus.yml"
+    ports:
+    - "9090:9090"
