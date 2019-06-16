@@ -1,0 +1,30 @@
+version: '2'
+services:
+  web1:
+    image: nginx
+    ports:
+      - "6061:80"
+    container_name: "web1"
+    networks:
+      - dev
+  web2:
+    image: nginx
+    ports:
+      - "6062:80"
+    container_name: "web2"
+    networks:
+      - dev
+      - pro
+  web3:
+    image: nginx
+    ports:
+      - "6063:80"
+    container_name: "web3"
+    networks:
+      - pro
+
+networks:
+  dev:
+    driver: bridge
+  pro:
+    driver: bridge
