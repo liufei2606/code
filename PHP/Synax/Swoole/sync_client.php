@@ -11,7 +11,8 @@ class Client
 
     public function __construct()
     {
-        $this->client = new swoole_client(SWOOLE_SOCK_TCP);
+		$this->client = new swoole_client(SWOOLE_SOCK_TCP);
+		$this->connect();
     }
 
     public function connect()
@@ -25,9 +26,10 @@ class Client
         $this->client->send($msg);
 
         $message = $this->client->recv();
-        echo "Get Message From Server:{$message}\n";
+		echo "Get Message From Server:{$message}\n";
+		$this->client->close();
     }
 }
 
 $client = new Client();
-$client->connect();
+

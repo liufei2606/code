@@ -65,7 +65,8 @@ class Server {
             echo "任务分配失败 Task " . $rs . PHP_EOL;
         } else {
             echo "任务分配成功 Task " . $rs . PHP_EOL;
-        }
+		}
+		echo "Dispath AsyncTask: id=$task_id\n";
         echo "########" . PHP_EOL . PHP_EOL;
     }
 
@@ -86,9 +87,11 @@ class Server {
     public function onFinish($serv, $task_id, $data) {
         echo "#### onFinish ####" . PHP_EOL;
         echo "Task {$task_id} 已完成" . PHP_EOL;
-        echo "########" . PHP_EOL . PHP_EOL;
+		echo "########" . PHP_EOL . PHP_EOL;
+		echo "AsyncTask[$task_id] Finish: $data".PHP_EOL;
+
     }
-    
+
     public function onClose($serv, $fd) {
         echo "Client Close." . PHP_EOL;
     }

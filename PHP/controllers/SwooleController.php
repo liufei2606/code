@@ -3,7 +3,7 @@
 use Swoole\Coroutine\Channel;
 
 /**
- *
+ * Swoole 实例
  */
 class SwooleController
 {
@@ -22,13 +22,14 @@ class SwooleController
 		return $result;
     }
 
-	public function channel() {
+    public function channel() {
 		go(function () {
 			//创建十个信箱通道
 			$mailBoxes = [];
-			for ($i = 1;$i <= 10;$i++) {
+			for ($i = 1; $i <= 10; $i++) {
 				$mailBoxes[$i] = new Channel(16);
 			}
+
 			//模拟master 邮局调度,随机像一个信箱投递消息
 			go(function () use ($mailBoxes) {
 				while (1) {
@@ -37,6 +38,7 @@ class SwooleController
 					($mailBoxes[$key])->push(time());
 				}
 			});
+
 			//模拟actor 实体消费
 			for ($i = 1;$i <= 10; $i++) {
 				go(function () use ($mailBoxes,$i) {
@@ -47,11 +49,8 @@ class SwooleController
 				});
 			}
 		});
-
 	}
 }
 
 $instance = new SwooleController();
 $instance->channel();
-
-

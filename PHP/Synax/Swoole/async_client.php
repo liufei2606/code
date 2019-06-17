@@ -55,8 +55,9 @@ class Client {
     public function onClose($cli) {
         echo "Client close connection" . PHP_EOL;
     }
-    
+
     public function onError() {
+		echo "Connection close\n";
     }
 }
 $client = new Client();
