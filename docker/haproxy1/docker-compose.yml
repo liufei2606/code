@@ -1,0 +1,32 @@
+web1:
+    build: ./httpd
+    expose:
+       - 80
+
+web2:
+    image: nginx:latest
+    volumes:
+        - ./nginx1:/usr/share/nginx/html
+    expose:
+        - 80
+
+web3:
+    image: nginx
+    volumes:
+        - ./nginx2:/usr/share/nginx/html
+
+
+haproxy:
+    image: haproxy
+
+    volumes:
+        -  ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    links:
+        - web1
+        - web2
+        - web3
+
+    ports:
+       - "8888:80"
+    expose:
+        - 80
