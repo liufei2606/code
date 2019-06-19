@@ -1,23 +1,4 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4: */
-// +----------------------------------------------------------------------+
-// | PHP version 5                                                        |
-// +----------------------------------------------------------------------+
-// | Copyright (c) 1997-2004 The PHP Group                                |
-// +----------------------------------------------------------------------+
-// | This source file is subject to version 3.0 of the PHP license,       |
-// | that is bundled with this package in the file LICENSE, and is        |
-// | available through the world-wide-web at the following url:           |
-// | http://www.php.net/license/3_0.txt.                                  |
-// | If you did not receive a copy of the PHP license and are unable to   |
-// | obtain it through the world-wide-web, please send a note to          |
-// | license@php.net so we can mail you a copy immediately.               |
-// +----------------------------------------------------------------------+
-// | Authors: Original Author <author@example.com>                        |
-// |          Your Name <you@example.com>                                 |
-// +----------------------------------------------------------------------+
-//
-// $Id:$
 
 class Server {
     private $serv;
@@ -41,6 +22,12 @@ class Server {
         $this->serv->start();
     }
 
+    public function onConnect($serv, $fd) {
+        echo "#### onConnect ####" . PHP_EOL;
+        echo "客户端:" . $fd . " 已连接" . PHP_EOL;
+        echo "########" . PHP_EOL . PHP_EOL;
+    }
+
     public function onStart($serv) {
         echo "#### onStart ####" . PHP_EOL;
         echo "SWOOLE " . SWOOLE_VERSION . " 服务已启动" . PHP_EOL;
@@ -49,37 +36,33 @@ class Server {
         echo "########" . PHP_EOL . PHP_EOL;
     }
 
-    public function onConnect($serv, $fd) {
-        echo "#### onConnect ####" . PHP_EOL;
-        echo "客户端:" . $fd . " 已连接" . PHP_EOL;
-        echo "########" . PHP_EOL . PHP_EOL;
-    }
-
-    public function onReceive($serv, $fd, $from_id, $data) {
+	public function onReceive($serv, $fd, $from_id, $data) {
         echo "#### onReceive ####" . PHP_EOL;
         echo "worker_pid: {$serv->worker_pid}" . PHP_EOL;
         echo "客户端:{$fd} 发来的Email:{$data}" . PHP_EOL;
-        $param = ['fd' => $fd, 'email' => $data];
-        $rs = $serv->task(json_encode($param));
-        if ($rs === false) {
-            echo "任务分配失败 Task " . $rs . PHP_EOL;
+		$param = ['fd' => $fd, 'email' => $data];
+		// 投递异步任务
+        $task_id = $serv->task(json_encode($param));
+        if ($task_id === false) {
+            echo "任务分配失败 Task " . $task_id . PHP_EOL;
         } else {
-            echo "任务分配成功 Task " . $rs . PHP_EOL;
+            echo "任务分配成功 Task " . $task_id . PHP_EOL;
 		}
-		echo "Dispath AsyncTask: id=$task_id\n";
+		echo "Dispath AsyncTask: id=$task_id" . PHP_EOL;
         echo "########" . PHP_EOL . PHP_EOL;
     }
-
+	//处理异步任务
     public function onTask($serv, $task_id, $from_id, $data) {
         echo "#### onTask ####" . PHP_EOL;
         echo "#{$serv->worker_id} onTask: [PID={$serv->worker_pid}]: task_id={$task_id}" . PHP_EOL;
         //业务代码
         for ($i = 1; $i <= 5; $i++) {
-            sleep(2);
+            sleep(1);
             echo "Task {$task_id} 已完成了 {$i}/5 的任务" . PHP_EOL;
-        }
-        $data_arr = json_decode($data, true);
-        $serv->send($data_arr['fd'], 'Email:' . $data_arr['email'] . ',发送成功');
+		}
+
+		$data_arr = json_decode($data, true);
+        $serv->send($data_arr['fd'], 'Email:' . trim($data_arr['email']) . ',发送成功' . PHP_EOL);
         $serv->finish($data);
         echo "########" . PHP_EOL . PHP_EOL;
     }
@@ -89,7 +72,6 @@ class Server {
         echo "Task {$task_id} 已完成" . PHP_EOL;
 		echo "########" . PHP_EOL . PHP_EOL;
 		echo "AsyncTask[$task_id] Finish: $data".PHP_EOL;
-
     }
 
     public function onClose($serv, $fd) {

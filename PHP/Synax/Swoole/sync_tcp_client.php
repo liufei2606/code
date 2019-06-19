@@ -1,9 +1,4 @@
 <?php
-namespace hello\test;
-
-/**
- * Undocumented class
- */
 
 class Client
 {
@@ -18,7 +13,7 @@ class Client
     public function connect()
     {
         if (!$this->client->connect("127.0.0.1", 9501, 1)) {
-            echo "Error: {$this->client->errMsg}[{$this->client->errCode}]\n";
+            die("Error: {$this->client->errMsg}[{$this->client->errCode}]");
         }
 
         fwrite(STDOUT, "请输入消息 Please input msg：");
@@ -32,4 +27,3 @@ class Client
 }
 
 $client = new Client();
-
