@@ -1,5 +1,6 @@
 <?php
 
+Swoole\Runtime::enableCoroutine(true);
 $db = new Swoole\MySQL;
 $server = array(
     'host' => '127.0.0.1',

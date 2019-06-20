@@ -14,8 +14,9 @@
  */
 function super_debug($data, $log_path='\var\log\', $log_name='debug')
 {
-  error_log(json_encode($data, JSON_UNESCAPED_UNICODE)."\n", 3, $log_path.$log_name);
+	error_log(json_encode($data, JSON_UNESCAPED_UNICODE)."\n", 3, $log_path.$log_name);
 }
+
 // php实现下载图片
 
 header('Content-type: image/jpeg');
