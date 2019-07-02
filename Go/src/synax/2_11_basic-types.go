@@ -5,6 +5,7 @@ import (
 	"math/cmplx"
 )
 
+// 变量声明也可以“分组”成一个语法块
 var (
 	Tobe   bool       = false
 	MaxInt uint64     = 1<<64 - 1

@@ -3,9 +3,11 @@ package main
 import "fmt"
 
 func main() {
-	sum := 0
+	fmt.Println("counting")
+
 	for i := 0; i < 10; i++ {
-		sum += i
+		defer fmt.Println(i)
 	}
-	fmt.Println(sum)
+
+	fmt.Println("done")
 }
