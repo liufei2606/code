@@ -19,7 +19,7 @@ func main() {
 	}
 	fmt.Println(sum1)
 
-	// 如果省略循环条件 无限循环
+	// 省略循环条件 无限循环
 	for {
 	}
 }
