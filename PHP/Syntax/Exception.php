@@ -31,7 +31,6 @@ class MyException extends Exception
     }
 }
 
-
 /**
  * 创建一个用于测试异常处理机制的类
  */

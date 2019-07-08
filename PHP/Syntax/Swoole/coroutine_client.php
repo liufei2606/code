@@ -12,7 +12,7 @@ $http->on('request', function ($request, $response) {
         'database' => 'test',
     ]);
     $data = $db->query('select * from user');
-	$response->end(json_encode($data));
+    $response->end(json_encode($data));
 });
 
 $http->start();

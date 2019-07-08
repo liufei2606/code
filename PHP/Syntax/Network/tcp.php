@@ -12,14 +12,14 @@ while (true) {
     if (! $client) {
         continue;
     }
-	$request = socket_read($client, 1024);
+    $request = socket_read($client, 1024);
 
-	// 查看接收到的内容
+    // 查看接收到的内容
     // var_dump($request);
 
-	 /**
-     * HTTP
-     */
+    /**
+    * HTTP
+    */
     $http = new HttpProtocol;
     $http->originRequestContentString = $request;
     $http->request($request);

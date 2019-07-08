@@ -2,18 +2,18 @@
 
 function foo()
 {
-	echo "In foo()<br />\n";
+    echo "In foo()<br />\n";
 }
 
 function bar($arg = '')
 {
-	echo "In bar(); argument was '$arg'.<br />\n";
+    echo "In bar(); argument was '$arg'.<br />\n";
 }
 
 // 使用 echo 的包装函数
 function echoit($string)
 {
-	echo $string;
+    echo $string;
 }
 
 $func = 'foo';

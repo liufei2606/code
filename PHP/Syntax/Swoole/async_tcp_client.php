@@ -1,25 +1,29 @@
 <?php
 
-class Client {
-	private $client;
+class Client
+{
+    private $client;
 
-    public function __construct() {
-		$this->client = new swoole_client(SWOOLE_SOCK_TCP, SWOOLE_SOCK_ASYNC);
+    public function __construct()
+    {
+        $this->client = new swoole_client(SWOOLE_SOCK_TCP, SWOOLE_SOCK_ASYNC);
 
         $this->client->on('Connect', [$this, 'onConnect']);
         $this->client->on('Receive', [$this, 'onReceive']);
         $this->client->on('Close', [$this, 'onClose']);
         $this->client->on('Error', [$this, 'onError']);
-	}
+    }
 
-    public function connect() {
+    public function connect()
+    {
         if (!$fp = $this->client->connect("127.0.0.1", 9501, 1)) {
             echo "Error: {$fp->errMsg}[{$fp->errCode}]" . PHP_EOL;
             return;
         }
     }
 
-    public function onConnect($cli) {
+    public function onConnect($cli)
+    {
         fwrite(STDOUT, "输入Email:");
         swoole_event_add(STDIN, function () {
             fwrite(STDOUT, "输入Email:");
@@ -28,20 +32,24 @@ class Client {
         });
     }
 
-    public function onReceive($cli, $data) {
+    public function onReceive($cli, $data)
+    {
         echo PHP_EOL . "Received: " . $data . PHP_EOL;
     }
 
-    public function send($data) {
+    public function send($data)
+    {
         $this->client->send($data);
     }
 
-    public function onClose($cli) {
+    public function onClose($cli)
+    {
         echo "Client close connection" . PHP_EOL;
     }
 
-    public function onError() {
-		echo "Connection close\n";
+    public function onError()
+    {
+        echo "Connection close\n";
     }
 }
 $client = new Client();

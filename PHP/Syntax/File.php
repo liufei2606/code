@@ -2,7 +2,7 @@
 
 $handle = opendir('.');
 while (false !== ($file = readdir($handle))) {
-	$files[] = $file;
+    $files[] = $file;
 }
 closedir($handle);
 var_dump($files);

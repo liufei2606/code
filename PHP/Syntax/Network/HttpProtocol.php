@@ -10,7 +10,7 @@ class HttpProtocol
      *
      * @var string
      */
-    public  $originRequestContentString = '';
+    public $originRequestContentString = '';
 
     /**
      * 原始请求字符串拆得的列表
@@ -49,7 +49,7 @@ class HttpProtocol
      *
      * @var string
      */
-    public  $responseData = '';
+    public $responseData = '';
 
     /**
      * 解析请求信息
@@ -61,12 +61,10 @@ class HttpProtocol
     {
         if (empty($content)) {
             // exception
-
         }
         $this->originRequestContentList = explode("\r\n", $this->originRequestContentString);
         if (empty($this->originRequestContentList)) {
             // exception
-
         }
         foreach ($this->originRequestContentList as $k => $v) {
             if ($v === '') {

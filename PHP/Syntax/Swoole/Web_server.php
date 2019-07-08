@@ -2,33 +2,33 @@
 
 class TcpServer
 {
-	private $server;
+    private $server;
 
     public function __construct()
     {
         $this->server = new swoole_http_server("0.0.0.0", 9501);
         $this->server->set([
             'worker_num' => 2, //开启2个worker进程
-			'max_request' => 2, //每个worker进程 max_request设置为4次
-			'task_worker_num' => 2,
+            'max_request' => 2, //每个worker进程 max_request设置为4次
+            'task_worker_num' => 2,
             'document_root' => './',
             'enable_static_handler' => true,
             'daemonize' => false, //守护进程(true/false)
-		]);
+        ]);
 
         $this->server->on('WorkerStart', [$this, 'onWorkerStart']);
-		$this->server->on('ManagerStart', [$this, 'onManagerStart']);
+        $this->server->on('ManagerStart', [$this, 'onManagerStart']);
         $this->server->on('Start', [$this, 'onStart']);
 
-		$this->server->on("Request", [$this, 'onRequest']);
+        $this->server->on("Request", [$this, 'onRequest']);
 
-		$this->server->on('Receive', function ($serv, $fd, $from_id, $data) {
-		});
+        $this->server->on('Receive', function ($serv, $fd, $from_id, $data) {
+        });
         $this->server->on('Task', function ($serv, $task) {
-			echo "#### Task ####" . PHP_EOL;
+            echo "#### Task ####" . PHP_EOL;
         });
         $this->server->on('Finish', function ($serv, $task_id, $data) {
-			echo "#### Finsh ####" . PHP_EOL;
+            echo "#### Finsh ####" . PHP_EOL;
         });
 
         $this->server->start();
@@ -36,15 +36,15 @@ class TcpServer
 
     public function onStart($server)
     {
-		echo "#### onStart ####" . PHP_EOL;
-		# swoole_set_process_name is not supported on MacOS
+        echo "#### onStart ####" . PHP_EOL;
+        # swoole_set_process_name is not supported on MacOS
         // swoole_set_process_name('swoole_process_server_master');
         echo "SWOOLE " . SWOOLE_VERSION . " SERVICE has Started" . PHP_EOL;
         echo "master_pid: {$server->master_pid}" . PHP_EOL; //管理进程的PID，通过向管理进程发送SIGUSR1信号可实现柔性重启
-		echo "manager_pid: {$server->manager_pid}" . PHP_EOL; //主进程的PID，通过向主进程发送SIGTERM信号可安全关闭服务器
-		foreach ($server->connections as $key => $value) {
-			echo $value . "\n";
-		}
+        echo "manager_pid: {$server->manager_pid}" . PHP_EOL; //主进程的PID，通过向主进程发送SIGTERM信号可安全关闭服务器
+        foreach ($server->connections as $key => $value) {
+            echo $value . "\n";
+        }
 
         echo '########' . PHP_EOL;
     }
@@ -78,13 +78,12 @@ class TcpServer
         $path_info = $server['path_info'];
 
         if ($path_info == '/favicon.ico' || $server['request_uri'] == '/favicon.ico') {
-
-		}
+        }
 
         $controller = 'index';
         $method = 'home';
         if ($path_info != '/') {
-			// http://127.0.0.1:9501/index/home
+            // http://127.0.0.1:9501/index/home
             $path_info = explode('/', $path_info);
             if (!is_array($path_info)) {
                 $response->status(404);
