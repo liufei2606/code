@@ -16,6 +16,11 @@ $http->set([
 
 $http->on('request', function ($request, $response) {
 
+    // $redis = new Swoole\Coroutine\Redis();
+    // $redis->connect('127.0.0.1', '6379');
+    // $vaule = $redis->get($request->get['key']);
+    // $response->end($vaule);
+
     //浏览器会自动发起这个请求，这也是很多人碰到的一个问题：
     //为什么我浏览器打开网站，收到了两个请求?
     if ($request->server['path_info'] == '/favicon.ico') {
