@@ -9,10 +9,10 @@ class Server
         $this->serv = new swoole_server('0.0.0.0', 9501);
 
         $this->serv->set([
-        'worker_num' => 2, //开启2个worker进程
-        'max_request' => 4, //每个worker进程 max_request设置为4次
-        'task_worker_num' => 4, //开启4个task进程
-        'dispatch_mode' => 2, //数据包分发策略 - 固定模式
+            'worker_num' => 2, //开启2个worker进程
+            'max_request' => 4, //每个worker进程 max_request设置为4次
+            'task_worker_num' => 4, //开启4个task进程
+            'dispatch_mode' => 2, //数据包分发策略 - 固定模式
         ]);
 
         $this->serv->on('Start', [$this, 'onStart']);
@@ -21,6 +21,7 @@ class Server
         $this->serv->on("Close", [$this, 'onClose']);
         $this->serv->on("Task", [$this, 'onTask']);
         $this->serv->on("Finish", [$this, 'onFinish']);
+
         $this->serv->start();
     }
 
@@ -56,8 +57,9 @@ class Server
         echo "Dispath AsyncTask: id=$task_id" . PHP_EOL;
         echo "########" . PHP_EOL . PHP_EOL;
     }
+
     //处理异步任务
-    public function onTask($serv, $task_id, $from_id, $data)
+    public function onTask($serv, $task_id, $worker_id, $data)
     {
         echo "#### onTask ####" . PHP_EOL;
         echo "#{$serv->worker_id} onTask: [PID={$serv->worker_pid}]: task_id={$task_id}" . PHP_EOL;
@@ -70,6 +72,7 @@ class Server
         $data_arr = json_decode($data, true);
         $serv->send($data_arr['fd'], 'Email:' . trim($data_arr['email']) . ',发送成功' . PHP_EOL);
         $serv->finish($data);
+
         echo "########" . PHP_EOL . PHP_EOL;
     }
 

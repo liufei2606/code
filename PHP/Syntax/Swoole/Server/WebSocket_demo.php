@@ -20,6 +20,8 @@ class Server
         ]);
         $this->serv->on('Start', [$this, 'onStart']);
         $this->serv->on('Open', [$this, 'onOpen']);
+        // $this->serv->on('Open', 'onOpen');
+        // 监听ws消息事件
         $this->serv->on("Message", [$this, 'onMessage']);
         $this->serv->on("Close", [$this, 'onClose']);
         $this->serv->on("Task", [$this, 'onTask']);

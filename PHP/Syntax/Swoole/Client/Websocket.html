@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<h1>Swoole-ws-client</h1>
+</body>
+
+<script type="text/javascript">
+    var wsUrl = "ws://localhost:9502";
+    var websocket = new WebSocket(wsUrl);
+
+    websocket.onopen = function(evt){
+        websocket.send('Hello World');
+        console.log("Conntected success");
+    }
+
+    websocket.onmessage = function(evt) {
+        console.log("Reserver message:" + evt.data);
+    }
+
+    websocket.onclose = function(evt) {
+        console.log("Conntected Closed");
+    }
+
+    websocket.onerror = function(evt) {
+        console.log("error:" + evt.data);
+    }
+</script>
+</html>

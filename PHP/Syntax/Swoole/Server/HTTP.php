@@ -1,6 +1,7 @@
 <?php
+use Swoole\Coroutine as co;
 
-class TcpServer
+class HttpServer
 {
     private $server;
 
@@ -11,7 +12,7 @@ class TcpServer
             'worker_num' => 2, //开启2个worker进程
             'max_request' => 2, //每个worker进程 max_request设置为4次
             'task_worker_num' => 2,
-            'document_root' => './',
+            'document_root' => '/Users/henry/Workspace/Code/PHP/Syntax/Swoole/Server/data',
             'enable_static_handler' => true,
             'daemonize' => false, //守护进程(true/false)
         ]);
@@ -74,8 +75,18 @@ class TcpServer
     {
         $response->header('Server', 'SwooleServer');
         $response->header('Content-Type', 'text/html;charset=utf-8');
+
         $server = $request->server;
         $path_info = $server['path_info'];
+
+        $content = [
+            'date:' => date("Ymd H:i:s"),
+            'Post:' => $request->post,
+            'Header:' => $request->header,
+            'Get:' => $request->get,
+        ];
+
+        co::writeFile(__DIR__ . '/access.log', json_encode($content), FILE_APPEND);
 
         if ($path_info == '/favicon.ico' || $server['request_uri'] == '/favicon.ico') {
         }
@@ -98,7 +109,7 @@ class TcpServer
             $controller = (isset($path_info[1]) && !empty($path_info[1])) ? $path_info[1] : $controller;
             $method = (isset($path_info[2]) && !empty($path_info[2])) ? $path_info[2] : $method;
         }
-
+        // $response->get()|post()|cookie()
         $result = "class 不存在";
         if (class_exists($controller)) {
             $class = new $controller();
@@ -111,4 +122,8 @@ class TcpServer
         $response->end($result);
     }
 }
-$server = new TcpServer();
+
+$server = new HttpServer();
+
+// curl
+// browser

@@ -11,7 +11,7 @@ $ws->on('open', function ($ws, $request) {
 
 //监听WebSocket消息事件
 $ws->on('message', function ($ws, $frame) {
-    echo "  Request Message: {$frame->data}\n";
+    echo "Request Message: {$frame->data}, opcode:{$frame->opcode},fin:{$frame->finish}\n";
     $ws->push($frame->fd, "server response: {$frame->data}");
 });
 

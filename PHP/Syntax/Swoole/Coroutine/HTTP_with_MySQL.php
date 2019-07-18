@@ -7,12 +7,15 @@ $http->on('request', function ($request, $response) {
     $db->connect([
         'host' => '127.0.0.1',
         'port' => 3306,
-        'user' => 'user',
-        'password' => 'pass',
+        'user' => 'root',
+        'password' => '123456Ac&',
         'database' => 'test',
     ]);
-    $data = $db->query('select * from test_table');
+    $data = $db->query('select * from user');
     $response->end(json_encode($data));
+    $db->close();
 });
 
 $http->start();
+
+# http://127.0.0.1:9501
