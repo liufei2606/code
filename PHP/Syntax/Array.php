@@ -18,10 +18,8 @@ print_r(array_keys(['Name', '1' ], 1, true)); # []
 print_r(array_values($input_array));
 # 数组里是否有指定的键名或索引
 # isset() 对于数组中为 NULL 的值不会返回 TRUE
-print_r(array_key_exists('first', ['first' => 1, 'second' => 4]));
-# 返回 true|false
-in_array('Mac', ["Mac", "NT", "Irix", "Linux"], true); # true
-# 搜索给定的值，如果成功则返回首个相应的键名
+print_r(array_key_exists('first', ['first' => 1, 'second' => 4])); # 返回 true|false
+in_array('Mac', ["Mac", "NT", "Irix", "Linux"], true); # true  搜索给定的值，如果成功则返回首个相应的键名
 print_r(array_search('first', ['zero', 'first', 'second'])); # 1
 // print(array_reverse());
 # 随机取出一个或多个单元, 返回键值 用了伪随机数产生算法，所以不适合密码学场景
@@ -30,6 +28,7 @@ print_r(array_rand($array5, 2));
 shuffle($array5);
 print_r($array5);
 
+# 内部指针
 $array = array(
     'fruit1' => 'apple',
     'fruit2' => 'orange',
@@ -43,7 +42,6 @@ while ($fruit_name = current($array)) {
     next($array);
 }
 
-# 内部指针
 $transport = array('foot', 'bike', 'car', 'plane');
 $mode = current($transport); // $mode = 'foot';
 $mode = next($transport);    // $mode = 'bike';
@@ -135,7 +133,7 @@ $a = ['green', 'red', 'yellow'];
 $b = ['avacado', 'apple', 'banara'];
 print_r(array_combine($a, $b)); # [[green] => avacado [red] => apple [yellow] => banara]
 # 合并一个或多个数组
-# 相同的字符串键名，则该键名后面的值将覆盖前一个值
+# 相同的字符串键名，则后面的值将覆盖前一个值
 # 包含数字键名，后面的值将不会覆盖原来的值，而是附加到后面
 # 如果只给了一个索引数组或者结果包含 数字索引，则键名会以连续方式重新索引
 print_r(array_merge(['Name' => 'henry', 5 => 'Beijing'], ['Name' => 'Lily', 5 => 'Shanghai'])); # [ [Name] => Lily [0] => Beijing [1] => Shanghai]
@@ -162,10 +160,14 @@ $fruit = array_pop($stack);
 print_r($stack);# ['apple']
 print_r($fruit);# raspberry
 # 返回元素个数
-print_r(array_push($stack, 'orange', 'banana'));
-print_r($stack);
-// print_r(array_shift());
-// print_r(array_unshift());
+print(array_push($stack, 'orange', 'banana')); # 3
+print_r($stack); // [[0] => apple [1] => orange [2] => banana]
+# 数组开头的单元移出数组
+print(array_shift($stack)); // apple
+print_r($stack); // [[0] => orange [1] => banana]]
+# 在数组开头插入一个或多个单元
+print_r(array_unshift($stack, "orange", "pear")); # 4
+print_r($stack); # [ [0] => orange [1] => pear [2] => orange [3] => banana]
 print_r(array_product([2,4,5])); # 40
 
 
@@ -354,3 +356,9 @@ foreach ($arr as $k => $v) {
 }
 
 print_r($arr); # [1,2,4]
+
+$vehicles = ['car', 'truck', 'van', 'bus'];
+current($vehicles);
+next($vehicles);
+each($vehicles);
+echo current($vehicles);

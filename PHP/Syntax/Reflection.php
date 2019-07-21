@@ -55,13 +55,13 @@ class Circle
 }
 
 
-// $reflectionClass = new ReflectionClass(Circle::class);
-// var_dump($reflectionClass);
-// var_dump($reflectionClass->getConstants());
-// var_dump($reflectionClass->getProperties());
-// var_dump($reflectionClass->getMethods());
-// var_dump($reflectionClass->getConstructor());
-// var_dump($reflectionClass->getConstructor()->getParameters());
+$reflectionClass = new ReflectionClass(Circle::class);
+var_dump($reflectionClass);
+var_dump($reflectionClass->getConstants());
+var_dump($reflectionClass->getProperties());
+var_dump($reflectionClass->getMethods());
+var_dump($reflectionClass->getConstructor());
+var_dump($reflectionClass->getConstructor()->getParameters());
 
 //构建类的对象
 function make($className)

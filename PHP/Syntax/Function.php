@@ -26,3 +26,19 @@ $func = 'echoit';
 $func('test');  // This calls echoit()
 
 # 匿名函数
+
+$d = 10;
+function myFunction($d) {
+    echo $d;
+    ++$d;
+    echo $d;
+}
+
+myFunction($d++); # 传入10,传值， 作用域
+echo $d . PHP_EOL; # 11 作用域
+
+$f =7;
+function myFunction1(&$d) {
+    return $d++;
+}
+myFunction1($f);
