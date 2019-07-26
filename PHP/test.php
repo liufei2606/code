@@ -8,6 +8,8 @@
 //     echo 'User:' . $username . ', Password:'.$password.'<hr>';
 // }
 
+error_reporting(0);
+
 $arr = [1, 3, 5, 6];
 foreach ($arr as &$v) { }
 foreach ($arr as $v) { }
@@ -69,4 +71,16 @@ echo 'hello world' . '<br>';
 echo 'ｈｅｌｌｏ　ｗｏｒｌｄ' . ' length:' .strlen('ｈｅｌｌｏ　ｗｏｒｌｄ') . '<hr>';
 
 
-var_dump(spl_autoload_functions());
+// var_dump(spl_autoload_functions());
+
+var_dump(0+ "3+4+5");
+
+echo 8367 & 8192 . "\n";
+echo 8366 & 8192 . "\n";
+
+
+$a= 45;
+$b = $a;
+$b = 56;
+echo $a;
+echo $b;
