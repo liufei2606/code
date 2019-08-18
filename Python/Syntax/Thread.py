@@ -1,18 +1,20 @@
 #! usr/bin/env python
 
 import thread
-from time import sleep,ctime
+from time import sleep, ctime
 
-loops = [4,2]
+loops = [4, 2]
+
 
 def loop(nloop, nsec, lock):
-    print 'starting loop' , nloop, 'at:', ctime()
+    print('starting loop' + nloop, 'at:', ctime())
     sleep(nsec)
-    print 'ending loop' , nloop, 'done at:', ctime()
+    print('ending loop', nloop, 'done at:', ctime())
     lock.release()
 
+
 def main():
-    print 'starting at:', ctime()
+    print('starting at:', ctime())
     locks = []
     nloops = range(len(loops))
 
@@ -22,12 +24,14 @@ def main():
         locks.append(lock)
 
     for i in nloops:
-        thread.start_new_thread(loop, (i,loops[i], locks[i]))
+        thread.start_new_thread(loop, (i, loops[i], locks[i]))
 
     for i in nloops:
-        while locks[i].locked():pass
+        while locks[i].locked():
+            pass
 
-    print 'all DONE at:' , ctime()
+    print('all DONE at:' + ctime())
+
 
 if __name__ == '__main__':
-    main();
+    main()
