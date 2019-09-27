@@ -1,7 +1,7 @@
 <?php
 
-        $host = "127.0.0.1";
-        $port = 8009;
+$host = "127.0.0.1";
+$port = 8009;
 for ($index = 0; $index < 10; ++ $index) {
     $pid = pcntl_fork();
     if ($pid < 0) {

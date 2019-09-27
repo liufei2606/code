@@ -1,4 +1,5 @@
 <?php
+
 namespace Bar;
 
 include './declare.php';
@@ -8,13 +9,14 @@ include './declare.php';
 const FOO = 3;
 function foo()
 {
-	echo 'self funtion'. '<br>';
+    echo 'self funtion'. '<br>';
 }
+
 class foo
 {
     public static function staticmethod()
     {
-		echo 'self static method'. '<br>';
+        echo 'self static method'. '<br>';
     }
 }
 
@@ -22,7 +24,8 @@ class foo
 foo(); // 解析为 Foo\Bar\foo resolves to function Foo\Bar\foo
 foo::staticmethod(); // 解析为类 Foo\Bar\foo的静态方法staticmethod。resolves to class Foo\Bar\foo, method staticmethod
 echo FOO; // resolves to constant Foo\Bar\FOO
-echo namespace\FOO;
+
+// echo namespace\FOO;
 echo __NAMESPACE__ .'\FOO';
 echo '<br>';
 

@@ -11,15 +11,17 @@
 error_reporting(0);
 
 $arr = [1, 3, 5, 6];
-foreach ($arr as &$v) { }
-foreach ($arr as $v) { }
+foreach ($arr as &$v) {
+}
+foreach ($arr as $v) {
+}
 var_dump($arr);
 
 $array = array(
-	1    => "a",
-	"1"  => "b",
-	1.5  => "c",
-	true => "d",
+    1    => "a",
+    "1"  => "b",
+    1.5  => "c",
+    true => "d",
 );
 var_dump($array);
 ?>
@@ -31,12 +33,12 @@ setcookie("user", "Maxsu");
 
 <body>
 	<?php
-	if (!isset($_COOKIE["user"])) {
-		echo "Sorry, cookie is not found!";
-	} else {
-		echo "<br/>Cookie Value: " . $_COOKIE["user"];
-	}
-	?>
+    if (!isset($_COOKIE["user"])) {
+        echo "Sorry, cookie is not found!";
+    } else {
+        echo "<br/>Cookie Value: " . $_COOKIE["user"];
+    }
+    ?>
 </body>
 
 </html>
@@ -44,11 +46,11 @@ setcookie("user", "Maxsu");
 session_start();
 
 if (!isset($_SESSION['counter'])) {
-	$_SESSION['counter'] = 1;
+    $_SESSION['counter'] = 1;
 } else {
-	$_SESSION['counter']++;
+    $_SESSION['counter']++;
 }
-echo ("Page Views: " . $_SESSION['counter']);
+echo("Page Views: " . $_SESSION['counter']);
 var_dump(!empty($world));
 ?>
 

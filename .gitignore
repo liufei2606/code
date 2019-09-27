@@ -11,3 +11,7 @@ Go/bin
 /PHP/framework/runtime
 *.ipynb_checkpoints
 __pycache__/
+
+PHP/Syntax/debug.log
+files/certificate.pem
+files/key.pem

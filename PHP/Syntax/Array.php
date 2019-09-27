@@ -346,16 +346,15 @@ foreach ($arr as &$v) {
 unset($v);
 print_r($arr);
 
-$arr = [1,2,3];
-foreach ($arr as &$v) {
+$arr = ['a','b','c'];
+foreach ($arr as $k => &$v) {
     # code...
 }
-unset($v); # 引用赋值指针未消除，下轮生效
+print_r($arr); // ['a', 'b', 'c']
+// unset($v); # 引用赋值指针未消除，下轮生效
 foreach ($arr as $k => $v) {
-    $v = 4;
 }
-
-print_r($arr); # [1,2,4]
+print_r($arr); # ['a', 'b', 'b']
 
 $vehicles = ['car', 'truck', 'van', 'bus'];
 current($vehicles);

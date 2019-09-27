@@ -1,9 +1,11 @@
 <?php
 
 $autoload = dirname(__DIR__) . DIRECTORY_SEPARATOR . "../vendor/autoload.php";
-if(file_exists($autoload)){
+
+if (file_exists($autoload)) {
     include_once $autoload;
 }
+
 class PHPTest extends \PHPUnit\Framework\TestCase
 {
     public function testRun()
@@ -20,9 +22,10 @@ class PHPTest extends \PHPUnit\Framework\TestCase
         }
     }
 
-    public function testMock(){
+    public function testMock()
+    {
         $stub = $this->createMock(\App\UserService::class);
         $stub->method('get')->willReturn(3);
-        $this->assertEquals(3,$stub->get(1));
+        $this->assertEquals(3, $stub->get(1));
     }
 }

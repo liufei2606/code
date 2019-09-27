@@ -1,45 +1,57 @@
 <?php
 
-class Base {
-    public function __construct() {
+class Base
+{
+    public function __construct()
+    {
         echo "Base constructor!", PHP_EOL;
     }
 
-    public static function getSelf() {
+    public static function getSelf()
+    {
         return new self();
     }
 
-    public static function getInstance() {
+    public static function getInstance()
+    {
         return new static();
     }
 
-    public function selfFoo() {
+    public function selfFoo()
+    {
         return self::foo();
     }
 
-    public function staticFoo() {
+    public function staticFoo()
+    {
         return static::foo();
     }
 
-    public function thisFoo() {
+    public function thisFoo()
+    {
         return $this->foo();
     }
 
-    public function foo() {
+    public function foo()
+    {
         echo  "Base Foo!", PHP_EOL;
     }
 }
 
-class Child extends Base {
-    public function __construct() {
+class Child extends Base
+{
+    public function __construct()
+    {
         echo "Child constructor!", PHP_EOL;
     }
 
-    public function foo() {
+    public function foo()
+    {
         echo "Child Foo!", PHP_EOL;
     }
 
-    public function selfFoo() {
+    public function selfFoo()
+    {
         return self::foo();
     }
 }
