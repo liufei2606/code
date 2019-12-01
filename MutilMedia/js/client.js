@@ -1,7 +1,12 @@
 'use strict';
 
 const mediaStreamContrains = {
-    video: true
+    video: {
+        width: 1280,
+        height: 720,
+        frameRate: 15,
+    },
+    audio: false
 };
 
 const localVideo = document.querySelector('video');
@@ -19,7 +24,6 @@ if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
     // return;
 }
 
-
 // 枚举 cameras and microphones.
 navigator.mediaDevices.enumerateDevices()
     .then(function(deviceInfos) {
@@ -36,4 +40,26 @@ navigator.mediaDevices.getUserMedia(mediaStreamContrains).then(
     getLocalMediaStream
 ).catch(
     handleLocalMediaStreamError
-)
+);
+
+var picture = document.querySelector('canvas#picture');
+picture.width = 640;
+picture.height = 480;
+
+picture.getContext('2d').drawImage(localVideo, 0, 0, picture.width, picture.height);
+
+function downLoad(url) {
+    var oA = document.createElement("a");
+    oA.download = 'photo';
+    oA.href = url;
+    document.body.appendChild(oA);
+    oA.click();
+    oA.remove();
+}
+
+document.querySelector("button#save").onclick = function() {
+    downLoad(picture.toDataURL("image/jpeg"));
+}
+
+var filtersSelect = document.querySelector('select#filter');
+picture.className = filtersSelect.value;
