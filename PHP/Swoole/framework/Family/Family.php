@@ -4,25 +4,62 @@ namespace Family;
 
 use Family\Core\Config;
 use Family\Core\Route;
+use Family\Core\Log;
 use Swoole;
 
 class Family
 {
+    /**
+     * @var 根目录
+     */
+    public static $rootPath;
+    /**
+     * @var 框架目录
+     */
+    public static $frameworkPath;
+    /**
+     * @var 程序目录
+     */
+    public static $applicationPath;
 
     final public static function run()
     {
+        if (!defined('DS')) {
+            define('DS', DIRECTORY_SEPARATOR);
+        }
+        self::$rootPath = dirname(dirname(__DIR__));
+        self::$frameworkPath = self::$rootPath . DS . 'framework';
+        self::$applicationPath = self::$rootPath . DS . 'application';
+
         //先注册自动加载
         \spl_autoload_register(__CLASS__ . '::autoLoader');
         //加载配置
         Config::load();
+        //日志初始化
+        Log::init();
 
         $http = new Swoole\Http\Server(Config::get('host'), Config::get('port'));
         $http->set([
             "worker_num" => Config::get('worker_num'),
         ]);
         $http->on('request', function ($request, $response) {
-            $result = Route::dispatch($request->server['path_info']);
-            $response->end($result);
+            try {
+                //自动路由
+                $result = Route::dispatch(
+                    $request->server['path_info']
+                );
+                $response->end($result);
+            } catch (\Exception $e) { //程序异常
+                Log::alert($e->getMessage(), $e->getTrace());
+
+                $response->end($e->getMessage());
+            } catch (\Error $e) { //程序错误，如fatal error
+                Log::alert($e->getMessage(), $e->getTrace());
+                $response->status(500);
+            } catch (\Throwable $e) {  //兜底
+                Log::alert($e->getMessage(), $e->getTrace());
+                $response->status(500);
+            }
         });
         $http->start();
     }

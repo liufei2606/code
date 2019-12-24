@@ -1,6 +1,8 @@
 <?php
 namespace Family\Core;
 
+use Family\Family;
+
 class Config
 {
 
@@ -14,8 +16,8 @@ class Config
      */
     public static function load()
     {
-        $configPath = dirname(dirname(__DIR__)) . '/../'. DIRECTORY_SEPARATOR . 'application' . DIRECTORY_SEPARATOR . 'config';
-        self::$configMap = require $configPath . DIRECTORY_SEPARATOR . 'default.php';
+        $configPath = Family::$applicationPath . DS . 'config';
+        self::$configMap = require $configPath . DS . 'default.php';
     }
 
     /**
