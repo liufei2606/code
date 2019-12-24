@@ -1,35 +1,34 @@
 #!/bin/bash
 
 #--------------------------------------------
-# 这是一个注释
-# author：菜鸟教程
-# site：www.runoob.com
-# slogan：学的不仅是技术，更是梦想！
+# 注释
+# author：henry
 #--------------------------------------------
+
 ##### 用户配置区 开始 #####
 #
 #
-# 这里可以添加脚本描述信息
+# 脚本描述信息
 #
 #
 ##### 用户配置区 结束  #####
 
-
 # string
-echo "Hello World!"
+echo "Print string:Hello World!"
 
 # variable
 your_name='Henry'
-echo "Variable: "$your_name
-echo "Variable: "${your_name}
+echo "Print Variable: "$your_name . ${your_name}
 
 # for-loop
 for skill in Ada Coffe Action Java; do
     echo "I am good at ${skill} Script"
 done
 
-# list folder's file
-for file in `ls /home/henry`; do
+# list folder's files
+directory=`cd $(dirname $0); pwd -P`;
+echo "List current directory:"
+for file in `ls $directory`; do
   echo $file;
 done;
 

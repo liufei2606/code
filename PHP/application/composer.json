@@ -1,0 +1,26 @@
+{
+    "name": "henry/framework",
+    "description": "A simple framework",
+    "type": "framework",
+    "authors": [{
+        "name": "Henryli",
+        "email": "liboming88@yeah.net"
+    }],
+    "require": {
+        "mongodb/mongodb": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "sf\\": "src/",
+            "app\\": ""
+        }
+    },
+    "repositories": [{
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        },
+        {
+            "packagist": false
+        }
+    ]
+}

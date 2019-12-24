@@ -1,0 +1,3 @@
+2019 7 26, 11:19 am||%channel||WARNING||Foo||[]||[]
+2019 7 26, 11:19 am||%channel||ERROR||a new user||{"username":"daydaygo"}||[]
+2019 7 26, 11:19 am||%channel||ALERT||czl||[]||{"memory_peak_usage":"2 MB","dummy":"hello"}
