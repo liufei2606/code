@@ -2,10 +2,12 @@
 //path framework/Family/Family.php
 namespace Family;
 
+use Swoole;
 use Family\Core\Config;
 use Family\Core\Route;
 use Family\Core\Log;
-use Swoole;
+use Family\Coroutine\Coroutine;
+use Family\Coroutine\Context;
 
 class Family
 {
@@ -44,6 +46,18 @@ class Family
         ]);
         $http->on('request', function ($request, $response) {
             try {
+                //初始化根协程ID
+                $coId = Coroutine::setBaseId();
+                //初始化上下文
+                $context = new Context($request, $response);
+                //存放容器pool
+                Pool\Context::set($context);
+                //协程退出，自动清空
+                defer(function () use ($coId) {
+                    //清空当前pool的上下文，释放资源
+                    Pool\Context::clear($coId);
+                });
+
                 //自动路由
                 $result = Route::dispatch(
                     $request->server['path_info']
@@ -51,7 +65,6 @@ class Family
                 $response->end($result);
             } catch (\Exception $e) { //程序异常
                 Log::alert($e->getMessage(), $e->getTrace());
-
                 $response->end($e->getMessage());
             } catch (\Error $e) { //程序错误，如fatal error
                 Log::alert($e->getMessage(), $e->getTrace());
