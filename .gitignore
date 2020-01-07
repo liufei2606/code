@@ -16,3 +16,4 @@ PHP/Syntax/debug.log
 files/certificate.pem
 files/key.pem
 Docker/jenkins
+pkg/
