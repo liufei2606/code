@@ -2,7 +2,8 @@
 
 //创建Server对象，监听 127.0.0.1:9501端口
 $serv = new swoole_server("127.0.0.1", 9501);
-// ps aft | grep TCP_server.php
+// ps -ef | grep TCP_server.php
+// netstat -an | grep 端口
 $serv->set([
     'worker_num' => 8, // worker  cpu * 1-4
     'max_request' => 10000

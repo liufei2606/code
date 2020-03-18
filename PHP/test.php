@@ -86,3 +86,22 @@ $b = $a;
 $b = 56;
 echo $a;
 echo $b;
+
+preg_match("/[0-9a-zA-Z]*/", "http://www.baidu.com", $match);
+var_dump($match);
+
+$a =1;$b =2;$c =3;
+function add()
+{
+    $d = 4;
+    $c += isset($a) ? 0 : $a++;
+    if ($c > 3) {
+        $d++;
+    }
+    echo $a;
+    return $d;
+}
+$d =add();
+$x = $a++ + ++$b;
+$y = --$c + $d--;
+echo $x . '_' .$y;

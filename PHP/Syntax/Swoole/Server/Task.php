@@ -1,6 +1,6 @@
 <?php
 
-class Server
+class Task
 {
     private $serv;
 
@@ -90,4 +90,4 @@ class Server
     }
 }
 
-$server = new Server();
+$server = new Task();

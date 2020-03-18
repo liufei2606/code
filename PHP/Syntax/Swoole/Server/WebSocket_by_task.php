@@ -1,6 +1,6 @@
 <?php
 
-class Server
+class WebSocket
 {
     private $serv;
 
@@ -93,4 +93,4 @@ class Server
         echo "########" . PHP_EOL . PHP_EOL;
     }
 }
-$server = new Server();
+$server = new WebSocket();

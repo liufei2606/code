@@ -1,7 +1,7 @@
 <?php
 use Swoole\Coroutine as co;
 
-class HttpServer
+class Http
 {
     private $server;
 
@@ -20,9 +20,7 @@ class HttpServer
         $this->server->on('WorkerStart', [$this, 'onWorkerStart']);
         $this->server->on('ManagerStart', [$this, 'onManagerStart']);
         $this->server->on('Start', [$this, 'onStart']);
-
         $this->server->on("Request", [$this, 'onRequest']);
-
         $this->server->on('Receive', function ($serv, $fd, $from_id, $data) {
         });
         $this->server->on('Task', function ($serv, $task) {
@@ -89,6 +87,8 @@ class HttpServer
         co::writeFile(__DIR__ . '/access.log', json_encode($content), FILE_APPEND);
 
         if ($path_info == '/favicon.ico' || $server['request_uri'] == '/favicon.ico') {
+            $response->end();
+            return;
         }
 
         $controller = 'index';
@@ -108,6 +108,8 @@ class HttpServer
             }
             $controller = (isset($path_info[1]) && !empty($path_info[1])) ? $path_info[1] : $controller;
             $method = (isset($path_info[2]) && !empty($path_info[2])) ? $path_info[2] : $method;
+
+            // list($controller, $action) = explode('/', trim($request->server['request_uri'], '/'));
         }
         // $response->get()|post()|cookie()
         $result = "class 不存在";
@@ -116,6 +118,8 @@ class HttpServer
             $result = "method 不存在";
             if (method_exists($controller, $method)) {
                 $result = $class->$method($request);
+                //根据 $controller, $action 映射到不同的控制器类和方法
+            // (new $controller)->$action($request, $response);
             }
         }
 
@@ -123,7 +127,7 @@ class HttpServer
     }
 }
 
-$server = new HttpServer();
+$server = new Http();
 
 // curl
 // browser
