@@ -2,7 +2,6 @@
 
 # 将大值冒泡到最后
 # 针对所有的元素重复以上的步骤，除了后面已经排序的 持续每次对越来越少的元素重复上面的步骤
-
 function bubbleSort($arr)
 {
     $len = count($arr);
@@ -57,3 +56,5 @@ function insertionSort($arr)
     }
     return $arr;
 }
+
+var_dump(bubbleSort([45,67,89,34]));
