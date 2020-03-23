@@ -1,0 +1,67 @@
+version: '2.2'
+
+services:
+  zoo1:
+    image: zookeeper
+    restart: always
+    hostname: zoo1
+    container_name: zoo1
+    privileged: true
+    ports:
+      - 2181:2181
+    volumes: # 挂载数据卷
+      - ./zoo1/data:/data
+      - ./zoo1/datalog:/datalog
+    environment:
+      TZ: Asia/Shanghai
+      ZOO_MY_ID: 1
+      ZOO_PORT: 2181
+      ZOO_SERVERS: server.1=0.0.0.0:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=zoo3:2888:3888;2181
+    networks:
+      default:
+        # ipv4_address: 172.23.0.12
+
+  zoo2:
+    image: zookeeper
+    restart: always
+    hostname: zoo2
+    container_name: zoo2
+    privileged: true
+    ports:
+      - 2182:2181
+    volumes: # 挂载数据卷
+      - ./zoo2/data:/data
+      - ./zoo2/datalog:/datalog
+    environment:
+      TZ: Asia/Shanghai
+      ZOO_MY_ID: 2
+      ZOO_PORT: 2182
+      ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=0.0.0.0:2888:3888;2181 server.3=zoo3:2888:3888;2181
+    networks:
+      default:
+        # ipv4_address: 172.23.0.12
+
+  zoo3:
+    image: zookeeper
+    restart: always
+    hostname: zoo3
+    container_name: zoo3
+    privileged: true
+    ports:
+      - 2183:2181
+    volumes: # 挂载数据卷
+      - ./zoo3/data:/data
+      - ./zoo3/datalog:/datalog
+    environment:
+      TZ: Asia/Shanghai
+      ZOO_PORT: 2183
+      ZOO_MY_ID: 3
+      ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=0.0.0.0:2888:3888;2181
+    networks:
+      default:
+        # ipv4_address: 172.23.0.12
+
+networks:
+  default:
+    external:
+      name: zoo_kafka
