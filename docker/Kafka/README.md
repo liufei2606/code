@@ -1,17 +1,5 @@
 
-zoo2 172.19.0.2
-zoo1 172.19.0.4,
-zoo3 172.19.0.3
-broker3 172.19.0.5
-broker2 172.19.0.7
-broker1 172.19.0.6
-
 ```
-kafka-topics.sh --create --topic test --zookeeper 172.19.0.2:2181/kafka --replication-factor 1 --partitions 2
-
-./bin/kafka-topics.sh --create --zookeeper zoo2:2181 --replication-factor 1 --partitions 1 --topic test
-
-
 ## 单体
 docker run -d --name zookeeper -p 2181:2181  zookeeper
 
@@ -67,4 +55,18 @@ kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic sun --from-b
 kafka-topics.sh --create --zookeeper 192.168.1.6:2181/kafka --topic topic-test1 --replication-factor 1 --partitions 2
 
 kafka-topics.sh --delete --zookeeper 192.168.1.6:2181/kafka --topic sun
+```
+
+## compose
+
+```sh
+zoo2 172.19.0.2
+zoo1 172.19.0.4,
+zoo3 172.19.0.3
+broker3 172.19.0.5
+broker2 172.19.0.7
+broker1 172.19.0.6
+
+
+docker-compose up -d
 ```

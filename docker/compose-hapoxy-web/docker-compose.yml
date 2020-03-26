@@ -1,5 +1,4 @@
 # This will start a haproxy and three web services. haproxy will act as a loadbalancer.
-# Authors: yeasy.github.com
 # Date: 2015-11-15
 
 weba:

@@ -12,6 +12,7 @@ services:
     volumes: # 挂载数据卷
       - ./zoo1/data:/data
       - ./zoo1/datalog:/datalog
+    #   - ./zoo1/zoo.cfg:/conf/zoo.cfg # 配置文件 会覆盖 environment
     environment:
       TZ: Asia/Shanghai
       ZOO_MY_ID: 1
@@ -32,6 +33,7 @@ services:
     volumes: # 挂载数据卷
       - ./zoo2/data:/data
       - ./zoo2/datalog:/datalog
+    #   - ./zoo2/zoo.cfg:/conf/zoo.cfg
     environment:
       TZ: Asia/Shanghai
       ZOO_MY_ID: 2
@@ -52,6 +54,7 @@ services:
     volumes: # 挂载数据卷
       - ./zoo3/data:/data
       - ./zoo3/datalog:/datalog
+    #   - ./zoo3/zoo.cfg:/conf/zoo.cfg
     environment:
       TZ: Asia/Shanghai
       ZOO_PORT: 2183
