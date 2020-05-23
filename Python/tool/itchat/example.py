@@ -1,4 +1,4 @@
-from itchat import itchat
+from tool.itchat import itchat
 
 itchat.auto_login()
 
