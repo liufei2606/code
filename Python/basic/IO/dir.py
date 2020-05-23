@@ -7,7 +7,7 @@ print(os.environ)
 print(os.environ.get('PATH'))
 
 # 目录
-basepath = os.path.abspath('.')
+basepath = os.path.abspath('')
 realPath = os.path.join(basepath, 'testdir')
 
 
@@ -25,6 +25,6 @@ print(os.path.splitext(realPath))
 os.rename('test.txt', 'test.py')
 os.remove('test.py')
 
-print([x for x in os.listdir('../') if os.path.isdir(x)])
-print([x for x in os.listdir('.') if os.path.isfile(
+print([x for x in os.listdir('../../Syntax/') if os.path.isdir(x)])
+print([x for x in os.listdir('') if os.path.isfile(
     x) and os.path.splitext(x)[1] == '.py'])
