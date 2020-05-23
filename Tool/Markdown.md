@@ -12,7 +12,7 @@ You can use builtin [python-markdown][10] parser or use the [github markdown API
 
 **LINUX users:** If you want to use GitHub API for conversion, you'll need to have a custom Python install that includes python-ssl as its not built in the Sublime Text 2 Linux package. see [@dusteye comment][8]. If you use a custom window manager, also be sure to set a `BROWSER` environment variable. see [@PPvG comments][9]
 
-## Features :
+## Features
 
 - Markdown preview using the [Python-markdown][10] or the Github API just choose select the build commands.
 - Syntax highlighting via Pygments. See "[Configuring Pygments](#configuring-pygments)" for more info.
@@ -34,9 +34,9 @@ You can use builtin [python-markdown][10] parser or use the [github markdown API
 
   . | | tasklist | Github Flavored Markdown tasklists ([Tasklist Documentation](http://facelessuser.github.io/pymdown-extensions/extensions/tasklist/)). | | githubemoji | Support for Github Flavored Markdown emojis ([GithubEmoji Documentation](http://facelessuser.github.io/pymdown-extensions/extensions/githubemoji/)). | | headeranchor | Github Flavored Markdown style header anchors ([HeaderAnchor Documentation](http://facelessuser.github.io/pymdown-extensions/extensions/headeranchor/)). | | github | A convenience extension to add: `magiclink`, `delete`, `tasklist`, `githubemoji`, `headeranchor`, `superfences`, and `nl2br` to parse and display Markdown in a github-ish way. It is recommed to pair `github` with `extra` and `codehilite` (with language guessing off) to parse close to github's way. Be aware of what extensions `github` loads, because you should not load extensions more than once. | | progressbar | Create progress bars ([ProgressBar Documentation](http://facelessuser.github.io/pymdown-extensions/extensions/progressbar/)). | | superfences | Allow fenced blocks to be nested under lists, blockquotes, etc. and add special UML diagram blocks ([SuperFences Documentation](http://facelessuser.github.io/pymdown-extensions/extensions/superfences/)). |
 
-  ## Installation :
+## Installation
 
-  ### Using [Package Control][3] (_Recommended_)
+### Using [Package Control][3] (_Recommended_)
 
   For all Sublime Text 2/3 users we recommend install via [Package Control][3].
 
@@ -56,16 +56,16 @@ You can use builtin [python-markdown][10] parser or use the [github markdown API
      then `Package Control: Install Package`
   3. Look for `Markdown Preview` and install it.
 
-  ### Manual Install
+### Manual Install
 
   1. Click the `Preferences > Browse Packages…` menu
   2. Browse up a folder and then into the `Installed Packages/` folder
   3. Download [zip package][12] rename it to `Markdown Preview.sublime-package` and copy it into the `Installed Packages/` directory
   4. Restart Sublime Text
 
-  ## Usage :
+## Usage
 
-  ### To preview :
+### To preview
 
 - optionally select some of your markdown for conversion
 
@@ -90,7 +90,7 @@ You can use builtin [python-markdown][10] parser or use the [github markdown API
 
 - or bind some key in your user key binding, using a line like this one: `{ "keys": ["alt+m"], "command": "markdown_preview", "args": {"target": "browser", "parser":"markdown"} },` for a specific parser and target or `{ "keys": ["alt+m"], "command": "markdown_preview_select", "args": {"target": "browser"} },` to bring up the quick panel to select enabled parsers for a given target.
 
-  ### Live Reload
+### Live Reload
 
   To get live updates while editing a file after preview, you need to do the following:
 
@@ -103,23 +103,23 @@ You can use builtin [python-markdown][10] parser or use the [github markdown API
 
   You don't need to enable `Simple Reload` on every file. Once is enough. New files should auto-reload when you open them in the browser.
 
-  ### Enabling Other External Markdown Parsers :
+### Enabling Other External Markdown Parsers :
 
   External parser commands and arguments should first be mapped to a name. The path to the binary should be first, followed by flags etc.
 
-  ```javascript
-   "markdown_binary_map": {
-       "multimarkdown": ["/usr/local/bin/multimarkdown"]
-   },
-  ```
+```javascript
+"markdown_binary_map": {
+    "multimarkdown": ["/usr/local/bin/multimarkdown"]
+},
+```
 
   Then the name can be placed in `enabled_parsers` to enable use of the new parser.
 
-  ```javascript
-   "enabled_parsers": ["markdown", "github", "multimarkdown"],
-  ```
+```javascript
+"enabled_parsers": ["markdown", "github", "multimarkdown"],
+```
 
-  ### To build :
+### To build :
 
 - Just use
 
@@ -139,7 +139,7 @@ You can use builtin [python-markdown][10] parser or use the [github markdown API
 
    (Mac) to build current file.
 
-  ### To config :
+### To config :
 
   Using Sublime Text menu: `Preferences`->`Package Settings`->`Markdown Preview`
 
@@ -162,11 +162,11 @@ You can use builtin [python-markdown][10] parser or use the [github markdown API
 
   When the `meta` extension is enabled (<https://pythonhosted.org/Markdown/extensions/meta_data.html>), the results will be written to the HTML head in the form `<meta name="key" content="value1,value2">`. `title` is the one exception, and its content will be written to the title tag in the HTML head.
 
-  ### YAML Frontmatter Support
+### YAML Frontmatter Support
 
   YAML frontmatter can be stripped out and read when `strip_yaml_front_matter` is set to `true` in the settings file. In general the, the fronmatter is handled the same as [meta data](#meta-data-support), but if both exist in a file, the YAML keys will override the `meta` extension keys. There are a few special keys names that won't be handled as html meta data.
 
-  #### Special YAML Key Names
+#### Special YAML Key Names
 
   Yaml frontmatter has a few special key names that are used that will not be handled as meta data:
 
@@ -175,7 +175,7 @@ You can use builtin [python-markdown][10] parser or use the [github markdown API
   - **destination**: This is an absolute file path or relative file path for when the markdown is saved to html via the build command or the `Save to HTML` command. Relative paths first use the source file's directory, and if the file cannot be found, it will use the `basepath` setting.
   - **settings**: This is a dictionary where you can override settings that are in the settings file.
 
-  #### Example
+#### Example
 
   ```yaml
   ---
@@ -220,7 +220,7 @@ You can use builtin [python-markdown][10] parser or use the [github markdown API
    "github_oauth_token": "secret"
   ```
 
-  #### Offline :
+#### Offline
 
   By default almost all extensions are enabled to help with the github feel, but there are some tweaks needed to get the full experience.
 
@@ -241,12 +241,12 @@ As mentioned earlier, almost all extensions are enabled by default, but as a ref
 
 This may be further enhanced in the future.
 
-## Support :
+## Support
 
 - Any bugs about Markdown Preview please feel free to report [here][issue].
 - And you are welcome to fork and submit pull requests.
 
-## License :
+## License
 
 The code is available at github [project][home] under [MIT license][4].
 

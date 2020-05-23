@@ -51,6 +51,10 @@ cd /opt/kafka_2.11-2.0.0/bin/
 kafka-topics.sh --create --topic test1 --zookeeper 192.168.1.6:2181/kafka --replication-factor 2 --partitions 2 # 创建
 kafka-topics.sh --describe --zookeeper 192.168.1.6:2181/kafka --topic test1 # 查看
 
+Topic: test1	PartitionCount: 2	ReplicationFactor: 2	Configs: 
+	Topic: test1	Partition: 0	Leader: 1	Replicas: 1,0	Isr: 1,0
+	Topic: test1	Partition: 1	Leader: 0	Replicas: 0,1	Isr: 0
+
 docker stop kafka (one)
 
 kafka-topics.sh --describe --zookeeper 192.168.1.6:2181/kafka --topic test1 # 两个分区对应的节点都指向了BROKER_ID=0，实现了高可用
