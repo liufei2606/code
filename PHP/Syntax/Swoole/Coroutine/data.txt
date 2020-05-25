@@ -1,7 +1,0 @@
-hello swoole! 
-hello swoole! 
-hello swoole! 
-hello swoole! 
-hello swoole! 
-hello swoole! 
-hello swoole! 

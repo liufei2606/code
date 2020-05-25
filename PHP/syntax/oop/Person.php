@@ -13,19 +13,19 @@ class Person
 
     private $age;
 
-    public $sex;
+    public $gender;
 
 
     /**
      * Person constructor.
      *
-     * @param $name
+     * @param $job
      * @param $age
      * @param $sex
      */
-    public function __construct($name, $age = 18, $sex = 'Male')
+    public function __construct($job, $age = 18, $sex = 'Male')
     {
-        $this->name = $name;
+        $this->job = $job;
         $this->age = $age;
         $this->sex = $sex;
 
@@ -53,7 +53,7 @@ class Person
 
     public function say()
     {
-        echo 'Name：'.$this->name.',Sex：'.$this->sex.',Age：'.$this->age.";\n";
+        echo 'Job：'.$this->job.',Sex：'.$this->sex.',Age：'.$this->age.";\n";
     }
 
 
@@ -68,27 +68,27 @@ class Person
 
     public function __destruct()
     {
-        echo 'Well, my name is '.$this->name."\n";
+        echo 'Well, my job is '.$this->job."\n";
     }
 
 
 }
 
-if (class_exists('Person')) {
-    echo 'class Person exists.'.PHP_EOL;
-    printf('%s%s', Person::NATIONNATITLTY, PHP_EOL);
-
-    $person = new Person('John');
-    $person->setAge(22);
-    $person->say();
-
-    $person->run('teacher');
-    $person->eat('John', 'apple');
-    unset($person);
-} else {
-    echo 'class Person not exists.'.PHP_EOL;
-}
-
-$obj = (object) ['1' => 'foo'];
-var_dump(isset($obj->{'1'}));
-var_dump(key($obj));
+//if (class_exists('Person')) {
+//    echo 'class Person exists.'.PHP_EOL;
+//    printf('%s%s', Person::NATIONNATITLTY, PHP_EOL);
+//
+//    $person = new Person('John');
+//    $person->setAge(22);
+//    $person->say();
+//
+//    $person->run('teacher');
+//    $person->eat('John', 'apple');
+//    unset($person);
+//} else {
+//    echo 'class Person not exists.'.PHP_EOL;
+//}
+//
+//$obj = (object) ['1' => 'foo'];
+//var_dump(isset($obj->{'1'}));
+//var_dump(key($obj));
