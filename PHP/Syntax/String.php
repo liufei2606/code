@@ -1,17 +1,24 @@
 <?php
 
+# 单引号字符串中引用变量不会对变量值进行解析
+# 双引号，会对引用变量值进行解析
+$name = "Laravel";
+if (is_string($name)) {
+    echo '$name 是字符串'.PHP_EOL;
+}
+
 // echo  print echo 最主要的区别： print 仅支持一个参数，并总是返回 1
 
 // flush() - 刷新输出缓冲
 
-echo lcfirst('HELLO world') .PHP_EOL; // 第一个字母小写的 str
-echo ucfirst('hello world') .PHP_EOL; // 将字符串的首字母转换为大写
-echo strtolower("HELLO WOLda") .PHP_EOL; // 将字符串转化为小写
-echo strtoupper("hekdaf sdfa") .PHP_EOL; // 将字符串转化为大写
-echo ucwords("hello world") .PHP_EOL; // 将字符串中每个单词的首字母转换为大写
-echo strrev("Hello world!") . PHP_EOL; // "!dlrow olleH" 反转字符串
+echo lcfirst('HELLO world').PHP_EOL; // 第一个字母小写的 str
+echo ucfirst('hello world').PHP_EOL; // 将字符串的首字母转换为大写
+echo strtolower("HELLO WOLda").PHP_EOL; // 将字符串转化为小写
+echo strtoupper("hekdaf sdfa").PHP_EOL; // 将字符串转化为大写
+echo ucwords("hello world").PHP_EOL; // 将字符串中每个单词的首字母转换为大写
+echo strrev("Hello world!").PHP_EOL; // "!dlrow olleH" 反转字符串
 // mb_strtolower() // 使字符串小写
-echo str_shuffle("hello world") .PHP_EOL;
+echo str_shuffle("hello world").PHP_EOL;
 echo strtr("Where $%?", ['%' => '2', '$' => 'f', '?' => 8]).PHP_EOL; //  转换指定字符
 echo strtr("Where $%?", "%$?", "aao").PHP_EOL;  //  转换指定字符
 // echo  quoted_printable_encode('P') . PHP_EOL; //  将 quoted-printable 字符串转换为 8-bit 字符串

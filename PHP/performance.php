@@ -1,5 +1,4 @@
 <?php
-    //dog_naive.php
 
 class dog
 {
@@ -14,8 +13,9 @@ class dog
     }
 }
 
+# Getter/Setter方式 vs 存取变量方式:前者比后者打一个数量级
 $rover = new dog();
-        //通过Getter/Setter方式
+
 for ($x = 0; $x < 10; $x++) {
     $t = microtime(true);
     for ($i = 0; $i < 1000000; $i++) {
@@ -25,7 +25,7 @@ for ($x = 0; $x < 10; $x++) {
     echo microtime(true) - $t;
     echo "\n";
 }
-        //直接存取变量方式
+//直接
 for ($x = 0; $x < 10; $x++) {
     $t = microtime(true);
     for ($i = 0; $i < 1000000; $i++) {

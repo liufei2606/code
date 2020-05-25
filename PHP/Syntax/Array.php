@@ -1,6 +1,21 @@
 <?php
 
-"############## array ################" . PHP_EOL;
+# 可以包含任何数据类型，支持无限扩容
+# 将传统数组和字典类型合二为一, 底层通过哈希表实现数组功能
+# 传统的数组对应的是索引数组
+$fruits = [];
+$fruits[] = 'Apple';
+$fruits[] = 'Orange';
+$fruits[] = 'Pear';
+
+$fruits[2] = 'Banana';
+print($fruits[0].PHP_EOL);
+unser($fruits[1]);
+
+# 字典类型对应的是关联数组
+
+
+"############## array ################".PHP_EOL;
 // 所有键名改为全小写或大写。本函数不改变数字索引
 // 如果输入值（array）不是一个数组，就会抛出一个错误警告（E_WARNING）
 
@@ -15,6 +30,7 @@ print_r(array_flip($input_array)); # [ [1] => FirSt [4] => SecOnd]
 print_r($input_array);
 # 获取指定value 的 key，第三个参数是否严格比较
 print_r(array_keys(['Name', '1' ], 1, true)); # []
+# 获得重新编排索引的新数组
 print_r(array_values($input_array));
 # 数组里是否有指定的键名或索引
 # isset() 对于数组中为 NULL 的值不会返回 TRUE
