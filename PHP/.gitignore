@@ -1,2 +1,3 @@
 logs/*
 .php_cs.cache
+syntax/debug.log
