@@ -1,24 +1,40 @@
 <?php
 
-class A
+class Car
 {
-    public static function who()
+    public static $WHEELS = 4;
+
+    public static function getWheels()
     {
-        echo __CLASS__;
+        return self::$WHEELS;
     }
+
+    public static function getClass()
+    {
+        echo static::class.PHP_EOL;
+    }
+
     public static function test()
     {
-        // self::who();
-        static::who();
+        # 后期静态绑定
+        self::getLine();
+        static::getLine();
     }
-}
 
-class B extends A
-{
-    public static function who()
+    public function getLine()
     {
-        echo __CLASS__;
+        echo __LINE__.PHP_EOL;
     }
 }
 
-B::test();
+class Benz extends Car
+{
+
+    public function getLine()
+    {
+        echo __LINE__.PHP_EOL;
+    }
+}
+
+Benz::test();
+Benz::getClass();
