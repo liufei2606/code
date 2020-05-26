@@ -4,9 +4,11 @@
 abstract class BaseCar implements CarContract
 {
     protected $brand;
+    protected $power;
 
-    public function __construct($brand)
+    public function __construct(Power $power, $brand)
     {
+        $this->power = $power;
         $this->brand = $brand;
     }
 

@@ -1,7 +1,7 @@
 <?php
 
 include 'Person.php';
-
+## 抽象 继承 多态
 class Worker extends Person
 {
     private $factory = 'Audi manufacture';
@@ -15,12 +15,13 @@ class Worker extends Person
         parent::__construct($this->job, $age, $gender);
     }
 
-    public function work()
+    public function work(): void
     {
         echo "Call custom prop \$factory: ".$this->factory.PHP_EOL;
         echo "This is a custom method in Worker Class".PHP_EOL;
     }
 
+    # 继承与多态
     public function say()
     {
         echo "I'm a worker \n";

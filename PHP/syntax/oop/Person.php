@@ -14,8 +14,7 @@ class Person
     private $age;
 
     public $gender;
-
-
+    
     /**
      * Person constructor.
      *
