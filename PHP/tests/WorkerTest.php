@@ -3,7 +3,7 @@
 
 use PHPUnit\Framework\TestCase;
 
-class TestWorker extends TestCase
+class WorkerTest extends TestCase
 {
 
     public function testSay(Person $person)
@@ -20,6 +20,6 @@ class TestWorker extends TestCase
 $docter = new Person('docter');
 
 $worker = new Worker();
-$test = new TestWorker();
+$test = new WorkerTest();
 $test->testSay($docter);
 $test->testWorkerSay($worker);

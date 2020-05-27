@@ -1,6 +1,6 @@
 <?php
 
-
+namespace syntax\oop;
 trait Component
 {
     use PowerTrait, Engine {

@@ -2,8 +2,8 @@
 package main
 
 import (
-"flag"
-"3_2/lib"
+	"flag"
+	"go-core/3_2/lib"
 )
 
 var name string

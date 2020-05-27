@@ -1,5 +1,6 @@
 <?php
 
+namespace syntax\oop;
 
 class LynkCo01 extends BaseCar implements CarContract
 {

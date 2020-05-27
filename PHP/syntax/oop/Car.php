@@ -1,5 +1,7 @@
 <?php
 
+namespace syntax\oop;
+
 abstract class Car
 {
     protected $brand;

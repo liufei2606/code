@@ -1,3 +1,5 @@
 logs/*
 .php_cs.cache
 syntax/debug.log
+vendor
+.phpunit.result.cache
