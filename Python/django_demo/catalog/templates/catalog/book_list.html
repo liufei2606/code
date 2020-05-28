@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Book List</h1>
+
+    {% if book_list %}
+        <table width="100%" border="1px">
+            <tr>
+                <td><strong>ID</strong></td>
+                <td><strong>Title</strong></td>
+                <td><strong>Author</strong></td>
+                <td><strong>Due_back</strong></td>
+            </tr>
+            {% for book in book_list %}
+                <tr>
+                    <td> {{ book.id }}</td>
+                    <td><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></td>
+                    <td><a href="{{ author.get_absolute_url }}">{{ book.author }}</a></td>
+                    <td> {{ book.imprint }}</td>
+                    <td>{{ book.due_back }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>There are no books in the library.</p>
+    {% endif %}
+{% endblock %}
