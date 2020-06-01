@@ -1,3 +1,5 @@
+package com.syntax;
+
 /**
  * Rental
  */
@@ -12,7 +14,7 @@ public class Rental {
 	}
 
 	public int getDaysRented() {
-		renturn _daysRented;
+		return _daysRented;
 	}
 
 	public Movie getMovie() {

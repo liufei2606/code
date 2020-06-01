@@ -1,9 +1,8 @@
-package insert;
+package com.syntax;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Date;
 
 import com.mysql.jdbc.PreparedStatement;
 
@@ -28,7 +27,7 @@ public class InsertTest {
      }
      public static void insert(Connection conn) {
          // 开始时间
-         Long begin = new Date().getTime();
+         Long begin = new System.currentTimeMillis();
          // sql前缀
          String prefix = "INSERT INTO t_teacher (id,t_name,t_password,sex,description,pic_url,school_name,regist_date,remark) VALUES " ;
          try {
@@ -64,7 +63,7 @@ public class InsertTest {
              e.printStackTrace();
          }
          // 结束时间
-         Long end = new Date().getTime();
+         Long end = new System.currentTimeMillis();
          // 耗时
          System.out.println( "1000万条数据插入花费时间 : " + (end - begin) / 1000 + " s" );
          System.out.println( "插入完成" );
