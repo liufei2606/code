@@ -33,7 +33,7 @@ class TemplateMethodsTest extends TestCase
         $this->assertTrue(false);
     }
 
-    protected function assertPostConditions():void
+    protected function assertpostConditions(): void
     {
         fwrite(STDOUT, __METHOD__."\n");
     }

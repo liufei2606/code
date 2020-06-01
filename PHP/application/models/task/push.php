@@ -42,18 +42,18 @@ $redis->select($config['Redis_dbid']);
  * @param  method  默认post
  * @param  postjson  需要把参数进行json包发送
  */
-function curl_data($url, $data, $method = "POST", $postjson = false)
+function curl_data($url, $data, $method = "post", $postjson = false)
 {
     $data_string = $data;
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        "Content-Type: text/xml",
-        "Content-Length: " . strlen($data_string)
+        "context-Type: text/xml",
+        "context-Length: ".strlen($data_string)
     ));
-    if ($method == "POST") {
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+    if ($method == "post") {
+        curl_setopt($ch, CURLOPT_post, 1);
+        curl_setopt($ch, CURLOPT_postFIELDS, $data_string);
     }
     curl_setopt($ch, CURLOPT_TIMEOUT, 5);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

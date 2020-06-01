@@ -13,8 +13,8 @@ $urls = [
 $len = count($urls);
 for ($i = 0; $i < $len; $i++) {
     $process = new swoole_process(function(swoole_process $worker) use($i, $urls){
-        $content = curlData($urls[$i]);
-        echo $content .PHP_EOL;
+        $context = curlData($urls[$i]);
+        echo $context .PHP_EOL;
     }, true);
     $pid = $process->start();
     $workers[$pid] = $process;
@@ -26,10 +26,10 @@ foreach ($workers as $process) {
 
 function curlData ($url) {
     sleep(1);
-    $content = file_get_contents($url);
+    $context = file_get_contexts($url);
     $filename = __DIR__ . '/data.txt';
-    co::create(function () use ($filename, $content){
-        $p =  co::writeFile($filename, json_encode($content), FILE_APPEND);
+    co::create(function () use ($filename, $context){
+        $p =  co::writeFile($filename, json_encode($context), FILE_APPEND);
         var_dump($p);
     });
     return $url . ' suceess' . PHP_EOL;

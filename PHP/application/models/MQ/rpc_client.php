@@ -7,7 +7,7 @@ use PhpAmqpLib\Message\AMQPMessage;
 
 class FibonacciRpcClient
 {
-    private $connection;
+    private $pdoection;
     private $channel;
     private $callback_queue;
     private $response;

@@ -21,7 +21,7 @@ while (true) {
     * HTTP
     */
     $http = new HttpProtocol;
-    $http->originRequestContentString = $request;
+    $http->originRequestcontextString = $request;
     $http->request($request);
     $http->response("Hello World");
     $http->response($request);

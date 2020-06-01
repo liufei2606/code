@@ -96,7 +96,7 @@ var CanvasBarrage = function (canvas, video, options) {
 			span.style.whiteSpace = 'nowrap';
 			span.style.font = 'bold ' + fontSize + 'px "microsoft yahei", sans-serif';
 			span.innerText = obj.value;
-			span.textContent = obj.value;
+			span.textcontext = obj.value;
 			document.body.appendChild(span);
 			// æ±‚å¾—æ–‡å­—å†…å®¹å®½åº¦
 			this.width = span.clientWidth;

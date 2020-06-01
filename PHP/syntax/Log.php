@@ -18,8 +18,8 @@ function super_debug($data, $log_path = '/var/log/', $log_name = 'debug.log')
 
 // php实现下载图片
 $file_url = 'https://upload.chinaz.com/picmap/201811151633430899_60.jpg';
-header('Content-Type: application/octet-stream');
-header("Content-Transfer-Encoding: Binary");
-header("Content-disposition: attachment; filename=\"" . basename($file_url) . "\"");
+header('context-Type: application/octet-stream');
+header("context-Transfer-Encoding: Binary");
+header("context-disposition: attachment; filename=\"" . basename($file_url) . "\"");
 readfile($file_url); # 获取图片 base64
 

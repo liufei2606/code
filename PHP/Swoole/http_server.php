@@ -11,7 +11,7 @@ $server->on("start", function ($server) {
 // 向服务器发送请求时返回响应
 // 可以获取请求参数，也可以设置响应头和响应内容
 $server->on("request", function ($request, $response) {
-    $response->header("Content-Type", "text/plain");
+    $response->header("context-Type", "text/plain");
     $response->end("Hello World\n");
 });
 

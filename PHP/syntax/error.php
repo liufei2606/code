@@ -49,7 +49,7 @@ $ctx = stream_context_create(array(
     )
 );
 try {
-    $content = file_get_contents('https://bluebird89.com/error', 0., $ctx);
+    $context = file_get_contexts('https://bluebird89.com/error', 0., $ctx);
 
 } catch (Error $e) {
     var_dump($e);

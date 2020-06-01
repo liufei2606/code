@@ -37,32 +37,32 @@ class Compiler
             require_once $compiled;
             return;
         }
-        $fileContent = file_get_contents($path);
+        $filecontext = file_get_contexts($path);
         $result = '';
-        foreach (token_get_all($fileContent) as $token) {
+        foreach (token_get_all($filecontext) as $token) {
             if (is_array($token)) {
-                list($id, $content) = $token;
+                list($id, $context) = $token;
                 if ($id == T_INLINE_HTML) {
                     foreach ($this->compilers as $type) {
-                        $content = $this->{"compile{$type}"}($content);
+                        $context = $this->{"compile{$type}"}($context);
                     }
                 }
-                $result .= $content;
+                $result .= $context;
             } else {
                 $result .= $token;
             }
         }
         $compiled = $this->getCompiledPath($path);
-        file_put_contents($compiled, $result);
+        file_put_contexts($compiled, $result);
         require_once $compiled;
     }
 
-    protected function compileStatements($content)
+    protected function compileStatements($context)
     {
         return preg_replace_callback(
                 '/\B@(@?\w+(?:::\w+)?)([ \t]*)(\( ( (?>[^()]+) | (?3) )* \))?/x', function ($match) {
                 return $this->compileStatement($match);
-            }, $content
+            }, $context
         );
     }
 
@@ -136,21 +136,21 @@ class Compiler
     {
         return '<?php break; ?>';
     }
-    protected function compileEchos($content)
+    protected function compileEchos($context)
     {
         foreach ($this->echoCompilers as $type) {
-            $content = $this->{"compile{$type}"}($content);
+            $context = $this->{"compile{$type}"}($context);
         }
-        return $content;
+        return $context;
     }
 
-    protected function compileEscapedEchos($content)
+    protected function compileEscapedEchos($context)
     {
-        return preg_replace('/{{(.*)}}/', '<?php echo htmlentities(isset($1) ? $1 : null) ?>', $content);
+        return preg_replace('/{{(.*)}}/', '<?php echo htmlentities(isset($1) ? $1 : null) ?>', $context);
     }
 
-    protected function compileRawEchos($content)
+    protected function compileRawEchos($context)
     {
-        return preg_replace('/{!!(.*)!!}/', '<?php echo isset($1) ? $1 : null ?>', $content);
+        return preg_replace('/{!!(.*)!!}/', '<?php echo isset($1) ? $1 : null ?>', $context);
     }
 }

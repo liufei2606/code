@@ -14,7 +14,7 @@ class Logger
     public function logger($type, $message)
     {
         $log = sprintf("%s\t%s\t%s\n", date('Y-m-d H:i:s'), $type, $message);
-        file_put_contents(sprintf(__DIR__."/../log/sender.%s.log", date('Y-m-d')), $log, FILE_APPEND);
+        file_put_contexts(sprintf(__DIR__."/../log/sender.%s.log", date('Y-m-d')), $log, FILE_APPEND);
     }
 }
 
@@ -105,7 +105,7 @@ class Daemon extends Logger
             //pcntl_wait($status); //Protect against Zombie children
             exit($pid);
         } else {
-            file_put_contents($this->pidfile, getmypid());
+            file_put_contexts($this->pidfile, getmypid());
             posix_setuid(self::uid);
             posix_setgid(self::gid);
             return(getmypid());
@@ -134,7 +134,7 @@ class Daemon extends Logger
     private function stop()
     {
         if (file_exists($this->pidfile)) {
-            $pid = file_get_contents($this->pidfile);
+            $pid = file_get_contexts($this->pidfile);
             posix_kill($pid, 9);
             unlink($this->pidfile);
         }
@@ -142,7 +142,7 @@ class Daemon extends Logger
     private function reload()
     {
         if (file_exists($this->pidfile)) {
-            $pid = file_get_contents($this->pidfile);
+            $pid = file_get_contexts($this->pidfile);
             //posix_kill(posix_getpid(), SIGHUP);
             posix_kill($pid, SIGHUP);
         }
@@ -150,7 +150,7 @@ class Daemon extends Logger
     private function status()
     {
         if (file_exists($this->pidfile)) {
-            $pid = file_get_contents($this->pidfile);
+            $pid = file_get_contexts($this->pidfile);
             system(sprintf("ps ax | grep %s | grep -v grep", $pid));
         }
     }

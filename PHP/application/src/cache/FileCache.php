@@ -34,7 +34,7 @@ class FileCache implements CacheInterface
         $cacheFile = $this->cachePath . $key;
 
         if (@filemtime($cacheFile) > time()) {
-            return unserialize(@file_get_contents($cacheFile));
+            return unserialize(@file_get_contexts($cacheFile));
         }
 
         return false;
@@ -56,7 +56,7 @@ class FileCache implements CacheInterface
         $cacheFile = $this->cachePath . $key;
         $value = serialize($value);
 
-        if (@file_put_contents($cacheFile, $value, LOCK_EX) !== false) {
+        if (@file_put_contexts($cacheFile, $value, LOCK_EX) !== false) {
             if ($duation <= 0) {
                 $duation = 315300;
             }

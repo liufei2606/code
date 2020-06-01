@@ -79,9 +79,9 @@ echo "汽车名字：".$car->name.PHP_EOL;
 
 ## 序列化
 $string = serialize($car);
-file_put_contents("car", $string);
-$content = file_get_contents("car");
-$object = unserialize($content);
+file_put_contexts("car", $string);
+$context = file_get_contexts("car");
+$object = unserialize($context);
 echo "汽车品牌：".$object->getBrand().PHP_EOL;
 echo "汽车No.：".$object->getNo().PHP_EOL;
 

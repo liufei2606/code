@@ -55,22 +55,22 @@ echo substr_compare("abcde", "cd", 1, 2) . PHP_EOL; // -1
 // 计算字串出现的次数
 $text = 'This is a test';
 echo substr_count($text, 'is') . PHP_EOL; // 2
-echo substr_count($text, 'is', 3) . PHP_EOL; // 1 字符串被简化为 's is a test'，因此输出 1
-echo substr_count($text, 'is', 3, 3) . PHP_EOL; // 0 字符串被简化为 's i'，所以输出 0
+echo substr_count($text, 'is', 3).PHP_EOL; // 1 字符串被简化为 's is a test'，因此输出 1
+echo substr_count($text, 'is', 3, 3).PHP_EOL; // 0 字符串被简化为 's i'，所以输出 0
 
-echo addcslashes('foo[ ]', 'A..z') . PHP_EOL; // \f\o\o\[ \] 以 C 语言风格使用反斜线转义字符串中的字符
-echo addslashes("Is your name O'reilly?"). PHP_EOL; // Is your name O\'reilly? 使用反斜线引用字符串单引号（'）、双引号（"）、反斜线（\）与 NUL
-echo stripcslashes("\H\o\o\[ \]") . PHP_EOL; // 反引用一个使用 addcslashes 转义的字符串
+echo addcslashes('foo[ ]', 'A..z').PHP_EOL; // \f\o\o\[ \] 以 C 语言风格使用反斜线转义字符串中的字符
+echo addslashes("Is your name O'reilly?").PHP_EOL; // Is your name O\'reilly? 使用反斜线引用字符串单引号（'）、双引号（"）、反斜线（\）与 NUL
+echo stripcslashes("\H\o\o\[ \]").PHP_EOL; // 反引用一个使用 addcslashes 转义的字符串
 // stripslashes() // 反引用一个引用字符串
 
-echo strip_tags('<p>Test paragraph.</p><!-- Comment --> <a href="#fragment">Other text</a>') . PHP_EOL;// 从字符串中去除 HTML 和 PHP 标记
+echo strip_tags('<p>Test paragraph.</p><!-- Comment --> <a href="#fragment">Other text</a>').PHP_EOL;// 从字符串中去除 HTML 和 PHP 标记
 // quotemeta() // 转义元字符集
-get_magic_quotes_gpc(); // 获取当前 magic_quotes_gpc 的配置选项设置  magic_quotes_gpc 默认是 on， 实际上所有的 GET、POST 和 COOKIE 数据都用被 addslashes() 了。 不要对已经被 magic_quotes_gpc 转义过的字符串使用 addslashes()，因为这样会导致双层转义
+get_magic_quotes_gpc(); // 获取当前 magic_quotes_gpc 的配置选项设置  magic_quotes_gpc 默认是 on， 实际上所有的 GET、post 和 COOKIE 数据都用被 addslashes() 了。 不要对已经被 magic_quotes_gpc 转义过的字符串使用 addslashes()，因为这样会导致双层转义
 echo "\n";
 
 // 97 0x61 a
-echo bin2hex('a') . PHP_EOL; // 61 二进制字符串转换为十六进制值 高四位字节优先
-echo hex2bin('6578616d706c65206865782064617461') . PHP_EOL; // example hex data 十六进制字符串为二进制字符串
+echo bin2hex('a').PHP_EOL; // 61 二进制字符串转换为十六进制值 高四位字节优先
+echo hex2bin('6578616d706c65206865782064617461').PHP_EOL; // example hex data 十六进制字符串为二进制字符串
 echo chr(97).PHP_EOL; # 对应于 ascii 所指定的单个字符
 echo ord('a').PHP_EOL;  # 97 返回字符串 string 第一个字符的 ASCII 码值
 // pack(); // Pack data into binary string

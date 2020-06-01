@@ -60,8 +60,8 @@ class S3
 function callReader($class)
 {
     try {
-        $conn=call_user_func_array(array($class, "connect"), array());
-        return $conn;
+        $pdo = call_user_func_array(array($class, "connect"), array());
+        return $pdo;
     } catch (Exception $e) {
         throw $e;
     } finally {
@@ -72,14 +72,14 @@ function callReader($class)
 //调用一层
 function getMessage()
 {
-    $conn=null;
+    $pdo = null;
     try {
-        $conn=callReader('Oss');
+        $pdo = callReader('Oss');
     } catch (Exception $e1) {
-        $conn=callReader('S3');
+        $pdo = callReader('S3');
     }
 
-    return $conn;
+    return $pdo;
 }
 
 //最先的入口

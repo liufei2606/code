@@ -29,7 +29,7 @@ $http->on('request', function ($request, $response) {
     }
 
     $time = microtime(true);
-    $response->header("content-type", "text/html; charset=UTF-8");
+    $response->header("context-type", "text/html; charset=UTF-8");
     $response->write("1. 接受请求，此处被执行, 第" . __LINE__ . "行， 时间" . $time . "<br/>");
 
     //启动第一个协程

@@ -1,12 +1,12 @@
 <?php
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__.'/../../vendor/autoload.php';
 
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
-$connection = new AMQPStreamConnection('localhost', 5672, 'guest', 'guest');
-$channel = $connection->channel();
+$pdoection = new AMQPStreamConnection('localhost', 5672, 'guest', 'guest');
+$channel = $pdoection->channel();
 
 $channel->queue_declare('rpc_queue', false, false, false, false);
 
@@ -49,4 +49,4 @@ while (count($channel->callbacks)) {
 }
 
 $channel->close();
-$connection->close();
+$pdoection->close();

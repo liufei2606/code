@@ -73,19 +73,19 @@ class Http
     public function onRequest($request, $response)
     {
         $response->header('Server', 'SwooleServer');
-        $response->header('Content-Type', 'text/html;charset=utf-8');
+        $response->header('context-Type', 'text/html;charset=utf-8');
 
         $server = $request->server;
         $path_info = $server['path_info'];
 
-        $content = [
+        $context = [
             'date:' => date("Ymd H:i:s"),
-            'Post:' => $request->post,
+            'post:' => $request->post,
             'Header:' => $request->header,
             'Get:' => $request->get,
         ];
 
-        co::writeFile(__DIR__.'/access.log', json_encode($content), FILE_APPEND);
+        co::writeFile(__DIR__.'/access.log', json_encode($context), FILE_APPEND);
 
         if ($path_info == '/favicon.ico' || $server['request_uri'] == '/favicon.ico') {
             $response->end();

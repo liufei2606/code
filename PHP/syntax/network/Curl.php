@@ -12,9 +12,9 @@ curl_setopt($ch, CURLOPT_FILE, $fp);
 
 curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_setopt($ch, CURLOPT_NOBODY, false);
-curl_setopt($ch, CURLOPT_POSTFIELDS, "username=".$username."&password=".$password);
+curl_setopt($ch, CURLOPT_postFIELDS, "username=".$username."&password=".$password);
 
-curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_post, 1);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
 
 curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3); // 整个curl请求过程（http request & response）的超时限制，以秒为单位，设置为0则无限制
@@ -101,9 +101,9 @@ function multiCurl()
         $mh = curl_multi_init();
 
         foreach ($urls as $i => $url) {
-            $conn[$i] = curl_init($url);
-            curl_setopt($conn[$i], CURLOPT_RETURNTRANSFER, 1);
-            curl_multi_add_handle($mh, $conn[$i]);
+            $pdo[$i] = curl_init($url);
+            curl_setopt($pdo[$i], CURLOPT_RETURNTRANSFER, 1);
+            curl_multi_add_handle($mh, $pdo[$i]);
         }
 
         do {
@@ -115,8 +115,8 @@ function multiCurl()
         } while ($status === CURLM_CALL_MULTI_PERFORM || $active);
 
         foreach ($urls as $i => $url) {
-            $res[$i] = curl_multi_getcontent($conn[$i]);
-            curl_close($conn[$i]);
+            $res[$i] = curl_multi_getcontext($pdo[$i]);
+            curl_close($pdo[$i]);
         }
 
         var_dump(curl_multi_info_read($mh));
@@ -125,7 +125,7 @@ function multiCurl()
 
     function geturl($url, array $data)
     {
-        $headerArray =array("Content-type:application/json;","Accept:application/json");
+        $headerArray = array("context-type:application/json;", "Accept:application/json");
         $ch = curl_init();
         if (!empty($data)) {
             $url = $url.'?'.http_bulid_query($data);
@@ -145,14 +145,14 @@ function multiCurl()
 
     function posturl($url, $data)
     {
-        $data  = json_encode($data);
-        $headerArray =array("Content-type:application/json;charset='utf-8'","Accept:application/json");
+        $data = json_encode($data);
+        $headerArray = array("context-type:application/json;charset='utf-8'", "Accept:application/json");
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($curl, CURLOPT_POST, 1);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($curl, CURLOPT_post, 1);
+        curl_setopt($curl, CURLOPT_postFIELDS, $data);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headerArray);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $output = curl_exec($curl);
@@ -166,10 +166,10 @@ function multiCurl()
         $data = json_encode($data);
         $ch = curl_init(); //初始化CURL句柄
         curl_setopt($ch, CURLOPT_URL, $url); //设置请求的URL
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type:application/json'));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('context-type:application/json'));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //设为TRUE把curl_exec()结果转化为字串，而不是直接输出
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT"); //设置请求方式
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);//设置提交的字符串
+        curl_setopt($ch, CURLOPT_postFIELDS, $data);//设置提交的字符串
         $output = curl_exec($ch);
         curl_close($ch);
 
@@ -181,10 +181,10 @@ function multiCurl()
         $data  = json_encode($data);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type:application/json'));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('context-type:application/json'));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_postFIELDS, $data);
         $output = curl_exec($ch);
         curl_close($ch);
 
@@ -196,10 +196,10 @@ function multiCurl()
         $data  = json_encode($data);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type:application/json'));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('context-type:application/json'));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PATCH");
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_postFIELDS, $data);
         $output = curl_exec($ch);
         curl_close($ch);
         return json_decode($output, true);
@@ -214,8 +214,8 @@ function multiCurl()
         curl_setopt($curl, CURLOPT_AUTOREFERER, 1);
         curl_setopt($curl, CURLOPT_REFERER, "http://XXX");
         if ($post) {
-            curl_setopt($curl, CURLOPT_POST, 1);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($post));
+            curl_setopt($curl, CURLOPT_post, 1);
+            curl_setopt($curl, CURLOPT_postFIELDS, http_build_query($post));
         }
         if ($cookie) {
             curl_setopt($curl, CURLOPT_COOKIE, $cookie);
@@ -231,8 +231,8 @@ function multiCurl()
         if ($returnCookie) {
             list($header, $body) = explode("\r\n\r\n", $data, 2);
             preg_match_all("/Set\-Cookie:([^;]*);/", $header, $matches);
-            $info['cookie']  = substr($matches[1][0], 1);
-            $info['content'] = $body;
+            $info['cookie'] = substr($matches[1][0], 1);
+            $info['context'] = $body;
             return $info;
         } else {
             return $data;

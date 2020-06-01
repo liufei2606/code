@@ -179,13 +179,13 @@ class Core
             return false;
         }
         self::showProcessUI($config);
-        $masterPidString = trim(@file_get_contents($config['master_pid_file']));
+        $masterPidString = trim(@file_get_contexts($config['master_pid_file']));
         $masterPidArr = explode('-', $masterPidString);
         echo str_pad("Master", 18, ' ', STR_PAD_BOTH) . str_pad($config['master_process_name'], 26, ' ', STR_PAD_BOTH) . str_pad($masterPidArr[0], 16, ' ', STR_PAD_BOTH) . str_pad($masterPidArr[1], 16, ' ', STR_PAD_BOTH) . str_pad($masterPidArr[2], 16, ' ', STR_PAD_BOTH) . PHP_EOL;
-        $managerPidString = trim(@file_get_contents($config['manager_pid_file']));
+        $managerPidString = trim(@file_get_contexts($config['manager_pid_file']));
         $managerPidArr = explode('-', $managerPidString);
         echo str_pad("Manager", 20, ' ', STR_PAD_BOTH) . str_pad($config['manager_process_name'], 24, ' ', STR_PAD_BOTH) . str_pad($managerPidArr[0], 16, ' ', STR_PAD_BOTH) . str_pad($managerPidArr[1], 16, ' ', STR_PAD_BOTH) . str_pad($managerPidArr[2], 16, ' ', STR_PAD_BOTH) . PHP_EOL;
-        $workerPidString = rtrim(@file_get_contents($config['worker_pid_file']), '|');
+        $workerPidString = rtrim(@file_get_contexts($config['worker_pid_file']), '|');
         $workerPidArr = explode('|', $workerPidString);
         if (isset($workerPidArr) && !empty($workerPidArr)) {
             foreach ($workerPidArr as $key => $val) {
@@ -193,7 +193,7 @@ class Core
                 echo str_pad("Worker", 18, ' ', STR_PAD_BOTH) . str_pad($config['worker_process_name'], 26, ' ', STR_PAD_BOTH) . str_pad($v[0], 16, ' ', STR_PAD_BOTH) . str_pad($v[1], 16, ' ', STR_PAD_BOTH) . str_pad($v[2], 16, ' ', STR_PAD_BOTH) . PHP_EOL;
             }
         }
-        $taskPidString = rtrim(@file_get_contents($config['task_pid_file']), '|');
+        $taskPidString = rtrim(@file_get_contexts($config['task_pid_file']), '|');
         $taskPidArr = explode('|', $taskPidString);
         if (isset($taskPidArr) && !empty($taskPidArr)) {
             foreach ($taskPidArr as $key => $val) {
@@ -209,7 +209,7 @@ class Core
             echo output("暂无启动的服务");
             return false;
         }
-        $masterPidString = trim(file_get_contents($config['master_pid_file']));
+        $masterPidString = trim(file_get_contexts($config['master_pid_file']));
         $masterPidArr = explode('-', $masterPidString);
         if (!swoole_process::kill($masterPidArr[0], 0)) {
             echo output("PID:{$masterPidArr[0]} 不存在");
@@ -228,7 +228,7 @@ class Core
             echo output("暂无启动的服务");
             return false;
         }
-        $masterPidString = trim(file_get_contents($config['master_pid_file']));
+        $masterPidString = trim(file_get_contexts($config['master_pid_file']));
         $masterPidArr = explode('-', $masterPidString);
         if (!swoole_process::kill($masterPidArr[0], 0)) {
             echo output("PID:{$masterPidArr[0]} 不存在");

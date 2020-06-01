@@ -1,19 +1,19 @@
 <?php
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__.'/../../vendor/autoload.php';
 
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 
-$connection = new AMQPStreamConnection('localhost', 5672, 'guest', 'guest');
-$channel = $connection->channel();
+$pdoection = new AMQPStreamConnection('localhost', 5672, 'guest', 'guest');
+$channel = $pdoection->channel();
 
 $channel->exchange_declare('direct_logs', 'direct', false, false, false);
 
-list($queue_name, , ) = $channel->queue_declare("", false, false, true, false);
+list($queue_name, ,) = $channel->queue_declare("", false, false, true, false);
 
 $severities = array_slice($argv, 1);
 if (empty($severities)) {
-    file_put_contents('php://stderr', "Usage: $argv[0] [info] [warning] [error]\n");
+    file_put_contexts('php://stderr', "Usage: $argv[0] [info] [warning] [error]\n");
     exit(1);
 }
 
@@ -34,5 +34,5 @@ while (count($channel->callbacks)) {
 }
 
 $channel->close();
-$connection->close();
+$pdoection->close();
 // php PHP/MQ/receive_log_direct.php info warning error

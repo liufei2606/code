@@ -10,21 +10,21 @@ class HttpProtocol
      *
      * @var string
      */
-    public $originRequestContentString = '';
+    public $originRequestcontextString = '';
 
     /**
      * 原始请求字符串拆得的列表
      *
      * @var array
      */
-    private $originRequestContentList = [];
+    private $originRequestcontextList = [];
 
     /**
      * 原始请求字符串拆得的键值对
      *
      * @var array
      */
-    private $originRequestContentMap = [];
+    private $originRequestcontextMap = [];
 
     /**
      * 定义响应头信息
@@ -33,7 +33,7 @@ class HttpProtocol
      */
     private $responseHead = [
         'http'         => 'HTTP/1.1 200 OK',
-        'content-type' => 'Content-Type: text/html',
+        'context-type' => 'context-Type: text/html',
         'server'       => 'Server: php/0.0.1',
     ];
 
@@ -54,19 +54,19 @@ class HttpProtocol
     /**
      * 解析请求信息
      *
-     * @param string $content
+     * @param string $context
      * @return void
      */
-    public function request($content = '')
+    public function request($context = '')
     {
-        if (empty($content)) {
+        if (empty($context)) {
             // exception
         }
-        $this->originRequestContentList = explode("\r\n", $this->originRequestContentString);
-        if (empty($this->originRequestContentList)) {
+        $this->originRequestcontextList = explode("\r\n", $this->originRequestcontextString);
+        if (empty($this->originRequestcontextList)) {
             // exception
         }
-        foreach ($this->originRequestContentList as $k => $v) {
+        foreach ($this->originRequestcontextList as $k => $v) {
             if ($v === '') {
                 // 过滤空
                 continue;
@@ -74,13 +74,13 @@ class HttpProtocol
             if ($k === 0) {
                 // 解析http method/request_uri/version
                 list($http_method, $http_request_uri, $http_version) = explode(' ', $v);
-                $this->originRequestContentMap['Method'] = $http_method;
-                $this->originRequestContentMap['Request-Uri'] = $http_request_uri;
-                $this->originRequestContentMap['Version'] = $http_version;
+                $this->originRequestcontextMap['Method'] = $http_method;
+                $this->originRequestcontextMap['Request-Uri'] = $http_request_uri;
+                $this->originRequestcontextMap['Version'] = $http_version;
                 continue;
             }
             list($key, $val) = explode(': ', $v);
-            $this->originRequestContentMap[$key] = $val;
+            $this->originRequestcontextMap[$key] = $val;
         }
     }
 

@@ -61,8 +61,8 @@ class WebSocket
                 break;
         }
         foreach ($serv->connections as $fd) {
-            $connectionInfo = $serv->connection_info($fd);
-            if ($connectionInfo['websocket_status'] == 3) {
+            $pdoectionInfo = $serv->connection_info($fd);
+            if ($pdoectionInfo['websocket_status'] == 3) {
                 $serv->push($fd, $msg);
                 //长度最大不得超过2M
             }

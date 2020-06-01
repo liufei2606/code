@@ -1,10 +1,10 @@
 <?php
 
 // isset 对null过滤，而empty对所有false值过滤
-// header("content-type:text/html;charset=utf-8");
-// if (isset($_POST['ac']) && $_POST['ac'] == 'login') {
-//     $username = $_POST["username"];
-//     $password = $_POST["password"];
+// header("context-type:text/html;charset=utf-8");
+// if (isset($_post['ac']) && $_post['ac'] == 'login') {
+//     $username = $_post["username"];
+//     $password = $_post["password"];
 //     echo 'User:' . $username . ', Password:'.$password.'<hr>';
 // }
 
