@@ -1,6 +1,5 @@
 package main
 
-// 引入其它包
 import (
 	"calc/simplemath"
 	"fmt"
@@ -8,14 +7,12 @@ import (
 	"strconv"
 )
 
-// 定义一个用于打印程序使用指南的函数
 var Usage = func() {
 	fmt.Println("USAGE: calc command [arguments] ...")
 	fmt.Println("\nThe commands are:\n\tadd\t计算两个数值相加\n\tsqrt\t计算一个非负数的平方根")
 }
 
-// 程序入口函数
-func main ()  {
+func main() {
 	/*
 	 * 用于获取命令行参数，注意程序名本身是第一个参数，
 	 * 比如 calc add 1 2 这条指令，第一个参数是 calc
