@@ -1,12 +1,10 @@
 package main
 
 // 引入其它包
-//noinspection GoInvalidPackageImport
 import (
-
+	"calc/simplemath"
 	"fmt"
 	"os"
-	"calc/simplemath"
 	"strconv"
 )
 
