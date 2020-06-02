@@ -1,32 +1,21 @@
 <?php
-
-function bar(string $arg = ''): string
-{
-    return "In bar(); argument was '$arg'\n";
-}
-
-$func = 'bar';
-echo $func('test');
-
+# 值传递
+$a = 1;
+$b = 2;
 function add(int $a, int $b): int
 {
     $a += $b;
     return $a;
 }
-
-# 值传递
-$a = 1;
-$b = 2;
 $c = add($a, $b);
 printf("\$a = %d\n", $a);
 printf("\$c = %d\n", $c);
 
+# 引用传递
 function add_v(int &$a, int $b)
 {
     $a += $b;
 }
-
-# 引用传递
 add_v($a, $b);
 printf("\$a = %d\n", $a);
 
@@ -39,7 +28,7 @@ function myFunction($d)
     echo $d.PHP_EOL;
 }
 
-myFunction($d++); # 传入10, 函数入改变对外无影响
+myFunction($d++); # 传入10, 函数内改变对外无影响
 echo $d.PHP_EOL;
 
 $f = 7;
@@ -69,7 +58,7 @@ echo "$a x $b = ".$add($a, $b).PHP_EOL;
 # 支持在函数体中直接引用上下文变量(继承父作用域的变量)
 # 通过 use 关键字传递当前上下文中的变量，就可以在闭包函数体中直接使用，而不需要通过参数形式传入
 # 其他引用该文件的代码就可以间接引用当前父作用域下的变量，如果是在类方法中定义的匿名函数，则可以直接引用相应类实例的属性
-# 函数　默认不能引用全局变量：
+# 函数　默认不能引用全局变量
 $a = 5;
 $b = 6;
 function multiV()
@@ -78,12 +67,6 @@ function multiV()
 }
 
 //echo multiV().PHP_EOL;
-
-# 　匿名函数的话
-$multi = function () use ($a, $b) {
-    return $a * $b;
-};
-echo $multi().PHP_EOL;
 
 # 基于 global 关键字通过全局变量引用函数体外部定义的变量
 $n1 = 100;
@@ -126,4 +109,14 @@ $sum = $add();
 echo "$n1 + $n2 + $n3 = $sum".PHP_EOL;
 
 # 可变数量的参数列表
-//call_user_func
+function sum(...$numbers)
+{
+    $sum = 0;
+    foreach ($numbers as $number) {
+        $sum += $number;
+    }
+    printf("The num of the arguments are %d\n", func_num_args());
+    printf("The sum of these numbers are %d\n", $sum);
+}
+
+sum(1, 2, 3, 4, 5);
