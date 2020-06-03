@@ -16,6 +16,7 @@ func main() {
 		fmt.Println("Grade: F")
 	}
 
+	// 条件为布尔值
 	switch {
 	case score >= 90:
 		fmt.Println("Grade: A")

@@ -46,12 +46,10 @@ func main() {
 		fmt.Println(key)
 	}
 
+	// k v 互换
 	invMap := make(map[int]string, 3)
 	for k, v := range testMap {
 		invMap[v] = k
-	}
-	for k, v := range invMap {
-		fmt.Println(k, v)
 	}
 
 	// 排序

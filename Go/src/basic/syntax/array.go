@@ -15,9 +15,9 @@ func main() {
 	f := [5]int{1, 2, 3}
 	g := [...]int{1, 2, 3}
 	h := [5]int{1: 3, 3: 7}
+	fmt.Println(a, b, c, d, e, f, g, h)
 
 	// 获取　修改
-	fmt.Println(a, b, c, d, e, f, g, h)
 	v1, v2 := d[0], d[len(d)-1]
 	d[1] = 88
 	fmt.Println(v1, v2)
@@ -38,16 +38,15 @@ func main() {
 		}
 		fmt.Println()
 	}
-
 	for _, v1 := range multi {
 		for _, v2 := range v1 {
 			fmt.Printf("%-8s ", v2) // 位宽为8，左对齐
 		}
 		fmt.Println()
 	}
+
 	for i := 0; i < 9; i++ {
 		for j := 0; j <= i; j++ {
-			//multi[i][j] =
 			fmt.Printf("%d x %d = %d ", j+1, i+1, (i+1)*(j+1))
 		}
 		fmt.Println()

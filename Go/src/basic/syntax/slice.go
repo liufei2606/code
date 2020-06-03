@@ -16,8 +16,8 @@ func main() {
 	all := months[:]
 	firstHalf := months[:6]
 	secondHaf := months[6:]
-	// 数组切片也可以基于另一个数组切片创建
-	// 以超过所包含的元素个数
+	// 数组切片可以基于另一个数组切片创建
+	// 可以超过所包含的元素个数
 	q1 := firstHalf[:9]
 
 	fmt.Println(slice, q2, summer, all, firstHalf, secondHaf, q1)
@@ -42,7 +42,7 @@ func main() {
 	// 如果追加的元素个数超出 oldSlice 的默认容量，则底层会自动进行扩容
 	// append() 函数并不会改变原来的切片，而是会生成一个容量更大的切片，然后把原有的元素和新元素一并拷贝到新切片中，默认情况下，扩容后新切片的容量将会是原切片容量的 2 倍，如果还不足以容纳新元素，则按照同样的操作继续扩容，直到新容量不小于原长度与要追加的元素数量之和。但是，当原切片的长度大于或等于 1024 时，Go 语言将会以原容量的 1.25 倍作为新容量的基准
 	slice7 := append(slice2, 99, 98, 77, 45, 67, 5, 5, 7, 4, 6, 7, 8)
-	fmt.Println(slice4, slice6, slice7)
+	fmt.Println(slice2, slice4, slice6, slice7)
 
 	// 复制
 	slice1 = []int{1, 2, 3, 4, 5}
@@ -50,7 +50,6 @@ func main() {
 	copy(slice2, slice1)
 	fmt.Println(slice1, slice2)
 
-	slice1 = []int{1, 2, 3, 4, 5}
 	slice2 = []int{5, 4, 3}
 	copy(slice1, slice2)
 	fmt.Println(slice1, slice2)

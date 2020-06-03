@@ -43,15 +43,15 @@ func main() {
 	println("p2: ", p2)
 	println("p3: ", p3)
 	println("p4: ", p4)
-	s1 := make([]int, 3)          // 返回初始化后的切片类型值，[]int{0, 0, 0}
-	m1 := make(map[string]int, 2) // 返回初始化的字典类型值：散列化的 map 结构
 
-	println(len(s1)) // 3
+	s1 := make([]int, 3) // 返回初始化后的切片类型值，[]int{0, 0, 0}
+	println(len(s1))     // 3
 	for i, v := range s1 {
 		println(i, v)
 	}
 
-	println(len(m1)) // 0
+	m1 := make(map[string]int, 2) // 返回初始化的字典类型值：散列化的 map 结构
+	println(len(m1))              // 0
 	m1["test"] = 100
 	for k, v := range m1 {
 		println(k, v)

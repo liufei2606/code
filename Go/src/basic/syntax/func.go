@@ -15,7 +15,7 @@ func add(a, b int) int {
 	return a + b
 }
 
-// 多返回值及返回值命名
+// 引用传参 多返回值及返回值命名
 func add1(a, b *int) (c int, err error) {
 	if *a < 0 || *b < 0 {
 		err = errors.New("只支持非负整数")
@@ -33,8 +33,7 @@ func myfunc(numbers ...int) {
 	}
 }
 
-// 任意类型的变长参数
-// 空接口类型可以用于表示任意类型
+// 任意类型变长参数：空接口类型可以用于表示任意类型
 func myPrintf(args ...interface{}) {
 	for _, arg := range args {
 		switch reflect.TypeOf(arg).Kind() {
@@ -98,7 +97,7 @@ func main() {
 	j += 2
 	f()
 
-	// 将匿名函数作为参数
+	// 匿名函数作为参数
 	i := 10
 	add1 := func(a, b int) {
 		fmt.Printf("Variable i from main func: %d\n", i)
@@ -132,6 +131,7 @@ func fibonacci(n int) int {
 	if n == 2 {
 		return 1
 	}
+	// 优化递归
 	index := n - 1
 	if fibs[index] != 0 {
 		return fibs[index]

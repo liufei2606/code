@@ -4,18 +4,16 @@ import (
 	"fmt"
 )
 
-// 申明一个结构体，类似PHP的Light类
+// 申明结构体
 type Light struct {
 	Status string
 }
 
-//添加一个On方法
+//添加方法
 func (l Light) On() string {
 	l.Status = "light is on"
 	return l.Status
 }
-
-//添加一个Off方法
 func (l Light) Off() string {
 	l.Status = "light is off"
 	return l.Status
