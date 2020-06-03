@@ -49,14 +49,14 @@ func main() {
 	case "sqrt":
 		// 至少需要包含三个参数
 		if len(args) != 3 {
-			fmt.Println("USAGE: calc sqrt <integer>")
+			fmt.Println("USAGE: calc sqrt <oop>")
 			return
 		}
 		// 获取待计算平方根的数值，并将类型转化为整型
 		v, err := strconv.Atoi(args[2])
 		// 获取参数出错，则退出
 		if err != nil {
-			fmt.Println("USAGE: calc sqrt <integer>")
+			fmt.Println("USAGE: calc sqrt <oop>")
 			return
 		}
 		// 从 simplemath 包引入 Sqrt 方法进行平方根计算

@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"basic/syntax/oop"
+	"fmt"
+)
 
 // 全局变量:在函数体外声明,在整个包甚至外部包（变量名以大写字母开头）使用
 // 局部变量:函数体内声明的变量,作用域只在函数体内，参数和返回值变量也是局部变量
@@ -63,4 +66,9 @@ func main() {
 	_, nickname, age = GetName()
 	fmt.Println("Nickname's", nickname, ",Age is ", age)
 	fmt.Printf("Nickname's %s,Age is %d. \n", nickname, age)
+
+	var a oop.Integer = 2
+	if a.Equal(2) {
+		fmt.Println(a, "is equal to 2")
+	}
 }
