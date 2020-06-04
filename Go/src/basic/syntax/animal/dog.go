@@ -1,13 +1,14 @@
 package animal
 
 type Dog struct {
+	inhabit string
 	*Animal
 }
 
-func (d Dog) FavorFood() string {
-	return "骨头"
+func (d Dog) Favriate() string {
+	return "bone"
 }
 
 func (d Dog) Call() string {
-	return "汪汪汪"
+	return "Wang wang ..."
 }

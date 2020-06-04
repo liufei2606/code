@@ -1,10 +1,10 @@
 package main
 
 import (
-	"basic/syntax/animal"
+	animal2 "basic/syntax/animal"
 	"basic/syntax/oop"
 	"fmt"
-	"reflect"
+	//"reflect"
 )
 
 func main() {
@@ -13,9 +13,18 @@ func main() {
 	fmt.Println(l.On())
 	fmt.Println(l.Off())
 
-	ani := animal.NewAnimal("狗")
-	dog := animal.Dog{ani}
-	fmt.Println(dog.GetName(), dog.Call(), dog.FavorFood())
+	ani := animal2.NewAnimal("狗")
+	dog := animal2.Dog{"Asia", &ani}
+	puppy := animal2.Puppy{dog, ani}
+	fmt.Println(dog.GetName(), "的叫声是", dog.Call(), "，最爱是", dog.FavorFood())
+	fmt.Println(puppy.Dog.Animal.GetName(), "的叫声是", ani.Call(), "，最爱是", dog.FavorFood())
+	//animal := animal.Animal{"Dog"}
+	//dog2 := animal2.Dog{"Asia", &animal}
+	////dog2 := animal.Dog{"Euporean", &ani}
+	//fmt.Println(dog2.GetName(), "的叫声是", dog2.Call(), "，最爱是", dog2.Favriate())
+	//// 多重继承有重复方法时：直接调用会报错，使用时用声明该方法的类调用
+	//puppy := animal2.Puppy{dog2, &animal}
+	//fmt.Println(puppy.Dog.Animal.GetName(), "的叫声是", animal.Call(), "，最爱是", dog2.Favriate())
 
 	// 将对象实例赋值给接口:会根据类似下面这样的非指针成员方法,自动生成一个新的与之对应的指针成员方法
 	var a oop.Integer = 1
@@ -34,14 +43,14 @@ func main() {
 	}
 
 	// 类型查询和转化
-	var ianimal animal.IAnimal = animal.Dog{ani}
-	if dog1, ok := ianimal.(animal.Dog); ok {
-		fmt.Println(dog1.GetName())
-	}
+	//var ianimal animal.IAnimal = animal.Dog{"Asia", ani}
+	//if dog1, ok := ianimal.(animal.Dog); ok {
+	//	fmt.Println(dog1.GetName())
+	//}
 
 	// 归属于子类的实例并不归属于父类,因为类与类之间的「继承」是通过组合实现的
 	// 要获取实际类型通过 reflect.TypeOf(ianimal) 获取,基本数据类型 通过 type 关键字即可获取对应的类型值
-	fmt.Println(reflect.TypeOf(ianimal))
+	//fmt.Println(reflect.TypeOf(ianimal))
 
 	// 接口实现不是强制的，是根据类实现的方法来动态判定的
 	// 只有都实现了系统才会判定实现了接口，才能进行相应的接口赋值
