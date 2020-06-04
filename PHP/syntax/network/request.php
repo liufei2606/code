@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>POST 请求测试</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    <link rel="stylesheet" href="/../../assets/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <style>
         div.container {
@@ -61,8 +61,6 @@ function formatParameter(array $parameters, string $type = ''): void
 }
 
 $image = $_FILES['image'];
-
-// 处理文件上传过程中的错误
 if ($image['error'] != UPLOAD_ERR_OK) {
     switch ($image['error']) {
         case UPLOAD_ERR_INI_SIZE:
