@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	var int_value_1 int8 // -128-127
@@ -46,5 +48,4 @@ func main() {
 	v27 := int(v26)
 	v28 := float64(v27)
 	fmt.Println(v21, v22, v23, v24, v25, v26, v27, v28, "\n")
-
 }
