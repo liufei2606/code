@@ -1,6 +1,6 @@
 <?php
 
-class Task
+class asyncTaskServer
 {
     private $serv;
 
@@ -90,4 +90,4 @@ class Task
     }
 }
 
-$server = new Task();
+$server = new asynctaskserver();
