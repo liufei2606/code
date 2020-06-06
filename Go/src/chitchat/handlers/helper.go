@@ -1,18 +1,26 @@
 package handlers
 
 import (
+	config2 "chitchat/config"
 	"chitchat/models"
 	"errors"
 	"fmt"
+	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"html/template"
 	"log"
 	"net/http"
 	"os"
+	"time"
 )
 
 var logger *log.Logger
+var config *config2.Configuration
+var localizer *i18n.Localizer
 
 func init() {
+	config = config2.LoadConfig()
+	localizer = i18n.NewLocalizer(config.LocaleBundle, config.App.Language)
+
 	file, err := os.OpenFile("logs/chitchat.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if err != nil {
 		log.Fatalln("Failed to open log file", err)
@@ -63,14 +71,22 @@ func parseTemplateFiles(filenames ...string) (t *template.Template) {
 func generateHTML(writer http.ResponseWriter, data interface{}, filenames ...string) {
 	var files []string
 	for _, file := range filenames {
-		files = append(files, fmt.Sprintf("views/%s.html", file))
+		files = append(files, fmt.Sprintf("views/%s/%s.html", config.App.Language, file))
 	}
 
-	templates := template.Must(template.ParseFiles(files...))
+	funcMap := template.FuncMap{"fdate": formatDate}
+	t := template.New("layout").Funcs(funcMap)
+	templates := template.Must(t.ParseFiles(files...))
 	templates.ExecuteTemplate(writer, "layout", data)
 }
 
 // 返回版本号
 func Version() string {
 	return "0.1"
+}
+
+// 日期格式化辅助函数
+func formatDate(t time.Time) string {
+	datetime := "2006-01-02 15:04:05"
+	return t.Format(datetime)
 }

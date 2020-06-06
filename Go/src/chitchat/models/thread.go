@@ -10,7 +10,6 @@ type Thread struct {
 	CreatedAt time.Time
 }
 
-// format the CreatedAt date to display nicely on the screen
 func (thread *Thread) CreatedAtDate() string {
 	return thread.CreatedAt.Format("Jan 2, 2006 at 3:04pm")
 }
