@@ -50,7 +50,7 @@ func LoadConfig() *Configuration {
 		// 本地化初始设置
 		bundle := i18n.NewBundle(language.English)
 		bundle.RegisterUnmarshalFunc("json", json.Unmarshal)
-		bundle.MustLoadMessageFile(config.App.Locale + "/active.en.json")
+		bundle.MustLoadMessageFile(config.App.Locale + "/active.zh.json")
 		bundle.MustLoadMessageFile(config.App.Locale + "/active." + config.App.Language + ".json")
 		config.LocaleBundle = bundle
 	})

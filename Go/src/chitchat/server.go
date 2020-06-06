@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 	"strings"
 )
@@ -18,11 +17,11 @@ func sayHello(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "你好，学院君！")
 }
 
-func main() {
-	http.HandleFunc("/", sayHello)
-
-	err := http.ListenAndServe(":9091", nil)
-	if err != nil {
-		log.Fatal("ListenAndServe:", err)
-	}
-}
+//func main() {
+//	http.HandleFunc("/", sayHello)
+//
+//	err := http.ListenAndServe(":9091", nil)
+//	if err != nil {
+//		log.Fatal("ListenAndServe:", err)
+//	}
+//}
