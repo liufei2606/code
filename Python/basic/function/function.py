@@ -8,7 +8,13 @@ def move(x, y, step, angle=0):
     return nx, ny
 
 
-print(move(100, 100, 60, math.pi / 6))
+x, y = move(100, 100, 60, math.pi / 6)
+print(x, y)
+
+
+## 空函数
+def nop():
+    pass
 
 
 def my_abs(x):
@@ -23,8 +29,7 @@ def my_abs(x):
 
 print(my_abs(-101))
 
-
-# 参数：必选参数在前，默认参数在后
+# 默认参数必须指向不变对象，
 def power(x, n=2):
     s = 1
     while n > 0:
@@ -43,7 +48,7 @@ def fibonacci(n):
     a, b = 0, 1
     while a < n:
         result.append(a)
-        a, b = b, a+b
+        a, b = b, a + b
     return result
 
 
@@ -142,11 +147,11 @@ def parrot(voltage, state='a stiff', action='voom', type='Norwegian Blue'):
     print("-- It's", state, "!")
 
 
-parrot(1000)                                          # 1 positional argument
-parrot(voltage=1000)                                  # 1 keyword argument
-parrot(voltage=1000000, action='VOOOOOM')             # 2 keyword arguments
-parrot(action='VOOOOOM', voltage=1000000)             # 2 keyword arguments
-parrot('a million', 'bereft of life', 'jump')         # 3 positional arguments
+parrot(1000)  # 1 positional argument
+parrot(voltage=1000)  # 1 keyword argument
+parrot(voltage=1000000, action='VOOOOOM')  # 2 keyword arguments
+parrot(action='VOOOOOM', voltage=1000000)  # 2 keyword arguments
+parrot('a million', 'bereft of life', 'jump')  # 3 positional arguments
 parrot('a thousand', state='pushing up the daisies')  # 1 positional, 1 keyword
 
 

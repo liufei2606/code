@@ -4,7 +4,7 @@
 # 允许把函数本身作为参数传入另一个函数，还允许返回一个函数.没有变量
 # 函数名其实就是指向函数的变量
 # 高阶函数:一个函数就可以接收另一个函数作为参数
-
+import functools
 from functools import reduce
 
 
@@ -150,3 +150,15 @@ def f(x, y, z): return x + y + z
 
 
 print(f(2, 4, 5))
+
+f = lambda x: x * x
+print(f(5))
+
+def build(x, y):
+    return lambda: x * x + y * y
+
+print(build(3,4)())
+
+## 偏函数
+int2 = functools.partial(int, base=2)
+print(int2('1000000'))

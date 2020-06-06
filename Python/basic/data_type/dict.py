@@ -11,9 +11,10 @@
 d = {'henry': 80, 'michael': 75, 'Tracy': 85}
 
 print('henry' in d)
-print(d.get('tomas'))  # None
-print(d.get('tomas', -1))  # -1
+print(d.get('tomas'))
+print(d.get('tomas', -1))
 print(d['henry'])
+d['Adam'] = 67
 d.pop('michael')
 print(d)
 

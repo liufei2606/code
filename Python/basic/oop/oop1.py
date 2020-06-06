@@ -52,6 +52,19 @@ class Flyable(object):
 class Dog(Mammal, Runnable):
     pass
 
+b = Animal()
+c = Dog()
+isinstance(b, Animal)
+isinstance(c, Animal)
 
+def run_twice(animal):
+    animal.run()
+    animal.run()
+run_twice(c)
+
+print(type(c))
+
+# 获得一个对象的所有属性和方法
+print(dir(c))
 # 主线都是单一继承下来的 需要“混入”额外的功能
 # MixIn 给一个类增加多个功能，这样，在设计类的时候，我们优先考虑通过多重继承来组合多个MixIn的功能，而不是设计多层次的复杂的继承关系。

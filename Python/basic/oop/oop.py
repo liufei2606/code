@@ -17,6 +17,15 @@ class Student(object):
         self.age = age
         self.score = score
 
+    def get_name(self):
+        return self.__name
+
+    def set_score(self, score):
+        if 0 <= score <= 100:
+            self.__score = score
+        else:
+            raise ValueError('bad score')
+
     def print_score(self):
         print('%s: %s' % (self.__name, self.score))
 
@@ -35,17 +44,33 @@ class Student(object):
         return 'Student object (name: %s)' % self.__name
 
     # __str__()返回用户看到的字符串，而__repr__()返回程序开发者看到的字符串
+    # __repr__()是为调试服务
     __repr__ = __str__
+
+    # 当调用不存在的属性时，比如score
+    def __getattr__(self, attr):
+        if attr == 'score':
+            return 99
 
     def __iter__(self):
         return self  # 实例本身就是迭代对象，故返回自己
 
+    def __call__(self):
+        print('My name is %s.' % self.name)
 
+        
 bart = Student('Bart Simpson', 59, 89)
 lisa = Student('Lisa Simpson', 87, 98)
 bart.print_score()
-# lisa.print_score()
+lisa.print_score()
 print(lisa)
+
+
+def print_score(std):
+    print('%s: %s' % (std.age, std.score))
+
+
+print_score(lisa)
 
 print(isinstance(bart, Student))
 print(type(lisa))
