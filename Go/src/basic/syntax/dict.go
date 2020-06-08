@@ -39,11 +39,11 @@ func main() {
 	for key, value := range testMap {
 		fmt.Println(key, value)
 	}
-	for _, value := range testMap {
-		fmt.Println(value)
-	}
 	for key := range testMap {
 		fmt.Println(key)
+	}
+	for _, value := range testMap {
+		fmt.Println(value)
 	}
 
 	// k v 互换
@@ -52,18 +52,18 @@ func main() {
 		invMap[v] = k
 	}
 
-	// 排序
+	// 对键排序
 	keys := make([]string, 0)
-	for k, _ := range testMap {
+	for k := range testMap {
 		keys = append(keys, k)
 	}
-	sort.Strings(keys) // 对键进行排序
+	sort.Strings(keys)
 	fmt.Println("Sorted map by key:")
 	for _, k := range keys {
 		fmt.Println(k, testMap[k])
 	}
 
-	// 对值进行排序
+	// 对值排序
 	values := make([]int, 0)
 	for _, v := range testMap {
 		values = append(values, v)

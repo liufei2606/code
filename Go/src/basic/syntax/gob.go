@@ -38,14 +38,16 @@ type Q struct {
 
 func main() {
 	var network bytes.Buffer
-	enc := gob.NewEncoder(&network) // 初始化编码器 gob.Encoder
-	dec := gob.NewDecoder(&network) // 初始化解码器 gob.Decoder
+
 	// 数据编码（发送数据时）
+	enc := gob.NewEncoder(&network) // 初始化编码器 gob.Encoder
 	err := enc.Encode(P{3, 4, 5, "学院君", []string{"PHP", "Laravel", "Go"}, map[string]string{"webiste": "https://xueyuanjun.com"}})
 	if err != nil {
 		log.Fatal("encode error:", err)
 	}
+
 	// 数据解码（收到数据时）
+	dec := gob.NewDecoder(&network) // 初始化解码器 gob.Decoder
 	var q Q
 	err = dec.Decode(&q)
 	if err != nil {

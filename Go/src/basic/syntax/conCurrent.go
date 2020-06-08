@@ -26,6 +26,7 @@ func main() {
 		chs[i] = make(chan int, 1)
 		go sum(i, chs[i])
 	}
+
 	sum := 0
 	for _, ch := range chs {
 		res := <-ch

@@ -28,6 +28,7 @@ func main() {
 	int_value_bit = 255
 	int_value_bit = ^int_value_bit
 	fmt.Println(int_value_bit)
+
 	int_value_bit = 1
 	int_value_bit = int_value_bit << 3
 	fmt.Println(int_value_bit) // 8

@@ -8,7 +8,7 @@ import (
 )
 
 // 默认按值传参:函数内参数改变对全局变量没有影响
-// 像切片（slice）、字典（map）、接口（interface）、通道（channel）这样的引用类型 默认使用引用传参（即使没有显示的指出指针)
+// 像切片（slice）、字典（map）、接口（interface）、通道（channel）引用类型 默认使用引用传参（即使没有显示的指出指针)
 func add(a, b int) int {
 	a *= 2
 	b *= 3
@@ -53,6 +53,7 @@ func callback(x int, f func(int, int)) {
 	f(x, 2)
 }
 
+// 返回函数
 func addfunc(a int) func(b int) int {
 	return func(b int) int {
 		return a + b

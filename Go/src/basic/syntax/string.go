@@ -7,8 +7,8 @@ import (
 )
 
 func main() {
-	var str string      // 声明字符串变量
-	str = "Hello World" // 变量初始化
+	var str string
+	str = "Hello World"
 	// 字符串是一种不可变值类型，一旦初始化之后，它的内容不能被修改
 	ch := str[0]
 	str += "!"

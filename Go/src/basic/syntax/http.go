@@ -16,22 +16,21 @@ func main() {
 		fmt.Printf("发起请求失败：%v", err)
 		return
 	}
+	defer resp.Body.Close()
+	io.Copy(os.Stdout, resp.Body)
 
-	//defer resp.Body.Close()
-	//io.Copy(os.Stdout, resp.Body)
+	resp, err = http.Post("https://xueyuanjun.com/avatar", "image/jpeg", &imageDataBuf)
+	if err != nil {
+		// 处理错误
+		return
+	}
 
-	//resp, err = http.Post("https://xueyuanjun.com/avatar", "image/jpeg", &imageDataBuf)
-	//if err != nil {
-	//	// 处理错误
-	//	return
-	//}
-	//
-	//if resp.StatusCode != http.StatusOK {
-	//	// 处理错误
-	//	return
-	//}
-	//defer resp.Body.Close()
-	//io.Copy(os.Stdout, resp.Body)
+	if resp.StatusCode != http.StatusOK {
+		// 处理错误
+		return
+	}
+	defer resp.Body.Close()
+	io.Copy(os.Stdout, resp.Body)
 
 	// postForm
 	resp, err = http.PostForm("https://xueyuanjun.com/login", url.Values{"name": {"学院君"}, "password": {"test-passwd"}})
@@ -62,6 +61,7 @@ func main() {
 		fmt.Printf("请求初始化失败：%v", err)
 		return
 	}
+
 	// 添加自定义请求头
 	req.Header.Add("Custom-Header", "Custom-Value")
 	// ... 其它请求头配置

@@ -15,18 +15,6 @@ func (l Light) Off() string {
 	return l.Status
 }
 
-//var i interface{} = "hello"
-//s, ok := i.(string)
-//fmt.Println(s, ok)
-//
-//f, ok := i.(float64)
-//fmt.Println(f, ok)
-//
 ////switch v := i.(type) {
 ////}
 //
-//// 申明接口有2个方法
-//type Switchs interface {
-//	On() string
-//	Off() string
-//}

@@ -13,8 +13,6 @@ func GetName() (userName, nickName string, age int) {
 
 func main() {
 	// 初始化
-	// new 函数作用于值类型，仅分配内存空间，返回的是指针
-	// make 函数作用于引用类型，除了分配内存空间，还会对对应类型进行初始化，返回的是初始值
 	var v1 int = 10 // 整型
 	var v11 = 10
 	// 同时进行声明和初始化:推导是在编译期做，而不是运行时
@@ -31,6 +29,7 @@ func main() {
 	fmt.Println("The value of fval is", v1, v11, v12, v4, v6, v7, v8)
 	fmt.Printf("fval=%f, ival=%d, sval=%s\n, bval=%b\n", v5, v1, v2, v3)
 
+	// new 函数作用于值类型，仅分配内存空间，返回的是指针
 	p1 := new(int)    // 返回 int 类型指针
 	p2 := new(string) // 返回 string 类型指针
 	p3 := new([3]int) // 返回数组类型指针，数组长度是3
@@ -47,6 +46,7 @@ func main() {
 	println("p3: ", p3)
 	println("p4: ", p4)
 
+	// make 函数作用于引用类型，除了分配内存空间，还会对对应类型进行初始化，返回的是初始值
 	s1 := make([]int, 3) // 返回初始化后的切片类型值，[]int{0, 0, 0}
 	println(len(s1))     // 3
 	for i, v := range s1 {
