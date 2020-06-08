@@ -377,3 +377,159 @@ current($vehicles);
 next($vehicles);
 each($vehicles);
 echo current($vehicles);
+
+# 声明
+$season=array("summer","winter","spring","autumn");
+$season[0]="summer";
+$season[1]="winter";
+$season[2]="spring";
+$season[3]="autumn";
+
+$salary=array("Hema"=>"350000","John"=>"450000","Kartik"=>"200000");
+$salary["Hema"]="350000";
+$salary["John"]="450000";
+$salary["Kartik"]="200000";
+
+echo count($salary);
+foreach($salary as $k => $v) {
+    echo "Key: ".$k." Value: ".$v."<br/>";
+}
+
+$emp = array (
+  array(1,"sonoo",400000),
+  array(2,"john",450000),
+  array(3,"rahul",300000)
+  );
+for ($row = 0; $row < 3; $row++) {
+    for ($col = 0; $col < 3; $col++) {
+        echo $emp[$row][$col]."  ";
+    }
+  echo "<br/>";
+}
+
+$salary=array("Maxsu"=>"550000","Vimal"=>"250000","Ratan"=>"200000");
+print_r(array_change_key_case($salary,CASE_UPPER)); # Array ( [SONOO] => 550000 [VIMAL] => 250000 [RATAN] => 200000 )
+print_r(array_chunk($salary,2, $preserve_keys = false));
+
+$season=array("summer","winter","spring","autumn");
+
+sort($season);# 自身操作
+foreach( $season as $s )
+{
+    echo "$s <br/>";
+}
+
+print_r(array_reverse($season)); # 赋值新变量
+
+echo array_search("spring", $season);
+
+$name1=array("maxsu","john","vivek","minsu");
+$name2=array("umesh","maxsu","kartik","minsu");
+print_r(array_intersect($name1,$name2)); # 交集
+
+
+$arr = array(
+    array(
+        'name'=>'sadas',
+        'norder'=>1
+    ),
+    array(
+        'name'=>'sadas',
+        'norder'=>11
+    ),
+    array(
+        'name'=>'sadas',
+        'norder'=>123
+    ),
+    array(
+        'name'=>'sadas',
+        'norder'=>11
+    )
+);
+array_multisort(array_column($arr, 'norder'), SORT_ASC, $arr);
+
+array_map(function($element){return strtotime($element['add_time']);}, $datas);
+
+## 数组合并
+# 索引数组 + 会保留第一个值，后面同样key舍弃，merge不会覆盖掉原来的值
+# 关联数组：+ 会保留第一个值，merge会保留保留后者
+$arr1 = ['PHP', 'apache'];
+$arr2 = ['PHP', 'MySQl', 'HTML', 'CSS'];
+$mergeArr = array_merge($arr1, $arr2);
+$plusArr = $arr1 + $arr2;
+print_r(($mergeArr);
+print_r(($plusArr);
+
+$items = array(
+    [
+        "uid"=>1,
+        "pid"=>0,
+        "views"=>100
+    ],
+    [
+        "uid"=>2,
+        "pid"=>1,
+        "views"=>200
+    ],
+    [
+        "uid"=>3,
+        "pid"=>0,
+        "views"=>300
+    ],
+    [
+        "uid"=>4,
+        "pid"=>0,
+        "views"=>400
+    ],
+    [
+        "uid"=>5,
+        "pid"=>3,
+        "views"=>500
+    ]
+);
+
+array_column($items,'uid'); # [1,2,3,4,5];
+array_column($items,'uid','view'); # [100=>1,200=>2,300=>3,400=>4,500=>5];
+
+array_combine();
+array_walk(array, funcname)
+function my_callback_function() {
+    echo 'hello world!';
+}
+
+// callback
+call_user_func('my_callback_function');
+
+$foo = $foo * 1.3;  // $foo 现在是一个浮点数 (2.6)
+$foo = 5 * "10 Little Piggies"; // $foo 是整数 (50)
+$foo = 5 * "10 Small Pigs";     // $foo 是整数 (50)
+
+function array2gbk($array)
+{
+    array_walk($array, function(&$value) {
+        $value = iconv('utf-8', 'gbk', $value);
+    });
+
+    return $array;
+}
+
+function array2gbk1($array)
+{
+    $array = array_map(function($value){
+        return iconv('utf-8', 'gbk', $value);
+    }, $array);
+
+    return $array;
+}
+
+$user = array(
+    '0' => array('id' => 100, 'username' => 'a1'),
+    '1' => array('id' => 101, 'username' => 'a2'),
+    '2' => array('id' => 102, 'username' => 'a3'),
+    '3' => array('id' => 103, 'username' => 'a4'),
+    '4' => array('id' => 104, 'username' => 'a5'),
+);
+$username = array();
+array_walk($user, function($value, $key) use (&$username){
+    $username[] = $value['username'];
+});
