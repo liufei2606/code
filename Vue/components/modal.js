@@ -21,7 +21,7 @@ Vue.component("modal", {
             <footer class="modal-card-foot">
                 <slot name="footer">
                     <button class="button is-success">Okay</button>
-                </solt>
+                </slot>
             </footer>
         </div>
     </div>

@@ -3,10 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>index</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.3/css/bulma.css"
-    />
+    <link rel="stylesheet" href="./static/css/bulma.css" />
 
     <style>
       .is-loading {
@@ -27,22 +24,28 @@
         <message title="hello php" body="asdfaf asr aiunan "></message>
       </div>
 
-      <h3>data bind</h3>
+      <h3>data bind:responsive</h3>
       <div>
         <input type="text" id="input" v-model="message" />
         <p>{{ message }}</p>
       </div>
 
-      <h3>lists</h3>
+      <h3>The Need For Computed Properties</h3>
+      <p>{{ reverseMessage }}</p>
+
+      <h3>Event Listener</h3>
       <div>
         <ul>
           <li v-for="name in names" v-text="name"></li>
         </ul>
         <input type="text" v-model="newName" />
+        <!-- @click 为 v-on:click 的简写 -->
         <button @click="addName">Add A name</button>
       </div>
 
       <h3>Attributes and Class Name Binding</h3>
+      <!-- 传给 v-bind:class 一个对象，以动态地切换 class -->
+      <!-- :class 为 v-bind:class 简写 -->
       <button :class="{ 'is-loading' : isLoading }" @click="toggleClass">
         Click me
       </button>
@@ -75,9 +78,6 @@
       <button id="btnCommit" v-on:click="commit">提交</button>
       <button id="btnReset" v-on:click="reset">重置</button>
       <label>{{ result }}</label>
-
-      <h3>The Need For Computed Properties</h3>
-      <p>{{ reverseMessage }}</p>
 
       <h2>All Tasks</h2>
       <ul>
@@ -130,20 +130,21 @@
 
       <h3>Component Communication</h3>
       <!-- 父子通信 -->
+      <!-- 子组件触发事件，父组件监听到，然后触发动作 -->
       <coupon @applied="onCouponApplied"></coupon>
       <h1 v-if="couponApplied">Your coupon is applied.</h1>
 
       <h3>Named Slots in Nutshell</h3>
-      <!-- <modal>
+      <modal :class="showModal">
         <template slot="title">My Title</template>
 
         something is here.
 
         <div slot="footer">
           <button class="button is-success">Save changes</button>
-          <button class="button" @click=''>Cancel</button>
+          <button class="button" @click='hideModal'>Cancel</button>
         </div>
-      </modal> -->
+      </modal>
 
       <h3>Inline-template</h3>
       <process-view inline-template>
@@ -155,13 +156,13 @@
       </process-view>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script src="./static/js/vue.js"></script>
     <script src="./components/main.js"></script>
     <script src="./components/message.js"></script>
     <script src="./components/tabs.js"></script>
     <script src="./components/coupon.js"></script>
     <script src="./components/template.js"></script>
-    <script src="./modal/modal.js"></script>
+    <script src="./components/modal.js"></script>
 
     <script>
       window.Event = new (class {
@@ -243,8 +244,8 @@
           onCouponApplied() {
             this.couponApplied = true;
           },
-          toggleModal(){
-
+          hideModal() {
+            this.showModal=false
           }
         },
 
@@ -264,7 +265,6 @@
         },
 
         created() {
-          // Event.$on("applied", () => alert("Handing it!"));
           Event.listen("applied", () => alert("Handing it!"));
         },
 
