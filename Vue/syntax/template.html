@@ -2,13 +2,13 @@
 <html>
 <head>
 	<title>sample</title>
-	<script src="vue.js"></script>
+    <script src="./../static/js/vue.js"></script>
 </head>
 <body>
 
 <label></label>
-<div id="example-">
-
+<div id="example">
+		<span v-once>这个将不会改变: {{ msg }}</span>
 </div>
 <br>
 
@@ -16,8 +16,9 @@
 </body>
 <script>
 	new	Vue({
-		el: '#example-',
+		el: '#example',
 		data:{
+			'msg':"hello"
 		}
 	})
 </script>
