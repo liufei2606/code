@@ -1,5 +1,7 @@
 # VUE
 
+- kebab-case (短横线隔开式)
+
 ## 生命周期
 
 - new Vue()
@@ -58,45 +60,61 @@
     - 可以遍历一个对象的 property `v-for="(value, name, index) in object"`
     - 优先级比 v-if 更高
 
-- 事件处理
+- 自定义指令,可以提供如下几个钩子函数
+  - bind：只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置。
+  - inserted：被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)。
+  - update：所在组件的 VNode 更新时调用，但是可能发生在其子 VNode 更新之前。指令的值可能发生了改变，也可能没有。但是你可以通过比较更新前后的值来忽略不必要的模板更新
+  - componentUpdated：指令所在组件的 VNode 及其子 VNode 全部更新后调用
+  - unbind：只调用一次，指令与元素解绑时调用
 
-  - .preventDefault()
-  - .stopPropagation()
-  - .stop
-  - .prevent
-  - .capture
-  - .self
-  - .once
-  - .passive
-  - .enter
-  - .tab
-  - .delete (捕获“删除”和“退格”键)
-  - .esc
-  - .space
-  - .up
-  - .down
-  - .left:鼠标按钮修饰符
-  - .right:鼠标按钮修饰符
-  - .ctrl
-  - .alt
-  - .shift
-  - .meta: Windows 徽标键 (⊞)|command 键 (⌘)
-  - .exact 修饰符允许你控制由精确的系统修饰符组合触发的事件
-  - .middle:鼠标按钮修饰符
+## 事件处理
 
-  - 用修饰符时，顺序很重要；相应的代码会以同样的顺序产生。因此，用 v-on:click.prevent.self 会阻止所有的点击
-  - 不要把 .passive 和 .prevent 一起使用，因为 .prevent 将会被忽略，同时浏览器可能会向你展示一个警告。请记住，.passive 会告诉浏览器你不想阻止事件的默认行为
+- .preventDefault()
+- .stopPropagation()
+- .stop
+- .prevent
+- .capture
+- .self
+- .once
+- .passive
+- .enter
+- .tab
+- .delete (捕获“删除”和“退格”键)
+- .esc
+- .space
+- .up
+- .down
+- .left:鼠标按钮修饰符
+- .right:鼠标按钮修饰符
+- .ctrl
+- .alt
+- .shift
+- .meta: Windows 徽标键 (⊞)|command 键 (⌘)
+- .exact 修饰符允许你控制由精确的系统修饰符组合触发的事件
+- .middle:鼠标按钮修饰符
+
+- 用修饰符时，顺序很重要；相应的代码会以同样的顺序产生。因此，用 v-on:click.prevent.self 会阻止所有的点击
+- 不要把 .passive 和 .prevent 一起使用，因为 .prevent 将会被忽略，同时浏览器可能会向你展示一个警告。请记住，.passive 会告诉浏览器你不想阻止事件的默认行为
+- 事件名不存在任何自动化的大小写转换。触发的事件名需要完全匹配监听这个事件所用的名称.始终使用 kebab-case 的事件名
+- 事件侦听器
+  - 通过 \$on(eventName, eventHandler) 侦听一个事件
+  - 通过 \$once(eventName, eventHandler) 一次性侦听一个事件
+  - 通过 \$off(eventName, eventHandler) 停止侦听一个事件
 
 ## vue 参数
 
-- computed 计算属性,基于响应式依赖进行缓存,只在相关响应式依赖发生改变时它们才会重新求值
+- el:
+
+* computed 计算属性,基于响应式依赖进行缓存,只在相关响应式依赖发生改变时它们才会重新求值
   - 默认只有 getter
-- data
+* data
   - 只有当实例被创建时就已经存在于 data 中的 property 才是响应式的
   - 使用 Object.freeze()，这会阻止修改现有的 property，也意味着响应系统无法再追踪变化
-- method:
-- mounted
-- watch 侦听属性:通用方式来观察和响应 Vue 实例上的数据变动
+  - this.\$root.foo
+* method:
+* mounted
+* watch 侦听属性:通用方式来观察和响应 Vue 实例上的数据变动
+* components
 
 ## 组件
 
@@ -104,18 +122,55 @@
 - 嵌套
 - 注册：能在模板中使用，组件必须先注册以便 Vue 能够识别
   - 全局注册:可以用在其被注册之后的任何 (通过 new Vue) 新创建的 Vue 根实例，也包括其组件树中的所有子组件的模板中
-  - 局部注册
+  - 局部注册：通过普通的 JavaScript 对象来定义组件，添加到　 compontents
 - 子组件可以通过调用内建的 \$emit 方法并传入事件名称来触发一个事件
-- 父级组件监听事件时，可以通过 \$event 访问到被抛出的这个值
+- 父级组件监听事件时，通过 \$event 访问到被抛出的这个值
 - v-modal
 - 通过插槽分发内容
+- 字符串 (例如：template: '...') 或者　单文件组件 (.vue)，不存在限制
+- 模块系统中局部注册
+- 在一个组件的根元素上直接监听一个原生事件,使用 v-on 的 .native 修饰符
+- \$attrs
 
-* slot
-* props：可以在组件上注册的一些自定义 attribute。当一个值传递给一个 prop attribute 的时候，它就变成了那个组件实例的一个 property
+* slot:承载分发内容的出口
+  - 插槽内可以包含任何模板代码，包括 HTML,甚至其它组件
+  - 父级模板里的所有内容都是在父级作用域中编译的；子模板里的所有内容都是在子作用域中编译的
+  - 设置具体的后备 (也就是默认的) 内容
+  - 有一个特殊的 attribute：name,可以用来定义额外的插槽,不带 name 的 <slot> 出口会带有隐含的名字“default”
+  - v-slot|#
+  - <keep-alive> 元素将其动态组件包裹起来,第一次被创建的时候缓存下来
+
+- 可以在自己的模板中调用自身的。只能通过 name 选项来做这件事
+
+- 异步组件
+
+* props：可以在组件上注册一些自定义 attribute。当一个值传递给一个 prop attribute 的时候，它就变成了那个组件实例的一个 property
   - 父子 prop 之间形成了一个 单向下行绑定：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外改变父级组件的状态，从而导致你的应用的数据流向难以理解
+  - 不应该在一个子组件内部改变 prop
+  - Prop 验证数据类型
+  - 非 Prop 的 Attribute:会被添加到这个组件的根元素上,class 和 style attribute 会稍微智能一些，即两边的值会被合并起来
+  - 禁用 Attribute 继承:在组件的选项中设置 `inheritAttrs: false`
 * \$children
 * data()：必须是一个函数
 * created()
+* 组件上的 v-model 默认会利用名为 value 的 prop 和名为 input 的事件,但是像单选框、复选框等类型的输入控件可能会将 value attribute 用于不同的目的。model 选项可以用来避免这样的冲突
+
+- 访问父级组件实例:`this.$parent.map` `this.$parent.$parent.map`
+- 访问子组件实例或子元素:`this.$refs.usernameInput`
+- \$listeners
+- 依赖注入:
+  - provide 选项允许指定想要提供给后代组件的数据/方法
+
+## 混入 (mixin)
+
+- 提供了一种非常灵活的方式，来分发 Vue 组件中的可复用功能。一个混入对象可以包含任意组件选项。当组件使用混入对象时，所有混入对象的选项将被“混合”进入该组件本身的选项
+- 当组件和混入对象含有同名选项时，这些选项将以恰当的方式进行“合并”
+- 同名钩子函数将合并为一个数组，都将被调用。混入对象的钩子将在组件自身钩子之前调用
+- 可以进行全局注册。使用时格外小心！一旦使用全局混入，将影响每一个之后创建的 Vue 实例
+
+## 虚拟 DOM
+
+- Vue 通过建立一个虚拟 DOM 来追踪自己要如何改变真实 DOM,createNodeDescription，因为它所包含的信息会告诉 Vue 页面上需要渲染什么样的节点，包括及其子节点的描述信息
 
 ## 数据
 

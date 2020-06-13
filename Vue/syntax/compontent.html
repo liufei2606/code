@@ -5,14 +5,38 @@
     <title>Component</title>
     <menu></menu>
     <script src="./../static/js/vue.js"></script>
+    <style>
+      .tab-button {
+        padding: 6px 10px;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        background: #f0f0f0;
+        margin-bottom: -1px;
+        margin-right: -1px;
+      }
+      .tab-button:hover {
+        background: #e0e0e0;
+      }
+      .tab-button.active {
+        background: #e0e0e0;
+      }
+      .tab {
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+    </style>
   </head>
 
   <body>
     <label></label>
     <div id="example">
-      <!-- <global-component></global-component> -->
-      <!-- <local-component></local-component> -->
-      <!-- <child my-message="hello!"></child> -->
+      <global-component></global-component>
+      <local-component></local-component>
+      <child v-bind:my-message="message"></child>
+      <mycomponent></mycomponent>
+      <my-component></my-component>
       <br />
 
       <button-counter v-on:increment="incrementTotal"></button-counter>
@@ -29,14 +53,43 @@
         ></blog-post>
       </div>
       <!-- <custom-input v-model="searchText"></custom-input> -->
-      
+
       <alert-box>
         Something bad happened.
       </alert-box>
 
+      <button
+        v-for="tab in tabs"
+        v-bind:key="tab"
+        v-bind:class="['tab-button', { active: currentTab === tab }]"
+        v-on:click="currentTab = tab"
+      >
+        {{ tab }}
+      </button>
+      <keep-alive>
+        <component v-bind:is="currentTabComponent" class="tab"></component>
+      </keep-alive>
+      <!-- <base-input
+        v-model="lable"
+        v-on:focus.native="onFocus"
+        required
+        placeholder="Enter your username"
+      ></base-input> -->
 
-      <!-- <mycomponent></mycomponent> -->
-      <my-component></my-component>
+      <!-- <base-checkbox v-model:checked="checked"></base-checkbox> -->
+
+      <base-layout>
+        <template v-slot:header>
+          <h1>Here might be a page title</h1>
+        </template>
+
+        <p>A paragraph for the main content.</p>
+        <p>And another one.</p>
+
+        <template v-slot:footer>
+          <p>Here's some contact info</p>
+        </template>
+      </base-layout>
     </div>
   </body>
   <script>
@@ -56,7 +109,7 @@
         }
       }
     });
-    //
+
     Vue.component("blog-post", {
       props: ["post"],
       template: `
@@ -88,59 +141,115 @@
     </div>
   `
     });
-    // 局部注册
-    var Child = {
-      template: "<div>A local component!</div>"
-    };
-    new Vue({
-      el: "#example",
-      data: {
-        message: "",
-        age: 0,
-        total: 0,
-        price: 0,
-        counter: 0,
-        posts: [
-          { id: 1, title: "My journey with Vue", content: "ERERERERE" },
-          { id: 2, title: "Blogging with Vue", content: "ERERERERE2" },
-          { id: 3, title: "Why Vue is so fun", content: "ERERERERE3" }
-        ],
-        postFontSize: 1
+
+    Vue.component("base-layout", {
+      template: `
+    <div class="demo-alert-box">
+      <slot></slot>
+    </div>
+  `
+    });
+
+    Vue.component("base-checkbox", {
+      model: {
+        prop: "checked",
+        event: "change"
       },
-      components: {
-        // "local-component": Child,
-        "my-component": {
-          template: `<div>这是一个局部的自定义组件，只能在当前Vue实例中使用</div>`
-        }
+      props: {
+        checked: Boolean
       },
-      methods: {
-        incrementTotal: function() {
-          this.total += 1;
-        }
-      }
+      template: `
+    <input
+      type="checkbox"
+      v-bind:checked="checked"
+      v-on:change="$emit('change', $event.target.checked)"
+    >
+  `
+    });
+
+    Vue.component("async-example", function(resolve, reject) {
+      setTimeout(function() {
+        // 向 `resolve` 回调传递组件定义
+        resolve({
+          template: "<div>I am async!</div>"
+        });
+      }, 1000);
+    });
+
+    Vue.component("tab-home", {
+      template: "<div>Home component</div>"
+    });
+    Vue.component("tab-posts", {
+      template: "<div>Posts component</div>"
+    });
+    Vue.component("tab-archive", {
+      template: "<div>Archive component</div>"
     });
 
     // 全局注册
-    // Vue.component("global-component", {
-    //   template: "<div>A global component!</div>"
-    // });
+    Vue.component("global-component", {
+      template: "<div>A global component!</div>"
+    });
 
-    //父子组件:放在vm实例化前面,命名方式
+    //父子组件:在vue 实例前面声明
     // 单向数据流：子组件自动更新props值
-    // Vue.component("child", {
-    //   props: ["myMessage"],
-    //   template: "<span>{{ myMessage }}</span>"
-    // });
+    Vue.component("child", {
+      // Prop 验证
+      // type 还可以是一个自定义的构造函数
+      props: {
+        myMessage: String
+      },
+      data: function() {
+        return {
+          myMessage1: this.myMessage
+        };
+      },
+      template: "<span>{{ myMessage }}</span>"
+    });
 
-    // Vue.component("mycomponent", {
-    //   template: `<div>这是一个自定义组件</div>`,
+    Vue.component("mycomponent", {
+      template: `<div>这是一个自定义组件</div>`,
 
-    //   data() {
-    //     return {
-    //       message: "hello world"
-    //     };
-    //   }
-    // });
+      data() {
+        return {
+          message: "hello world"
+        };
+      }
+    });
+
+    Vue.component("base-input", {
+      inheritAttrs: false,
+      props: ["label", "value"],
+      computed: {
+        inputListeners: function() {
+          var vm = this;
+          // `Object.assign` 将所有的对象合并为一个新对象
+          return Object.assign(
+            {},
+            // 我们从父级添加所有的监听器
+            this.$listeners,
+            // 然后我们添加自定义监听器，
+            // 或覆写一些监听器的行为
+            {
+              // 这里确保组件配合 `v-model` 的工作
+              input: function(event) {
+                vm.$emit("input", event.target.value);
+              }
+            }
+          );
+        }
+      },
+      template: `
+    <label>
+      {{ label }}
+      <input
+        v-bind="$attrs"
+        v-bind:value="value"
+        v-on="inputListeners"
+      >
+    </label>
+  `
+    });
 
     // Vue.component("currency-input", {
     //   template: `
@@ -174,5 +283,44 @@
     //     }
     //   }
     // });
+
+    // 局部注册
+    var Child = {
+      template: "<div>A local component!</div>"
+    };
+    new Vue({
+      el: "#example",
+      data: {
+        message: "Hello world",
+        age: 0,
+        total: 0,
+        price: 0,
+        counter: 0,
+        posts: [
+          { id: 1, title: "My journey with Vue", content: "ERERERERE" },
+          { id: 2, title: "Blogging with Vue", content: "ERERERERE2" },
+          { id: 3, title: "Why Vue is so fun", content: "ERERERERE3" }
+        ],
+        postFontSize: 1,
+        currentTab: "Home",
+        tabs: ["Home", "Posts", "Archive"]
+      },
+      components: {
+        "local-component": Child,
+        "my-component": {
+          template: `<div>这是一个局部的自定义组件，只能在当前Vue实例中使用</div>`
+        }
+      },
+      methods: {
+        incrementTotal: function() {
+          this.total += 1;
+        }
+      },
+      computed: {
+        currentTabComponent: function() {
+          return "tab-" + this.currentTab.toLowerCase();
+        }
+      }
+    });
   </script>
 </html>
