@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Component</title>
+    <menu></menu>
+    <script src="./../static/js/vue.js"></script>
+  </head>
+
+  <body>
+    <label></label>
+    <div id="example">
+      <!-- <global-component></global-component> -->
+      <!-- <local-component></local-component> -->
+      <!-- <child my-message="hello!"></child> -->
+      <br />
+
+      <button-counter v-on:increment="incrementTotal"></button-counter>
+      <button-counter v-on:increment="incrementTotal"></button-counter>
+      <button-counter v-on:increment="incrementTotal"></button-counter>
+      <br />
+      <!-- <currency-input v-model="price"></currency-input> -->
+      <div :style="{ fontSize: postFontSize + 'em' }">
+        <blog-post
+          v-for="post in posts"
+          v-bind:key="post.id"
+          v-bind:post="post"
+          v-on:enlarge-text="postFontSize += $event"
+        ></blog-post>
+      </div>
+      <!-- <custom-input v-model="searchText"></custom-input> -->
+      
+      <alert-box>
+        Something bad happened.
+      </alert-box>
+
+
+      <!-- <mycomponent></mycomponent> -->
+      <my-component></my-component>
+    </div>
+  </body>
+  <script>
+    //自定义事件，组建分离，各自method，子组件会emit
+    Vue.component("button-counter", {
+      template:
+        '<button v-on:click="counter++">You clicked me {{ counter }} times.</button>',
+      data: function() {
+        return {
+          counter: 0
+        };
+      },
+      methods: {
+        increment: function() {
+          this.counter += 1;
+          this.$emit("increment");
+        }
+      }
+    });
+    //
+    Vue.component("blog-post", {
+      props: ["post"],
+      template: `
+    <div class="blog-post">
+      <h3>{{ post.title }}</h3>
+      <button v-on:click="$emit('enlarge-text', 0.1)">
+        Enlarge text
+      </button>
+      <div v-html="post.content"></div>
+    </div>
+  `
+    });
+
+    Vue.component("custom-input", {
+      props: ["value"],
+      template: `
+    <input
+      v-bind:value="value"
+      v-on:input="$emit('input', $event.target.value)"
+    >
+  `
+    });
+
+    Vue.component("alert-box", {
+      template: `
+    <div class="demo-alert-box">
+      <strong>Error!</strong>
+      <slot></slot>
+    </div>
+  `
+    });
+    // 局部注册
+    var Child = {
+      template: "<div>A local component!</div>"
+    };
+    new Vue({
+      el: "#example",
+      data: {
+        message: "",
+        age: 0,
+        total: 0,
+        price: 0,
+        counter: 0,
+        posts: [
+          { id: 1, title: "My journey with Vue", content: "ERERERERE" },
+          { id: 2, title: "Blogging with Vue", content: "ERERERERE2" },
+          { id: 3, title: "Why Vue is so fun", content: "ERERERERE3" }
+        ],
+        postFontSize: 1
+      },
+      components: {
+        // "local-component": Child,
+        "my-component": {
+          template: `<div>这是一个局部的自定义组件，只能在当前Vue实例中使用</div>`
+        }
+      },
+      methods: {
+        incrementTotal: function() {
+          this.total += 1;
+        }
+      }
+    });
+
+    // 全局注册
+    // Vue.component("global-component", {
+    //   template: "<div>A global component!</div>"
+    // });
+
+    //父子组件:放在vm实例化前面,命名方式
+    // 单向数据流：子组件自动更新props值
+    // Vue.component("child", {
+    //   props: ["myMessage"],
+    //   template: "<span>{{ myMessage }}</span>"
+    // });
+
+    // Vue.component("mycomponent", {
+    //   template: `<div>这是一个自定义组件</div>`,
+
+    //   data() {
+    //     return {
+    //       message: "hello world"
+    //     };
+    //   }
+    // });
+
+    // Vue.component("currency-input", {
+    //   template: `
+    //   <span>
+    //     $
+    //     <input
+    //       ref="input"
+    //       v-bind:value="value"
+    //       v-on:input="updateValue($event.target.value)"
+    //     >
+    //   </span>
+    // `,
+    //   props: ["value"],
+    //   methods: {
+    //     // 不是直接更新值，而是使用此方法来对输入值进行格式化和位数限制
+    //     updateValue: function(value) {
+    //       var formattedValue = value
+    //         // 删除两侧的空格符
+    //         .trim()
+    //         // 保留 2 小数位
+    //         .slice(
+    //           0,
+    //           value.indexOf(".") === -1 ? value.length : value.indexOf(".") + 3
+    //         );
+    //       // 如果值不统一，手动覆盖以保持一致
+    //       if (formattedValue !== value) {
+    //         this.$refs.input.value = formattedValue;
+    //       }
+    //       // 通过 input 事件发出数值
+    //       this.$emit("input", Number(formattedValue));
+    //     }
+    //   }
+    // });
+  </script>
+</html>

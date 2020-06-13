@@ -2,36 +2,49 @@
 <html>
   <head>
     <title>TodoList</title>
+    <meta charset="utf-8" />
     <script src="./../static/js/vue.js"></script>
   </head>
 
   <body>
     <div id="todo-list-example">
+      <label for="new-todo">Add a todo</label>
       <input
         v-model="newTodoText"
         v-on:keyup.enter="addNewTodo"
         placeholder="Add a todo"
       />
+
+      <form v-on:submit.prevent="addNewTodo">
+        <label for="new-todo">Add a todo:</label>
+        <input
+          v-model="newTodoText"
+          id="new-todo"
+          placeholder="E.g. Feed the cat"
+        />
+        <button>Add</button>
+      </form>
+
       <ul>
         <li
           is="todo-item"
           v-for="(todo, index) in todos"
-          v-bind:key="todo"
-          v-bind:title="todo"
+          v-bind:key="todo.id"
+          v-bind:title="todo.title"
           v-on:remove="todos.splice(index, 1)"
         ></li>
-        <li v-for="n in even(numbers)">{{ n }}</li>
       </ul>
     </div>
   </body>
   <script>
     Vue.component("todo-item", {
-      template: `
-    <li>
-      {{ title }}
-      <button v-on:click="$emit('remove')">X</button>
-    </li>
-    `,
+      template:
+        "\
+      <li>\
+        {{ title }}\
+        <button v-on:click=\"$emit('remove')\">Remove</button>\
+      </li>\
+    ",
       props: ["title"]
     });
 
@@ -42,23 +55,30 @@
         hideCompletedTodos: false,
         error: null,
         newTodoText: "",
-        todos: ["Do the dishes", "Take out the trash", "Mow the lawn"],
-        numbers: [1, 2, 3, 4, 5]
+        todos: [
+          {
+            id: 1,
+            title: "Do the dishes"
+          },
+          {
+            id: 2,
+            title: "Take out the trash"
+          },
+          {
+            id: 3,
+            title: "Mow the lawn"
+          }
+        ],
+        nextTodoId: 4
       },
       methods: {
         addNewTodo: function() {
-          this.todos.push(this.newTodoText);
-          this.newTodoText = "";
-        },
-        even: function(numbers) {
-          return numbers.filter(function(number) {
-            return number % 2 === 0;
+          this.todos.push({
+            id: this.nextTodoId++,
+            title: this.newTodoText
           });
+          this.newTodoText = "";
         }
-      },
-      created: function() {
-        // `this` 指向 vm 实例
-        console.log("data is: " + this.data);
       }
     });
   </script>
