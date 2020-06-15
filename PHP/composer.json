@@ -15,12 +15,14 @@
         "guzzlehttp/guzzle": "^6.3",
         "phpmailer/phpmailer": "^6.0",
         "lcobucci/jwt": "^3.2",
-        "monolog/monolog": "^1.24"
+        "monolog/monolog": "^1.24",
+        "elasticsearch/elasticsearch": "^7.7"
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/",
-            "Test\\": "tests/"
+            "App\\": "application/",
+            "Test\\": "tests/",
+            "Ns\\": "syntax/ns/"
         }
     },
     "require-dev": {

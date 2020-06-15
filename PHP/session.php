@@ -5,27 +5,27 @@
 session_start();
 ?>
 
-<html>
+    <html>
     <body>
     <?php
-        $_SESSION["user"] = "Maxsu";
-        echo "Session information are set successfully.<br/>";
+    $_SESSION["user"] = "Maxsu";
+    echo "Session information are set successfully.<br/>";
     ?>
     <a href="session2.php">Visit next page</a>
     </body>
-</html>
+    </html>
 
-# session2.php
+    # session2.php
 <?php
 session_start();
 ?>
-<html>
-<body>
-<?php
-echo "User is: ".$_SESSION["user"];
-?>
-</body>
-</html>
+    <html>
+    <body>
+    <?php
+    echo "User is: ".$_SESSION["user"];
+    ?>
+    </body>
+    </html>
 
 <?php
 session_start();
@@ -35,5 +35,4 @@ if (!isset($_SESSION['counter'])) {
 } else {
     $_SESSION['counter']++;
 }
-echo ("Page Views: ".$_SESSION['counter']);
-```
+echo("Page Views: ".$_SESSION['counter']);
