@@ -36,3 +36,37 @@
         + 第二个参数必须是一个指针；
         + 方法必须返回一个 error 类型的值
     - 类型 T、T1 和 T2 分别对应服务对象所属类型、请求类型和响应类型，它们默认都会使用 Go 语言内置的 encoding/gob 包进行编码解码
+
+## [GORM 中文文档](https://learnku.com/docs/gorm/2018)
+
+* 结构标签
+Column 	指定列的名称
+Type 	指定列的类型
+Size 	指定列的大小，默认是 255
+PRIMARY_KEY 	指定一个列作为主键
+UNIQUE 	指定一个唯一的列
+DEFAULT 	指定一个列的默认值
+PRECISION 	指定列的数据的精度
+NOT NULL 	指定列的数据不为空
+AUTO_INCREMENT 	指定一个列的数据是否自增
+INDEX 	创建带或不带名称的索引，同名创建复合索引
+UNIQUE_INDEX 	类似 索引，创建一个唯一的索引
+EMBEDDED 	将 struct 设置为 embedded
+EMBEDDED_PREFIX 	设置嵌入式结构的前缀名称
+
+* 关联的结构标签
+MANY2MANY 	指定连接表名称
+FOREIGNKEY 	指定外键
+ASSOCIATION_FOREIGNKEY 	指定关联外键
+POLYMORPHIC 	指定多态类型
+POLYMORPHIC_VALUE 	指定多态的值
+JOINTABLE_FOREIGNKEY 	指定连接表的外键
+ASSOCIATION_JOINTABLE_FOREIGNKEY 	指定连接表的关联外键
+SAVE_ASSOCIATIONS 	是否自动保存关联
+ASSOCIATION_AUTOUPDATE 	是否自动更新关联
+ASSOCIATION_AUTOCREATE 	是否自动创建关联
+ASSOCIATION_SAVE_REFERENCE 	是否引用自动保存的关联
+PRELOAD 	是否自动预加载关联
+
+* 所有包含零值的字段，像 0，''，false 或者其他的 零值  不会被保存到数据库中，但会使用这个字段的默认值
+* 应该考虑使用指针类型或者其他的值来避免这种情况
