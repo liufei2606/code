@@ -23,7 +23,10 @@
             "App\\": "application/",
             "Test\\": "tests/",
             "Ns\\": "syntax/ns/"
-        }
+        },
+        "classmap": [
+            "."
+        ]
     },
     "require-dev": {
         "phpunit/phpunit": "8.5"

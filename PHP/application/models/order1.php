@@ -1,8 +1,8 @@
 <?php
+namespace App\Modles;
 
 
-
-class Order
+class Order1
 {
     private $db;
 

@@ -1,4 +1,5 @@
 <?php
+namespace Http\Async;
 
 class Client
 {

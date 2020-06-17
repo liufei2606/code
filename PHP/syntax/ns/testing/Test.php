@@ -1,8 +1,8 @@
 <?php
 
-namespace ns\Testing;
+namespace Ns\Testing;
 
-use ns\Test as BaseTest;
+use Ns\Test as BaseTest;
 
 class Test extends BaseTest
 {

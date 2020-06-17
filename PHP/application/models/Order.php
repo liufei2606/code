@@ -1,5 +1,5 @@
 <?php
-
+namespace App\Modles;
 
 /**
  * Class Order
