@@ -12,8 +12,8 @@ if (!($fp = fopen('date.txt', 'w'))) {
 }
 fprintf($fp, "%04d-%02d-%02d", 2020, 4, 3); // 写入一个根据 format 格式化后的字符串到 由 handle 句柄打开的流中
 
-file_put_contexts('test1.txt', '你好');  // 快速写入内容到文件 test.txt（不存在则自动创建）
-$context = file_get_contexts('test1.txt');
+file_put_contents('test1.txt', '你好');  // 快速写入内容到文件 test.txt（不存在则自动创建）
+$context = file_get_contents('test1.txt');
 var_dump($context);
 
 $file = fopen('test2.txt', 'w');   // 以写入模式打开文件 test2.txt，不存在则创建自动创建
@@ -34,14 +34,14 @@ unlink('test1.txt');
 unlink('test2.txt');
 
 # 读取
-$filename = "c:\\myfile.txt";
+$filename = "./test.txt";
 $handle = fopen($filename, "r");//open file in read mode
 $contents = fread($handle, filesize($filename));//read file
 echo $contents;//printing data of file
 fclose($handle);//close file
 
 # 写入并加
-$fp  = fopen(dirname(__FILE__) . '/lock.txt', 'w+');
+$fp = fopen(dirname(__FILE__).'/lock.txt', 'w+');
 if (flock($fp, LOCK_EX)) {
     fwrite($fp, 'write something');
     flock($fp, LOCK_UN);
@@ -51,48 +51,50 @@ if (flock($fp, LOCK_EX)) {
 fclose($fp);
 
 # 追加
-$fp = fopen(dirname(__FILE__) . '/data.txt', 'a');//opens file in append mode
+$fp = fopen(dirname(__FILE__).'/data.txt', 'a');//opens file in append mode
 fwrite($fp, ' this is additional text ');
 fwrite($fp, 'appending data');
 fclose($fp);
 echo "File appended successfully";
 
 # 删除
-$status=unlink(dirname(__FILE__) . '/data.txt');
-if($status){
+$status = unlink(dirname(__FILE__).'/data.txt');
+if ($status) {
     echo "File deleted successfully";
-}else{
+} else {
     echo "Sorry!";
 }
 
-$fp = fopen("c:\\file1.txt", "r");//open file in read mode
-while(!feof($fp)) {
-  echo fgetc($fp);
+$fp = fopen("./test1.txt", "r");//open file in read mode
+var_dump($fp);
+die;
+while (!feof($fp)) {
+    echo fgetc($fp);
 }
 fclose($fp);
+?>
 
-# uploadform.html
-<form action="uploader.php" method="post" enctype="multipart/form-data">
-    选择上传的文件:
-    <input type="file" name="fileToUpload"/>
-    <input type="submit" value="Upload Image" name="submit"/>
-</form>
+    # uploadform.html
+    <form action="uploader.php" method="post" enctype="multipart/form-data">
+        选择上传的文件:
+        <input type="file" name="fileToUpload"/>
+        <input type="submit" value="Upload Image" name="submit"/>
+    </form>
 
 <?php
 $target_path = "D:/";
-$target_path = $target_path.basename( $_FILES['fileToUpload']['name']);
+$target_path = $target_path.basename($_FILES['fileToUpload']['name']);
 
-if(move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_path)) {
+if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_path)) {
     echo "File uploaded successfully!";
-} else{
+} else {
     echo "Sorry, file not uploaded, please try again!";
 }
-?>
 
 $file_url = 'http://www.myremoteserver.com/file.exe';
 header('Content-Type: application/octet-stream');
 header("Content-Transfer-Encoding: Binary");
-header("Content-disposition: attachment; filename=\"" . basename($file_url) . "\"");
+header("Content-disposition: attachment; filename=\"".basename($file_url)."\"");
 readfile($file_url);
 
 echo "1) ".basename("/etc/sudoers.d", ".d").PHP_EOL;
@@ -100,3 +102,4 @@ echo "2) ".basename("/etc/passwd").PHP_EOL;
 echo "3) ".basename("/etc/").PHP_EOL;
 echo "4) ".basename(".").PHP_EOL;
 echo "5) ".basename("/");
+print_r(pathinfo("./debug.log"));

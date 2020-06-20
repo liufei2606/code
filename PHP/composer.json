@@ -16,16 +16,16 @@
         "phpmailer/phpmailer": "^6.0",
         "lcobucci/jwt": "^3.2",
         "monolog/monolog": "^1.24",
-        "elasticsearch/elasticsearch": "^7.7"
+        "elasticsearch/elasticsearch": "^7.7",
+        "symfony/http-foundation": "^5.1"
     },
     "autoload": {
         "psr-4": {
-            "App\\": "application/",
-            "Test\\": "tests/",
-            "Ns\\": "syntax/ns/"
+            "Test\\": "tests/"
         },
         "classmap": [
-            "."
+            ".",
+            "application"
         ]
     },
     "require-dev": {
