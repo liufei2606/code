@@ -9,9 +9,68 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class FizzBuzzTest {
 
     @Test
-    public void get_except_result(){
-        String result = FizzBuzz.handleSignleDigit(6);
-        assertEquals('6',result);
+    public void should_return_origin_digit_given_input_is_not_match_any_rule() {
+        String actual = FizzBuzz.handleSignleDigit357(4);
+        assertEquals("", actual);
     }
 
+    @Test
+    public void should_return_Fizz_given_input_can_be_divided_3() {
+        String actual = FizzBuzz.handleSignleDigit357(12);
+        assertEquals("Fizz", actual);
+    }
+
+    @Test
+    public void should_return_Fizz_given_input_can_be_divided_5() {
+        String actual = FizzBuzz.handleSignleDigit357(20);
+        assertEquals("Buzz", actual);
+    }
+
+    @Test
+    public void should_return_Fizz_given_input_can_be_divided_3_and_5() {
+        String actual = FizzBuzz.handleSignleDigit357(15);
+        assertEquals("FizzBuzz", actual);
+    }
+
+    @Test
+    public void should_return_Fizz_given_input_can_be_divided_7() {
+        String actual = FizzBuzz.handleSignleDigit357(77);
+        assertEquals("Whizz", actual);
+    }
+
+    @Test
+    public void should_return_Fizz_given_input_can_be_divided_3_and_7() {
+        String actual = FizzBuzz.handleSignleDigit357(21);
+        assertEquals("FizzWhizz", actual);
+    }
+
+    @Test
+    public void should_return_Fizz_given_input_can_be_include_3_and_7() {
+        String actual = FizzBuzz.handleSignleDigit357(37);
+        assertEquals("FizzWhizz", actual);
+    }
+
+    @Test
+    public void should_return_Fizz_given_input_can_be_divided_5_and_7() {
+        String actual = FizzBuzz.handleSignleDigit357(70);
+        assertEquals("BuzzWhizz", actual);
+    }
+
+    @Test
+    public void should_return_Fizz_given_input_can_be_include_5_and_7() {
+        String actual = FizzBuzz.handleSignleDigit357(571);
+        assertEquals("BuzzWhizz", actual);
+    }
+
+    @Test
+    public void should_return_Fizz_given_input_can_be_divided_5_and_3_and_7() {
+        String actual = FizzBuzz.handleSignleDigit357(105);
+        assertEquals("FizzBuzzWhizz", actual);
+    }
+
+    @Test
+    public void should_return_Fizz_given_input_can_be_include_5_and_3_and_7() {
+        String actual = FizzBuzz.handleSignleDigit357(537);
+        assertEquals("FizzBuzzWhizz", actual);
+    }
 }
