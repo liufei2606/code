@@ -19,6 +19,7 @@ class Container
         if (empty(self::$instance)) {
             return self::$instance = new self;
         }
+
         return self::$instance;
     }
 

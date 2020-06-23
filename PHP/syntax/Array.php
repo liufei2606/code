@@ -1,8 +1,8 @@
 <?php
 
-# 可以包含任何数据类型，支持无限扩容
-# 将传统数组和字典类型合二为一, 底层通过哈希表实现数组功能
-# 传统的数组对应的是索引数组
+# 可以包含任何数据类型，支持无限扩容,将传统数组和字典类型合二为一, 底层通过哈希表实现数组功能
+
+# 传统数组对应索引数组
 $fruits = [];
 $fruits[] = 'Apple';
 $fruits[] = 'Orange';
@@ -10,20 +10,16 @@ $fruits[] = 'Pear';
 
 $fruits[2] = 'Banana';
 print($fruits[0].PHP_EOL);
-unser($fruits[1]);
+unset($fruits[1]);
 
-# 字典类型对应的是关联数组
-
-
-"############## array ################".PHP_EOL;
+# 字典类型对应关联数组
 // 所有键名改为全小写或大写。本函数不改变数字索引
 // 如果输入值（array）不是一个数组，就会抛出一个错误警告（E_WARNING）
-
 $input_array = array("FirSt" => 1, "SecOnd" => 4);
 print_r(array_change_key_case($input_array, CASE_UPPER)); # [[FIRST] => 1 [SECOND] => 4]
 print_r(array_change_key_case($input_array, CASE_LOWER)); # [[first] => 1 [second] => 4]]
 
-# 计算数组中的单元数目，或对象中的属性个数
+# 计算数组中单元数目，或对象中的属性个数
 echo count($input_array, COUNT_RECURSIVE); #  默认不递归
 # 值需要能够作为合法的键名，同一个值出现多次，则最后一个键名将作为它的值，其它键会被丢弃
 print_r(array_flip($input_array)); # [ [1] => FirSt [4] => SecOnd]
@@ -79,6 +75,7 @@ print_r(each($transport)); # [1] => plane [value] => bob [0] => 3 [key] => 3
 # EXTR_IF_EXISTS仅在当前符号表中已有同名变量时，覆盖它们的值。其它的都不处理。 举个例子，以下情况非常有用：定义一些有效变量，然后从 $_REQUEST 中仅导入这些已定义的变量。
 # EXTR_PREFIX_IF_EXISTS 仅在当前符号表中已有同名变量时，建立附加了前缀的变量名，其它的都不处理。
 # EXTR_REFS 将变量作为引用提取。这有力地表明了导入的变量仍然引用了 array 参数的值。可以单独使用这个标志或者在 flags 中用 OR 与其它任何标志结合使用。
+
 $size = "large";
 $var_array = array("color" => "blue",
                    "size"  => "medium",
@@ -86,7 +83,6 @@ $var_array = array("color" => "blue",
 extract($var_array, EXTR_PREFIX_SAME, "wddx");
 echo "$color, $size, $shape, $wddx_size\n"; # blue, large, sphere, medium
 
-echo "############## array_chunk ################" . PHP_EOL;
 // 一个数组分割成多个数组，其中每个数组的单元数目由 size 决定。最后一个数组的单元数目可能会少于 size 个 第三个参数决定是否保留键名
 // size 小于 1，会抛出一个 E_WARNING 错误并返回 NULL
 $input_array = array('a', 'b', 'c');
@@ -94,7 +90,6 @@ print_r(array_chunk($input_array, 2)); # [[a,b], [c]]
 print_r(array_chunk($input_array, 2, true)); # [[a,b], [2 => c]]
 // print_r(array_slice());
 
-echo "############## array_column ################" . PHP_EOL;
 // 如果提供的是包含一组对象的数组，只有 public 属性会被直接取出。 为了也能取出 private 和 protected 属性，类必须实现 __get() 和 __isset() 魔术方法
 // 返回input数组中键值为column_key的列， 如果指定了可选参数index_key，那么input数组中的这一列的值将作为返回数组中对应值的键
 $records = array(
@@ -116,6 +111,7 @@ $records = array(
 );
 print_r(array_column($records, 'first_name')); # [[0] => John [1] => Sally [2] => Jane]
 print_r(array_column($records, 'first_name', 'id')); # [[2135] => John,[3245] => Sally,[5342] => Jane]
+
 class User
 {
     private $username;
@@ -141,13 +137,13 @@ $users = [
 ];
 print_r(array_column($users, 'username')); # [[0] => user 1 [1] => user 2 [2] => user 3]
 
-echo "############## array_combine ################" . PHP_EOL;
 // 用一个数组的值作为其键名，另一个数组的值作为其值
-// 键中 非法的值将会被转换为字符串类型
+// 键中 非法值将会被转换为字符串类型
 // 如果两个数组的单元数不同则返回 FALSE
 $a = ['green', 'red', 'yellow'];
 $b = ['avacado', 'apple', 'banara'];
 print_r(array_combine($a, $b)); # [[green] => avacado [red] => apple [yellow] => banara]
+
 # 合并一个或多个数组
 # 相同的字符串键名，则后面的值将覆盖前一个值
 # 包含数字键名，后面的值将不会覆盖原来的值，而是附加到后面
@@ -162,7 +158,7 @@ print_r([0 => 'zero_a', 2 => 'two_a', 3 => 'three_a'] + [1 => 'one_b', 3 => 'thr
 print_r(array_merge_recursive(['name' => ['first' => 'Lee', 'last' => 'Henry']], ['name' => ['first' => 'King']])); # [ 'name' => ['first' => ['Lee', 'King'], 'last' => 'Henry']]
 
 # 用给定的值填充数组 array_fill ( int $start_index , int $num , mixed $value )
-#  start_index 是负数， 那么返回的数组的第一个索引将会是 start_index ，而后面索引则从0开始
+# start_index 是负数， 那么返回的数组的第一个索引将会是 start_index ，而后面索引则从0开始
 print_r(array_fill(-2, 4, 'pear')); # [[-2] => pear [0] => pear [1] => pear [2] => pear]
 # 用指定的键和值填充数组, 非法值将被转换为字符串
 print_r(array_fill_keys(['foo', 5], 'banana')); # [[foo] => banana [5] => banana]
@@ -185,7 +181,6 @@ print_r($stack); // [[0] => orange [1] => banana]]
 print_r(array_unshift($stack, "orange", "pear")); # 4
 print_r($stack); # [ [0] => orange [1] => pear [2] => orange [3] => banana]
 print_r(array_product([2,4,5])); # 40
-
 
 echo "############## array_cunt_values ################" . PHP_EOL;
 // 数组的键是 array 里单元的值； 数组的值是 array 单元的值出现的次数
@@ -288,7 +283,7 @@ print_r(array_diff_ukey($array3, $array4, function ($key1, $key2) { # [[red] => 
     }
 }));
 
-// #  带索引检查计算数组的交集，用回调函数比较索引
+// # 带索引检查计算数组的交集，用回调函数比较索引
 // array_intersect_uassoc();
 // # 使用键名比较计算数组的交集
 // array_intersect_key();

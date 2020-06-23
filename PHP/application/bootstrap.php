@@ -1,4 +1,5 @@
 <?php
+
 namespace App;
 
 use App\Core\Container;
@@ -10,6 +11,7 @@ function bootApp(Container $container)
 {
     initConfig($container);
     registerProviders($container);
+
     return $container;
 }
 
@@ -35,4 +37,5 @@ function registerProviders(Container $container)
 
 // 新增一个 IoC 容器，通过依赖注入获取对象实例
 $container = Container::getInstance();
+
 return bootApp($container);

@@ -1,10 +1,11 @@
 <?php
 
-namespace app\modles;
+namespace App\Model;
 
-class Engine{
-	public function __construct()
-	{
+class Engine
+{
+    public function __construct()
+    {
 
-	}
+    }
 }

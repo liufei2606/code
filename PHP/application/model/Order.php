@@ -1,11 +1,6 @@
 <?php
-namespace App\Modles;
+namespace App\Model;
 
-/**
- * Class Order
- *
- * @since 2.0
- */
 class Order
 {
     /**

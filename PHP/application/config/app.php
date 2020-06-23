@@ -20,7 +20,7 @@ return [
             ]
         ]
     ],
-    
+
     'editor' => 'markdown',  // 支持html和markdown
     'providers' => [
         \App\Store\StoreProvider::class,

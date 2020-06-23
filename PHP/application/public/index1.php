@@ -2,7 +2,6 @@
 require_once __DIR__.'/../../vendor/autoload.php';
 $container = require __DIR__.'/../bootstrap.php';
 
-
 $request = \App\Http\Request::capture();
 $container->bind('request', $request);
 
