@@ -61,3 +61,43 @@ $a = 36;
 $b = 56;
 $c = 67;
 echo $a ?? $b ?? $c;
+
+var_dump(0 + "3+4+5");
+
+echo 8367 & 8192 ."\n";
+echo 8366 & 8192 ."\n";
+
+$a = 45;
+$b = $a;
+$b = 56;
+echo $a;
+echo $b;
+
+preg_match("/[0-9a-zA-Z]*/", "http://www.baidu.com", $match);
+var_dump($match);
+
+$a = 1;
+$b = 2;
+$c = 3;
+function add()
+{
+    $d = 4;
+    $c += isset($a) ? 0 : $a++;
+    if ($c > 3) {
+        $d++;
+    }
+    echo $a;
+    return $d;
+}
+
+$d = add();
+$x = $a++ + ++$b;
+$y = --$c + $d--;
+echo $x.'_'.$y;
+
+$a < $b; # ($a <=> $b) === -1
+$a <= $b;   # ($a <=> $b) === -1 || ($a <=> $b) === 0
+$b == $a; #  ($a <=> $b) === 0
+$a != $b; #($a <=> $b) !== 0
+$a >= $b;# ($a <=> $b) === 1 || ($a <=> $b) === 0
+$a > $b;#($a <=> $b) === 1

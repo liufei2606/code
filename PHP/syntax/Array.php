@@ -533,3 +533,30 @@ $username = array();
 array_walk($user, function($value, $key) use (&$username){
     $username[] = $value['username'];
 });
+
+error_reporting(0);
+
+$arr = [1, 3, 5, 6];
+foreach ($arr as &$v) {
+}
+foreach ($arr as $v) {
+}
+var_dump($arr);
+
+$array = array(
+    1    => "a",
+    "1"  => "b",
+    1.5  => "c",
+    true => "d",
+);
+var_dump($array);
+
+$arr1 = ['PHP', 'apache'];
+$arr2 = ['hello', 'MySQl', 'HTML', 'CSS'];
+$mergeArr = array_merge($arr1, $arr2);
+$plusArr = $arr1 + $arr2;
+var_dump($mergeArr);
+var_dump($plusArr);
+
+$arr2 = [["hello", "MySQl", "HTML", "CSS"]];
+echo json_encode($arr2, JSON_PRETTY_PRINT) . '<br>';

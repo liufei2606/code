@@ -236,10 +236,15 @@ print_r($output);
 // 提供第一个参数，number的小数部分会被去掉 并且每个千位分隔符都是英文小写逗号","
 // 如果提供两个参数，number将保留小数点后的位数到你设定的值，其余同楼上
 // 如果提供了四个参数，number 将保留decimals个长度的小数部分, 小数点被替换为dec_point，千位分隔符替换为thousands_sep
-echo number_format(1234.56) .PHP_EOL; // 1,235  以千位分隔符方式格式化一个数字
-echo number_format(1234.56, 2, ',', ' ') .PHP_EOL;// 1 234,56
-echo number_format(1234.5678, 2, '.', '') .PHP_EOL; // 1234.57
+echo number_format(1234.56).PHP_EOL; // 1,235  以千位分隔符方式格式化一个数字
+echo number_format(1234.56, 2, ',', ' ').PHP_EOL;// 1 234,56
+echo number_format(1234.5678, 2, '.', '').PHP_EOL; // 1234.57
 
 // ROT13 编码简单地使用字母表中后面第 13 个字母替换当前字母，同时忽略非字母表中的字符。编码和解码都使用相同的函数，传递一个编码过的字符串作为参数，将得到原始字符串。
-echo str_rot13('PHP 4.3.0'). PHP_EOL; // CUC 4.3.0
-echo str_rot13('CUC 4.3.0'). PHP_EOL; // PHP 4.3.0
+echo str_rot13('PHP 4.3.0').PHP_EOL; // CUC 4.3.0
+echo str_rot13('CUC 4.3.0').PHP_EOL; // PHP 4.3.0
+
+# char length eng and chn
+echo 'hello world'.'<br>';
+echo 'ｈｅｌｌｏ　ｗｏｒｌｄ'.' length:'.strlen('ｈｅｌｌｏ　ｗｏｒｌｄ').'<hr>';
+

@@ -41,7 +41,7 @@ echo $contents;//printing data of file
 fclose($handle);//close file
 
 # 写入并加
-$fp = fopen(dirname(__FILE__).'/lock.txt', 'w+');
+$fp = fopen(__DIR__.'/lock.txt', 'w+');
 if (flock($fp, LOCK_EX)) {
     fwrite($fp, 'write something');
     flock($fp, LOCK_UN);
@@ -51,14 +51,14 @@ if (flock($fp, LOCK_EX)) {
 fclose($fp);
 
 # 追加
-$fp = fopen(dirname(__FILE__).'/data.txt', 'a');//opens file in append mode
+$fp = fopen(__DIR__.'/data.txt', 'a');//opens file in append mode
 fwrite($fp, ' this is additional text ');
 fwrite($fp, 'appending data');
 fclose($fp);
 echo "File appended successfully";
 
 # 删除
-$status = unlink(dirname(__FILE__).'/data.txt');
+$status = unlink(__DIR__.'/data.txt');
 if ($status) {
     echo "File deleted successfully";
 } else {
@@ -66,8 +66,7 @@ if ($status) {
 }
 
 $fp = fopen("./test1.txt", "r");//open file in read mode
-var_dump($fp);
-die;
+
 while (!feof($fp)) {
     echo fgetc($fp);
 }
@@ -103,3 +102,25 @@ echo "3) ".basename("/etc/").PHP_EOL;
 echo "4) ".basename(".").PHP_EOL;
 echo "5) ".basename("/");
 print_r(pathinfo("./debug.log"));
+
+/**
+ * 根据 id 获取机构二级目录名称
+ *
+ * @param $id
+ *
+ * @return mixed|string
+ */
+function getTwoPhraseOranizationById($id)
+{
+    $selfInfo = Organization::find()->select('id,title,parent_id')->where(['id' => $id])->asArray()->one();
+
+    if ($selfInfo['parent_id'] > 0) {
+        $parentInfo = Organization::getTwoPhraseOranizationById($selfInfo['parent_id']);
+
+        if (null != $parentInfo) {
+            return $parentInfo.'-'.$selfInfo['title'];
+        }
+    }
+
+    return $selfInfo['title'];
+}

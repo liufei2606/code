@@ -305,13 +305,6 @@ $closure();
 
 $username = $_GET['user'] ?? 'nobody';
 
-$a < $b ($a <=> $b) === -1
-$a <= $b    ($a <=> $b) === -1 || ($a <=> $b) === 0
-$a == $b    ($a <=> $b) === 0
-$a != $b    ($a <=> $b) !== 0
-$a >= $b    ($a <=> $b) === 1 || ($a <=> $b) === 0
-$a > $b ($a <=> $b) === 1
-
 $bytes = random_bytes(5);
 print_r(bin2hex($bytes));//string(10) "385e33f741"
 print_r(random_int(100, 999));//int(248)

@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../controllers/strtk.php';
+require_once __DIR__.'/../controller/strtk.php';
 use PHPUnit\Framework\TestCase;
 
 //一个测试用例即为一个继承了PHPUnit_TestCase的子类
