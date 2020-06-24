@@ -144,7 +144,7 @@ echo "\u{aa}";// ª
 echo "\u{0000aa}";// ª
 echo "\u{9999}";// 香
 
-string preg_replace_callback_array(array $regexesAndCallbacks, string $input);
+//string preg_replace_callback_array(array $regexesAndCallbacks, string $input);
 $tokenStream = []; // [tokenName, lexeme] pairs
 
 $input = <<<'end'
@@ -199,15 +199,8 @@ preg_replace_callback_array(
 );
 
 interface Throwable
-    |- Exception implements Throwable
-        |- ...
-    |- Error implements Throwable
-        |- TypeError extends Error
-        |- ParseError extends Error
-        |- AssertionError extends Error
-        |- ArithmeticError extends Error
-            |- DivisionByZeroError extends ArithmeticError
-function handler(Exception $e) { ... }
+
+function handler(Exception $e) {}
 set_exception_handler('handler');
 
 // 兼容 PHP 5 和 7

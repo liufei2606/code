@@ -35,7 +35,7 @@ class UserController
         }
     }
 }
-print_r((new UserController())->login('henry', 2343243));
+print_r((new UserController())->login('henry'));
 
 class Oss
 {

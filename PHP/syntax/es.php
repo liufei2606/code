@@ -4,7 +4,6 @@ require './../vendor/autoload.php';
 
 use Elasticsearch\ClientBuilder;
 
-
 //$logger = ClientBuilder::defaultLogger('./../logs/es.log', Logger::INFO);
 $logger = new \Monolog\Logger('es');
 $client = ClientBuilder::create()->setHosts(['localhost:9200'])

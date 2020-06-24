@@ -17,6 +17,6 @@ foreach (range(1, $childNum) as $index) {
         $parentId = posix_getppid();
         fwrite(STDOUT, "I'm the {$index}th child and my pid: $mypid, parentId: $parentId\n");
         sleep(5);
-        exit;               // 注意这一行
+        exit;
     }
 }

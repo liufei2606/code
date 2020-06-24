@@ -20,6 +20,5 @@ function super_debug($data, $log_path = '/var/log/', $log_name = 'debug.log')
 $file_url = 'https://upload.chinaz.com/picmap/201811151633430899_60.jpg';
 header('context-Type: application/octet-stream');
 header("context-Transfer-Encoding: Binary");
-header("context-disposition: attachment; filename=\"" . basename($file_url) . "\"");
+header("context-disposition: attachment; filename=\"".basename($file_url)."\"");
 readfile($file_url); # 获取图片 base64
-

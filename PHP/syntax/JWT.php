@@ -135,7 +135,7 @@ class JWT
         }
 
         $headers = json_decode(static::decodeStr($arr[0]), true);
-        $payload = json_decode(static::decodeStr($arr[1]), true);
+        $payload = json_decode(static::decodeStr($arr[1]), true, 512, JSON_THROW_ON_ERROR);
 
         return new static($headers, $payload);
     }

@@ -16,28 +16,31 @@ echo '<br>';
 echo jc3($n);
 echo '<br>';
 
-function jc($n){
-    if($n == 1){
+function jc($n)
+{
+    if ($n == 1) {
         return 1;
     }
 
     return $n * jc($n-1);
 }
 
-function jc2($n){
+function jc2($n)
+{
     $m = 1;
-    for($i=1; $i<=$n; $i++){
+    for ($i=1; $i<=$n; $i++) {
         $m = $m * $i;
     }
 
     return $m;
 }
 
-function jc3($n){
+function jc3($n)
+{
     $arr = [];
     $arr[1] = 1;
 
-    for($i = 2; $i<=$n; $i++){
+    for ($i = 2; $i<=$n; $i++) {
         $arr[$i] = $i * $arr[$i-1];
     }
 
@@ -53,5 +56,3 @@ $xhprof_runs = new XHProfRuns_Default();
 $run_id = $xhprof_runs->save_run($xhprof_data, "xhprof_testing");
 
 echo "http://localhost/xhprof/xhprof_html/index.php?run={$run_id}&source=xhprof_testing\n";
-
-?>

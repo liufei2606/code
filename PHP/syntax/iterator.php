@@ -1,6 +1,7 @@
 <?php
 
-class myIterator implements Iterator {
+class myIterator implements Iterator
+{
     private $position = 0;
     private $array = array(
         "firstelement",
@@ -8,39 +9,43 @@ class myIterator implements Iterator {
         "lastelement",
     );
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->position = 0;
     }
 
-    function rewind() {
-        var_dump(__METHOD__);
+    public function rewind()
+    {
+        echo __METHOD__.PHP_EOL;
         $this->position = 0;
     }
 
-    function current() {
-        var_dump(__METHOD__);
+    public function current()
+    {
+        echo __METHOD__.PHP_EOL;
         return $this->array[$this->position];
     }
 
-    function key() {
-        var_dump(__METHOD__);
+    public function key()
+    {
+        echo __METHOD__.PHP_EOL;
         return $this->position;
     }
 
-    function next() {
-        var_dump(__METHOD__);
+    public function next()
+    {
+        echo __METHOD__.PHP_EOL;
         ++$this->position;
     }
 
-    function valid() {
-        var_dump(__METHOD__);
+    public function valid()
+    {
+        echo __METHOD__.PHP_EOL;
         return isset($this->array[$this->position]);
     }
 }
 
 $it = new myIterator;
-
-foreach($it as $key => $value) {
-    var_dump($key, $value);
-    echo "\n";
+foreach ($it as $key => $value) {
+    echo $key.'@@'.$value.PHP_EOL;
 }

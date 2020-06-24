@@ -1,10 +1,9 @@
 <?php
 
 $a = 1234; // 十进制数
-$a = -123; // 负数
-$a = 0123; // 八进制数 (等于十进制 83)
-$a = 0x1A; // 十六进制数 (等于十进制 26)
-$a = 0b11111111; // 二进制数字 (等于十进制 255)
+$b = 0123; // 八进制数 (等于十进制 83)
+$c = 0x1A; // 十六进制数 (等于十进制 26)
+$d = 0b11111111; // 二进制数字 (等于十进制 255)
 
 $str='Hello text within single quote';
 $str2="Using double \"quote\" with backslash inside double quoted string";
@@ -16,27 +15,8 @@ $bar = <<<EOT
 bar
     EOT;
 
-$str=strtolower("My name is Yiibai");
-$str=ucwords("My name is Yiibai");
-$str=ucfirst("My name is Yiibai");
-$str=strrev("My name is Yiibai");
-
-$len=strlen("My name is Yiibai");
-
-$str = preg_replace_callback(
-    '/([a-z]*)([A-Z]*)/',
-    function($matchs){
-        return strtoupper($matchs[1]).strtolower($matchs[2]);
-    },
-$str
-);
-
-echo ord("S") # 83
-echo ord("Shanghai") # 83
-substr()
-htmlentities(string)
-addslashes(str)
-html_entity_decode(string)
+echo ord("S"); # 83
+echo ord("Shanghai"); # 83
 
 print # 一个语法结构(language constructs), 并不是一个函数, 参数的list并不要求有括号
 
@@ -62,10 +42,6 @@ echo 1 ^ 0; // 输出结果：1
 if( READ & $permission ){ //判断权限
 　　echo "ok";
 }
-
-E_ALL & ~E_NOTICE # 除了提示级别
-E_ALL ^ E_NOTICE #
-E_ERROR | E_RECOVERABLE_ERROR # 只显示错误和可恢复
 
 # 异或运算同样的值两次能还原为原理的值
 $arr=[6,8];

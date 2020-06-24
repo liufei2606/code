@@ -35,3 +35,7 @@ for ($x = 0; $x < 10; $x++) {
     echo microtime(true) - $t;
     echo "\n";
 }
+
+$startMemory = memory_get_usage();
+$array = range(1, 100000);
+echo memory_get_usage() - $startMemory, ' bytes';

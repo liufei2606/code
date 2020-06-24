@@ -61,10 +61,10 @@ echo "$a x $b = ".$add($a, $b).PHP_EOL;
 # 函数　默认不能引用全局变量
 $a = 5;
 $b = 6;
-function multiV()
-{
-    return $a * $b;
-}
+//function multiV()
+//{
+//    return $a * $b;
+//}
 
 //echo multiV().PHP_EOL;
 
@@ -150,22 +150,25 @@ function increment($i)
 $i = 10;
 increment($i); # 10
 
-function increment(&$i)
+function increment1(&$i)
 {
     echo $i++;
 }
+
 $i = 10;
-increment($i);
+increment1($i);
 echo $i; # 10 11
 
-function sum(...$numbers) {
+function sum1(...$numbers)
+{
     $acc = 0;
     foreach ($numbers as $n) {
         $acc += $n;
     }
     return $acc;
 }
-echo sum(1, 2, 3, 4);
+
+echo sum1(1, 2, 3, 4);
 
 function small_numbers()
 {
@@ -173,14 +176,16 @@ function small_numbers()
 }
 list ($zero, $one, $two) = small_numbers();
 
-function add(...$numbers) {
+function add3(...$numbers)
+{
     $sum = 0;
     foreach ($numbers as $n) {
         $sum += $n;
     }
     return $sum;
 }
-echo add(1, 2, 3, 4);
+
+echo add3(1, 2, 3, 4);
 
 function display($number) {
     if($number<=5){
@@ -236,7 +241,7 @@ $greet('PHP');
 
 $message = 'hello';
 $example = function () use ($message) {
-    var_dump($message);
+    echo $message;
 };
 echo $example();
 
@@ -306,5 +311,5 @@ $closure();
 $username = $_GET['user'] ?? 'nobody';
 
 $bytes = random_bytes(5);
-print_r(bin2hex($bytes));//string(10) "385e33f741"
-print_r(random_int(100, 999));//int(248)
+echo bin2hex($bytes).PHP_EOL;//string(10) "385e33f741"
+echo random_int(100, 999);//int(248)

@@ -10,7 +10,7 @@ class Cart
 
     protected $products =array();
 
-    public function add($product, $quantity)
+    public function add($product, $quantity): void
     {
         $this->products[$product] = $quantity;
     }
@@ -64,9 +64,10 @@ function html($code, $id = "", $class = "")
 }
 
 $fib = function ($n) use (&$fib) {
-	if ($n == 0 || $n == 1)
-		return 1;
+    if ($n == 0 || $n == 1) {
+        return 1;
+    }
 
-	return $fib($n - 1) + $fib($n - 2);
+    return $fib($n - 1) + $fib($n - 2);
 };
 echo $fib(2) . "\n";// 2

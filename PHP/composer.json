@@ -19,7 +19,8 @@
         "elasticsearch/elasticsearch": "^7.7",
         "symfony/http-foundation": "^5.1",
         "illuminate/database": "^7.16",
-        "illuminate/events": "^7.16"
+        "illuminate/events": "^7.16",
+      "ext-json": "*"
     },
     "autoload": {
         "psr-4": {

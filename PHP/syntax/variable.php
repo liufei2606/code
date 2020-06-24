@@ -1,12 +1,12 @@
 <?php
 
 # 以 $ 开头
-#　$ 之后具体的变量名只支持字母（支持中文字符，不过尽量使用 ASCII 字符，以免出现意想不到的问题）、数字、下划线，并且不能以数字开头
+# 变量名只支持字母（支持中文字符，不过尽量使用 ASCII 字符，以免出现意想不到的问题）、数字、下划线，并且不能以数字开头
 $foo = 'Bob';
 echo $foo.PHP_EOL;
 printf("%s\n", $foo);
 
-# 对象引用:指向同一个地址，一起改变
+# 对象引用:指向同一个地址
 $bar = &$foo;
 $bar = "My name is $bar";
 echo $bar.PHP_EOL;
@@ -23,10 +23,9 @@ echo $$varName;
 ## 常量
 define("LANGUAGE", "PHP");
 const FRAMEWORK = "Laravel";
+echo LANGUAGE.FRAMEWORK;
 
-# 变量
-$variablename = value;
-
+## 作用域
 $x=5;
 $y=10;
 function myTest()
@@ -35,56 +34,62 @@ function myTest()
     $y=$x+$y;
     echo $y;
 }
+
 myTest(); // 15
 
-function myTest()
+function myTest1()
 {
-    static $x=0;
+    static $x = 0;
     echo $x;
     $x++;
 }
-myTest(); // 0
-myTest(); // 1
-myTest(); // 2
 
-function myTest($x)
+myTest1(); // 0
+myTest1(); // 1
+myTest1(); // 2
+
+function myTest2($x)
 {
     echo $x;
 }
-myTest(5); # 5
 
-// 函数内销毁全局变量$foo是无效的,应使用 $GLOBALS 数组来实现
-function destroy_foo() {
+myTest2(5); # 5
+
+// 函数内销毁全局变量$foo无效,应使用 $GLOBALS 数组来实现
+function destroy_foo()
+{
     global $foo;
     // unset($foo);
     unset($GLOBALS['bar']);
     echo $foo;//Notice: Undefined variable: foo
 }
+
 $foo = 'bar';
 destroy_foo();
 echo $foo;//bar
 
-# 常量
-define("MESSAGE", "Hello YiiBai PHP");
-const MESSAGE = "Hello const by YiiBai PHP";
-
 require('./ShopProduct.php'); # 加载文件
 
 # __clone实现真正深拷贝
-class Test{
-    public $a=1;
+class Test
+{
+    public $a = 1;
 }
 
-class TestOne{
-    public $b=1;
+class TestOne
+{
+    public $b = 1;
     public $obj;
+
     //包含了一个对象属性，clone时，它会是浅拷贝
-    public function __construct(){
+    public function __construct()
+    {
         $this->obj = new Test();
     }
 
     //  方法一 重写clone函数
-    public function __clone(){
+    public function __clone()
+    {
         $this->obj = clone $this->obj;
     }
 }
