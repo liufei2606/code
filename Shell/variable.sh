@@ -22,15 +22,18 @@ echo "Print Variable: "$your_name . ${your_name}
 
 # for-loop
 for skill in Ada Coffe Action Java; do
-    echo "I am good at ${skill} Script"
+  echo "I am good at ${skill} Script"
 done
 
 # list folder's files
-directory=`cd $(dirname $0); pwd -P`;
+directory=$(
+  cd $(dirname $0)
+  pwd -P
+)
 echo "List current directory:"
-for file in `ls $directory`; do
-  echo $file;
-done;
+for file in $(ls $directory); do
+  echo $file
+done
 
 # readonly can't modify and delete,
 only_read="Arsenal"
@@ -58,10 +61,19 @@ echo ${#string}
 # strim
 echo ${string:2:3}
 # get index
-echo `expr index "$string" cd`
+echo $(expr index "$string" cd)
 
 # array
 arr=(1 2 3 4 a d)
-echo ${arr[@]}
-echo ${#arr[*]} ${#arr[n]} ${#arr[@]}
 echo ${arr[4]}
+echo “数组的元素为：${arr[*]}”
+echo “数组的元素为：${arr[@]}”
+echo “数组的个数为：${#arr[*]}”
+echo “数组的个数为：${#arr[@]}”
+
+: <<EOF
+  是法师打发是
+
+
+  sfaasdfa
+EOF

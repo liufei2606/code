@@ -6,6 +6,7 @@ function funWithReturn() {
   read aNum
   echo "Input the second number:"
   read anotherNum
+
   return $(($aNum + $anotherNum))
 }
 
@@ -23,11 +24,12 @@ funWithParam() {
 }
 funWithParam 1 2 3 4 5 6 7 8 9 34 73
 
+# 输出重定向
 who >log
 echo "Hello World!" >>output
 
 # count file use
-wc -l 7.function.sh
+wc -l function.sh
 
 # 每个 Unix/Linux 命令运行时都会打开三个文件：
 #    标准输入文件(stdin)：stdin的文件描述符为0，Unix程序默认从stdin读取数据。
