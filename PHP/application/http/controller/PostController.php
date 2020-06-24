@@ -12,7 +12,8 @@ class PostController extends Controller
             exit();
         }
 
-        $post = $this->connection->table('posts')->select($id);
+//        $post = $this->connection->table('posts')->select($id);
+        $post = Post::with('album')->findOrFail($id)->toArray();
         $printer = $this->container->resolve(\App\Printer\PrinterContract::class);
 
         if ($this->container->resolve('app.editor') == 'markdown') {
@@ -20,7 +21,8 @@ class PostController extends Controller
         } else {
             $post['content'] = $printer->render($post['html']);
         }
-        $album = $this->connection->table('albums')->select($post['album_id']);
+//        $album = $this->connection->table('albums')->select($post['album_id']);
+        $album = $post['album'];
         $pageTitle = $post['title'].' - '.$this->container->resolve('app.name');
         $siteUrl = $this->container->resolve('app.url');
 

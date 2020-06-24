@@ -3,6 +3,9 @@
 namespace App;
 
 use App\Core\Container;
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Events\Dispatcher;
+use Illuminate\Container\Container as IlluminateContainer;
 
 /**
  * 初始化全局配置
@@ -11,7 +14,8 @@ function bootApp(Container $container)
 {
     initConfig($container);
     registerProviders($container);
-
+    initDatabase($container);
+    
     return $container;
 }
 
@@ -23,6 +27,16 @@ function initConfig(Container $container)
             $container->bind($module.'.'.$key, $val);
         }
     }
+}
+
+function initDatabase(Container $container)
+{
+    $capsule = new Capsule();
+    $dbConfig = $container->resolve('app.store');
+    $capsule->addConnection($dbConfig['drivers'][$dbConfig['default']]);
+    $capsule->setEventDispatcher(new Dispatcher(new IlluminateContainer));
+    $capsule->setAsGlobal();
+    $capsule->bootEloquent();
 }
 
 function registerProviders(Container $container)
