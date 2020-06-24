@@ -1,4 +1,6 @@
 <?php
+namespace Syntax\Oop;
+
 
 trait trait1
 {

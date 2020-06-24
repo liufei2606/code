@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Swoole\Websocket;
+
 class Test
 {
     protected $concurrency; //并发量

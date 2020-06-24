@@ -1,5 +1,7 @@
 <?php
 
+namespace Syntax\Oop;
+
 class Test
 {
     private $foo;
@@ -29,7 +31,7 @@ $test = new Test('test');
 $test->baz(new Test('other'));
 
 # 延迟绑定
-class A
+class E
 {
     public static $proPublic = "public of A";
 
@@ -49,11 +51,11 @@ class A
     }
 }
 
-class B extends A
+class D extends E
 {
-   public static $proPublic = "public of B";
+    public static $proPublic = "public of B";
 
-   public function test()
+    public function test()
     {
         echo "\n\nClass B:\n";
         echo self::$proPublic."\n";
@@ -64,14 +66,14 @@ class B extends A
     }
 }
 
-class C extends B
+class C extends D
 {
     public static $proPublic = "public of C";
 }
 
-$t1 = new A();
+$t1 = new E();
 $t1->test();
-$t2 = new B();
+$t2 = new D();
 $t2->test();
 $t3 = new C();
 $t3->test();

@@ -1,11 +1,9 @@
 <?php
+namespace App\Http;
 
-namespace \App\Http;
+use \Symfony\Component\HttpFoundation\Response as BaseResponse;
 
-
-class Response extends \Symfony\Component\HttpFoundation\Response
+class Response extends BaseResponse
 {
-//    public function __construct(string $content = '', int $status = 200, array $headers = [])
-//    {
-//    }
+
 }

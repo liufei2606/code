@@ -1,9 +1,12 @@
 <?php
+namespace Syntax;
+
 // Type 1: Simple callback
 function my_callback_function()
 {
-    echo 'hello world!' . "<br>";
+    echo 'hello world!'."<br>";
 }
+
 call_user_func('my_callback_function');
 
 // Type 2: Static class method call

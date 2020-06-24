@@ -1,22 +1,21 @@
 <?php
 
-// Strict mode
 declare(strict_types=1);
+namespace PHP7;
+
 function sum(int ...$ints)
 {
    return array_sum($ints);
 }
-print(sum(2, '3', 4.1)); # Fatal error
+//print(sum(2, '3', 4.1)); # Fatal error
 
-declare(strict_types=1);
-function returnIntValue(int $value): int
+function returnIntValue(int $value): float
 {
    return $value + 1.0;
 }
 print(returnIntValue(5));
 
 $username = $_GET['username'] ?? $_POST['username'] ?? 'not passed'; # null合并运算符
-
 print( 1 <=> 1);print("<br/>"); // 0
 print( 1 <=> 2);print("<br/>"); // -1
 print( 2 <=> 1);print("<br/>"); // 1
@@ -320,9 +319,9 @@ function test(object $obj) : object
 }
 test(new StdClass());
 
-; ini file
-extension=php-ast
-zend_extension=opcache
+//; ini file
+//extension=php-ast
+//zend_extension=opcache
 
 abstract class A
 {

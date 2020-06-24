@@ -1,13 +1,19 @@
 <?php
 
-class Base {
-    public function sayHi() {
+namespace Syntax\oop;
+
+class Base
+{
+    public function sayHi()
+    {
         echo 'Hello ';
     }
 }
 
-trait SayWorld {
-    public function sayHello() {
+trait SayWorld
+{
+    public function sayHello()
+    {
         parent::sayHello();
         echo 'World!';
     }

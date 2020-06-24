@@ -1,5 +1,5 @@
 <?php
-
+namespace Syntax\Oop;
 
 class Magic
 {

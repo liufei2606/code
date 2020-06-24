@@ -1,4 +1,5 @@
 <?php
+namespace Syntax\MySql;
 
 //error_reporting(E_ERROR);
 

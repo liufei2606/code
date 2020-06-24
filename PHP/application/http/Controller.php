@@ -29,5 +29,6 @@ class Controller
         $store = $this->container->resolve(StoreContract::class);
         $this->connection = $store->newConnection();
         $this->request = $this->container->resolve('request');
+        $this->view = $this->container->resolve('view');
     }
 }
