@@ -2,6 +2,8 @@
 
 namespace App\Http\Controller;
 
+use App\Model\Album;
+
 class HomeController extends Controller
 {
     public function index()

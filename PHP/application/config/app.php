@@ -2,22 +2,22 @@
 
 return [
     'app' => [
-        'name' => '学院君的个人网站',
+        'name' => 'Henry 的个人网站',
         'desc' => '让学习与进取者不再孤独',
         'url' => 'https://xueyuanjun.com',
         'store' => [
             'default' => 'mysql',
             'drivers' => [
-                'array' => [
-
-                ],
                 'mysql' => [
+                    'driver' => 'mysql',
                     'host' => '127.0.0.1',
                     'port' => 3306,
-                    'dbname' => 'blog',
+                    'database' => 'blog',
                     'charset' => 'utf8mb4',
-                    'user' => 'blog',
+                    'username' => 'blog',
                     'password' => 'blog',
+                    'collation' => 'utf8mb4_general_ci',
+                    'prefix' => '',
                 ]
             ]
         ],
@@ -30,6 +30,6 @@ return [
     ],
     'view' => [
         'engine' => 'php',  // 视图模板引擎
-        'path' => __DIR__.'/../views/blog/',  // 视图模板根路径
+        'path' => __DIR__.'/../resources/views/blog/',  // 视图模板根路径
     ]
 ];

@@ -21,10 +21,10 @@ class MysqlDriver implements StoreContract
         }
         $host = $options['host'];
         $port = isset($options['port']) ? $options['port'] : 3306;
-        $dbname = $options['dbname'];
+        $dbname = $options['database'];
         $charset = isset($options['charset']) ? $options['charset'] : 'utf8';
         $dsn = sprintf("mysql:host=%s;port=%s;dbname=%s;charset=%s", $host, $port, $dbname, $charset);
-        $user = $options['user'];
+        $user = $options['username'];
         $password = $options['password'];
         $this->options = compact('dsn', 'user', 'password');
     }
@@ -103,10 +103,10 @@ class MysqlDriver implements StoreContract
         if (empty($options['host'])) {
             throw new \Exception('数据库主机不能为空');
         }
-        if (empty($options['dbname'])) {
+        if (empty($options['database'])) {
             throw new \Exception('数据库名称不能为空');
         }
-        if (empty($options['user'])) {
+        if (empty($options['username'])) {
             throw new \Exception('数据库用户名不能为空');
         }
         if (empty($options['password'])) {
