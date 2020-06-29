@@ -14,19 +14,27 @@ public class DataType {
 
         int intVar = 3000000;
         System.out.println(intVar);
-        int c = 011;
-        int d = 0x11;
-        System.out.println(c + "-" + d);
 
-        long longVar = 9999999999999999L;
-        System.out.println(longVar);
+        int i = 2147483647;
+        int i2 = -2147483648;
+        int i3 = 2_000_000_000; // 加下划线更容易识别
+        int i4 = 0xff0000; // 十六进制表示的16711680
+        int i5 = 0b1000000000; // 二进制表示的512
+        long l = 9000000000000000000L; // long型的结尾需要加L
+        System.out.println(l);
 
         float floatVar = 4444444444444444444.44444444444444444444444444f;
+        float f1 = 3.14f;
+        float f2 = 3.14e38f; // 科学计数法表示的3.14x10^38
         System.out.println(floatVar);
 
+        double d = 1.79e308;
+        double d2 = -1.79e308;
+        double d3 = 4.9e-324; // 科学计数法表示的4.9x10^-324
         double doubleVar = 4444444444444444444.44444444444444444444444444;
         System.out.println(doubleVar);
 
+        // bool
         boolean condition = true;
         boolean fCondition = false;
         System.out.println(condition);
@@ -34,11 +42,16 @@ public class DataType {
 
         // 2个byte 转换int
         char charVar = 'a';
+        char a = 'A';
+        char zh = '中';
+        System.out.println(a);
+        System.out.println(zh);
         System.out.println(charVar);
         System.out.println(charVar + 10);
         System.out.println((char) 98);
 
-
+// 引用类型
+        String s = "hello";
         int[] intArray = new int[9];
         System.out.println(intArray[2]);
 

@@ -25,5 +25,57 @@ public class Control {
             System.out.println((int) (Math.random() * 90 * 100 % (90 - 60) + 60));
         }
 
+        int x = 30;
+        if (x == 10) {
+            System.out.print("Value of X is 10");
+        } else if (x == 20) {
+            System.out.print("Value of X is 20");
+        } else if (x == 30) {
+            System.out.print("Value of X is 30");
+        } else {
+            System.out.print("这是 else 语句");
+        }
+
+        char grade = 'C';
+        switch (grade) {
+            case 'A':
+                System.out.println("优秀");
+                break;
+            case 'B':
+            case 'C':
+                System.out.println("良好");
+                break;
+            case 'D':
+                System.out.println("及格");
+            case 'F':
+                System.out.println("你需要再努力努力");
+                break;
+            default:
+                System.out.println("未知等级");
+        }
+
+        while (x < 20) {
+            System.out.print("value of x : " + x);
+            x++;
+            System.out.print("\n");
+        }
+
+        do {
+            System.out.print("value of x : " + x);
+            x++;
+            System.out.print("\n");
+        } while (x < 20);
+
+        for (int m = 10; m < 20; m = m + 1) {
+            System.out.print("value of x : " + m);
+            System.out.print("\n");
+        }
+
+        String[] names = {"James", "Larry", "Tom", "Lacy"};
+        for (String name : names) {
+            System.out.print(name);
+            System.out.print(",");
+        }
+
     }
 }

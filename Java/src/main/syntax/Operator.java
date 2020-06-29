@@ -22,7 +22,6 @@ public class Operator {
         System.out.println(num % -6);
         System.out.println(num >> 2);
 
-
         // compare
         System.out.println(1 > 2);
         System.out.println(1 < 2);
