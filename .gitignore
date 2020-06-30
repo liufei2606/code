@@ -17,3 +17,4 @@ files/certificate.pem
 files/key.pem
 Docker/jenkins
 pkg/
+node_modules
