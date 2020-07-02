@@ -4,7 +4,8 @@ $router = new \App\Http\Router();
 $router->register('get', '/', 'HomeController@index');
 $router->register('get', 'album', 'AlbumController@list');
 $router->register('get', 'post', 'PostController@show');
-
+$router->register('get', 'about', 'HomeController@about');
+$router->register(['get', 'post'], 'contact', 'HomeController@contact');
 //$store = $container->resolve(\App\Store\StoreContract::class);
 //$connection = $store->newConnection();
 //$request = $container->resolve('request');
