@@ -1,0 +1,6 @@
+2020/07/02 23:37:51 [emerg] 14925#0: bind() to 0.0.0.0:6699 failed (98: Address already in use)
+2020/07/02 23:37:51 [emerg] 14925#0: bind() to 0.0.0.0:6699 failed (98: Address already in use)
+2020/07/02 23:37:51 [emerg] 14925#0: bind() to 0.0.0.0:6699 failed (98: Address already in use)
+2020/07/02 23:37:51 [emerg] 14925#0: bind() to 0.0.0.0:6699 failed (98: Address already in use)
+2020/07/02 23:37:51 [emerg] 14925#0: bind() to 0.0.0.0:6699 failed (98: Address already in use)
+2020/07/02 23:37:51 [emerg] 14925#0: still could not bind()

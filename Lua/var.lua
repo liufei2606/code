@@ -19,3 +19,15 @@ else
 end
 
 print(x)            -- 打印 10
+
+-- 虚变量
+local _,finish = string.find("hello", "he")   --采用虚变量（即下划线），接收起始下标值，然后丢弃，finish接收 结束下标值
+print ( finish )                              --输出 2
+print ( _ )                                   --输出 1, `_` 只是一个普通变量,我们习惯上不会读取它的值
+
+local t = {1, 3, 5}
+print("")
+print("part data:")
+for _,v in ipairs(t) do
+    print(v)
+end

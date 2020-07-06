@@ -53,3 +53,13 @@ print(string.sub("Hello Lua", -3, -1))
 print(string.gsub("Lua Lua Lua", "Lua", "hello"))
 print(string.gsub("Lua Lua Lua", "Lua", "hello", 2)) --指明第四个参数
 print(string.reverse("Hello Lua"))
+
+local s = "hello world from Lua"
+for w in string.gmatch(s, "%a+") do
+    print(w)
+end
+
+local a = "Lua is cute"
+local b = string.gsub(a, "cute", "great")
+print(a) --> Lua is cute
+print(b) --> Lua is great
