@@ -4,3 +4,33 @@
 2020/07/02 23:37:51 [emerg] 14925#0: bind() to 0.0.0.0:6699 failed (98: Address already in use)
 2020/07/02 23:37:51 [emerg] 14925#0: bind() to 0.0.0.0:6699 failed (98: Address already in use)
 2020/07/02 23:37:51 [emerg] 14925#0: still could not bind()
+2020/07/06 23:48:57 [emerg] 178438#0: unexpected ";" in openresty/conf/nginx.conf:96
+2020/07/06 23:49:08 [emerg] 179547#0: bind() to 0.0.0.0:6699 failed (98: Address already in use)
+2020/07/06 23:49:08 [emerg] 179547#0: bind() to 0.0.0.0:6699 failed (98: Address already in use)
+2020/07/06 23:49:08 [emerg] 179547#0: bind() to 0.0.0.0:6699 failed (98: Address already in use)
+2020/07/06 23:49:08 [emerg] 179547#0: bind() to 0.0.0.0:6699 failed (98: Address already in use)
+2020/07/06 23:49:08 [emerg] 179547#0: bind() to 0.0.0.0:6699 failed (98: Address already in use)
+2020/07/07 00:03:40 [emerg] 226853#0: bind() to 0.0.0.0:6699 failed (98: Address already in use)
+2020/07/07 00:03:40 [emerg] 226853#0: bind() to 0.0.0.0:6699 failed (98: Address already in use)
+2020/07/07 00:03:40 [emerg] 226853#0: bind() to 0.0.0.0:6699 failed (98: Address already in use)
+2020/07/07 00:03:40 [emerg] 226853#0: bind() to 0.0.0.0:6699 failed (98: Address already in use)
+2020/07/07 00:03:40 [emerg] 226853#0: bind() to 0.0.0.0:6699 failed (98: Address already in use)
+2020/07/07 00:11:32 [error] 251381#0: *1 failed to load inlined Lua code: content_by_lua(nginx.conf:32):4: unexpected symbol near '#', client: 127.0.0.1, server: , request: "POST /test HTTP/1.1", host: "127.0.0.1:6699"
+2020/07/07 00:11:48 [error] 251381#0: *2 failed to load inlined Lua code: content_by_lua(nginx.conf:32):4: unexpected symbol near '#', client: 127.0.0.1, server: , request: "GET /test HTTP/1.1", host: "127.0.0.1:6699"
+2020/07/07 08:50:03 [emerg] 305163#0: "location" directive is not allowed here in openresty/conf/nginx.conf:187
+2020/07/07 08:51:49 [error] 307374#0: *2 [lua] content_by_lua(nginx.conf:25):5: num:55, client: 127.0.0.1, server: , request: "GET /sdfasdf HTTP/1.1", host: "127.0.0.1:6699"
+2020/07/07 08:51:49 [error] 307374#0: *2 [lua] content_by_lua(nginx.conf:25):9:  object:nil, client: 127.0.0.1, server: , request: "GET /sdfasdf HTTP/1.1", host: "127.0.0.1:6699"
+
+
+
+
+
+
+2020/07/07 08:52:14 [error] 307374#0: *3 [lua] content_by_lua(nginx.conf:25):5: num:55, client: 127.0.0.1, server: , request: "GET /sdfasdf HTTP/1.1", host: "127.0.0.1:6699"
+2020/07/07 08:52:14 [error] 307374#0: *3 [lua] content_by_lua(nginx.conf:25):9:  object:nil, client: 127.0.0.1, server: , request: "GET /sdfasdf HTTP/1.1", host: "127.0.0.1:6699"
+2020/07/07 11:39:49 [emerg] 522539#0: bind() to 0.0.0.0:80 failed (13: Permission denied)
+2020/07/07 11:40:02 [emerg] 522574#0: bind() to 0.0.0.0:80 failed (13: Permission denied)
+2020/07/07 11:41:02 [error] 523308#0: *3 failed to load external Lua file "openresty/lua/substration.lua": cannot open openresty/lua/substration.lua: No such file or directory, client: 127.0.0.1, server: , request: "GET /api/substration?a=1&b=3 HTTP/1.1", host: "127.0.0.1:6699"
+2020/07/07 11:55:27 [error] 554632#0: *1 attempt to set status 403 via ngx.exit after sending out the response status 200, client: 127.0.0.1, server: , request: "GET /internal_var?a=11&b=12 HTTP/1.1", host: "127.0.0.1:6699"
+2020/07/07 12:08:20 [emerg] 579697#0: unexpected ";" in openresty/conf/nginx.conf:121
+2020/07/07 12:09:02 [alert] 580401#0: *1 http finalize non-active request: "/son_query?", client: 127.0.0.1, server: , request: "GET /son_query HTTP/1.1", host: "127.0.0.1:6699"
