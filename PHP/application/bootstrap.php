@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Core\Container;
+use App\Http\Exception\ValidationException;
 use App\Http\Response;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Events\Dispatcher;

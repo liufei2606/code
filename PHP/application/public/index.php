@@ -1,10 +1,10 @@
 <?php
+require_once __DIR__.'/../../vendor/autoload.php';
+$container = require __DIR__.'/../bootstrap.php';
 
-define('SF_PATH', dirname(__DIR__));
+$request = \App\Http\Request::capture();
+$container->bind('request', $request);
 
-require_once SF_PATH.'/../vendor/autoload.php';
-require_once SF_PATH.'/src/Sf.php';
+$router = require __DIR__.'/../routes/web.php';
 
-$application = new sf\web\Application();
-
-$application->run();
+$router->dispatch($request);
