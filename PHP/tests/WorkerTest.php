@@ -5,7 +5,6 @@ use PHPUnit\Framework\TestCase;
 
 class WorkerTest extends TestCase
 {
-
     public function testSay(Person $person)
     {
         $person->say();
