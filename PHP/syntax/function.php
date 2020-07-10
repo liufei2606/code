@@ -121,10 +121,11 @@ function sum(...$numbers)
 
 sum(1, 2, 3, 4, 5);
 
-function sayHello($name,$age = 28){
+function sayHello($name, $age = 28)
+{
     echo "Hello $name, you are $age years old<br/>";
 }
-sayHello("Maxsu",27);
+sayHello("Maxsu", 27);
 sayHello("Henry");
 
 function add_some_extra(&$string)
@@ -135,7 +136,7 @@ function add_some_extra(&$string)
 $str = 'This is a string, ';
 add_some_extra($str); # This is a string, and something extra.
 
-function makecoffee($types = array("cappuccino"), $coffeeMaker = NULL)
+function makecoffee($types = array("cappuccino"), $coffeeMaker = null)
 {
     $device = is_null($coffeeMaker) ? "hands" : $coffeeMaker;
     return "Making a cup of ".join(", ", $types)." with $device.\n";
@@ -172,9 +173,9 @@ echo sum1(1, 2, 3, 4);
 
 function small_numbers()
 {
-    return array (0, 1, 2);
+    return array(0, 1, 2);
 }
-list ($zero, $one, $two) = small_numbers();
+list($zero, $one, $two) = small_numbers();
 
 function add3(...$numbers)
 {
@@ -187,29 +188,34 @@ function add3(...$numbers)
 
 echo add3(1, 2, 3, 4);
 
-function display($number) {
-    if($number<=5){
-     echo "$number <br/>";
-     display($number+1);
+function display($number)
+{
+    if ($number<=5) {
+        echo "$number <br/>";
+        display($number+1);
     }
 }
 display(1);
 
 function factorial($n)
 {
-    if ($n < 0)
-        return -1; /*Wrong value*/
-    if ($n == 0)
-        return 1; /*Terminating condition*/
-    return ($n * factorial ($n -1));
+    if ($n < 0) {
+        return -1;
+    } /*Wrong value*/
+    if ($n == 0) {
+        return 1;
+    } /*Terminating condition*/
+    return ($n * factorial($n -1));
 }
 echo factorial(5);
 
-function foo() {
+function foo()
+{
     echo "In foo()<br />\n";
 }
 
-function bar($arg = '') {
+function bar($arg = '')
+{
     echo "In bar(); argument was '$arg'.<br />\n";
 }
 
@@ -231,8 +237,7 @@ $func('test');  // This calls echoit()
 echo preg_replace_callback('~-([a-z])~', function ($match) {
     return strtoupper($match[1]);
 }, 'hello-world');// 输出 helloWorld
-$greet = function($name)
-{
+$greet = function ($name) {
     printf("Hello %s\r\n", $name);
 };
 
@@ -247,8 +252,8 @@ echo $example();
 
 function getClosure($n)
 {
-  $a = 100;
-  return function($m) use ($n, &$a) {
+    $a = 100;
+    return function ($m) use ($n, &$a) {
         $a += $n + $m;
         echo $a."\n";
     };
@@ -266,40 +271,40 @@ class Dog
 
     public function __construct($name, $color)
     {
-         $this->_name = $name;
-         $this->_color = $color;
+        $this->_name = $name;
+        $this->_color = $color;
     }
 
     public function greet($greeting)
     {
-         return function() use ($greeting) {
+        return function () use ($greeting) {
             //类中闭包可通过 $this 变量导入对象
             echo "$greeting, I am a {$this->_color} dog named {$this->_name}.\n";
-         };
+        };
     }
 
     public function swim()
-     {
-         return static function() {
+    {
+        return static function () {
             //类中静态闭包不可通过 $this 变量导入对象，由于无需将对象导入闭包中，
             //因此可以节省大量内存，尤其是在拥有许多不需要此功能的闭包时。
             echo "swimming....\n";
-         };
-     }
+        };
+    }
 
-     private function privateMethod()
-     {
-        echo "You have accessed to {$this->_name}'s privateMethod().\n";
-     }
-
-     public function __invoke()
+    private function privateMethod()
     {
-         //此方法允许对象本身被调用为闭包
-         echo "I am a dog!\n";
+        echo "You have accessed to {$this->_name}'s privateMethod().\n";
+    }
+
+    public function __invoke()
+    {
+        //此方法允许对象本身被调用为闭包
+        echo "I am a dog!\n";
     }
 }
 
-$dog = new Dog("Rover","red");
+$dog = new Dog("Rover", "red");
 $dog->greet("Hello")();
 $dog->swim()();
 $dog();

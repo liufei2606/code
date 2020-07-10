@@ -13,6 +13,8 @@ okay to do';
 
 $bar = <<<EOT
 bar
+asfasfd 
+        dgdfgsdfgdfgf 
     EOT;
 
 echo ord("S"); # 83

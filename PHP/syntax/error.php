@@ -41,7 +41,7 @@ function myErrorHandler($errno, $errstr, $errfile, $errline)
     }
 }
 
-//set_error_handler("myErrorHandler");
+set_error_handler("myErrorHandler");
 $ctx = stream_context_create(array(
         'http' => array(
             'timeout' => 1

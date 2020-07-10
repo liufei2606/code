@@ -212,3 +212,5 @@ try {
     }
     $exit ? exit() : var_dump($val);
 }
+
+restore_exception_handler();

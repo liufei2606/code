@@ -124,3 +124,81 @@ function getTwoPhraseOranizationById($id)
 
     return $selfInfo['title'];
 }
+
+$json = file_get_contents(
+    'http://api.flickr.com/services/feeds/photos_public.gne?format=json'
+);
+
+$handle = fopen('file:///etc/hosts', 'rb');
+while (feof($handle) !== true) {
+    echo fgets($handle);
+}
+fclose($handle);
+
+$requestBody = '{"username":"nonfu"}';
+$context = stream_context_create([
+    'http' => [
+        'method' => 'POST',
+        'header' => "Content-Type: application/json;charset=utf-8;\r\nContent-Length: ".mb_strlen($requestBody),
+        'content' => $requestBody
+    ]
+]);
+$response = file_get_contents('https://my-api.com/users', false, $context);
+
+$handle = fopen('test.txt', 'rb');
+stream_filter_append($handle, 'string.toupper');
+while (feof($handle) !== true) {
+    echo fgets($handle);
+}
+fclose($handle);
+
+$handle = fopen('php://filter/read=string.toupper/resource=test.txt', 'rb');
+while (feof($handle) !== true) {
+    echo fgets($handle);
+}
+fclose($handle);
+
+class DirtyWordsFilter extends php_user_filter
+{
+    /**
+     * @param  resource  $in        流入的桶队列
+     * @param  resource  $out       流出的桶队列
+     * @param  int       $consumed  处理的字节数
+     * @param  bool      $closing   是否是流中最后一个桶队列
+     *
+     * @return int
+     * 接收、处理再转运桶中的流数据，在该方法中，我们迭代桶队列对象，把脏字替换成审查后的值
+     */
+    public function filter($in, $out, &$consumed, $closing)
+    {
+        $words = ['grime', 'dirt', 'grease'];
+        $wordData = [];
+        foreach ($words as $word) {
+            $replacement = array_fill(0, mb_strlen($word), '*');
+            $wordData[$word] = implode('', $replacement);
+        }
+        $bad = array_keys($wordData);
+        $good = array_values($wordData);
+
+        // 迭代桶队列中的每个桶
+        while ($bucket = stream_bucket_make_writeable($in)) {
+            // 审查桶对象中的脏字
+            $bucket->data = str_replace($bad, $good, $bucket->data);
+            // 增加已处理的数据量
+            $consumed += $bucket->datalen;
+            // 把桶放入流向下游的队列中
+            stream_bucket_append($out, $bucket);
+        }
+
+        return PSFS_PASS_ON;
+    }
+}
+
+stream_filter_register('dirty_words_filter', 'DirtyWordsFilter');
+
+$handle = fopen('test.txt', 'rb');
+stream_filter_append($handle, 'dirty_words_filter');
+while (feof($handle) !== true) {
+    echo fgets($handle);
+}
+fclose($handle);
