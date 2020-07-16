@@ -1,10 +1,8 @@
-package test.tdd;
+package tdd;
 
 import main.tdd.MathTools;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.lang.IllegalArgumentException;
 
 public class MathToolsTest {
     @Test

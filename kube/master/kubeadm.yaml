@@ -1,0 +1,31 @@
+apiVersion: kubeadm.k8s.io/v1alpha2
+kind: MasterConfiguration
+# kubernetesVersion: v1.11.0
+# api:
+#   advertiseAddress: 192.168.0.102
+#   bindPort: 6443
+# etcd:
+#   local:
+#     dataDir: /var/lib/etcd
+#     image: ""
+# imageRepository: k8s.gcr.io
+# kubeProxy:
+#   config:
+#     bindAddress: 0.0.0.0
+# kubeletConfiguration:
+#   baseConfig:
+#     address: 0.0.0.0
+# networking:
+#   dnsDomain: cluster.local
+#   podSubnet: ""
+#   serviceSubnet: 10.96.0.0/12
+# nodeRegistration:
+#   criSocket: /var/run/dockershim.sock
+
+controllerManagerExtraArgs:
+  horizontal-pod-autoscaler-use-rest-clients: "true"
+  horizontal-pod-autoscaler-sync-period: "10s"
+  node-monitor-grace-period: "10s"
+apiServerExtraArgs:
+  runtime-config: "api/all=true"
+kubernetesVersion: "stable-1.18"

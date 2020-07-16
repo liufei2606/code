@@ -1,4 +1,4 @@
-package test.tdd;
+package tdd;
 
 
 import main.tdd.Calculator;
