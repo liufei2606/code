@@ -1,6 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use syntax\oop\Car1;
 
 class CarTest extends TestCase
 {
@@ -12,6 +13,11 @@ class CarTest extends TestCase
     public function testAddOil(\syntax\oop\AddOil $addOil)
     {
         $addOil->add();
+    }
+
+    public function testCar1Drive(Car1 $car)
+    {
+        $car->drive();
     }
 }
 

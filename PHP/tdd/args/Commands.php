@@ -16,11 +16,11 @@ class Commands
     {
         $commandsArr = explode(' ', $string);
 
-        while (next($commandsArr)) {
-            $value = prev($commandsArr);
-
-            if (strpos($value, '-') !== false) {
-                $this->commands[substr($value, 1)] = next($commandsArr);
+        while ($value = next($commandsArr)) {
+            $key = prev($commandsArr);
+            $current = current($commandsArr);
+            if (strpos($key, '-') !== false) {
+                $this->commands[substr($key, 1)] = $value;
             }
 //            $value = current($commandsArr);
 //            if ($arr = strstr($value, '-')) {
@@ -31,6 +31,7 @@ class Commands
 //                    $this->commands[prev($commandsArr)] = $value;
 //                }
 //            }
+            next($commandsArr);
         }
     }
 
@@ -39,6 +40,3 @@ class Commands
         return $this->commands[$string];
     }
 }
-
-$ins = new Commands('-l true -d /usr/bin/bash');
-var_dump($ins->commands);

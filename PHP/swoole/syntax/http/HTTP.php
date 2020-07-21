@@ -129,6 +129,3 @@ class Http
 }
 
 $server = new Http();
-
-// curl
-// browser

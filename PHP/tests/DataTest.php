@@ -41,6 +41,6 @@ class DataTest extends TestCase
 
     public function addtionWithCsvProvider()
     {
-        return new \CsvFileIterator('/home/henry/IdeaProjects/PHP/Test/data.csv');
+        return new \CsvFileIterator('/home/henry/IdeaProjects/PHP/assets/files/data.csv');
     }
 }

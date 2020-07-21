@@ -12,6 +12,7 @@ class WorkerTest extends TestCase
 
     public function testWorkerSay(Worker $worker)
     {
+        $test = new WorkerTest();
         $worker->say();
     }
 }

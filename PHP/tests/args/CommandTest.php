@@ -10,9 +10,10 @@ class CommandTest extends TestCase
 {
     public function testNormal()
     {
-        $commands = new Commands('-l true -d /usr/bin/bash');
+        $commands = new Commands('-l true -d /usr/bin/bash -p 80');
 
         self::assertEquals('true', $commands->getValue('l'));
         self::assertEquals('/usr/bin/bash', $commands->getValue('d'));
+        self::assertEquals(80, $commands->getValue('p'));
     }
 }
