@@ -41,5 +41,4 @@ class client
 }
 
 $client = new client();
-
 $client::main();

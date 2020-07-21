@@ -1,22 +1,23 @@
 <?php
 namespace Syntax;
 
-// Type 1: Simple callback
-function my_callback_function()
+# 函数调用的另一种方式
+function barber($type)
 {
-    echo 'hello world!'."<br>";
+    echo "You wanted a $type haircut, no problem\n";
 }
 
-call_user_func('my_callback_function');
+call_user_func('barber', "mushroom");
+call_user_func('barber', "shave");
 
-// Type 2: Static class method call
 class MyClass
 {
     public static function myCallbackMethod()
     {
-        echo 'Hello World!' . "<br>";
+        echo 'Hello World!'.PHP_EOL;
     }
 }
+
 call_user_func(array('MyClass', 'myCallbackMethod'));
 call_user_func('MyClass::myCallbackMethod');
 
@@ -27,7 +28,7 @@ class A
 {
     public static function who()
     {
-        echo "A\n<br>";
+        echo "A".PHP_EOL;
     }
 }
 
@@ -35,18 +36,24 @@ class B extends A
 {
     public static function who()
     {
-        echo "B\n<br>";
+        echo "B".PHP_EOL;
     }
 }
-call_user_func(array('B', 'self::who')); // A
+
+call_user_func(['B', 'self::who']);
+call_user_func(['B', 'static::who']);
+call_user_func(function ($arg) {
+    print "[$arg]\n";
+}, 'test');
 
 class c
 {
     public function __invoke($name)
     {
-        echo 'Hello ', $name, "\n";
+        echo 'Hello ', $name, PHP_EOL;
     }
 }
+
 $c = new c();
 call_user_func($c, "PHP!");
 
@@ -56,37 +63,32 @@ $double = function ($a) {
 };
 $numbers = range(1, 5);
 $new_numbers = array_map($double, $numbers);
-print implode(' ', $new_numbers) . '<br>';
+print implode(' ', $new_numbers).PHP_EOL;
 
 function foobar($arg, $arg2)
 {
-    echo __FUNCTION__, " got $arg and $arg2\n <br>";
+    echo __FUNCTION__, " got $arg and $arg2".PHP_EOL;
 }
 class foo
 {
     public function bar($arg, $arg2)
     {
-        echo __METHOD__, " got $arg and $arg2\n";
+        echo __METHOD__, " got $arg and $arg2".PHP_EOL;
     }
 }
 
-// Call the foobar() function with 2 arguments
-call_user_func_array("foobar", array("one", "two"));
+call_user_func("foobar", "one", "two");
 
-// Call the $foo->bar() method with 2 arguments
 $foo = new foo;
-call_user_func_array(array($foo, "bar"), array("three", "four"));
+call_user_func(array($foo, "bar"), "three", "four");
 
 class Foo2
 {
     public static function test($name)
     {
-        print "Hello {$name}!\n<br>";
+        print "Hello {$name}!".PHP_EOL;
     }
 }
 
-// As of PHP 5.3.0
 call_user_func_array(__NAMESPACE__ . 'Foo2::test', array('Hannes'));
-
-// As of PHP 5.3.0
 call_user_func_array(array(__NAMESPACE__ . 'Foo2', 'test'), array('Philip'));

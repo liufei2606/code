@@ -4,16 +4,35 @@ metadata:
   name: two-containers
 spec:
   restartPolicy: Never
+  # nodeSelector:
+  # disktype: ssd
   volumes:
     - name: shared-data
       hostPath:
         path: /data
+  hostAliases:
+    - ip: "10.1.2.3"
+      hostnames:
+        - "foo.remote"
+        - "bar.remote"
   containers:
     - name: nginx-container
       image: nginx
       volumeMounts:
         - name: shared-data
           mountPath: /usr/share/nginx/html
+      lifecycle:
+        postStart:
+          exec:
+            command:
+              [
+                "/bin/sh",
+                "-c",
+                "echo Hello from the postStart handler > /usr/share/message",
+              ]
+        preStop:
+          exec:
+            command: ["/usr/sbin/nginx", "-s", "quit"]
     - name: debian-container
       image: debian
       volumeMounts:
