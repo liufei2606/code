@@ -2,6 +2,8 @@
 
 namespace App\Http\Controller;
 
+use App\Model\Post;
+
 class PostController extends Controller
 {
     public function show()
@@ -16,16 +18,21 @@ class PostController extends Controller
         $post = Post::with('album')->findOrFail($id)->toArray();
         $printer = $this->container->resolve(\App\Printer\PrinterContract::class);
 
-        if ($this->container->resolve('app.editor') == 'markdown') {
+        if ($this->container->resolve('app.editor') === 'markdown') {
+            var_dump($printer->driver('markdown'));
+            die;
             $post['content'] = $printer->driver('markdown')->render($post['text']);
+            var_dump($post['content']);
+            die;
         } else {
             $post['content'] = $printer->render($post['html']);
         }
+
 //        $album = $this->connection->table('albums')->select($post['album_id']);
         $album = $post['album'];
         $pageTitle = $post['title'].' - '.$this->container->resolve('app.name');
         $siteUrl = $this->container->resolve('app.url');
 
-        $this->view->render('post.php', compact('post', 'album', 'pageTitle', 'siteUrl'));
+        $this->view->render('blog/post.php', compact('post', 'album', 'pageTitle', 'siteUrl'));
     }
 }

@@ -1,6 +1,11 @@
 {
+    "/application/public/js/admin.js": "/application/public/js/admin.js",
     "/application/public/js/app.js": "/application/public/js/app.js",
     "/application/public/css/app.css": "/application/public/css/app.css",
+    "/application/public/css/admin.css": "/application/public/css/admin.css",
+    "/application/public/js/chart.js": "/application/public/js/chart.js",
     "/application/public/js/contact.js": "/application/public/js/contact.js",
-    "/application/public/css/fontawesome.css": "/application/public/css/fontawesome.css"
+    "/application/public/js/table.js": "/application/public/js/table.js",
+    "/application/public/css/fontawesome.css": "/application/public/css/fontawesome.css",
+    "/application/public/css/table.css": "/application/public/css/table.css"
 }

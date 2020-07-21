@@ -2,6 +2,8 @@
 
 namespace App\Http\Controller;
 
+use App\Model\Album;
+
 class AlbumController extends Controller
 {
     public function list()
@@ -18,6 +20,6 @@ class AlbumController extends Controller
         $pageTitle = $siteName = $this->container->resolve('app.name');
         $siteUrl = $this->container->resolve('app.url');
 
-        $this->view->render('album.php', compact('album', 'posts', 'pageTitle', 'siteName', 'siteUrl'));
+        $this->view->render('blog/album.php', compact('album', 'posts', 'pageTitle', 'siteName', 'siteUrl'));
     }
 }

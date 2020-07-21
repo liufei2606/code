@@ -43,8 +43,8 @@ class Container
         $value = $this->bindings[$key];
         if ($value instanceof \Closure) {
             return call_user_func($value);
-        } else {
-            return $value;
         }
+
+        return $value;
     }
 }

@@ -43,5 +43,10 @@ $router->register(['get', 'post'], 'contact', 'HomeController@contact');
 //    $album = $connection->table('albums')->select($post['album_id']);
 //    include __DIR__.'/../views/post.php';
 //});
-//
+
+
+// admin
+$router->register('get', 'admin', 'Admin\DashboardController@index');
+
+
 return $router;

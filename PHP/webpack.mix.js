@@ -7,3 +7,13 @@ mix.js('application/resources/js/app.js', 'application/public/js')
 // .sass('application/resources/sass/share.scss', 'application/public/css/share.css');
 
 mix.copy('node_modules/startbootstrap-clean-blog/vendor/fontawesome-free/css/all.css', 'application/public/css/fontawesome.css')
+
+// 编译后台资源
+mix.js('application/resources/js/admin.js', 'application/public/js/admin.js')
+    .js('application/resources/js/chart.js', 'application/public/js/chart.js')
+    .js('application/resources/js/table.js', 'application/public/js/table.js')
+    .sass('application/resources/sass/admin.scss', 'application/public/css/admin.css')
+    .copy('node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css', 'application/public/css/table.css');
+
+mix.copy('node_modules/@fortawesome/fontawesome-free/css/all.css', 'application/public/css/fontawesome.css')
+    .copy('node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css', 'application/public/css/table.css');

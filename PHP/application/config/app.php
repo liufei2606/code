@@ -21,7 +21,7 @@ return [
                 ]
             ]
         ],
-        'editor' => 'markdown',  // 支持html和markdown
+        'editor' => 'html',  // 支持html和markdown
         'providers' => [
             \App\Store\StoreProvider::class,
             \App\Printer\PrinterProvider::class,
@@ -30,6 +30,6 @@ return [
     ],
     'view' => [
         'engine' => 'php',  // 视图模板引擎
-        'path' => __DIR__.'/../resources/views/blog/',  // 视图模板根路径
+        'path' => __DIR__.'/../resources/views/',  // 视图模板根路径
     ]
 ];

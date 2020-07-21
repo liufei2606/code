@@ -18,7 +18,7 @@ class HomeController extends Controller
         $siteUrl = $this->container->resolve('app.url');
         $siteDesc = $this->container->resolve('app.desc');
 
-        $this->view->render('home.php', [
+        $this->view->render('blog/home.php', [
             'albums' => $albums,
             'pageTitle' => $pageTitle,
             'siteName' => $siteName,
@@ -39,7 +39,7 @@ class HomeController extends Controller
         if ($this->request->getMethod() == 'GET') {
             $pageTitle = '联系我 - '.$this->container->resolve('app.name');
             $siteName = $this->container->resolve('app.name');
-            $this->view->render('contact.php', compact('pageTitle', 'siteName'));
+            $this->view->render('blog/contact.php', compact('pageTitle', 'siteName'));
         } else {
             // POST 提交表单处理逻辑
             $name = $this->request->get('name');

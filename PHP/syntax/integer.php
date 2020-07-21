@@ -11,11 +11,9 @@ echo 'You can also have embedded newlines in
 strings this way as it is
 okay to do';
 
-$bar = <<<EOT
-bar
+$bar = "bar
 asfasfd 
-        dgdfgsdfgdfgf 
-    EOT;
+    dgdfgsdfgdfgf ";
 
 echo ord("S"); # 83
 echo ord("Shanghai"); # 83
@@ -23,7 +21,7 @@ echo ord("Shanghai"); # 83
 print # 一个语法结构(language constructs), 并不是一个函数, 参数的list并不要求有括号
 
 // 涉及数字比较，优先转化为数字
-var_dump('abcd' == 0);
+    var_dump('abcd' == 0);
 var_dump(0 == 'abcd');
 var_dump('0' == 'abcd');
 
@@ -33,7 +31,7 @@ define("DELETE", 4);
 define("UPDATE", 8);
 
 $permission = READ|WRITE; // 赋予权限 加法
-$permission = READ & ~WRITE; // 禁止写权限 反向全量的选法
+$permissions = READ & ~WRITE; // 禁止写权限 反向全量的选法
 
 # 做权限验证
 echo 2 & 10; // 输出：2
@@ -41,8 +39,9 @@ echo 2 | 10; // 输出结果：10
 echo 1 ^ 1; // 输出结果：0
 echo 1 ^ 0; // 输出结果：1
 
-if( READ & $permission ){ //判断权限
-　　echo "ok";
+//判断权限
+if( READ & $permission ){
+    　　echo 'OK';
 }
 
 # 异或运算同样的值两次能还原为原理的值

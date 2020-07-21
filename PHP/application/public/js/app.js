@@ -113,6 +113,17 @@ __webpack_require__(/*! bootstrap/dist/js/bootstrap.bundle */ "./node_modules/bo
 
 /***/ }),
 
+/***/ "./application/resources/sass/admin.scss":
+/*!***********************************************!*\
+  !*** ./application/resources/sass/admin.scss ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./application/resources/sass/app.scss":
 /*!*********************************************!*\
   !*** ./application/resources/sass/app.scss ***!
@@ -35285,14 +35296,15 @@ module.exports = function(module) {
 /***/ }),
 
 /***/ 0:
-/*!*************************************************************************************!*\
-  !*** multi ./application/resources/js/app.js ./application/resources/sass/app.scss ***!
-  \*************************************************************************************/
+/*!*****************************************************************************************************************************!*\
+  !*** multi ./application/resources/js/app.js ./application/resources/sass/app.scss ./application/resources/sass/admin.scss ***!
+  \*****************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /home/henry/Workspace/Code/PHP/application/resources/js/app.js */"./application/resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/henry/Workspace/Code/PHP/application/resources/sass/app.scss */"./application/resources/sass/app.scss");
+__webpack_require__(/*! /home/henry/Workspace/Code/PHP/application/resources/sass/app.scss */"./application/resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /home/henry/Workspace/Code/PHP/application/resources/sass/admin.scss */"./application/resources/sass/admin.scss");
 
 
 /***/ })

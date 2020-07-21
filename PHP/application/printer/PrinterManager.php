@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Printer;
 
 use App\Core\Container;
