@@ -1,6 +1,5 @@
 <?php
 
-//
 $process = new swoole_process(function (\Swoole\Process $worker) {
     // 子进程逻辑
     swoole_event_add($worker->pipe, function ($pipe) use ($worker) {
