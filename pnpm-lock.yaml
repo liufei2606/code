@@ -1,7 +1,13 @@
 dependencies:
+  animate.css: 4.1.0
   bootstrap: 4.5.0
+  bulma: 0.9.0
 lockfileVersion: 5.1
 packages:
+  /animate.css/4.1.0:
+    dev: false
+    resolution:
+      integrity: sha512-0aVcfWDeU9ykV6vjn1P67ZSs01jxoUQZCGaYbkk0SIIelIG8kUdLrIkua1+VabHfTtsSivDRMMn0ILPvZum2gw==
   /bootstrap/4.5.0:
     dev: false
     peerDependencies:
@@ -10,5 +16,11 @@ packages:
     resolution:
       integrity: sha1-l9nby1qJcvhyLJliSDVDuQfZuew=
       tarball: bootstrap/download/bootstrap-4.5.0.tgz
+  /bulma/0.9.0:
+    dev: false
+    resolution:
+      integrity: sha512-rV75CJkubNUroAt0qCRkjznZLoaXq/ctfMXsMvKSL84UetbSyx5REl96e8GoQ04G4Tkw0XF3STECffTOQrbzOQ==
 specifiers:
+  animate.css: ^4.1.0
   bootstrap: 4.5.0
+  bulma: ^0.9.0

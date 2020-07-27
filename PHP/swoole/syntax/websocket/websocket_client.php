@@ -50,7 +50,7 @@ class Test
         echo "Request num:".$this->request.PHP_EOL;
         echo "Success num:".$this->requested.PHP_EOL;
         echo "Total time:".$cost_time.PHP_EOL;
-        echo "Request per second:" . intval($this->request / $cost_time).PHP_EOL;
+        echo "Request per second:".(int) ($this->request / $cost_time).PHP_EOL;
     }
 
     public function run()

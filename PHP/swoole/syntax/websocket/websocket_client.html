@@ -4,28 +4,49 @@
     <title></title>
 </head>
 <body>
-<h1>Swoole-ws-client</h1>
+<title>Chat Client</title>
+<input id="input" style="width: 100%;">
 </body>
 
 <script type="text/javascript">
-    var wsUrl = "ws://localhost:9502";
-    var websocket = new WebSocket(wsUrl);
+    window.onload = function () {
+        var nick = prompt("Enter your nickname");
+        var input = document.getElementById("input");
+        input.focus();
 
-    websocket.onopen = function(evt){
-        websocket.send('Hello World');
-        console.log("Conntected success");
-    }
+        var wsUrl = "ws://localhost:9502";
+        var socket = new WebSocket(wsUrl);
 
-    websocket.onmessage = function(evt) {
-        console.log("Reserver message:" + evt.data);
-    }
+        socket.onopen = function (event) {
+            socket.send('Hello World');
+            console.log("Connection open ...");
+        }
 
-    websocket.onclose = function(evt) {
-        console.log("Conntected Closed");
-    }
+        // 接收到服务端推送时执行
+        socket.onmessage = function (event) {
+            var msg = event.data;
+            var node = document.createTextNode(msg);
+            var div = document.createElement("div");
+            div.appendChild(node);
+            document.body.insertBefore(div, input);
+            input.scrollIntoView();
+            console.log("Reserver message:" + event.data);
+        };
 
-    websocket.onerror = function(evt) {
-        console.log("error:" + evt.data);
+        // 连接关闭时触发
+        socket.onclose = function (event) {
+            console.log("Connection closed ...");
+        }
+        socket.onerror = function (evt) {
+            console.log("error:" + evt.data);
+        }
+
+        input.onchange = function () {
+            var msg = nick + ": " + input.value;
+            // 将输入框变更信息通过 send 方法发送到服务器
+            socket.send(msg);
+            input.value = "";
+        };
     }
 </script>
 </html>

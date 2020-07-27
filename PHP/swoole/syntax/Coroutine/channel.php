@@ -90,7 +90,7 @@ $server->on('Request', function ($request, $response) {
     $response->end(json_encode([
         'data' => $results,
         'time' => time()
-    ]));
+    ], JSON_THROW_ON_ERROR));
 });
 
 $server->start();

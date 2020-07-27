@@ -1,5 +1,6 @@
 {
 	"dependencies": {
+		"animate.css": "^4.1.0",
 		"bootstrap": "4.5.0",
 		"bulma": "^0.9.0"
 	}
