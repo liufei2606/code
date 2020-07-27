@@ -17,3 +17,5 @@ func main() {
 
 	err := server.ListenAndServer()
 }
+
+// http://localhost:8080/user/names/James/countries/NewZealand
