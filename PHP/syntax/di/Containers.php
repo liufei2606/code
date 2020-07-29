@@ -1,7 +1,7 @@
 <?php
 
 
-class Container
+class Containers
 {
     protected $binds;
 

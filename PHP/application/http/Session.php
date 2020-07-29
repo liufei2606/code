@@ -1,10 +1,9 @@
 <?php
+namespace App\Http;
 
+use \Symfony\Component\HttpFoundation\Session\Session as BaseSession;
 
-namespace App\http;
-
-
-class Session extends \Symfony\Component\HttpFoundation\Session\Session
+class Session extends BaseSession
 {
 
 }

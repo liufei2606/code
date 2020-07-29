@@ -1,6 +1,6 @@
 <?php
 
-$container = new Container;
+$container = new Containers;
 $container->bind('superman', function ($container, $moduleName) {
     return new Superman($container->make($moduleName));
 });

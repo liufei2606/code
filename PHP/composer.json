@@ -23,6 +23,9 @@
       "ext-json": "*"
     },
     "autoload": {
+        "files": [
+            "application/helper.php"
+        ],
         "psr-4": {
             "Test\\": "tests/"
         },
