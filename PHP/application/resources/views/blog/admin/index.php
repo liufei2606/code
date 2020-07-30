@@ -374,6 +374,6 @@
 <?php
 include 'logout.php';
 
-//$jsStacks = ['/js/chart.js'];
-//include 'footer.php';
+$jsStacks = ['/js/chart.js'];
+include 'footer.php';
 ?>

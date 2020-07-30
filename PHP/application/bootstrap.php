@@ -5,9 +5,12 @@ namespace App;
 use App\Core\Container;
 use App\Http\Exception\ValidationException;
 use App\Http\Response;
+use App\Http\Session;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Container\Container as IlluminateContainer;
+
+use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
 
 /**
  * 启动应用
@@ -18,10 +21,11 @@ use Illuminate\Container\Container as IlluminateContainer;
  */
 function bootApp(Container $container)
 {
+    registerExceptionHandler();
     initConfig($container);
     registerProviders($container);
     initDatabase($container);
-//    registerExceptionHandler();
+    initSession($container);
     return $container;
 }
 
@@ -57,6 +61,15 @@ function initDatabase(Container $container)
     $capsule->bootEloquent();
 }
 
+function initSession(Container $container)
+{
+    // 启动 Session
+    $handler = new NativeSessionStorage(['cookie_lifetime' => $container->resolve('session.lifetime')]);
+    $session = new Session($handler);
+    $session->start();
+    $container->bind('session', $session);
+}
+
 // 注册全局异常处理器
 function registerExceptionHandler()
 {
@@ -73,6 +86,5 @@ function registerExceptionHandler()
     });
 }
 
-// 新增一个 IoC 容器，通过依赖注入获取对象实例
 $container = Container::getInstance();
 return bootApp($container);

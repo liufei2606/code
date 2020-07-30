@@ -105,7 +105,7 @@ $circle = make('Circle');
 $area = $circle->area();
 
 # 利用反射机制创建实例
-$reflector = new reflectionClass(User::class);
+$reflector = new reflectionClass(Users::class);
 $constructor = $reflector->getConstructor();
 $dependencies = $constructor->getParameters();
 $user = $reflector->newInstanceArgs($dependencies = []);

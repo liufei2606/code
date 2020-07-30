@@ -66,7 +66,7 @@ class myIterator implements Iterator
     }
 }
 
-$it = new myIterator;
+$it = new ownIterator;
 
 foreach ($it as $key => $value) {
     echo $key.':'.$value.PHP_EOL;

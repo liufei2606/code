@@ -43,5 +43,6 @@ class Controller
         $this->request = $this->container->resolve('request');
         $this->view = $this->container->resolve('view');
         $this->session = $this->container->resolve('session');
+        $this->siteName = $this->container->resolve('app.name');
     }
 }

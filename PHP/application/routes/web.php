@@ -50,4 +50,9 @@ $router->register('get', 'admin', 'Admin\DashboardController@index');
 $router->register(['get', 'post'], 'login', 'AuthController@login');
 $router->register('post', 'logout', 'AuthController@logout');
 
+$router->register('get', 'admin/albums', 'Admin\AlbumController@index');
+$router->register(['get', 'post'], 'admin/album/new', 'Admin\AlbumController@add');
+$router->register(['get', 'post'], 'admin/album/edit', 'Admin\AlbumController@edit');
+$router->register(['post'], 'admin/album/delete', 'Admin\AlbumController@delete');
+
 return $router;

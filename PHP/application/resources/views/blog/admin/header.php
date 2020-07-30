@@ -20,8 +20,8 @@
     <link href="/css/admin.css" rel="stylesheet">
 
     <?php
-    if (!empty($cssStacks)):
-        foreach ($cssStacks as $cssStack):
+    if (!empty($cssStacks)) :
+        foreach ($cssStacks as $cssStack) :
             ?>
             <link href="<?= $cssStack ?>" rel="stylesheet" type="text/css">
         <?php

@@ -131,9 +131,9 @@ class User
     }
 }
 $users = [
-    new User('user 1'),
-    new User('user 2'),
-    new User('user 3'),
+    new Users('user 1'),
+    new Users('user 2'),
+    new Users('user 3'),
 ];
 print_r(array_column($users, 'username')); # [[0] => user 1 [1] => user 2 [2] => user 3]
 

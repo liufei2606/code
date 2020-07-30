@@ -1,6 +1,6 @@
 <?php
 
-class myIterator implements Iterator
+class ownIterator implements Iterator
 {
     private $position = 0;
     private $array = array(
@@ -45,7 +45,7 @@ class myIterator implements Iterator
     }
 }
 
-$it = new myIterator;
+$it = new ownIterator;
 foreach ($it as $key => $value) {
     echo $key.'@@'.$value.PHP_EOL;
 }
