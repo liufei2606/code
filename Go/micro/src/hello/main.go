@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/micro/go-micro"
+	_ "github.com/micro/go-plugins/registry/etcd"
 	proto "hello/proto"
 )
 
@@ -17,7 +18,7 @@ func (g *GreeterServiceHandler) Hello(ctx context.Context, req *proto.HelloReque
 func main() {
 	// 创建新的服务
 	service := micro.NewService(
-		micro.Name("Greeter"),
+		micro.Name("go.micro.srv.greeter"),
 	)
 
 	// 初始化，会解析命令行参数

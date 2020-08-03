@@ -14,7 +14,7 @@ func main() {
 	service.Init()
 
 	// 创建 Greeter 客户端
-	greeter := proto.NewGreeterService("Greeter", service.Client())
+	greeter := proto.NewGreeterService("go.micro.srv.greeter", service.Client())
 
 	// 远程调用 Greeter 服务的 Hello 方法
 	rsp, err := greeter.Hello(context.TODO(), &proto.HelloRequest{Name: "学院君"})
