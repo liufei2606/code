@@ -16,15 +16,16 @@ int main(int argc, char const *argv[]) {
   //   c3 = getchar();
   //   putchar(c3);
 
-  printf("%-10ld", 345352345234345);
+  printf("%-10ld\n", 345352345234345);
 
   int i;
   char c;
   float f;
 
+  // 输入：45 c 12.45
   scanf("%d%c%f", &i, &c, &f);
   printf("%d %c %f", i, c, f);
-  scanf("%d%c%f", &i, &c, &f);
+  scanf("%d，%c，%f", &i, &c, &f);
   printf("%d %c %f", i, c, f);
   return 0;
 }

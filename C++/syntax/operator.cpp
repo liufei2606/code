@@ -11,5 +11,11 @@ int main(int argc, char const *argv[]) {
   float f = (double)d;
   printf("b,c,d:%d,%d,%d,%d,%f", b, c, d, e, f);
 
+  // 交换变量
+  int int1 = 1, int2 = 2;
+  a = a + b;
+  b = a - b;
+  a = a - b;
+
   return 0;
 }

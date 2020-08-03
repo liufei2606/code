@@ -39,7 +39,66 @@ int main(int argc, char const *argv[]) {
 
   printf("String:\n");
   printf("%s\n", "China's in Asia");
-
   printf("%-5c%-5d%-10.5f\n", c, int_decimal * 10000, f);
+
+  printf("Array:\n");
+  int arr[] = {9, 8, 7, 6, 5, 4, 3, 2, 1, 0}, *p3 = NULL, ii;
+  for (ii = 0; ii < 10; ii++) {
+    printf("%d ", arr[ii]);
+  }
+  printf("\n");
+
+  // 数组名是指针
+  for (ii = 0; ii < 10; ii++) {
+    printf("%d ", *(arr + ii));
+  }
+  printf("\n");
+  // ++ 与 * 优先级相同，自右向左结合
+  for (p3 = arr; p3 < arr + 10;) {
+    printf("%d ", *p3++);
+  }
+  printf("\n");
+
+  for (p3 = arr; p3 < arr + 10;) {
+    printf("%d ", *++p3);
+  }
+  printf("\n");
+
+  int arr2[][4] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+
+  int arr3[][4] = {{1, 2, 3, 4},
+                   {5, 6, 7, 8}};
+  int b[4][2], i, j;
+  for (i = 0; i < 2; i++) {
+    for (j = 0; j < 4; j++) {
+      printf("%5d", arr3[i][j]);
+      b[j][i] = arr3[i][j];
+    }
+    printf("\n");
+  }
+  printf("Array reverse:\n");
+  for (i = 0; i < 4; i++) {
+    for (j = 0; j < 2; j++) {
+      printf("%5d", b[i][j]);
+    }
+    printf("\n");
+  }
+
+  char str[] = {"hello"};
+  char str1[] = "hello";
+
+  char *p = &c;
+  char c2 = *p + 1;
+
+  printf("Poniter:\n");
+  int a = 100, d = 200;
+  int *p1 = &a, *p2 = &d;
+  printf("%d,%d\n", a, d);
+  printf("%d,%d\n", *p1, *p2);
+  printf("%n,%n\n", &a, &d);
+  printf("%n,%n\n", p1, p2);
+
+  int *p4[5];
+
   return 0;
 }
