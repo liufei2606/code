@@ -1,0 +1,108 @@
+<form>
+    <input id="x" /> + <input id="y" />
+    <button id="calc" type="button">计算</button>
+</form>
+
+<script>
+    var r1, r2, s = ‘hello’;
+    try {
+        r1 = s.length; // 此处应产生错误
+        r2 = 100; // 该语句不会执行
+    } catch (e) {
+        alert('出错了：' + e);
+    } finally {
+        console.log('finally');
+    }
+    console.log('r1 = ' + r1); // r1应为undefined
+    console.log('r2 = ' + r2); // r2应为undefined
+
+    try {
+        ...
+    } catch (e) {
+        if (e instanceof TypeError) {
+            alert('Type error!');
+        } else if (e instanceof Error) {
+            alert(e.message);
+        } else {
+            alert('Error: ' + e);
+        }
+    }
+
+    var r, n, s;
+    try {
+        s = prompt('请输入一个数字');
+        n = parseInt(s);
+        if (isNaN(n)) {
+            throw new Error('输入错误');
+        }
+        // 计算平方:
+        r = n * n;
+        alert(n + ' * ' + n + ' = ' + r);
+    } catch (e) {
+        alert('出错了：' + e);
+    }
+
+    function main(s) {
+        console.log('BEGIN main()');
+        try {
+            foo(s);
+        } catch (e) {
+            alert('出错了：' + e);
+        }
+        console.log('END main()');
+    }
+
+    function foo(s) {
+        console.log('BEGIN foo()');
+        bar(s);
+        console.log('END foo()');
+    }
+
+    function bar(s) {
+        console.log('BEGIN bar()');
+        console.log('length = ' + s.length);
+        console.log('END bar()');
+    }
+
+    main(null);
+
+    // 无法捕获错误
+    function printTime() {
+        throw new Error();
+    }
+
+    try {
+        setTimeout(printTime, 1000);
+        console.log('done');
+    } catch (e) {
+        alert('error');
+    }
+
+    setTimeout(function () {
+        try {
+           throw new Error();
+        } catch (e) {
+          alert('error');
+        }
+        }, 1000);
+    console.log('done');
+
+    // 修改
+    $btn.click(function () {
+            var
+                x = parseFloat($('#x').val()),
+                y = parseFloat($('#y').val()),
+                r;
+    try {
+
+            if (isNaN(x) || isNaN(y)) {
+                throw new Error('输入有误');
+            }
+            r = x + y;
+            alert('计算结果：' + r);
+
+    } catch (e) {
+        alert('输入有误！');
+    }
+    });
+</script>
