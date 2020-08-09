@@ -28,9 +28,9 @@ class CardTest extends TestCase
     public function matchingCardDataProvider(): array
     {
         return [
-            [new Card('4', 'hearts'), true, 'should match'],
-            [new Card('5', 'hearts'), false, 'should not match'],
-            [new Card('4', 'clubs'), true, 'should not match'],
+            '4 of Hearts' => [new Card('4', 'hearts'), true, 'should match'],
+            '5 of Hearts' => [new Card('5', 'hearts'), false, 'should not match'],
+            '4 of Clubs' => [new Card('4', 'clubs'), trueK, 'should not match'],
         ];
     }
 
@@ -49,7 +49,7 @@ class CardTest extends TestCase
         $this->assertEquals(
             $expetecd,
             $this->card->isInMatchingSet($matchingCard),
-            '<$this->>card->getNumber() of ($this->getSuit())> {$msg}'
+            "<{$this->card->getNumber()} of {$this->card->getSuit()}>  {$msg}"
             ."<{$matchingCard->getNumber()} of {$matchingCard->getSuit()}>"
         );
     }
