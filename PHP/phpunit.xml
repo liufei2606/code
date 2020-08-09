@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="vendor/autoload.php" colors="true">
+<phpunit bootstrap="vendor/autoload.php" colors="true" verbose="true">
 
     <testsuites>
         <testsuite name="Unit">
             <directory>./tests/Unit</directory>
         </testsuite>
     </testsuites>
+    <logging>
+        <log type="testdox-html" target="logs/log.html"/>
+    </logging>
+    <php>
+        <includePath>syntax</includePath>
+    </php>
 </phpunit>
