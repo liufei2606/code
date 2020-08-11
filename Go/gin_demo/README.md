@@ -160,4 +160,57 @@ http localhost:8080/someJSON
 # 下载文件
 go run download_file.go
 # localhost:8080/dataFromReader
+
+# 静态资源
+go run static_assets
+
+# Cookie
+go run cookie.go
+# localhost:8080/cookie
+
+# 支持 Let's Encrypt
+
+# 绑定请求实体到不同结构体
+go run bing_request.go
+curl -X POST localhost:8080/bindBodyToStruct  -H "Content-Type:application/json" -d '{"foo":"xxx"}'
+curl -X POST localhost:8080/bindBodyToStruct  -H "Content-Type:application/json" -d '{"bar":"xxx"}'
+
+# 上传文件
+go run upload_single_file.go
+curl -X POST localhost:8080/upload -F "file=@/home/henry/Pictures/wallper/bird-and-wall.jpg" -H "Content-Type:multipart/form-data"
+
+go run upload_multi_files.go
+curl -X POST localhost:8080/upload \
+-F "upload[]=@/home/henry/Pictures/wallper/bird-and-wall.jpg" 
+-F "upload[]=@/home/henry/Pictures/wallper/livingness.jpg" 
+-H "Content-Type:multipart/form-data"
+
+# BasicAuth 中间件
+go run basic_auth.go
+curl foo:bar@localhost:8088/admin/secrets\?user\=foo
+
+# HTTP 方法
+go run http_method.go
+
+curl  localhost:8088/get
+curl -X POST localhost:8088/post
+curl -X PUT localhost:8088/put
+curl -X PATCH localhost:8088/patch
+curl -X DELETE localhost:8088/delete
+curl -X OPTIONS localhost:8088/options 
+curl -X localhost:8088/head --head
+
+# 使用中间件
+
+# XML/JSON/YAML/ProtoBuf 渲染
+go run render.go
+
+http localhost:8080/someJSON
+http localhost:8080/moreJSON
+http localhost:8080/someXML
+http localhost:8080/someYAML
+http localhost:8080/someProtoBuf
+
+# 编写测试用例
+go test .
 ```
