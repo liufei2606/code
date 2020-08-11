@@ -8,7 +8,7 @@
     const State = {
         Pending: 0,
         Fulfilled: 1,
-        Rejected: 2
+        Rejected: 2,
     };
 
     class Promise {
@@ -35,12 +35,12 @@
         }
     }
 
-    Promise.resolve = val => {
-        const promise = new Promise(resolve => resolve(val));
+    Promise.resolve = (val) => {
+        const promise = new Promise((resolve) => resolve(val));
         return promise;
     };
 
-    Promise.reject = err => {
+    Promise.reject = (err) => {
         const promise = new Promise((_, reject) => reject(err));
         return promise;
     };
@@ -49,9 +49,9 @@
         const promise = new Promise(() => {});
 
         return {
-            resolve: val => resolve(promise, val),
-            reject: err => reject(promise, err),
-            promise
+            resolve: (val) => resolve(promise, val),
+            reject: (err) => reject(promise, err),
+            promise,
         };
     };
 
@@ -128,3 +128,116 @@
 
     return Promise;
 });
+
+function timeout(ms) {
+    return new Promise((resolve, reject) => {
+        setTimeout(resolve, ms, "done");
+    });
+}
+
+timeout(100).then((value) => {
+    console.log(value);
+});
+
+let promise = new Promise(function (resolve, reject) {
+    console.log("Promise");
+    resolve();
+});
+promise.then(function () {
+    console.log("resolved.");
+});
+console.log("Hi!");
+
+function loadImageAsync(url) {
+    return new Promise(function (resolve, reject) {
+        const image = new Image();
+
+        image.onload = function () {
+            resolve(image);
+        };
+
+        image.onerror = function () {
+            reject(new Error("Could not load image at " + url));
+        };
+
+        image.src = url;
+    });
+}
+
+const getJSON = function (url) {
+    const promise = new Promise(function (resolve, reject) {
+        const handler = function () {
+            if (this.readyState !== 4) {
+                return;
+            }
+            if (this.status === 200) {
+                resolve(this.response);
+            } else {
+                reject(new Error(this.statusText));
+            }
+        };
+        const client = new XMLHttpRequest();
+        client.open("GET", url);
+        client.onreadystatechange = handler;
+        client.responseType = "json";
+        client.setRequestHeader("Accept", "application/json");
+        client.send();
+    });
+
+    return promise;
+};
+
+getJSON("/posts.json").then(
+    function (json) {
+        console.log("Contents: " + json);
+    },
+    function (error) {
+        console.error("出错了", error);
+    }
+);
+
+const promises = [2, 3, 5, 7, 11, 13].map(function (id) {
+    return getJSON("/post/" + id + ".json");
+});
+
+Promise.all(promises)
+    .then(function (posts) {
+        // ...
+    })
+    .catch(function (reason) {
+        // ...
+    });
+
+var readFile = require("fs-readfile-promise");
+
+readFile(fileA)
+    .then(function (data) {
+        console.log(data.toString());
+    })
+    .then(function () {
+        return readFile(fileB);
+    })
+    .then(function (data) {
+        console.log(data.toString());
+    })
+    .catch(function (err) {
+        console.log(err);
+    });
+
+var fetch = require("node-fetch");
+
+function* gen() {
+    var url = "https://api.github.com/users/github";
+    var result = yield fetch(url);
+    console.log(result.bio);
+}
+var g = gen();
+var result = g.next();
+
+result.value
+    .then(function (data) {
+        return data.json();
+    })
+    .then(function (data) {
+        g.next(data);
+    });

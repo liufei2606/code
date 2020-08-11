@@ -111,3 +111,14 @@ function add(n, m) {
         }
     }
 }
+
+var uniqueInterger = function () {
+    var counter = 0;
+    return function () {
+        return ++counter;
+    };
+};
+
+console.log(uniqueInterger());
+console.log(uniqueInterger());
+console.log(uniqueInterger());
