@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>属性和类名绑定</title>
+        <script src="../static/js/vue.js"></script>
+        <style>
+            .color-red {
+                color: red;
+            }
+            .color-orange {
+                color: orange;
+            }
+            .color-yellow {
+                color: yellow;
+            }
+            .color-green {
+                color: lawngreen;
+            }
+            .color-aqua {
+                color: aqua;
+            }
+            .color-blue {
+                color: blue;
+            }
+            .color-purple {
+                color: purple;
+            }
+            h1 {
+                width: 120px;
+                border: 3px dotted;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <p>属性绑定：</p>
+            <a href="https://www.bluebird89.online" :title="title">Vue 练习</a>
+
+            <p>类名绑定：</p>
+            <h1 v-bind:class="curClass">Henry</h1>
+            <button v-on:click="toggleClass">换个颜色</button>
+        </div>
+        <script>
+            // 扩展数组方法支持随机获取元素
+            Array.prototype.getRandomElement = function () {
+                return this[Math.floor(Math.random() * this.length)];
+            };
+
+            let app = new Vue({
+                el: "#app",
+                data: {
+                    title: "Welcom Arsenal!",
+                    classes: [
+                        "color-red",
+                        "color-orange",
+                        "color-yellow",
+                        "color-green",
+                        "color-blue",
+                        "color-aqua",
+                        "color-purple",
+                    ],
+                    curClass: "color-red",
+                },
+                methods: {
+                    toggleClass() {
+                        this.curClass = this.classes.getRandomElement();
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>

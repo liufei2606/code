@@ -2,7 +2,7 @@
 
 #include <stack>
 
-int main(int argc, char const *argv[]) {
+main(int argc, char const *argv[]) {
   std::stack<int> s;
   if (s.empty()) {
     printf("s is empty!\n");

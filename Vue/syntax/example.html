@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>List</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            Web 编程语言：
+            <ul>
+                <li v-for="(language, index) in languages">
+                    {{ index }}: {{ language }}
+                </li>
+            </ul>
+            <div>
+                <input type="text" id="input" />
+                <button type="button" id="button">DOM 形式添加</button>
+                <button v-on:click="addLanguage">v-on添加</button>
+                <!-- <button @click="addLanguage">添加</button> -->
+                <label for="">keyup 添加</label>
+                <input
+                    type="text"
+                    v-model="newLanguage"
+                    @keyup.enter="addLanguage1"
+                />
+            </div>
+        </div>
+        <script>
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    languages: [
+                        "PHP",
+                        "JavaScript",
+                        "Python",
+                        "Golang",
+                        "Java",
+                    ],
+                    newLanguage = ''
+                },
+                methods: {
+                    addLanguage() {
+                        let language = document.querySelector("#input");
+                        this.languages.push(language.value);
+                        language.value = "";
+                    },
+                    addLanguage1(){
+                        this.languages.push(this.newLanguage);
+                        this.newLanguage = '';
+                    },
+                },
+                mounted: () => {
+                    document
+                        .querySelector("#button")
+                        .addEventListener("click", () => {
+                            let language = document.querySelector("#input");
+                            app.languages.push(language.value); // 将输入语言添加到模型数据数组
+                            language.value = ""; // 清空输入框
+                        });
+                },
+            });
+        </script>
+    </body>
+</html>

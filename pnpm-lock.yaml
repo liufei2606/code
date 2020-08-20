@@ -2,6 +2,7 @@ dependencies:
   animate.css: 4.1.0
   bootstrap: 4.5.0
   bulma: 0.9.0
+  rome: 10.0.3-beta
 lockfileVersion: 5.1
 packages:
   /animate.css/4.1.0:
@@ -20,7 +21,16 @@ packages:
     dev: false
     resolution:
       integrity: sha512-rV75CJkubNUroAt0qCRkjznZLoaXq/ctfMXsMvKSL84UetbSyx5REl96e8GoQ04G4Tkw0XF3STECffTOQrbzOQ==
+  /rome/10.0.3-beta:
+    dev: false
+    engines:
+      node: '>=12.10.0'
+    hasBin: true
+    requiresBuild: true
+    resolution:
+      integrity: sha512-X/H8iZt+yJr1M9sU4F4sIBOBSUNZdlR2rZvIPNaOKkIT7lNvZSnTiLHVYsa6Ffc7COLa1pBbjSfCcx+7FZEp2A==
 specifiers:
   animate.css: ^4.1.0
   bootstrap: 4.5.0
   bulma: ^0.9.0
+  rome: ^10.0.3-beta

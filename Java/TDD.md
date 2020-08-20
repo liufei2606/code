@@ -78,8 +78,6 @@
 * 代码整洁，没有重复代码
 * 有单元测试，单元测试覆盖率100%
 * 10分钟内完成
-
-
 ## 参考
 
 * [FizzBuzz 与写代码的 “一万” 个细节](https://insights.thoughtworks.cn/how-to-code-in-right-way/)
