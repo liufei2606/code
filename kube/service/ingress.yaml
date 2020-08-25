@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Ingress #资源类型
+metadata: #元数据
+  name: myapp
+  namespace: myns
+  annotations: #此字段为资源注解，作为配置信息提供方
+    kubernetes.io/ingress.class: "nginx"
+spec: #定义ingress内部资源
+  rules:
+    - host: www.node1.com #定义后端主机
+    - http: ##定义后端资源
+        paths:
+          - path: / #定义后端映射路径为/
+            backend: #后端资源
+              serviceName: myapp #此为svc资源名称
+              servicePort: 80 #此为svc端口
+
+##配置成使用证书的ingress
+# apiVersion: extensions/v1beta1
+# kind: Ingress
+# metadata:
+#   name: tls-ingress
+#   namespace: myns
+#   annotations:
+#     kubernetes.io/ingress.class: "nginx"
+# spec:
+#   tls: #引用证书
+#   - hosts: #此主机需要为证书签名时指定的域名一致
+#     -  www.node.com
+#     secretName: ilinux-cert #secre资源的名称。就是我们刚才创建的k8s资源
+#   rules: #后端规则，需前一份资源系统
+#     - host: www.node1.com
+#       http:
+#         paths:
+#         - path: /
+#           backend:
+#             serviceName: myapp
+#             servicePort: 80

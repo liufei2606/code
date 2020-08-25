@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-commdn
+spec:
+  containers:
+    - name: command-demo-container
+      image: busybox
+      command: ["httpd"]
+      args: ["-f"]
+      # args: ["httpd","-f"]
+      ports:
+        - containerPort: 80

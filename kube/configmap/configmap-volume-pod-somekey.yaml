@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: configmap-volume-pod
+  namespace: default
+spec:
+  containers:
+    - name: configmap-containers
+      image: nginx:latest
+      volumeMounts: #卷挂载配置
+        - name: ngx-config #挂载的卷名称
+          mountPath: /etc/nginx/conf.d/ #挂载在容器中的目标路径
+          readOnly: true #是否为只读
+  volumes: #卷配置
+    - name: ngx-config #定义一个卷名称
+      configMap: #卷从configMap中取值
+        name: nginx-config-files #指定要挂载的configMap名称
+        items: #nginx-config-files ConfigMap中的键
+          - key: vhost.conf #指定要挂载键
+            path: vhost.conf #挂载的路径
+            mode: 0644 #挂载后的文件权限
+          - key: gzip.cfg
+            path: compression.cfg
+            mode: 0644
