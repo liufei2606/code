@@ -21,7 +21,7 @@ def run_proc(name):
 
 # multiprocessing模块就是跨平台版本的多进程模块
 print('Parent process %s.' % os.getpid())
-p = Process(target=run_proc, args=('test',))
+p = Process(target=run_proc, args=('tests',))
 print('Child process will start.')
 p.start()
 # join()方法可以等待子进程结束后再继续往下运行，通常用于进程间的同步

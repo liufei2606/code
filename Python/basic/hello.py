@@ -5,7 +5,7 @@
 # 代码的可维护性
 # 避免函数名和变量名冲突
 
-' a test module '
+' a tests module '
 
 __author__ = 'Michael Liao'
 

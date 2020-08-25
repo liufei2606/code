@@ -11,13 +11,13 @@ def post_json(request):
 
 @app.route("/form")
 def post_json(request):
-    return json({"received": True, "form_data": request.form, "test": request.form.get('test')})
+    return json({"received": True, "form_data": request.form, "tests": request.form.get('tests')})
 
 
 @app.route("/files")
 def post_json(request):
 
-    test_file = request.files.get('test')
+    test_file = request.files.get('tests')
 
     file_parameters = {
 

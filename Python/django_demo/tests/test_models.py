@@ -11,7 +11,7 @@ class YourTestClass(TestCase):
         pass
 
     def setUp(self):
-        print("setUp: Run once for every test method to setup clean data.")
+        print("setUp: Run once for every tests method to setup clean data.")
         pass
 
     def test_false_is_false(self):
@@ -34,7 +34,7 @@ class AuthorModelTest(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        # Set up non-modified objects used by all test methods
+        # Set up non-modified objects used by all tests methods
         Author.objects.create(first_name='Big', last_name='Bob')
 
     def test_first_name_label(self):

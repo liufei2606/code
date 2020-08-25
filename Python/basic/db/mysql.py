@@ -1,6 +1,6 @@
 import mysql.connector
 
-conn = mysql.connector.connect(user='root', password='4268', database='test')
+conn = mysql.connector.connect(user='root', password='4268', database='tests')
 cursor = conn.cursor()
 # 创建user表:
 cursor.execute('create table user (id varchar(20) primary key, name varchar(20))')

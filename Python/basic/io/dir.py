@@ -22,8 +22,8 @@ print(os.path.split(realPath))
 print(os.path.splitext(realPath))
 
 # 文件
-os.rename('test.txt', 'test.py')
-os.remove('test.py')
+os.rename('tests.txt', 'tests.py')
+os.remove('tests.py')
 
 print([x for x in os.listdir('../../Syntax/') if os.path.isdir(x)])
 print([x for x in os.listdir('') if os.path.isfile(
