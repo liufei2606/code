@@ -11,3 +11,11 @@
 scrapy crawl douban_spider
 scrapy crawl douban_spider -o douban.csv
 ```
+
+## behave
+
+```
+pip install allure-behave
+behave -f allure_behave.formatter:AllureFormatter -o report ./features
+allure serve report
+```
