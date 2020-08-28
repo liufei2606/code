@@ -50,12 +50,20 @@ public class DataType {
         System.out.println(charVar + 10);
         System.out.println((char) 98);
 
+        // int a = 10;
+        // d++   = 25
+        //         ++d   = 27
+        //
+        // A = 0011 1100
+        // A << 2 // 240，即 1111 0000
+        // A >> 2 // 15 1111
+        // A>>>2 // 15即0000 1111
+
 // 引用类型
         String s = "hello";
         int[] intArray = new int[9];
-        System.out.println(intArray[2]);
-
         double[][] doubleArray = new double[100][20];
+        System.out.println(intArray[2]);
         System.out.println(doubleArray[20][10]);
     }
 }

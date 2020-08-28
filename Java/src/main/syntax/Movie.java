@@ -1,6 +1,7 @@
 package main.syntax;
 
 public class Movie {
+
 	public static final int CHILDRENS = 2;
 	public static final int REGUALR = 1;
 	public static final int NEW_REALEASE = 0;

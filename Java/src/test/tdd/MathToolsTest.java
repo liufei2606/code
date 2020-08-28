@@ -1,4 +1,4 @@
-package tdd;
+package test.tdd;
 
 import main.tdd.MathTools;
 import org.junit.jupiter.api.Assertions;

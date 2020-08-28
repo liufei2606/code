@@ -2,9 +2,12 @@ package main.oop;
 
 import java.lang.reflect.Field;
 
+/**
+ * @author henry
+ */
 public class UseReflection {
     public static void main(String[] args) {
-        Class clazz = Merchandise.class;
+        Class clazz = main.oop.Merchandise.class;
 //        Field countField = clazz.getField('count');
 //        Field countField = clazz.getDeclaredField('count');
 //        countField.get(m100);

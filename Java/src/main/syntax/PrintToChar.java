@@ -1,6 +1,6 @@
 package main.syntax;
 
-public class Print26Char {
+public class PrintToChar {
     public static void main(String[] args) {
 //        char ch = 'A';
         char ch = '\u4564';

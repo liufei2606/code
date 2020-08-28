@@ -1,4 +1,4 @@
-package tdd;
+package test.tdd;
 
 import main.tdd.FizzBuzz;
 import org.junit.jupiter.api.Test;
@@ -9,6 +9,7 @@ class FizzBuzzTest {
 
     @Test
     public void should_return_origin_digit_given_input_is_not_match_any_rule() {
+
         String actual = FizzBuzz.handleSignleDigit357(4);
         assertEquals("", actual);
     }

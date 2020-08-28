@@ -27,7 +27,7 @@ public class Operator {
         System.out.println(1 < 2);
 
         // boolean || 前面条件优化
-
+        // logic
         // bit | 和　& 交集
         int a = 0xF8;
         int b = 0xF4;

@@ -1,8 +1,11 @@
 package main.oop;
 
+
+import oop.VirtualMerchandise;
+
 import java.util.Date;
 
-public class GamePointCard extends Merchandise implements VirtualMerchandise,ExpireDateMerchandise {
+public class GamePointCard extends main.oop.Merchandise implements VirtualMerchandise, ExpireDateMerchandise {
     @Override
     public boolean notExpiredInDays(int days) {
         return false;
