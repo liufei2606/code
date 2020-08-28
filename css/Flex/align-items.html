@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .first {
+            width: 100px;
+            height: 80px;
+            background-color: chocolate;
+        }
+
+        .second {
+            width: 130px;
+            height: 60px;
+            text-align: center;
+            text-justify: newspaper;
+            background-color: bisque;
+        }
+
+        .third {
+            width: 80px;
+            height: 40px;
+            background-color: blueviolet;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: row;
+            width: 500px;
+            height: 150px;
+            background-color: yellow;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            display: inline-flex;
+            width: 150px;
+            height: 300px;
+            background-color: rgb(198, 168, 198);
+        }
+
+        #container_11,
+        #container_21 {
+            align-items: flex-start;
+        }
+
+        #container_12,
+        #container_22 {
+            align-items: flex-end;
+        }
+
+        #container_13,
+        #container_23 {
+            align-items: center;
+        }
+
+        #container_14,
+        #container_24 {
+            align-items: stretch;
+        }
+
+        #container_15,
+        #container_25 {
+            align-items: baseline;
+        }
+    </style>
+</head>
+
+<body>
+    <h5>flex-direction: row > align-items: flex-start </h5>
+    <div class='row container' id='container_11'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+    </div>
+    <h5>flex-direction: row > align-items: flex-end </h5>
+    <div class='row container' id='container_12'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+    </div>
+    <h5>flex-direction: row > align-items: flex-center </h5>
+    <div class='row container' id='container_13'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+    </div>
+    <h5>flex-direction: row > align-items: stretch</h5>
+    <div class='row container' id='container_14'>
+        <div class='first' style="height:auto;">弹性元素1</div>
+        <div class='second' style="height:auto;">弹性元素2</div>
+        <div class='third' style="height:auto;">弹性元素3</div>
+    </div>
+    <h5>flex-direction: row > align-items: baseline </h5>
+    <div class='row container' id='container_15'>
+        <div class='first' style="height:auto;">弹性元素1</div>
+        <div class='second' style="height:auto;">弹性元素2</div>
+        <div class='third' style="height:auto;">弹性元素3</div>
+    </div>
+
+    <h5>flex-direction: column</h5>
+    <div class='column container' id='container_21'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+    </div>
+    <div class='column container' id='container_22'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+    </div>
+    <div class='column container' id='container_23'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+    </div>
+    <div class='column container' id='container_24'>
+        <div class='first' style="width:auto;">弹性元素1</div>
+        <div class='second' style="width:auto;">弹性元素2</div>
+        <div class='third' style="width:auto;">弹性元素3</div>
+    </div>
+    <div class='column container' id='container_25'>
+        <div class='first' style="width:auto;">弹性元素1</div>
+        <div class='second' style="width:auto;">弹性元素2</div>
+        <div class='third' style="width:auto;">弹性元素3</div>
+    </div>
+</body>
+
+</html>

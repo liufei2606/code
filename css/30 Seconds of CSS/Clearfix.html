@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Clearfix</title>
+	<style media="screen">
+		.cleaxfix::after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+
+		.floated {
+			float: left;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="clearfix">
+		<div class="floated">floated a</div>
+		<div class="floated">floated a</div>
+		<div class="floated">floated a</div>
+	</div>
+</body>
+
+</html>

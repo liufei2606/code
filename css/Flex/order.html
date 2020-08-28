@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .first {
+            width: 100px;
+            height: 80px;
+            background-color: chocolate;
+            order: 9;
+            flex-grow: 2;
+            flex-basis: 160px;
+        }
+
+        .second {
+            width: 130px;
+            height: 60px;
+            text-align: center;
+            text-justify: newspaper;
+            background-color: bisque;
+            order: 11;
+            flex-grow: 4;
+            align-self: flex-end;
+            flex-basis: 520px;
+        }
+
+        .third {
+            width: 80px;
+            height: 40px;
+            background-color: blueviolet;
+            order: 5;
+            flex-shrink: 0.5;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: row;
+            width: 1200px;
+            height: 150px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <h5>order >flex-grow</h5>
+    <div class='row' id='container_11'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+    </div>
+
+    <!-- <h5>flex-direction: row > align-items: flex-end </h5>
+    <div class='row container' id='container_12'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+    </div>
+    <h5>flex-direction: row > align-items: flex-center </h5>
+    <div class='row container' id='container_13'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+    </div>
+    <h5>flex-direction: row > align-items: stretch</h5>
+    <div class='row container' id='container_14'>
+        <div class='first' style="height:auto;">弹性元素1</div>
+        <div class='second' style="height:auto;">弹性元素2</div>
+        <div class='third' style="height:auto;">弹性元素3</div>
+    </div>
+    <h5>flex-direction: row > align-items: baseline </h5>
+    <div class='row container' id='container_15'>
+        <div class='first' style="height:auto;">弹性元素1</div>
+        <div class='second' style="height:auto;">弹性元素2</div>
+        <div class='third' style="height:auto;">弹性元素3</div>
+    </div>
+
+    <h5>flex-direction: column</h5>
+    <div class='column container' id='container_21'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+    </div>
+    <div class='column container' id='container_22'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+    </div>
+    <div class='column container' id='container_23'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+    </div>
+    <div class='column container' id='container_24'>
+        <div class='first' style="width:auto;">弹性元素1</div>
+        <div class='second' style="width:auto;">弹性元素2</div>
+        <div class='third' style="width:auto;">弹性元素3</div>
+    </div>
+    <div class='column container' id='container_25'>
+        <div class='first' style="width:auto;">弹性元素1</div>
+        <div class='second' style="width:auto;">弹性元素2</div>
+        <div class='third' style="width:auto;">弹性元素3</div>
+    </div> -->
+</body>
+
+</html>

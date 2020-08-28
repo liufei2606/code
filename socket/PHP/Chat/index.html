@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <import type='css' file="css.common.common" />
+    <import type='css' file="css.common.iconfont" />
+    <import type='css' file="css.weixin.second_index" />
+    <import type='js' file="js.jquery-1-9-1-min" />
+    <import type='js' file="js.flexible" />
+    <import type='js' file="js.flexible_css" />
+    <import type='js' file="js.common" />
+    <import type='js' file="js.slide" />
+    <link rel="apple-touch-icon" href="__ROOT__ /Public/images/favicon.png">
+    <link rel="Shortcut Icon" href="favicon.png" type="image/x-icon">
+    <script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+    <title>聊天室</title>
+</head>
+
+<body>
+    <!--顶部tips-->
+    <div class="clear_both disblock top_bar_chat" style="z-index:10;">
+        <i class="icon iconfont back_btn" style="width:10px;">&nbsp;</i>
+        <i class="icon iconfont back_btn" style="color:#000;">&#xe660;</i>
+        <!--返回按钮-->
+        <span>在线人数：<span id="userNum" style="color:#51C332;"></span></span>
+        <i class="icon iconfont">&nbsp;</i>
+    </div>
+    <!--聊天内容-->
+    <div class="clear_both disblock chat_content_box" style="z-index:9;">
+        <ol class="disblock" id="message">
+            <p style="color:#ccc;text-align:center;line-height:20px;height:20px;padding:5px 0px;">加载更多</p>
+            <li class="chat_content_list chat_get">
+                <a href="javascript:void(0);" class="chat_user_face"><img src="__PUBLIC__/images/touxiang.JPG" /></a>
+                <p class="chat_list">你好啊！!!</p>
+                <p class="chat_content_list_blank_big clear_both" style="height:2px;">&nbsp;</p>
+            </li>
+            <p style="color:#ccc;text-align:center;line-height:20px;height:20px;padding:5px 0px;">下午10.26</p>
+            <li class="chat_content_list chat_post">
+                <a href="javascript:void(0);" class="chat_user_face"><img src="__PUBLIC__/images/touxiang.JPG" /></a>
+                <p class="chat_list">嗯，你好，在的，价格最低400，顺丰包邮。</p>
+                <p class="chat_content_list_blank_big clear_both" style="height:2px;">&nbsp;</p>
+            </li>
+            <!--发送失败-->
+            <p class="chat_content_list_blank_big clear_both" style="text-align:center;line-height:10px;height:20px;padding:5px 0px;"><i class="icon iconfont" style="color:red;">&#xe66a;</i></p>
+            <li class="chat_content_list chat_get">
+                <a href="javascript:void(0);" class="chat_user_face"><img src="__PUBLIC__/images/touxiang.JPG" /></a>
+                <p class="chat_list"><img src="__PUBLIC__/images/goods1.JPG" /></p>
+                <p class="chat_content_list_blank_big clear_both" style="height:2px;">&nbsp;</p>
+            </li>
+            <!--底部清除-->
+            <p style="height:10px;" class="chat_list_clear">&nbsp;</p>
+        </ol>
+    </div>
+    <!--留空-->
+    <p style="height:90px;">&nbsp;</p>
+    <!--留言输入框-->
+    <div class="chat_input_box">
+        <div class="chat_input_top_box">
+            <input type="text" name="liuyan_value" class="chat_value" placeholder="输入文字" />
+            <a href="javascript:void(0);" class="chat_submit" id="chat_submit"><i class="icon iconfont" style="color:#51C332;font-size:0.6rem;">&#xe648;</i></a>
+        </div>
+        <!--更多选项-->
+        <div class="chat_input_more_box">
+            <a href="javascript:void(0);" style="width:10px;"><i class="icon iconfont">&nbsp;</i></a>
+            <!--留空-->
+            <a href="javascript:void(0);" class="add_img_btn"><i class="icon iconfont" style="color:#999;">&#xe657;</i></a>
+            <!--图片-->
+            <a href="javascript:void(0);" class="add_emoji_btn"><i class="icon iconfont" style="color:#999;">&#xe60c;</i></a>
+            <!--表情-->
+            <a href="javascript:void(0);" class="add_voice_btn"><i class="icon iconfont" style="color:#999;">&#xe63d;</i></a>
+            <!--语音-->
+            <a href="javascript:void(0);" class="add_address_btn"><i class="icon iconfont" style="color:#999;">&#xe681;</i></a>
+            <!--位置-->
+            <a href="javascript:void(0);"><i class="icon iconfont" style="color:#ccc;">...</i></a>
+            <!--其他-->
+        </div>
+        <!--添加图片-->
+        <div class="clear_both disblock img_upload_box send_more_div" style="display:none;">
+            <p style="color:#ccc;line-height:20px;text-indent:10px;">添加图片，点击图片可删除</p>
+            <!--<img src="__PUBLIC__/images/addimg.png" class="add_img show_add_img" id="showimg"/>-->
+            <img src="__PUBLIC__/images/addimg.png" class="add_img" id="add_img" />
+            <!--此img标签为图片添加按钮，没添加成功一次在这之前动态添加一个img标签，并显示-->
+            <p style="height:30px;padding:10px 0px;"><a href="javascript:void(0);" class="send_imgs" onclick="post_msg('img')">发送</a></p>
+        </div>
+        <!---->
+        <div class="clear_both disblock send_more_div show_emoji_box" style="display:none;">
+            <!--<i class="item" style="background:url(/Chat/face/1.gif) center center no-repeat;"></i>-->
+        </div>
+    </div>
+</body>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+    wx.config({
+        appId: '{$res.appId}',
+        timestamp: '{$res.timestamp}',
+        nonceStr: '{$res.nonceStr}',
+        signature: '{$res.signature}',
+        jsApiList: ['checkJsApi',
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage',
+            'onMenuShareQQ',
+            'onMenuShareWeibo',
+            'onMenuShareQZone',
+            'hideMenuItems',
+            'showMenuItems',
+            'hideAllNonBaseMenuItem',
+            'showAllNonBaseMenuItem',
+            'translateVoice',
+            'startRecord',
+            'stopRecord',
+            'onVoiceRecordEnd',
+            'playVoice',
+            'onVoicePlayEnd',
+            'pauseVoice',
+            'stopVoice',
+            'uploadVoice',
+            'downloadVoice',
+            'chooseImage',
+            'previewImage',
+            'uploadImage',
+            'downloadImage',
+            'getNetworkType',
+            'openLocation',
+            'getLocation',
+            'hideOptionMenu',
+            'showOptionMenu',
+            'closeWindow',
+            'scanQRCode',
+            'chooseWXPay',
+            'openProductSpecificView',
+            'addCard',
+            'chooseCard',
+            'openCard'
+        ]
+    });
+    wx.ready(function() {
+        var images = {
+            localIds: [],
+            serverId: []
+        };
+        document.querySelector('#add_img').onclick = function() {
+            wx.chooseImage({
+                count: 1,
+                sourceType: ['album', 'camera'],
+                success: function(res) {
+                    images.localIds = res.localIds;
+                    images.serverId = [];
+                    wx.uploadImage({
+                        localId: images.localIds[0],
+                        success: function(res1) {
+                            images.serverId.push(res1.serverId);
+                            $('#add_img').before('<img src="' + images.localIds + '" class="add_img show_add_img" id="' + res1.serverId + '"/>');
+                            //图片的高度
+                            $('.add_img').height($('.add_img').width());
+                        },
+                        fail: function(res1) {
+                            alert(JSON.stringify(res1));
+                        }
+                    });
+                }
+            });
+        };
+    });
+</script>
+<script>
+    $(function() {
+        var emoji_num = 19;
+        var win_wid = $(window).width();
+        one_list_num = (win_wid / 40);
+        one_list_num = Math.floor(one_list_num);
+        one_page_num = (one_list_num * 3);
+        var i = 1;
+        while (i < one_page_num + 1) {
+            $('.show_emoji_box').append('<i style="background:url(/Chat/face/' + i + '.gif) center center no-repeat;" data-id="' + i + '"></i>');
+            i++;
+        }
+    })
+</script>
+<script type="text/javascript">
+    $('.back_btn').click(function() {
+        window.history.go(-1);
+    })
+    $('.add_img_btn').click(function() {
+        if ($(this).attr('class') == '') {
+            $(this).addClass('active');
+        } else {
+            $(this).removeClass('active');
+        }
+        $('.img_upload_box').toggle();
+    })
+    $('.add_emoji_btn').click(function() {
+        if ($(this).attr('class') == '') {
+            $(this).addClass('active');
+        } else {
+            $(this).removeClass('active');
+        }
+        $('.show_emoji_box').toggle();
+        $('.show_emoji_box').owlCarousel({
+            items: 2,
+            pagination: true,
+        });
+    })
+
+    //询问是否删除
+    $('.img_upload_box').on('click', '.show_add_img', function() {
+        if (confirm("你确定要删除吗？")) {
+            $(this).remove();
+        }
+    });
+</script>
+<script type="text/javascript">
+    //发送消息
+    function post_msg(type) {
+        if (type = 'text') {
+            if ($('.chat_value').val().length < 1) {
+                alert_tip('内容不能为空');
+            } else if ($('.chat_value').val().length > 400) {
+                alert_tip('字符长度超出上限');
+            } else {
+                do_post_msg(type, $('.chat_value').val());
+                $('.chat_content_box ol').append('<li class="chat_content_list chat_post"><a href="javascript:void(0);" class="chat_user_face"><img src="__PUBLIC__/images/touxiang.JPG"/></a><p class="chat_list">' + $('.chat_value').val() + '</p><p class="chat_content_list_blank_big clear_both" style="height:5px;">&nbsp;</p></li>');
+                $('.chat_value').val('');
+            }
+        } else if (type = 'img') {
+            //定义一个数组img，然后遍历上传的所有图片，将其ID也就是微信返回的媒体ID添加到这个数组中
+            var img_list = new Array();
+            $('.img_upload_box img.show_add_img').each(function(index) {
+                img_list.push($(this).attr('id'));
+            })
+            if (img_list.length < 1) {
+                alert_tip('尚未上传任何图片');
+            } else if (img_list.length > 8) {
+                alert_tip('最多上传8张照片');
+            } else {
+                do_post_msg(type, img_list);
+                $.each(img_list, function(index, content) {
+                    $('.chat_content_box ol').append('<li class="chat_content_list chat_post"><a href="javascript:void(0);" class="chat_user_face"><img src="__PUBLIC__/images/touxiang.JPG"/></a><p class="chat_list"><img src="' + content + '"/></p><p class="chat_content_list_blank_big clear_both" style="height:5px;">&nbsp;</p></li>');
+                })
+            }
+        }
+        //处理对话框的滚动高度
+        var chat_height_now = $('.chat_content_box').height();
+        //聊天信息框的高度
+        var win_height = $(window).height();
+        var chat_input_height = $('.chat_input_box').height();
+        //计算聊天框的高度
+        var chat_box_height = win_height - chat_input_height;
+        var scroll_h = $(document).scrollTop();
+        //$('.chat_content_box').css('height',chat_box_height);
+        if (chat_height_now > chat_box_height) {
+            var off_top = chat_height_now - chat_box_height + 80;
+            $(document).scrollTop(off_top);
+        }
+    }
+</script>
+<script type="text/javascript">
+    (function() {
+        var $ = function(id) {
+            return document.getElementById(id) || null;
+        }
+        var wsServer = 'ws://127.0.0.1:9000';
+        var ws = new WebSocket(wsServer);
+        var isConnect = false;
+        ws.onopen = function(evt) {
+            onOpen(evt)
+        };
+        ws.onclose = function(evt) {
+            onClose(evt)
+        };
+        ws.onmessage = function(evt) {
+            onMessage(evt)
+        };
+        ws.onerror = function(evt) {
+            onError(evt)
+        };
+
+        function onOpen(evt) {
+            ws.send("open#?#^{$aid}");
+            isConnect = true;
+        }
+
+        function onClose(evt) {
+            console.log("Disconnected");
+        }
+
+        function onMessage(evt) {
+            var data = JSON.parse(evt.data);
+            switch (data.type) {
+                case "text":
+                    $('message').innerHTML += data.msg;
+                    $('message').scrollTop = $('message').scrollHeight;
+                    break;
+                case "num":
+                    $('userNum').innerText = data.msg;
+                    break;
+                case "image":
+                    break;
+            }
+        }
+
+        function onError(evt) {
+            console.log('Error occured: ' + evt.data);
+        }
+
+        function sendMsg(type) {
+            if (isConnect) {
+                if (type = 'text') {
+                    //如果发送的是文字
+                    if ($('.chat_value').val().length < 1) {
+                        alert('聊天内容不能为空！');
+                        return false;
+                    } else if ($('.chat_value').val().length > 400) {
+                        alert('字符长度超过上限！');
+                        return false;
+                    }
+                    ws.send('text#?#^<li class="chat_content_list chat_post"><a href="javascript:void(0);" class="chat_user_face"><img src="__PUBLIC__/images/touxiang.JPG"/></a><p class="chat_list">' + $('.chat_value').val() + '</p><p class="chat_content_list_blank_big clear_both" style="height:5px;">&nbsp;</p></li>');
+                    chat_window_scroll();
+                    $('.chat_value').val('');
+                } else if (type = 'image') {
+                    //如果发送的是图片
+                } else if (type = 'emoji') {
+                    //如果发送的是表情，表情的格式是{s:1}，1代表的是1.gif
+                    ws.send('text#?#^<li class="chat_content_list chat_post"><a href="javascript:void(0);" class="chat_user_face"><img src="__PUBLIC__/images/touxiang.JPG"/></a><p class="chat_list">' + $('.chat_value').val() + '</p><p class="chat_content_list_blank_big clear_both" style="height:5px;">&nbsp;</p></li>');
+                    chat_window_scroll();
+                }
+            }
+        }
+        $('chat_submit').addEventListener('click', sendMsg('text'), false);
+        //start
+        function chat_window_scroll() {
+            //处理对话框的滚动高度
+            var chat_height_now = $('.chat_content_box').height();
+            //聊天信息框的高度
+            var win_height = $(window).height();
+            var chat_input_height = $('.chat_input_box').height();
+            //计算聊天框的高度
+            var chat_box_height = win_height - chat_input_height;
+            var scroll_h = $(document).scrollTop();
+            //$('.chat_content_box').css('height',chat_box_height);
+            if (chat_height_now > chat_box_height) {
+                var off_top = chat_height_now - chat_box_height + 80;
+                $(document).scrollTop(off_top);
+            }
+        }
+        //over
+    })();
+</script>
+
+</html>

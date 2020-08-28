@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 绘制刻度
+    offscreenCanvasCtx.save();
+    for (var i = 0; i < 12; i++) {
+        offscreenCanvasCtx.beginPath();
+        // 刻度颜色
+        offscreenCanvasCtx.strokeStyle = "#fff";
+        // 刻度宽度
+        offscreenCanvasCtx.lineWidth = 3;
+        // 每小时占据30°
+        offscreenCanvasCtx.rotate(Math.PI / 6);
+        // 开始绘制的位置
+        offscreenCanvasCtx.lineTo(140, 0);
+        // 结束绘制的位置;
+        offscreenCanvasCtx.lineTo(120, 0);
+        // 绘制路径
+        offscreenCanvasCtx.stroke();
+    }
+    offscreenCanvasCtx.restore();
+
+    // 指针指向
+    var now = new Date(),
+        sec = now.getSeconds(),
+        min = now.getMinutes(),
+        hr = now.getHours();
+    hr = hr - 12 ? hr - 12 : hr;
+    //秒针
+    offscreenCanvasCtx.save();
+    offscreenCanvasCtx.rotate(sec * (Math.PI / 30));
+    offscreenCanvasCtx.stroke();
+
+    // 粒子获取
+    let image = new Image();
+    image.src = "../image/logo.png";
+    let pixels = []; //存储像素数据
+    let imageData;
+    image.width = 300;
+    image.height = 300;
+    // 渲染图片，并获取该区域内像素信息
+    image.onload = function() {
+        ctx.drawImage(
+            image,
+            (canvas.width - image.width) / 2,
+            (canvas.height - image.height) / 2,
+            image.width,
+            image.height
+        );
+        imageData = ctx.getImageData(
+            (canvas.width - image.width) / 2,
+            (canvas.height - image.height) / 2,
+            image.width,
+            image.height
+        ); //获取图表像素信息
+        //绘制图像
+    };
+
+    // 粒子绘制
+    function getPixels() {
+        var pos = 0;
+        var data = imageData.data; //RGBA的一维数组数据
+        //源图像的高度和宽度为300px
+        for (var i = 1; i <= image.width; i++) {
+            for (var j = 1; j <= image.height; j++) {
+                pos = [(i - 1) * image.width + (j - 1)] * 4; //取得像素位置
+                if (data[pos] >= 0) {
+                    var pixel = {
+                        x: (canvas.width - image.width) / 2 + j + Math.random() * 20, //重新设置每个像素的位置信息
+                        y: (canvas.height - image.height) / 2 + i + Math.random() * 20, //重新设置每个像素的位置信息
+                        fillStyle: "rgba(" +
+                            data[pos] +
+                            "," +
+                            data[pos + 1] +
+                            "," +
+                            data[pos + 2] +
+                            "," +
+                            data[pos + 3] +
+                            ")"
+                    };
+                    pixels.push(pixel);
+                }
+            }
+        }
+    }
+
+    function drawPixels() {
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        var len = pixels.length,
+            curr_pixel = null;
+        for (var i = 0; i < len; i++) {
+            curr_pixel = pixels[i];
+            ctx.fillStyle = curr_pixel.fillStyle;
+            ctx.fillRect(curr_pixel.x, curr_pixel.y, 1, 1);
+        }
+    }
+
+    // 渲染文字时钟
+    function time() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.font = "150px 黑体";
+        ctx.textBaseline = "top";
+        ctx.fillStyle = "rgba(245,245,245,0.2)";
+        ctx.fillText(
+            new Date().format("hh:mm:ss"),
+            (canvas.width - textWidth) / 2,
+            (canvas.height - textHeight) / 2,
+            textWidth,
+            textHeight
+        );
+    }
+    // 获取粒子 文字转换粒子概念同上，获取选定区域的像素，根据筛选条件进行选择并存入数组。经过遍历后重新绘制。
+    // imgData保存了所选区域内的像素信息，每个像素点占据 4 位，保存了 RGBA 四位信息。筛选每个像素的第四位，这段代码中将所有透明度不为 0 的像素都保存到了数组pixelsArr中。
+    // x、y记载了该粒子的位置信息，为了产生效果图中的运动效果，给每个粒子添加了 0-20 个像素的偏移位置，每次重绘时，偏移位置随机生成，产生运动效果。
+    function getPixels() {
+        let imgData = ctx.getImageData(
+            (canvas.width - textWidth) / 2,
+            (canvas.height - textHeight) / 2,
+            textWidth,
+            textHeight
+        );
+        let data = imgData.data;
+        pixelsArr = [];
+        for (let i = 1; i <= textHeight; i++) {
+            for (let j = 1; j <= textWidth; j++) {
+                pos = [(i - 1) * textWidth + (j - 1)] * 4; //取得像素位置
+                if (data[pos] >= 0) {
+                    var pixel = {
+                        x: j + Math.random() * 20, //重新设置每个像素的位置信息
+                        y: i + Math.random() * 20, //重新设置每个像素的位置信息
+                        fillStyle: "rgba(" +
+                            data[pos] +
+                            "," +
+                            data[pos + 1] +
+                            "," +
+                            data[pos + 2] +
+                            "," +
+                            data[pos + 3] +
+                            ")"
+                    };
+                    pixelsArr.push(pixel);
+                }
+            }
+        }
+    }
+    // 粒子重绘:获取粒子之后，需要清除画布中原有的文字，将获取到的粒子重新绘制到画布上去。
+    function drawPixels() {
+        // 清除画布内容，进行重绘
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i in pixelsArr) {
+            ctx.fillStyle = pixelsArr[i].fillStyle;
+            let r = Math.random() * 4;
+            ctx.fillRect(pixelsArr[i].x, pixelsArr[i].y, r, r);
+        }
+    }
+
+    function time() {
+        getpixels(); //获取粒子
+        drawPixels(); // 重绘粒子
+        requestAnimationFrame(time);
+    }
+</script>
+
+</html>

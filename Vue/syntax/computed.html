@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="../static/js/vue.js"></script>
+        <title>计算属性实例</title>
+        <style>
+            .php {
+                color: skyblue;
+            }
+
+            .python {
+                color: blueviolet;
+            }
+
+            .javascript {
+                color: aqua;
+            }
+            .go {
+                color: burlywood;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <p>Web 开发框架</p>
+            <ul>
+                <li
+                    v-for="framework in sortLanguage"
+                    :class="framework.language"
+                >
+                    {{framework.name}}
+                </li>
+            </ul>
+            <hr />
+            框架：<input v-model="newFramework" name="framework" />
+            语言：
+            <select v-model="newLanguage">
+                <option
+                    v-for="language in languages"
+                    v-text="language"
+                ></option>
+            </select>
+            <button @click="addFramework">新增框架</button>
+            <hr />
+            国家:
+            <Country></Country>
+        </div>
+        <script>
+            Vue.component("Country", {
+                data: function () {
+                    return {
+                        countries: ["China", "Japan", "Germany"],
+                    };
+                },
+                template:
+                    '<ul><li v-for="country in countries">{{country}}</li></ul>',
+            });
+
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    frameworks: [
+                        { name: "Laravel", language: "php" },
+                        { name: "Vue", language: "javascript" },
+                        { name: "Gin", language: "go" },
+                        { name: "Flask", language: "python" },
+                    ],
+                    languages: ["php", "javascript", "go", "python"],
+                    newLanguage: "",
+                    newFramework: "",
+                },
+                methods: {
+                    addFramework() {
+                        this.frameworks.push({
+                            language: this.newLanguage,
+                            name: this.newFramework,
+                        });
+                    },
+                },
+                computed: {
+                    sortLanguage() {
+                        return this.frameworks.sort((a, b) => {
+                            if (a.language < b.language) {
+                                return -1;
+                            } else if (a.language > b.language) {
+                                return 1;
+                            } else {
+                                return 0;
+                            }
+                        });
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>

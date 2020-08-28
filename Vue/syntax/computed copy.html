@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="../static/js/vue.js"></script>
+        <title>计算属性实例</title>
+        <style>
+            .php {
+                color: skyblue;
+            }
+
+            .python {
+                color: blueviolet;
+            }
+
+            .javascript {
+                color: aqua;
+            }
+            .go {
+                color: burlywood;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <p>Web开发框架：</p>
+            <web-framework-list></web-framework-list>
+        </div>
+
+        <script>
+            Vue.component("web-framework-list", {
+                data: function () {
+                    return {
+                        frameworks: [
+                            { name: "Laravel", language: "php" },
+                            { name: "Vue", language: "javascript" },
+                            { name: "Gin", language: "golang" },
+                            { name: "Flask", language: "python" },
+                        ],
+                        languages: ["php", "golang", "javascript", "python"],
+                    };
+                },
+                template:
+                    "<div>" +
+                    "<ul>" +
+                    '<li v-for="framework in sortedFrameworks" :class="framework.language">{{ framework.name }}</li>' +
+                    "</ul>" +
+                    '<add-web-framework :frameworks="frameworks" :languages="languages" @framework-added="addFramework"></add-web-framework>' +
+                    "</div>",
+                methods: {
+                    addFramework(framework, language) {
+                        this.frameworks.push({
+                            name: framework,
+                            language: language,
+                        });
+                    },
+                },
+                computed: {
+                    sortedFrameworks() {
+                        return this.frameworks.sort((a, b) => {
+                            if (a.language < b.language) {
+                                return -1;
+                            } else if (a.language > b.language) {
+                                return 1;
+                            } else {
+                                return 0;
+                            }
+                        });
+                    },
+                },
+            });
+
+            Vue.component("add-web-framework", {
+                props: ["frameworks", "languages"],
+                data: function () {
+                    return {
+                        newFramework: "",
+                        newLanguage: "",
+                    };
+                },
+                template:
+                    "<div>" +
+                    '框架：<input v-model="newFramework" name="framework"/> ' +
+                    '语言: <select v-model="newLanguage"><option v-for="language in languages" v-text="language"></option></select> ' +
+                    '<button @click="addNewFramework">新增框架</button>' +
+                    "</div>",
+                methods: {
+                    // 事件转发给父组件作用域中定义的 framework-added 事件监听函数
+                    addNewFramework() {
+                        let exists = this.frameworks.find(
+                            (framework) => framework.name == this.newFramework
+                        );
+                        if (exists) {
+                            alert("该框架已存在！");
+                            return;
+                        }
+                        this.$emit(
+                            "framework-added",
+                            this.newFramework,
+                            this.newLanguage
+                        );
+                    },
+                },
+            });
+
+            var app = new Vue({
+                el: "#app",
+            });
+        </script>
+    </body>
+</html>

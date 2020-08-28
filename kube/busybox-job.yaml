@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: busybox-job
+spec:
+  backoffLimit: 5
+  activeDeadlineSeconds: 100
+  parallelism: 1
+  # parallelism: 5
+  completions: 5
+  template:
+    spec:
+      containers:
+        - name: busybox
+          image: busybox:latest
+          command: ["/bin/sh", "-c", "sleep 20s"]
+      restartPolicy: OnFailure
