@@ -1,6 +1,5 @@
 package main.algrithom;
 
-
 import java.util.HashMap;
 
 public class LRUCache {
@@ -17,12 +16,9 @@ public class LRUCache {
         cache = new DoubleList();
     }
 
-    /* 将某个 key 提升为最近使用的 */
     private void makeRecently(int key) {
         LinkNode x = map.get(key);
-        // 先从链表中删除这个节点
         cache.remove(x);
-        // 重新插到队尾
         cache.addLast(x);
     }
 
@@ -52,6 +48,7 @@ public class LRUCache {
         int deletedKey = deletedNode.key;
         map.remove(deletedKey);
     }
+
     public int get(int key) {
         if (!map.containsKey(key)) {
             return -1;
@@ -60,20 +57,49 @@ public class LRUCache {
         makeRecently(key);
         return map.get(key).val;
     }
+
     public void put(int key, int val) {
         if (map.containsKey(key)) {
-            // 删除旧的数据
             deleteKey(key);
-            // 新插入的数据为最近使用的数据
             addRecently(key, val);
             return;
         }
 
         if (cap == cache.size()) {
-            // 删除最久未使用的元素
             removeLeastRecently();
         }
-        // 添加为最近使用的元素
         addRecently(key, val);
+    }
+
+    void main() {
+        /* 缓存容量为 2 */
+        LRUCache cache = new LRUCache(2);
+// 你可以把 cache 理解成一个队列
+// 假设左边是队头，右边是队尾
+// 最近使用的排在队头，久未使用的排在队尾
+// 圆括号表示键值对 (key, val)
+
+        cache.put(1, 1);
+// cache = [(1, 1)]
+
+        cache.put(2, 2);
+// cache = [(2, 2), (1, 1)]
+
+        cache.get(1);       // 返回 1
+// cache = [(1, 1), (2, 2)]
+// 解释：因为最近访问了键 1，所以提前至队头
+// 返回键 1 对应的值 1
+
+        cache.put(3, 3);
+// cache = [(3, 3), (1, 1)]
+// 解释：缓存容量已满，需要删除内容空出位置
+// 优先删除久未使用的数据，也就是队尾的数据
+// 然后把新的数据插入队头
+
+        cache.get(2);       // 返回 -1 (未找到)
+// cache = [(3, 3), (1, 1)]
+// 解释：cache 中不存在键为 2 的数据
+
+        cache.put(1, 4);
     }
 }

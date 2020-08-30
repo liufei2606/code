@@ -1,10 +1,15 @@
-package main.algrithom;
+package main.algrithom.sort;
 
-class MergeSort {
-    public void mergeSort(int[] array) {
+/**
+ * @author henry
+ */
+public class MergeSort {
+
+    public MergeSort(int[] array) {
         if (array == null || array.length <= 1) {
-            return;
+            // return array;
         }
+
         int[] newArray = new int[array.length];
         mergeSort(array, 0, array.length - 1, newArray);
     }
@@ -32,7 +37,8 @@ class MergeSort {
         int j = mid + 1;
         int k = left;
         while (i <= mid && j <= right) {
-            if (newArray[i] <= newArray[j]) { // 等号会影响算法的稳定性
+            // 等号会影响算法的稳定性
+            if (newArray[i] <= newArray[j]) {
                 array[k++] = newArray[i++];
             } else {
                 array[k++] = newArray[j++];
@@ -41,5 +47,10 @@ class MergeSort {
         while (i <= mid) {
             array[k++] = newArray[i++];
         }
+    }
+
+    void main() {
+        MergeSort instance = new MergeSort(new int[]{5, 7, 3, 4, 9, 6, 8});
+        // assertEquals(new int[]{5, 7, 3, 4, 9, 6, 8}, instance);
     }
 }
