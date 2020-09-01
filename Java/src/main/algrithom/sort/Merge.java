@@ -3,9 +3,9 @@ package main.algrithom.sort;
 /**
  * @author henry
  */
-public class MergeSort {
+public class Merge {
 
-    public MergeSort(int[] array) {
+    public Merge(int[] array) {
         if (array == null || array.length <= 1) {
             // return array;
         }
@@ -50,7 +50,7 @@ public class MergeSort {
     }
 
     void main() {
-        MergeSort instance = new MergeSort(new int[]{5, 7, 3, 4, 9, 6, 8});
+        Merge instance = new Merge(new int[]{5, 7, 3, 4, 9, 6, 8});
         // assertEquals(new int[]{5, 7, 3, 4, 9, 6, 8}, instance);
     }
 }

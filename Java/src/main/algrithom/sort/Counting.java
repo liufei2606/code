@@ -7,7 +7,7 @@ import java.util.Arrays;
  * [计数排序](https://mp.weixin.qq.com/s/eIegGzddx4DuqjvKELlAZA)
  *
  */
-public class CountingSort {
+public class Counting {
 
     static void countingSort1(int[] arr) {
         int n = arr.length;

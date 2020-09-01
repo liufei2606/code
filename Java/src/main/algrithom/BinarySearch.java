@@ -1,4 +1,4 @@
-package main.algrithom.sort;
+package main.algrithom;
 
 /**
  * @author henry
