@@ -28,7 +28,7 @@
         ],
         "psr-4": {
             "Test\\": "tests/",
-            "Algorithm\\": "algorithms/"
+            "Algorithms\\": "algorithms/"
         },
         "classmap": [
             "./",

@@ -14,14 +14,14 @@ class BaseChild
         return new self();
     }
 
-    public static function getInstance()
+    public static function getInstance(): BaseChild
     {
         return new static();
     }
 
     public function selfFoo()
     {
-        return self::foo();
+        return $this->foo();
     }
 
     public function foo()

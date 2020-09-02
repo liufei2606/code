@@ -6,17 +6,17 @@ trait EngineTrait
 {
     protected $engine;
 
-    static public function print()
+    public static function print(): void
     {
         echo "发动机个数：".$this->engine.PHP_EOL;
     }
 
-    protected function three()
+    protected function three(): void
     {
         $this->engine = 3;
     }
 
-    protected function four()
+    protected function four(): void
     {
         $this->engine = 4;
     }

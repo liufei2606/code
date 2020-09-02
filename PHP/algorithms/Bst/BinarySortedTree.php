@@ -1,8 +1,6 @@
 <?php
 
-namespace Algrithoms\Bst;
-
-use Algorithms\Bst\BT;
+namespace Algorithm\Bst;
 
 class BinarySortedTree extends BT
 {
