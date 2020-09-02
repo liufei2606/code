@@ -1,5 +1,5 @@
 <?php
-namespace syntax\oop;
+namespace Syntax\Oop;
 
 // Object Oriented Programming
 // 核心的概念就是类（Class）和对象（Object），类是对象的抽象模板，而对象是类的具体实例
@@ -28,7 +28,6 @@ class Person
         $this->job = $job;
         $this->age = $age;
         $this->sex = $sex;
-
     }
 
 
@@ -38,7 +37,6 @@ class Person
     public function getAge(): int
     {
         return $this->age;
-
     }
 
 
@@ -62,7 +60,6 @@ class Person
         echo 'The function you called：'.$funName.'(parameter：';
         print_r($arguments);
         echo ")does not exist!\n";
-
     }
 
 
@@ -70,8 +67,6 @@ class Person
     {
         echo 'Well, my job is '.$this->job."\n";
     }
-
-
 }
 
 //if (class_exists('Person')) {

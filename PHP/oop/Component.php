@@ -1,12 +1,14 @@
 <?php
 
-namespace syntax\oop;
+
+namespace Syntax\Oop;
+
 trait Component
 {
     use PowerTrait, Engine {
-        Engine::print insteadof PowerTrait;
+        EngineTrait::print insteadof PowerTrait;
         PowerTrait::print as printPower;
-        Engine::print as printEngine;
+        EngineTrait::print as printEngine;
     }
 
     protected function init()

@@ -106,32 +106,32 @@ var_dump($carA);
 var_dump($carB);
 
 ## deep copy
-class Engine
-{
+//class Engine
+//{
+//}
+
+//class Car
+//{
+//    public $brand;
+//    /**
+//     * @var Engine
+//     */
+//    public $engine;
+//
+//    public function __clone()
+//    {
+//        $this->engine = clone $this->engine;
+//    }
 }
 
-class Car
-{
-    public $brand;
-    /**
-     * @var Engine
-     */
-    public $engine;
-
-    public function __clone()
-    {
-        $this->engine = clone $this->engine;
-    }
-}
-
-$benz = new Car();
-$benz->brand = '奔驰';
-$engine = new Engine();
-$benz->engine = $engine;
-
-$lnykco02 = clone $benz;
-$lnykco02->brand = '领克02';
-$lnykco02->engine->num = 3;
-
-var_dump($benz);
-var_dump($lnykco02);
+//$benz = new Car();
+//$benz->brand = '奔驰';
+//$engine = new Engine();
+//$benz->engine = $engine;
+//
+//$lnykco02 = clone $benz;
+//$lnykco02->brand = '领克02';
+//$lnykco02->engine->num = 3;
+//
+//var_dump($benz);
+//var_dump($lnykco02);

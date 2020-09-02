@@ -1,5 +1,6 @@
 <?php
-namespace syntax\oop;
+
+namespace Syntax\Oop;
 
 trait PowerTrait
 {

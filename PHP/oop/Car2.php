@@ -1,6 +1,6 @@
 <?php
 
-namespace syntax\oop;
+namespace Syntax\Oop;
 
 class Car2
 {

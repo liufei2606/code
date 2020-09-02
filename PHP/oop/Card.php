@@ -1,7 +1,6 @@
 <?php
 
-
-namespace syntax\oop;
+namespace Syntax\Oop;
 
 class Card
 {

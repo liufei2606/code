@@ -29,7 +29,6 @@ class Car
 
 class Benz extends Car
 {
-
     public function getLine()
     {
         echo __LINE__.PHP_EOL;

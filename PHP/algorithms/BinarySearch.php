@@ -52,5 +52,3 @@ function binary_search_internal($nums, $num, $low, $high)
 $nums = [1, 2, 3, 4, 5, 6];
 $index = binary_search($nums, 5);
 print $index;
-
-

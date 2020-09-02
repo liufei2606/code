@@ -1,6 +1,6 @@
 <?php
 
-namespace syntax\oop;
+namespace Syntax\Oop;
 
 abstract class Car
 {

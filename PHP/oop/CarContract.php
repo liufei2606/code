@@ -1,6 +1,7 @@
 <?php
 
-namespace syntax\oop;
+
+namespace Syntax\Oop;
 
 interface CarContract
 {

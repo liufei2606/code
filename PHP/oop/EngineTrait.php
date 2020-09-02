@@ -1,8 +1,8 @@
 <?php
 
-namespace syntax\oop;
+namespace Syntax\Oop;
 
-trait Engine
+trait EngineTrait
 {
     protected $engine;
 
@@ -16,7 +16,7 @@ trait Engine
         $this->engine = 4;
     }
 
-    public function print()
+    static public function print()
     {
         echo "发动机个数：".$this->engine.PHP_EOL;
     }

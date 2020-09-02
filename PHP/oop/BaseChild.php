@@ -1,6 +1,8 @@
 <?php
 
-class Base
+namespace Syntax\Oop;
+
+class BaseChild
 {
     public function __construct()
     {
@@ -34,31 +36,6 @@ class Base
 
     public function foo()
     {
-        echo  "Base Foo!", PHP_EOL;
+        echo "Base Foo!", PHP_EOL;
     }
 }
-
-class Child extends Base
-{
-    public function __construct()
-    {
-        echo "Child constructor!", PHP_EOL;
-    }
-
-    public function foo()
-    {
-        echo "Child Foo!", PHP_EOL;
-    }
-
-    public function selfFoo()
-    {
-        return self::foo();
-    }
-}
-
-$base = Child::getSelf();
-$child = Child::getInstance();
-
-$child->selfFoo();
-$child->staticFoo();
-$child->thisFoo();

@@ -7,7 +7,7 @@ namespace Demo1;
 
 class ShopProductWriter
 {
-    private $products = [];
+    private array $products = [];
 
     public function addProduct(ShopProduct $shopProduct)
     {
