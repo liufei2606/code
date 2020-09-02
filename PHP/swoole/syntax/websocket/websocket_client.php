@@ -12,7 +12,13 @@ class Test
     public function __construct()
     {
         $this->concurrency = 100;
-        $this->request     = 10000;
+        $this->request = 10000;
+    }
+
+    public function run()
+    {
+        $this->start_time = microtime(true);
+        $this->webSocket();
     }
 
     protected function webSocket()
@@ -39,7 +45,7 @@ class Test
     {
         $ret = $cli->push('Hello World');
         if ($ret === true) {
-            $this->requested ++ ;
+            $this->requested++;
         }
     }
 
@@ -51,12 +57,6 @@ class Test
         echo "Success num:".$this->requested.PHP_EOL;
         echo "Total time:".$cost_time.PHP_EOL;
         echo "Request per second:".(int) ($this->request / $cost_time).PHP_EOL;
-    }
-
-    public function run()
-    {
-        $this->start_time = microtime(true);
-        $this->webSocket();
     }
 }
 

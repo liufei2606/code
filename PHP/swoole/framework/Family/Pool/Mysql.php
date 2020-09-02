@@ -1,8 +1,9 @@
 <?php
+
 namespace Family\Pool;
 
-use Family\Db\Mysql as DB;
 use chan;
+use Family\Db\Mysql as DB;
 
 class Mysql
 {
@@ -11,26 +12,10 @@ class Mysql
     private $config;
 
     /**
-     * @param null $config
-     * @return Mysql
-     * @desc 获取连接池实例
-     * @throws \Exception
-     */
-    public static function getInstance($config = null)
-    {
-        if (empty(self::$instance)) {
-            if (empty($config)) {
-                throw new \Exception("mysql config empty");
-            }
-            self::$instance = new static($config);
-        }
-
-        return self::$instance;
-    }
-
-    /**
      * Mysql constructor.
+     *
      * @param $config
+     *
      * @throws \Exception
      * @desc 初始化，自动创建实例,需要放在workerstart中执行
      */
@@ -55,11 +40,31 @@ class Mysql
 
     /**
      * @param $mysql
+     *
      * @desc 放入一个mysql连接入池
      */
     public function put($mysql)
     {
         $this->pool->push($mysql);
+    }
+
+    /**
+     * @param  null  $config
+     *
+     * @return Mysql
+     * @desc 获取连接池实例
+     * @throws \Exception
+     */
+    public static function getInstance($config = null)
+    {
+        if (empty(self::$instance)) {
+            if (empty($config)) {
+                throw new \Exception("mysql config empty");
+            }
+            self::$instance = new static($config);
+        }
+
+        return self::$instance;
     }
 
     /**

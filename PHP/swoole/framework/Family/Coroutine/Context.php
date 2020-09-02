@@ -1,4 +1,5 @@
 <?php
+
 namespace Family\Coroutine;
 
 class Context
@@ -51,6 +52,7 @@ class Context
 
     /**
      * @param $key
+     *
      * @return mixed|null
      */
     public function get($key)

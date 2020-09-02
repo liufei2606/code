@@ -1,10 +1,9 @@
 <?php
 
-namespace syntax\oop;
+namespace Oop;
 
-class LynkCo01 extends BaseCar implements CarContract
+class LynkCo01 extends BaseCar
 {
-
     public function __construct(Power $power)
     {
         $this->brand = '领克01';

@@ -1,48 +1,48 @@
 <?php
 
+namespace Tests;
 
-namespace Test;
-
+use Oop\Card;
 use PHPUnit\Framework\TestCase;
-use syntax\oop\Card;
+use Tdd\CardCollection;
 
 class CardCollectionTest extends TestCase
 {
-    /**
-     * @var CardCollectionTest
-     */
-    private CardCollectionTest $cardCollection;
-
-    protected function setUp(): void
-    {
-        $this->cardCollection = new CardCollectionTest();
-    }
-
-    public function testCountOnEmpty(): void
-    {
-        $this->assertEquals(0, $this->cardCollection->count());
-    }
-
-    /**
-     * @return int
-     * @depends  testCountOnEmpty
-     */
-    public function testAddCard()
-    {
-        $this->cardCollection->addCard(new Card('A', 'Spades'));
-        $this->cardCollection->addCard(new Card('2', 'Spades'));
-
-        return $this->cardCollection->count();
-    }
-
-    /**
-     * @param  CardCollection  $cardCollection
-     *
-     * @depends testAddCard
-     */
-    public function testGetTopCard(CardCollection $cardCollection)
-    {
-        $card = $cardCollection->getTopCard();
-        $this->assertEquals(new Card('2', 'Spades'), $card);
-    }
+//    /**
+//     * @var CardCollection
+//     */
+//    private CardCollection $cardCollection;
+//
+//    public function testCountOnEmpty(): void
+//    {
+//        $this->assertEquals(1, $this->cardCollection->count());
+//    }
+//
+//    /**
+//     * @return int
+//     * @depends  testCountOnEmpty
+//     */
+//    public function testAddCard()
+//    {
+//        $this->cardCollection->addCard(new Card('A', 'Spades'));
+//        $this->cardCollection->addCard(new Card('2', 'Spades'));
+//
+//        return $this->cardCollection->count();
+//    }
+//
+//    /**
+//     * @param  CardCollection  $cardCollection
+//     *
+//     * @depends testAddCard
+//     */
+//    public function testGetTopCard(CardCollection $cardCollection)
+//    {
+//        $card = $cardCollection->getTopCard();
+//        $this->assertEquals(new Card('2', 'Spades'), $card);
+//    }
+//
+//    protected function setUp(): void
+//    {
+//        $this->cardCollection = new CardCollectionTest();
+//    }
 }

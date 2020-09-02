@@ -1,12 +1,14 @@
 <?php
+
 namespace Family\Pool;
 
 use Family\Coroutine\Coroutine;
 
 /**
  * Class Context
+ *
  * @package Family\Coroutine
- * @desc context pool，请求之间隔离，请求之内任何地方可以存取
+ * @desc    context pool，请求之间隔离，请求之内任何地方可以存取
  */
 class Context
 {
@@ -42,6 +44,7 @@ class Context
 
     /**
      * @param $context
+     *
      * @desc 设置context
      */
     public static function set($context)

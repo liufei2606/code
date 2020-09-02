@@ -1,6 +1,6 @@
 <?php
 
-namespace Test;
+namespace Tests;
 
 use PHPUnit\Framework\TestCase;
 
@@ -15,7 +15,7 @@ class StackTest extends TestCase
     }
 
     /**
-     * @param array $stack
+     * @param  array  $stack
      *
      * @depends testEmpty
      *
@@ -31,7 +31,7 @@ class StackTest extends TestCase
     }
 
     /**
-     * @param array $stack
+     * @param  array  $stack
      *
      * @depends testPush
      */

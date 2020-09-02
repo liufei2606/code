@@ -1,4 +1,5 @@
 <?php
+
 namespace Family\Core;
 
 use Family\Family;
@@ -16,12 +17,13 @@ class Config
      */
     public static function load()
     {
-        $configPath = Family::$applicationPath . DS . 'config';
-        self::$configMap = require $configPath . DS . 'default.php';
+        $configPath = Family::$applicationPath.DS.'config';
+        self::$configMap = require $configPath.DS.'default.php';
     }
 
     /**
      * @param $key
+     *
      * @desc 读取配置
      * @return string|null
      *

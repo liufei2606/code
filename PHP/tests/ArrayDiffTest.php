@@ -4,7 +4,7 @@ namespace Tests;
 
 use PHPUnit\Framework\TestCase;
 
-class ArrrayDiffTest extends TestCase
+class ArrayDiffTest extends TestCase
 {
     public function testEquality()
     {

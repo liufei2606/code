@@ -13,14 +13,6 @@ class Ioc
         };
     }
 
-    public function make($abstract)
-    {
-        // 根据key获取binding的值
-        $concrete = $this->binding[$abstract]['concrete'];
-        return $concrete($this);
-    }
-
-    // 创建对象
     public function build($concrete)
     {
         $reflector = new ReflectionClass($concrete);
@@ -34,7 +26,8 @@ class Ioc
         return $reflector->newInstanceArgs($instances);
     }
 
-    // 获取参数的依赖
+    // 创建对象
+
     protected function getDependencies($paramters): array
     {
         $dependencies = [];
@@ -42,6 +35,15 @@ class Ioc
             $dependencies[] = $this->make($paramter->getClass()->name);
         }
         return $dependencies;
+    }
+
+    // 获取参数的依赖
+
+    public function make($abstract)
+    {
+        // 根据key获取binding的值
+        $concrete = $this->binding[$abstract]['concrete'];
+        return $concrete($this);
     }
 }
 

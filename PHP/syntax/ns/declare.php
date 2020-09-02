@@ -1,4 +1,5 @@
 <?php
+
 namespace Bar\subnamespace;
 
 const FOO = 1;
@@ -6,6 +7,7 @@ function foo()
 {
     echo 'function';
 }
+
 class foo
 {
     public function __construct()

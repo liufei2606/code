@@ -1,4 +1,5 @@
 <?php
+
 namespace controller;
 
 use Family\MVC\Controller;
@@ -11,7 +12,7 @@ class Index extends Controller
     {
         $context = Context::getContext();
         $request = $context->getRequest();
-        return 'i am family by route!' . json_encode($request->get);
+        return 'i am family by route!'.json_encode($request->get);
     }
 
     public function tong()

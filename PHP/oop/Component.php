@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Syntax\Oop;
+namespace Oop;
 
 trait Component
 {

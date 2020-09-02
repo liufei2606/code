@@ -11,32 +11,34 @@ class HttpProtocol
      * @var string
      */
     public $originRequestcontextString = '';
-
+    /**
+     * 响应内容
+     *
+     * @var string
+     */
+    public $responseData = '';
     /**
      * 原始请求字符串拆得的列表
      *
      * @var array
      */
     private $originRequestcontextList = [];
-
     /**
      * 原始请求字符串拆得的键值对
      *
      * @var array
      */
     private $originRequestcontextMap = [];
-
     /**
      * 定义响应头信息
      *
      * @var array
      */
     private $responseHead = [
-        'http'         => 'HTTP/1.1 200 OK',
+        'http' => 'HTTP/1.1 200 OK',
         'context-type' => 'context-Type: text/html',
-        'server'       => 'Server: php/0.0.1',
+        'server' => 'Server: php/0.0.1',
     ];
-
     /**
      * 定义响应体信息
      *
@@ -45,16 +47,10 @@ class HttpProtocol
     private $responseBody = '';
 
     /**
-     * 响应内容
-     *
-     * @var string
-     */
-    public $responseData = '';
-
-    /**
      * 解析请求信息
      *
-     * @param string $context
+     * @param  string  $context
+     *
      * @return void
      */
     public function request($context = '')
@@ -88,6 +84,7 @@ class HttpProtocol
      * 组装响应内容
      *
      * @param [type] $responseBody
+     *
      * @return void
      */
     public function response($responseBody)
@@ -95,8 +92,8 @@ class HttpProtocol
         $count = count($this->responseHead);
         $finalHead = '';
         foreach ($this->responseHead as $v) {
-            $finalHead .= $v . "\r\n";
+            $finalHead .= $v."\r\n";
         }
-        $this->responseData = $finalHead . "\r\n" . $responseBody;
+        $this->responseData = $finalHead."\r\n".$responseBody;
     }
 }

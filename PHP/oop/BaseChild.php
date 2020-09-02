@@ -1,6 +1,6 @@
 <?php
 
-namespace Syntax\Oop;
+namespace Oop;
 
 class BaseChild
 {
@@ -24,6 +24,11 @@ class BaseChild
         return self::foo();
     }
 
+    public function foo()
+    {
+        echo "Base Foo!", PHP_EOL;
+    }
+
     public function staticFoo()
     {
         return static::foo();
@@ -32,10 +37,5 @@ class BaseChild
     public function thisFoo()
     {
         return $this->foo();
-    }
-
-    public function foo()
-    {
-        echo "Base Foo!", PHP_EOL;
     }
 }

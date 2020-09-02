@@ -1,4 +1,5 @@
 <?php
+
 namespace Demo1;
 
 // use Demo1\ShopProduct;
@@ -7,7 +8,8 @@ require './ShopProduct.php';
 
 class CdProduct extends ShopProduct
 {
-    private $playLength =0;
+    private $playLength = 0;
+
     public function __construct($title, $firstName, $mainName, $price, $playLength)
     {
         parent::__construct($title, $firstName, $mainName, $price);
@@ -22,6 +24,6 @@ class CdProduct extends ShopProduct
     public function getSummeryLine()
     {
         $base = parent::getSummeryLine();
-        return $base . ": playing time - {$this->getPlayLength}";
+        return $base.": playing time - {$this->getPlayLength}";
     }
 }

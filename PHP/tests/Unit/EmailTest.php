@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\unit;
+namespace Tests\Unit;
 
-use App\Email;
+use App\Model\Email;
 use PHPUnit\Framework\TestCase;
 
 class EmailTest extends TestCase

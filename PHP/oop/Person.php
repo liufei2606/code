@@ -1,5 +1,6 @@
 <?php
-namespace Syntax\Oop;
+
+namespace Oop;
 
 // Object Oriented Programming
 // 核心的概念就是类（Class）和对象（Object），类是对象的抽象模板，而对象是类的具体实例
@@ -11,11 +12,9 @@ class Person
     const NATIONNATITLTY = 'CHINA';
 
     public $name;
-
+    public $gender;
     private $age;
 
-    public $gender;
-    
     /**
      * Person constructor.
      *
@@ -69,21 +68,21 @@ class Person
     }
 }
 
-//if (class_exists('Person')) {
-//    echo 'class Person exists.'.PHP_EOL;
-//    printf('%s%s', Person::NATIONNATITLTY, PHP_EOL);
-//
-//    $person = new Person('John');
-//    $person->setAge(22);
-//    $person->say();
-//
-//    $person->run('teacher');
-//    $person->eat('John', 'apple');
-//    unset($person);
-//} else {
-//    echo 'class Person not exists.'.PHP_EOL;
-//}
-//
-//$obj = (object) ['1' => 'foo'];
-//var_dump(isset($obj->{'1'}));
-//var_dump(key($obj));
+if (class_exists('Person')) {
+    echo 'class Person exists.'.PHP_EOL;
+    printf('%s%s', Person::NATIONNATITLTY, PHP_EOL);
+
+    $person = new Person('John');
+    $person->setAge(22);
+    $person->say();
+
+    $person->run('teacher');
+    $person->eat('John', 'apple');
+    unset($person);
+} else {
+    echo 'class Person not exists.'.PHP_EOL;
+}
+
+$obj = (object) ['1' => 'foo'];
+var_dump(isset($obj->{'1'}));
+var_dump(key($obj));

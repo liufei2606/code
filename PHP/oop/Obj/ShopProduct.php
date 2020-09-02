@@ -1,12 +1,13 @@
 <?php
+
 namespace Demo1;
 
 class ShopProduct
 {
+    protected $price;
     private $title;
     private $producerMainName;
     private $producerFirstName;
-    protected $price;
     private $discount = 0;
 
     public function __construct($title, $firstName, $mainName, $price)
@@ -27,14 +28,14 @@ class ShopProduct
         return $this->producerMainName;
     }
 
-    public function setDiscount($num)
-    {
-        $this->discount = $num;
-    }
-
     public function getDiscount()
     {
         return $this->discount;
+    }
+
+    public function setDiscount($num)
+    {
+        $this->discount = $num;
     }
 
     public function getTitle()
@@ -49,7 +50,7 @@ class ShopProduct
 
     public function getProducer()
     {
-        return "{$this->producerFirstName}" . " {$this->producerMainName}";
+        return "{$this->producerFirstName}"." {$this->producerMainName}";
     }
 
     public function getSummeryLine()

@@ -1,4 +1,5 @@
 <?php
+
 namespace Demo1;
 
 // use Demo1\ShopProduct;

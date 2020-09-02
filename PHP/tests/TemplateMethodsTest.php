@@ -1,36 +1,41 @@
 <?php
 
-namespace Test;
+namespace Tests;
 
 use PHPUnit\Framework\TestCase;
 
 class TemplateMethodsTest extends TestCase
 {
-    public static function setUpBeforeClass():void
+    public static function setUpBeforeClass(): void
     {
         fwrite(STDOUT, __METHOD__."\n");
     }
 
-    protected function setUp():void
+    public static function tearDownAfterClass(): void
     {
         fwrite(STDOUT, __METHOD__."\n");
     }
 
-    protected function assertPreConditions():void
-    {
-        fwrite(STDOUT, __METHOD__."\n");
-    }
-
-    public function testOne():void
+    public function testOne(): void
     {
         fwrite(STDOUT, __METHOD__."\n");
         $this->assertTrue(true);
     }
 
-    public function testTwo():void
+    public function testTwo(): void
     {
         fwrite(STDOUT, __METHOD__."\n");
-        $this->assertTrue(false);
+        $this->assertTrue(true);
+    }
+
+    protected function setUp(): void
+    {
+        fwrite(STDOUT, __METHOD__."\n");
+    }
+
+    protected function assertPreConditions(): void
+    {
+        fwrite(STDOUT, __METHOD__."\n");
     }
 
     protected function assertpostConditions(): void
@@ -38,17 +43,12 @@ class TemplateMethodsTest extends TestCase
         fwrite(STDOUT, __METHOD__."\n");
     }
 
-    protected function tearDown():void
+    protected function tearDown(): void
     {
         fwrite(STDOUT, __METHOD__."\n");
     }
 
-    public static function tearDownAfterClass():void
-    {
-        fwrite(STDOUT, __METHOD__."\n");
-    }
-
-    protected function onNotSuccessfulTest(\Throwable $e):void
+    protected function onNotSuccessfulTest(\Throwable $e): void
     {
         fwrite(STDOUT, __METHOD__."\n");
         throw $e;

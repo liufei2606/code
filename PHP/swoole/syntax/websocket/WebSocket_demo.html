@@ -3,10 +3,10 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" context="IE=edge">
-    <meta name="viewport" context="width=device-width, initial-scale=1">
-    <meta name="description" context="">
-    <meta name="keywords" context="">
+    <meta context="IE=edge" http-equiv="X-UA-Compatible">
+    <meta context="width=device-width, initial-scale=1" name="viewport">
+    <meta context="" name="description">
+    <meta context="" name="keywords">
     <script src="./../../../assets/js/canvasBarrage.js?v=17"></script>
     <title> 视频弹幕Demo </title>
     <style>
@@ -41,11 +41,11 @@
 </head>
 
 <body>
-<canvas id="canvasBarrage" class="canvas-barrage"></canvas>
-<video id="videoBarrage" width="960" height="540" src="./../../../assets/videos/video.mp4" controls></video>
+<canvas class="canvas-barrage" id="canvasBarrage"></canvas>
+<video controls height="540" id="videoBarrage" src="./../../../assets/videos/video.mp4" width="960"></video>
 <p>
-    <input class="ui-input" id="msg" name="value" value="发送弹幕" required>
-    <input class="ui-button" type="button" id="sendBtn" value="发送弹幕">
+    <input class="ui-input" id="msg" name="value" required value="发送弹幕">
+    <input class="ui-button" id="sendBtn" type="button" value="发送弹幕">
 </p>
 
 <script>

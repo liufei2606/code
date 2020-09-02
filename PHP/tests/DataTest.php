@@ -1,24 +1,12 @@
 <?php
 
-namespace Test;
+namespace Tests;
 
+use Helper\CsvFileIterator;
 use PHPUnit\Framework\TestCase;
-
-require 'CsvIterator.php';
 
 class DataTest extends TestCase
 {
-
-    /**
-     * @dataProvider addtionOProvider
-     * @dataProvider addtionWithNameProvider
-     * @dataProvider addtionWithCsvProvider
-     */
-    public function testAdd($a, $b, $expected)
-    {
-        $this->assertEquals($expected, $a + $b);
-    }
-
     public function addtionOProvider()
     {
         return [
@@ -41,6 +29,18 @@ class DataTest extends TestCase
 
     public function addtionWithCsvProvider()
     {
-        return new \CsvFileIterator('/home/henry/IdeaProjects/PHP/assets/files/data.csv');
+        return new CsvFileIterator('/home/henry/IdeaProjects/PHP/assets/files/data.csv');
+    }
+
+
+    /**
+     * @dataProvider addtionOProvider
+     * @dataProvider addtionWithNameProvider
+     * @dataProvider addtionWithCsvProvider
+     *
+     */
+    public function testAdd($a, $b, $expected)
+    {
+        $this->assertEquals($expected, $a + $b);
     }
 }

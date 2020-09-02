@@ -8,11 +8,6 @@ class FixtureTest extends TestCase
 {
     protected $stack;
 
-    protected function setUp(): void
-    {
-        $this->stack = [];
-    }
-
     public function testEmpty()
     {
         $this->assertTrue(empty($this->stack));
@@ -30,5 +25,10 @@ class FixtureTest extends TestCase
         array_push($this->stack, 'foo');
         $this->assertEquals('foo', array_pop($this->stack));
         $this->assertTrue(empty($this->stack));
+    }
+
+    protected function setUp(): void
+    {
+        $this->stack = [];
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Syntax\Oop;
+namespace Oop;
 
 class Test
 {
@@ -9,11 +9,6 @@ class Test
     public function __construct($foo)
     {
         $this->foo = $foo;
-    }
-
-    private function bar()
-    {
-        echo 'Accessed the private method.';
     }
 
     public function baz(Test $other)
@@ -25,6 +20,11 @@ class Test
         // We can also call the private method:
         $other->bar();
     }
+
+    private function bar()
+    {
+        echo 'Accessed the private method.';
+    }
 }
 
 $test = new Test('test');
@@ -35,11 +35,6 @@ class E
 {
     public static $proPublic = "public of A";
 
-    public function myMethod()
-    {
-        echo static::$proPublic."\n";
-    }
-
     public function test()
     {
         echo "Class A:\n";
@@ -48,6 +43,11 @@ class E
         //echo parent::$proPublic."\n";
         self::myMethod();
         static::myMethod();
+    }
+
+    public function myMethod()
+    {
+        echo static::$proPublic."\n";
     }
 }
 

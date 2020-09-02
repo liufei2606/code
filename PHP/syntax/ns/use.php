@@ -9,14 +9,14 @@ include './declare.php';
 const FOO = 3;
 function foo()
 {
-    echo 'self funtion'. '<br>';
+    echo 'self funtion'.'<br>';
 }
 
 class foo
 {
     public static function staticmethod()
     {
-        echo 'self static method'. '<br>';
+        echo 'self static method'.'<br>';
     }
 }
 
@@ -26,7 +26,7 @@ foo::staticmethod(); // 解析为类 Foo\Bar\foo的静态方法staticmethod。re
 echo FOO; // resolves to constant Foo\Bar\FOO
 
 // echo namespace\FOO;
-echo __NAMESPACE__ .'\FOO';
+echo __NAMESPACE__.'\FOO';
 echo '<br>';
 
 /* 限定名称 */

@@ -1,10 +1,15 @@
 <?php
 
-namespace Syntax\Oop;
+namespace Oop;
 
 trait EngineTrait
 {
     protected $engine;
+
+    static public function print()
+    {
+        echo "发动机个数：".$this->engine.PHP_EOL;
+    }
 
     protected function three()
     {
@@ -14,10 +19,5 @@ trait EngineTrait
     protected function four()
     {
         $this->engine = 4;
-    }
-
-    static public function print()
-    {
-        echo "发动机个数：".$this->engine.PHP_EOL;
     }
 }

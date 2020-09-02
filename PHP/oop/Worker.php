@@ -1,7 +1,10 @@
 <?php
 
-include 'Person.php';
+namespace Oop;
+
 ## 抽象 继承 多态
+use ReflectionMethod;
+
 class Worker extends Person
 {
     private $factory = 'Audi manufacture';

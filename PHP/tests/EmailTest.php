@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Test;
+namespace Tests;
 
 use PHPUnit\Framework\TestCase;
-use syntax\oop\Email;
+use Oop\Email;
 
 /**
  * @covers Email

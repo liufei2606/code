@@ -1,4 +1,5 @@
 <?php
+
 namespace Family\Coroutine;
 
 use Swoole\Coroutine as SwCo;
@@ -13,15 +14,6 @@ class Coroutine
     public static $idMaps = [];
 
     /**
-     * @return mixed
-     * @desc 获取当前协程id
-     */
-    public static function getId()
-    {
-        return SwCo::getuid();
-    }
-
-    /**
      * @desc 父id自设, onRequest回调后的第一个协程，把根协程Id设置为自己
      */
     public static function setBaseId()
@@ -32,20 +24,12 @@ class Coroutine
     }
 
     /**
-     * @param null $id
-     * @param int $cur
-     * @return int|mixed|null
-     * @desc 获取当前协程根协程id
+     * @return mixed
+     * @desc 获取当前协程id
      */
-    public static function getPid($id = null, $cur = 1)
+    public static function getId()
     {
-        if ($id === null) {
-            $id = self::getId();
-        }
-        if (isset(self::$idMaps[$id])) {
-            return self::$idMaps[$id];
-        }
-        return $cur ? $id : -1;
+        return SwCo::getuid();
     }
 
     /**
@@ -68,8 +52,9 @@ class Coroutine
     }
 
     /**
-     * @param $cb //协程执行方法
-     * @param null $deferCb //defer执行的回调方法
+     * @param        $cb       //协程执行方法
+     * @param  null  $deferCb  //defer执行的回调方法
+     *
      * @return mixed
      * @从协程中创建协程，可保持根协程id的传递
      */
@@ -95,6 +80,7 @@ class Coroutine
     /**
      * @param $cb
      * @param $args
+     *
      * @return null
      * @desc 执行回调函数
      */
@@ -114,7 +100,8 @@ class Coroutine
     }
 
     /**
-     * @param null $id
+     * @param  null  $id
+     *
      * @desc 协程退出，清除关系树
      */
     public function clear($id = null)
@@ -123,5 +110,23 @@ class Coroutine
             $id = self::getId();
         }
         unset(self::$idMaps[$id]);
+    }
+
+    /**
+     * @param  null  $id
+     * @param  int   $cur
+     *
+     * @return int|mixed|null
+     * @desc 获取当前协程根协程id
+     */
+    public static function getPid($id = null, $cur = 1)
+    {
+        if ($id === null) {
+            $id = self::getId();
+        }
+        if (isset(self::$idMaps[$id])) {
+            return self::$idMaps[$id];
+        }
+        return $cur ? $id : -1;
     }
 }

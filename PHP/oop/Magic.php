@@ -1,14 +1,19 @@
 <?php
-namespace Syntax\Oop;
+
+namespace Oop;
 
 class Magic
 {
-    protected $brand;
-    private $no;
-    public $engine = 'Moto';
-    protected $data = [];
-
     public static $WHEELS = 4;
+    public $engine = 'Moto';
+    protected $brand;
+    protected $data = [];
+    private $no;
+
+    public static function __callStatic($name, $arguments)
+    {
+        echo "调用的静态方法不存在".PHP_EOL;
+    }
 
     /**
      * @return mixed
@@ -18,17 +23,17 @@ class Magic
         return $this->brand;
     }
 
-    public function getNo()
-    {
-        return $this->no;
-    }
-
     /**
      * @param  mixed  $brand
      */
     public function setBrand($brand): void
     {
         $this->brand = $brand;
+    }
+
+    public function getNo()
+    {
+        return $this->no;
     }
 
     public function __sleep()
@@ -46,19 +51,14 @@ class Magic
         echo "调用的成员方法不存在".PHP_EOL;
     }
 
-    public static function __callStatic($name, $arguments)
-    {
-        echo "调用的静态方法不存在".PHP_EOL;
-    }
-
-    public function __set($name, $value)
-    {
-        $this->data[$name] = $value;
-    }
-
     public function __get($name)
     {
         return $this->data[$name];
+    }
+
+    private function __set($name, $value)
+    {
+        $this->data[$name] = $value;
     }
 
     public function __invoke($brand)
@@ -122,7 +122,7 @@ var_dump($carB);
 //    {
 //        $this->engine = clone $this->engine;
 //    }
-}
+//}
 
 //$benz = new Car();
 //$benz->brand = '奔驰';

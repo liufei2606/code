@@ -1,4 +1,5 @@
 <?php
+
 namespace Swoole;
 
 $server = new swoole_http_server('127.0.0.1', 9501);

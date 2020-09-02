@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace syntax\oop;
+namespace Oop;
 
 final class Email
 {
@@ -15,16 +15,6 @@ final class Email
         $this->email = $email;
     }
 
-    public static function fromString(string $email): self
-    {
-        return new self($email);
-    }
-
-    public function __toString(): string
-    {
-        return $this->email;
-    }
-
     private function ensureIsValidEmail(string $email): void
     {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -35,5 +25,15 @@ final class Email
                 )
             );
         }
+    }
+
+    public static function fromString(string $email): self
+    {
+        return new self($email);
+    }
+
+    public function __toString(): string
+    {
+        return $this->email;
     }
 }

@@ -1,72 +1,91 @@
 <?php
 
 declare(strict_types=1);
+
 namespace PHP7;
 
 function sum(int ...$ints)
 {
-   return array_sum($ints);
+    return array_sum($ints);
 }
+
 //print(sum(2, '3', 4.1)); # Fatal error
 
 function returnIntValue(int $value): float
 {
-   return $value + 1.0;
+    return $value + 1.0;
 }
+
 print(returnIntValue(5));
 
 $username = $_GET['username'] ?? $_POST['username'] ?? 'not passed'; # null合并运算符
-print( 1 <=> 1);print("<br/>"); // 0
-print( 1 <=> 2);print("<br/>"); // -1
-print( 2 <=> 1);print("<br/>"); // 1
+print(1 <=> 1);
+print("<br/>"); // 0
+print(1 <=> 2);
+print("<br/>"); // -1
+print(2 <=> 1);
+print("<br/>"); // 1
 
 define('ALLOWED_IMAGE_EXTENSIONS', ['jpg', 'jpeg', 'gif', 'png']);
 
-interface Logger {
-   public function log(string $msg);
+interface Logger
+{
+    public function log(string $msg);
 }
-class Application {
-   private $logger;
 
-   public function getLogger(): Logger {
-      return $this->logger;
-   }
+class Application
+{
+    private $logger;
 
-   public function setLogger(Logger $logger) {
-      $this->logger = $logger;
-   }
+    public function getLogger(): Logger
+    {
+        return $this->logger;
+    }
+
+    public function setLogger(Logger $logger)
+    {
+        $this->logger = $logger;
+    }
 }
 
 $app = new Application;
 $app->setLogger(new class implements Logger {
-   public function log(string $msg) {
-      print($msg);
-   }
+    public function log(string $msg)
+    {
+        print($msg);
+    }
 });
 $app->getLogger()->log("My first Log Message");
 
-class A {
-   private $x = 1;
+class A
+{
+    private $x = 1;
 }
-$value = function() {
-   return $this->x;
+
+$value = function () {
+    return $this->x;
 };
 print($value->call(new A));
 
-class MyClass1 {
-   public $obj1prop;
+class MyClass1
+{
+    public $obj1prop;
 }
-class MyClass2 {
-   public $obj2prop;
+
+class MyClass2
+{
+    public $obj2prop;
 }
+
 $obj1 = new MyClass1();
 $obj1->obj1prop = 1;
 $obj2 = new MyClass2();
 $obj2->obj2prop = 2;
 $serializedObj1 = serialize($obj1);
 $serializedObj2 = serialize($obj2);
-$data = unserialize($serializedObj1 , ["allowed_classes" => true]); // 不允许将所有的对象都转换为 __PHP_Incomplete_Class 对象
-$data2 = unserialize($serializedObj2 , ["allowed_classes" => ["MyClass1", "MyClass2"]]); // 将除 MyClass 和 MyClass2 之外的所有对象都转换为 __PHP_Incomplete_Class 对象
+$data = unserialize($serializedObj1, ["allowed_classes" => true]); // 不允许将所有的对象都转换为 __PHP_Incomplete_Class 对象
+$data2 = unserialize($serializedObj2,
+    ["allowed_classes" => ["MyClass1", "MyClass2"]]); // 将除 MyClass 和 MyClass2 之外的所有对象都转换为 __PHP_Incomplete_Class 对象
 
 $bytes = random_bytes(5);
 print(bin2hex($bytes));
@@ -77,14 +96,18 @@ echo IntlChar::charName('@');
 var_dump(IntlChar::ispunct('!'));
 
 ini_set('assert.exception', 1);
-class CustomError extends AssertionError {}
+
+class CustomError extends AssertionError
+{
+}
+
 assert(false, new CustomError('Custom Error Message!'));
 
 use com\yiibai\{ClassA, ClassB, ClassC as C};
 use function com\yiibai\{fn_a, fn_b, fn_c};
 use const com\yiibai\{ConstA, ConstB, ConstC};
 
-$gen = (function() {
+$gen = (function () {
     yield 1;
     yield 2;
 
@@ -106,16 +129,17 @@ function gen()
 
     yield from gen2();
 }
+
 function gen2()
 {
     yield 3;
     yield 4;
 }
-foreach (gen() as $val)
-{
+
+foreach (gen() as $val) {
     echo $val, PHP_EOL;
 }
-var_dump(intdiv(10,3)) //3
+var_dump(intdiv(10, 3)) //3
 
 session_start([
     'cache_limiter' => 'private',
@@ -124,18 +148,18 @@ session_start([
 
 class MathOperations
 {
-   protected $n = 10;
+    protected $n = 10;
 
-   // Try to get the Division by Zero error object and display as Exception
-   public function doOperation(): string
-   {
-      try {
-         $value = $this->n % 0;
-         return $value;
-      } catch (DivisionByZeroError $e) {
-         return $e->getMessage();
-      }
-   }
+    // Try to get the Division by Zero error object and display as Exception
+    public function doOperation(): string
+    {
+        try {
+            $value = $this->n % 0;
+            return $value;
+        } catch (DivisionByZeroError $e) {
+            return $e->getMessage();
+        }
+    }
 }
 $mathOperationsObj = new MathOperations();
 print($mathOperationsObj->doOperation());
@@ -200,16 +224,24 @@ preg_replace_callback_array(
 
 interface Throwable
 
-function handler(Exception $e) {}
+function handler(Exception $e)
+{
+}
 set_exception_handler('handler');
 
 // 兼容 PHP 5 和 7
-function handler($e) { ... }
+function handler($e)
+{
+    ...
+}
 
 // 仅支持 PHP 7
-function handler(Throwable $e) { ... }
+function handler(Throwable $e)
+{
+    ...
+}
 
-list($a,$b,$c) = [1,2,3];
+list($a, $b, $c) = [1, 2, 3];
 var_dump($a);//1
 var_dump($b);//2
 var_dump($c);//3
@@ -219,77 +251,77 @@ foreach ($array as &$val) {
     var_dump(current($array));
 }
 ?>
-#php 5
-int(1)
-int(2)
-bool(false)
-#php7
-int(0)
-int(0)
-int(0)
+    #php 5
+    int(1)
+    int(2)
+    bool(false)
+    #php7
+    int(0)
+    int(0)
+    int(0)
 
-var_dump("0x123" == "291");
-#php5
-true
-#php7
-false
+    var_dump("0x123" == "291");
+    #php5
+    true
+    #php7
+    false
 
-function fun() :?string
-{
-  return null;
-}
+    function fun() :?string
+    {
+    return null;
+    }
 
-function fun1(?$a)
-{
-  var_dump($a);
-}
-fun1(null);//null
-fun1('1');//1
+    function fun1(?$a)
+    {
+    var_dump($a);
+    }
+    fun1(null);//null
+    fun1('1');//1
 
-function fun() :void
-{
-  echo "hello world";
-}
+    function fun() :void
+    {
+    echo "hello world";
+    }
 
-function fun() :void
-{
-  echo "hello world";
-}
+    function fun() :void
+    {
+    echo "hello world";
+    }
 
-class Something
-{
+    class Something
+    {
     const PUBLIC_CONST_A = 1;
     public const PUBLIC_CONST_B = 2;
     protected const PROTECTED_CONST = 3;
     private const PRIVATE_CONST = 4;
-}
-
-function iterator(iterable $iter)
-{
-    foreach ($iter as $val) {
-        //
     }
-}
 
-try {
+    function iterator(iterable $iter)
+    {
+    foreach ($iter as $val) {
+    //
+    }
+    }
+
+    try {
     // some code
-} catch (FirstException | SecondException $e) {
+    } catch (FirstException | SecondException $e) {
     // handle first and second exceptions
-}
+    }
 
-$data = [
+    $data = [
     ["id" => 1, "name" => 'Tom'],
     ["id" => 2, "name" => 'Fred'],
-];
+    ];
 
-// list() style
-list("id" => $id1, "name" => $name1) = $data[0];
-var_dump($id1);//1
+    // list() style
+    list("id" => $id1, "name" => $name1) = $data[0];
+    var_dump($id1);//1
 
-$a= "hello";
-$a[-2];//l
+    $a= "hello";
+    $a[-2];//l
 
-<?php
+    <?php
 class Test
 {
     public function exposeFunction()
@@ -306,7 +338,7 @@ class Test
 $privFunc = (new Test)->exposeFunction();
 $privFunc('some value');
 
-function test(object $obj) : object
+function test(object $obj): object
 {
     return new SplQueue();
 }
@@ -323,7 +355,7 @@ abstract class A
 abstract class B extends A
 {
     // overridden - still maintaining contravariance for parameters and covariance for return
-    abstract function test($s) : int;
+    abstract function test($s): int;
 }
 
 use Foo\Bar\{
@@ -340,7 +372,7 @@ count(1), // integers are not countable
 
 // array to object
 $arr = [0 => 1];
-$obj = (object)$arr;
+$obj = (object) $arr;
 var_dump(
     $obj,
     $obj->{'0'}, // now accessible
@@ -363,4 +395,4 @@ $factor = 10;
 $calc = fn($num) => $num * $factor;
 
 # ibraries/DisplayResults.php#1229  Trying to access array offset on value of type bool
- $str {0}这种写法被废弃了
+ $str{0}这种写法被废弃了

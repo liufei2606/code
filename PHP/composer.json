@@ -27,11 +27,14 @@
             "application/helper.php"
         ],
         "psr-4": {
-            "Test\\": "tests/"
+            "Test\\": "tests/",
+            "Algorithm\\": "algorithms/"
         },
         "classmap": [
-            ".",
-            "application"
+            "./",
+            "application",
+            "oop",
+            "helper"
         ]
     },
     "require-dev": {

@@ -1,7 +1,10 @@
 <?php
 
+namespace Tests;
 
 use PHPUnit\Framework\TestCase;
+use Oop\Person;
+use Oop\Worker;
 
 class WorkerTest extends TestCase
 {

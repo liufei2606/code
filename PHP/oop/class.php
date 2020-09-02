@@ -3,17 +3,17 @@
 
 class A
 {
+    public static function test()
+    {
+        static::who();
+    }
+
     /**
      * summary
      */
     public static function who()
     {
         echo __CLASS__;
-    }
-
-    public static function test()
-    {
-        static::who();
     }
 }
 

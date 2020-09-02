@@ -1,4 +1,5 @@
 <?php
+
 namespace Family\Db;
 
 use Family\Core\Log;
@@ -12,8 +13,10 @@ class Mysql
     private $master;   //主数据库连接
     private $slave;     //从数据库连接list
     private $config;    //数据库配置
+
     /**
      * @param $config
+     *
      * @return mixed
      * @throws \Exception
      * @desc 连接mysql
@@ -51,8 +54,74 @@ class Mysql
     }
 
     /**
+     * @param $name
+     * @param $arguments
+     *
+     * @return mixed
+     * @desc 利用__call,实现操作mysql,并能做断线重连等相关检测
+     * @throws \Exception
+     */
+    public function __call($name, $arguments)
+    {
+        $sql = $arguments[0];
+        $res = $this->chooseDb($sql);
+        $db = $res['db'];
+//        $result = call_user_func_array([$db, $name], $arguments);
+        $result = $db->$name($sql);
+        Log::info($sql);
+        if (false === $result) {
+            Log::warning('mysql query false', [$sql]);
+            if (!$db->connected) { //断线重连
+                $db = $this->reconnect($res['type'], $res['index']);
+                Log::info('mysql reconnect', $res);
+                $result = $db->$name($sql);
+                return $this->parseResult($result, $db);
+            }
+
+            if (!empty($db->errno)) {  //有错误码，则抛出弃常
+                throw new \Exception($db->error, $db->errno);
+            }
+        }
+        return $this->parseResult($result, $db);
+    }
+
+    /**
+     * @param $sql
+     *
+     * @desc 根据sql语句，选择主还是从
+     * @ 判断有select 则选择从库， insert, update, delete等选择主库
+     * @return array
+     */
+    protected function chooseDb($sql)
+    {
+        if (!empty($this->slave)) {
+            //查询语句，随机选择一个从库
+            if ('select' == strtolower(substr($sql, 0, 6))) {
+                if (1 == count($this->slave)) {
+                    $index = 0;
+                } else {
+                    $index = array_rand($this->slave);
+                }
+                return [
+                    'type' => 'slave',
+                    'index' => $index,
+                    'db' => $this->slave[$index],
+
+                ];
+            }
+        }
+
+        return [
+            'type' => 'master',
+            'index' => 0,
+            'db' => $this->master
+        ];
+    }
+
+    /**
      * @param $type
      * @param $index
+     *
      * @return MySQL
      * @desc 单个数据库重连
      * @throws \Exception
@@ -90,39 +159,9 @@ class Mysql
     }
 
     /**
-     * @param $name
-     * @param $arguments
-     * @return mixed
-     * @desc 利用__call,实现操作mysql,并能做断线重连等相关检测
-     * @throws \Exception
-     */
-    public function __call($name, $arguments)
-    {
-        $sql = $arguments[0];
-        $res = $this->chooseDb($sql);
-        $db = $res['db'];
-//        $result = call_user_func_array([$db, $name], $arguments);
-        $result = $db->$name($sql);
-        Log::info($sql);
-        if (false === $result) {
-            Log::warning('mysql query false', [$sql]);
-            if (!$db->connected) { //断线重连
-                $db = $this->reconnect($res['type'], $res['index']);
-                Log::info('mysql reconnect', $res);
-                $result = $db->$name($sql);
-                return $this->parseResult($result, $db);
-            }
-
-            if (!empty($db->errno)) {  //有错误码，则抛出弃常
-                throw new \Exception($db->error, $db->errno);
-            }
-        }
-        return $this->parseResult($result, $db);
-    }
-
-    /**
      * @param $result
      * @param $db MySQL
+     *
      * @return array
      * @desc 格式化返回结果：查询：返回结果集，插入：返回新增id, 更新删除等操作：返回影响行数
      */
@@ -135,38 +174,5 @@ class Mysql
             ];
         }
         return $result;
-    }
-
-
-    /**
-     * @param $sql
-     * @desc 根据sql语句，选择主还是从
-     * @ 判断有select 则选择从库， insert, update, delete等选择主库
-     * @return array
-     */
-    protected function chooseDb($sql)
-    {
-        if (!empty($this->slave)) {
-            //查询语句，随机选择一个从库
-            if ('select' == strtolower(substr($sql, 0, 6))) {
-                if (1 == count($this->slave)) {
-                    $index = 0;
-                } else {
-                    $index = array_rand($this->slave);
-                }
-                return [
-                    'type' => 'slave',
-                    'index' => $index,
-                    'db' => $this->slave[$index],
-
-                ];
-            }
-        }
-
-        return [
-            'type' => 'master',
-            'index' => 0,
-            'db' => $this->master
-        ];
     }
 }

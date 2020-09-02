@@ -1,12 +1,14 @@
 <?php
 
+namespace Tests;
 
+use FizzBuzz;
 use PHPUnit\Framework\TestCase;
 
 class FizzBuzzTest extends TestCase
 {
 
-    public function testPrintByDigitShouldReturnFizzWhenDividedBy3()
+    public function testPrintByDigitShouldReturnFizzWhenDividedBy3(): void
     {
         $this->assertEquals('Fizz', FizzBuzz::printByDigit(18));
     }

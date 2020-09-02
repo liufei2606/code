@@ -1,4 +1,5 @@
 <?php
+
 namespace Demo1;
 
 // use Demo1\ShopProduct;
@@ -22,7 +23,7 @@ class BookProduct extends ShopProduct
     public function getSummeryLine()
     {
         $base = parent::getSummeryLine();
-        return $base . ":page count - {$this->numPages}";
+        return $base.":page count - {$this->numPages}";
     }
 
     public function getPrice()

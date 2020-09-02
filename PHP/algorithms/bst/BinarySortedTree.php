@@ -2,6 +2,7 @@
 
 namespace Algrithoms\Bst;
 
+use Algorithms\Bst\BT;
 
 class BinarySortedTree extends BT
 {

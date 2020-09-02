@@ -1,4 +1,5 @@
 <?php
+
 namespace Http\Async;
 
 class Client
@@ -18,7 +19,7 @@ class Client
     public function connect()
     {
         if (!$fp = $this->client->connect("127.0.0.1", 9501, 1)) {
-            echo "Error: {$fp->errMsg}[{$fp->errCode}]" . PHP_EOL;
+            echo "Error: {$fp->errMsg}[{$fp->errCode}]".PHP_EOL;
             return;
         }
     }
@@ -35,7 +36,7 @@ class Client
 
     public function onReceive($cli, $data)
     {
-        echo PHP_EOL . "Received: " . $data . PHP_EOL;
+        echo PHP_EOL."Received: ".$data.PHP_EOL;
     }
 
     public function send($data)
@@ -45,7 +46,7 @@ class Client
 
     public function onClose($cli)
     {
-        echo "Client close connection" . PHP_EOL;
+        echo "Client close connection".PHP_EOL;
     }
 
     public function onError()
@@ -53,5 +54,6 @@ class Client
         echo "Connection close\n";
     }
 }
+
 $client = new Client();
 $client->connect();

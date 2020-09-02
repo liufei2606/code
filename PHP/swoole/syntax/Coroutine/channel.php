@@ -18,11 +18,11 @@ go(function () use ($chan) {
     $cli = new Swoole\Coroutine\Http\Client('www.qq.com', 80);
     $cli->set(['timeout' => 10]);
     $cli->setHeaders([
-       'Host' => "www.qq.com",
-       "User-Agent" => 'Chrome/49.0.2587.3',
-       'Accept' => 'text/html,application/xhtml+xml,application/xml',
-       'Accept-Encoding' => 'gzip',
-   ]);
+        'Host' => "www.qq.com",
+        "User-Agent" => 'Chrome/49.0.2587.3',
+        'Accept' => 'text/html,application/xhtml+xml,application/xml',
+        'Accept-Encoding' => 'gzip',
+    ]);
     $ret = $cli->get('/');
     // $cli->body 响应内容过大，这里用 Http 状态码作为测试
     $chan->push(['www.qq.com' => $cli->statusCode]);

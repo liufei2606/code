@@ -22,19 +22,20 @@ class UserController
     {
         try {
             $model = new UserModel();
-            $res   = $model->login($username, $password);
+            $res = $model->login($username, $password);
             // 如果需要的话，我们可以在这里统一commit数据库事务
             // $db->commit();
         } catch (Exception $e) {
             // 如果需要的话，我们可以在这里统一rollback数据库事务
             // $db->rollback();
             return [
-                'code'    => $e->getCode(),
+                'code' => $e->getCode(),
                 'message' => $e->getMessage()
             ];
         }
     }
 }
+
 print_r((new UserController())->login('henry'));
 
 class Oss

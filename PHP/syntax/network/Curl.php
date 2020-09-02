@@ -24,9 +24,10 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
-$options = array(CURLOPT_URL => 'http://www.example.com/',
-                 CURLOPT_HEADER => false
-                );
+$options = array(
+    CURLOPT_URL => 'http://www.example.com/',
+    CURLOPT_HEADER => false
+);
 curl_setopt_array($ch, $options);
 
 $ch2 = curl_copy_handle($ch); // 复制一个cURL句柄并保持相同的选项
@@ -34,9 +35,9 @@ $ch2 = curl_copy_handle($ch); // 复制一个cURL句柄并保持相同的选项
 $result = curl_exec($ch); // 成功时返回 TRUE， 或者在失败时返回 FALSE。 然而，如果 设置了 CURLOPT_RETURNTRANSFER 选项，函数执行成功时会返回执行的结果，失败时返回 FALSE 。
 
 if (curl_errno($ch) || curl_exec($ch) === false) { // 返回最后一次的错误代码
-    echo 'Curl error: ' . curl_error($ch); // 返回当前会话最后一次错误的字符串
+    echo 'Curl error: '.curl_error($ch); // 返回当前会话最后一次错误的字符串
     $info = curl_getinfo($ch);
-    echo 'Took ' . $info['total_time'] . ' seconds to send a request to ' . $info['url'];
+    echo 'Took '.$info['total_time'].' seconds to send a request to '.$info['url'];
 } else {
     echo $result;
 }
@@ -64,7 +65,7 @@ function multiCurl()
     curl_multi_add_handle($mh, $ch1);
     curl_multi_add_handle($mh, $ch2);
 
-    $active=null;
+    $active = null;
     $mrc = '';
     // 执行批处理句柄
     do {
@@ -79,9 +80,9 @@ function multiCurl()
         }
 
         if (curl_multi_errno($mh)) { // 返回最后一次的错误代码
-            echo 'Curl error: ' . curl_error($ch1); // 返回当前会话最后一次错误的字符串
+            echo 'Curl error: '.curl_error($ch1); // 返回当前会话最后一次错误的字符串
             $info = curl_getinfo($ch1);
-            echo 'Took ' . $info['total_time'] . ' seconds to send a request to ' . $info['url'];
+            echo 'Took '.$info['total_time'].' seconds to send a request to '.$info['url'];
         } else {
             echo $result;
         }
@@ -95,7 +96,7 @@ function multiCurl()
             "http://www.cnn.com/",
             "http://www.bbc.co.uk/",
             "http://www.yahoo.com/"
-            );
+        );
 
         // 例子 2
         $mh = curl_multi_init();
@@ -178,7 +179,7 @@ function multiCurl()
 
     function delurl($url, $data)
     {
-        $data  = json_encode($data);
+        $data = json_encode($data);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('context-type:application/json'));
@@ -193,7 +194,7 @@ function multiCurl()
 
     function patchurl($url, $data)
     {
-        $data  = json_encode($data);
+        $data = json_encode($data);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('context-type:application/json'));
@@ -205,7 +206,7 @@ function multiCurl()
         return json_decode($output, true);
     }
 
-    function curl_request($url, $post='', $cookie='', $returnCookie=0)
+    function curl_request($url, $post = '', $cookie = '', $returnCookie = 0)
     {
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);

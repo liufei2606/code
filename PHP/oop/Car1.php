@@ -1,6 +1,6 @@
 <?php
 
-namespace Syntax\Oop;
+namespace Oop;
 
 class Car1
 {
@@ -12,11 +12,6 @@ class Car1
     }
 
 # trait 重写：使用 Trait 的类 > Trait > 父类
-    protected function gas()
-    {
-        return "柴油";
-    }
-
     public function drive()
     {
         $this->water();
@@ -29,5 +24,10 @@ class Car1
         $this->four();
         $this->printEngine();
         echo "汽车启动...".PHP_EOL;
+    }
+
+    protected function gas()
+    {
+        return "柴油";
     }
 }

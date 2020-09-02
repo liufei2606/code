@@ -1,6 +1,6 @@
 <?php
 
-namespace Syntax\Oop;
+namespace Oop;
 
 //class CallableClass
 //{

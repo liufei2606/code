@@ -1,4 +1,5 @@
 <?php
+
 namespace service;
 
 use dao\User as UserDao;
@@ -10,6 +11,7 @@ class User
 
     /**
      * @param $id
+     *
      * @return mixed
      * @desc 通过uid查询用户信息
      */
@@ -28,7 +30,8 @@ class User
     }
 
     /**
-     * @param array $array
+     * @param  array  $array
+     *
      * @return bool
      * @desc 添加一个用户
      */
@@ -38,8 +41,9 @@ class User
     }
 
     /**
-     * @param array $array
-     * @param $id
+     * @param  array  $array
+     * @param         $id
+     *
      * @return bool
      * @throws \Exception
      * @desc 按id更新一个用户
@@ -51,6 +55,7 @@ class User
 
     /**
      * @param $id
+     *
      * @return mixed
      * @throws \Exception
      * @desc 按id删除用户

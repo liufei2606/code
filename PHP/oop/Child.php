@@ -1,7 +1,6 @@
 <?php
 
-namespace Syntax\Oop;
-
+namespace Oop;
 
 class Child extends BaseChild
 {
@@ -10,14 +9,14 @@ class Child extends BaseChild
         echo "Child constructor!", PHP_EOL;
     }
 
-    public function foo()
-    {
-        echo "Child Foo!", PHP_EOL;
-    }
-
     public function selfFoo()
     {
         return self::foo();
+    }
+
+    public function foo()
+    {
+        echo "Child Foo!", PHP_EOL;
     }
 }
 

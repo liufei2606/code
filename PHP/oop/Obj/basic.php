@@ -10,7 +10,7 @@
 $cd = new CdProduct('Cd', 'Henry', 'Lee', 40, 70);
 
 $book = new BookProduct('Book', "Wenger", "wenger", 60, 80);
-die(var_dump([$cd,$book]));
+die(var_dump([$cd, $book]));
 
 $writer = new ShopProductWriter;
 

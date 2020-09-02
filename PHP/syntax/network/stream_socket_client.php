@@ -2,7 +2,7 @@
 
 $host = "127.0.0.1";
 $port = 8009;
-for ($index = 0; $index < 10; ++ $index) {
+for ($index = 0; $index < 10; ++$index) {
     $pid = pcntl_fork();
     if ($pid < 0) {
         fwrite(STDERR, "fail to fork!\n");
@@ -12,7 +12,7 @@ for ($index = 0; $index < 10; ++ $index) {
     if ($pid === 0) {
         $socket = @stream_socket_client("tcp://{$host}:{$port}", $errno, $errMsg);
         if ($socket === false) {
-            throw new \RuntimeException("unable to create socket: " . $errMsg);
+            throw new \RuntimeException("unable to create socket: ".$errMsg);
         }
         fwrite(STDOUT, "success connect to server: [{$host}:{$port}]...\n");
 

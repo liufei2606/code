@@ -1,23 +1,19 @@
 <?php
 
-
-namespace Test;
+namespace Tests;
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class PlayerTest
+ *
+ * @package Tests
+ * @Disbaled
+ */
 class PlayerTest extends TestCase
 {
-    /**
-     * @var Player
-     */
-    private Player $player;
+//    private Player $player;
     private string $hand;
-
-    protected function setUp(): void
-    {
-        $this->hand = $this->getMockClass('CardCollection');
-        $this->player = new Player('John Smith', $this->hand);
-    }
 
     public function testDrawCard()
     {
@@ -32,5 +28,11 @@ class PlayerTest extends TestCase
         $card = $this->getMockClass('Card', [], ['A', 'Spades']);
 
 //        $otherPlayer->expected($this->once())->method('getCard')->with($this->equalTo(4))->will($this->returnValue($card));
+    }
+
+    protected function setUp(): void
+    {
+        $this->hand = $this->getMockClass('CardCollection');
+//        $this->player = new Player('John Smith', $this->hand);
     }
 }

@@ -9,7 +9,7 @@ socket_listen($server);
 while (true) {
     // accept
     $client = socket_accept($server);
-    if (! $client) {
+    if (!$client) {
         continue;
     }
     $request = socket_read($client, 1024);
@@ -18,8 +18,8 @@ while (true) {
     // var_dump($request);
 
     /**
-    * HTTP
-    */
+     * HTTP
+     */
     $http = new HttpProtocol;
     $http->originRequestcontextString = $request;
     $http->request($request);
@@ -28,5 +28,5 @@ while (true) {
     socket_write($client, $http->responseData);
 
     socket_close($client);
-    echo socket_strerror(socket_last_error($server)) . "\n";
+    echo socket_strerror(socket_last_error($server))."\n";
 }

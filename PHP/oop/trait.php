@@ -1,14 +1,6 @@
 <?php
 
-namespace Syntax\oop;
-
-class Base
-{
-    public function sayHi()
-    {
-        echo 'Hello ';
-    }
-}
+namespace Oop;
 
 trait SayWorld
 {
@@ -19,13 +11,24 @@ trait SayWorld
     }
 }
 
-trait World {
-    public function sayWorld() {
+trait World
+{
+    public function sayWorld()
+    {
         echo ' I am coming';
     }
 }
 
-class MyHelloWorld extends Base {
+class Base
+{
+    public function sayHi()
+    {
+        echo 'Hello ';
+    }
+}
+
+class MyHelloWorld extends Base
+{
     use SayHello, SayWorld;
 }
 

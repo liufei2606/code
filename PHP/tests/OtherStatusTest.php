@@ -1,6 +1,6 @@
 <?php
 
-namespace Test;
+namespace Tests;
 
 use PHPUnit\Framework\TestCase;
 
@@ -27,7 +27,7 @@ class OtherStatusTest extends TestCase
         // 测试要求有 mysqli 扩展，并且 PHP >= 5.3
     }
 
-    protected function setDown():void
+    protected function setDown(): void
     {
         if (!extension_loaded('mysqli')) {
             $this->markTestSkipped(

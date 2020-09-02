@@ -179,6 +179,34 @@ class Core
         self::$serv->start();
     }
 
+    protected static function showProcessUI()
+    {
+        $config = get_config();
+        if ($config['set']['daemonize'] == true) {
+            return false;
+        }
+        echo str_pad("-", 90, '-', STR_PAD_BOTH).PHP_EOL;
+        echo "|".str_pad("启动/关闭", 92, ' ', STR_PAD_BOTH)."|".PHP_EOL;
+        echo str_pad("-", 90, '-', STR_PAD_BOTH).PHP_EOL;
+        echo str_pad("Start success.", 50, ' ', STR_PAD_BOTH).str_pad("php index.php stop", 50, ' ',
+                STR_PAD_BOTH).PHP_EOL;
+        echo str_pad("-", 90, '-', STR_PAD_BOTH).PHP_EOL;
+        echo "|".str_pad("版本信息", 92, ' ', STR_PAD_BOTH)."|".PHP_EOL;
+        echo str_pad("-", 90, '-', STR_PAD_BOTH).PHP_EOL;
+        echo str_pad("Swoole Version:".SWOOLE_VERSION, 50, ' ', STR_PAD_BOTH).str_pad("PHP Version:".PHP_VERSION, 50,
+                ' ', STR_PAD_BOTH).PHP_EOL;
+        echo str_pad("-", 90, '-', STR_PAD_BOTH).PHP_EOL;
+        echo "|".str_pad("IP 信息", 90, ' ', STR_PAD_BOTH)."|".PHP_EOL;
+        echo str_pad("-", 90, '-', STR_PAD_BOTH).PHP_EOL;
+        echo str_pad("IP:".$config['ip'], 50, ' ', STR_PAD_BOTH).str_pad("PORT:".$config['websocket_port'], 50, ' ',
+                STR_PAD_BOTH).PHP_EOL;
+        echo str_pad("-", 90, '-', STR_PAD_BOTH).PHP_EOL;
+        echo "|".str_pad("进程信息", 92, ' ', STR_PAD_BOTH)."|".PHP_EOL;
+        echo str_pad("-", 90, '-', STR_PAD_BOTH).PHP_EOL;
+        echo str_pad("Swoole进程", 20, ' ', STR_PAD_BOTH).str_pad('进程别名', 30, ' ', STR_PAD_BOTH).str_pad('进程ID', 18, ' ',
+                STR_PAD_BOTH).str_pad('父进程ID', 18, ' ', STR_PAD_BOTH).str_pad('用户', 18, ' ', STR_PAD_BOTH).PHP_EOL;
+    }
+
     protected static function workerStatus()
     {
         $config = get_config();
@@ -271,34 +299,6 @@ class Core
             }
         }
         return true;
-    }
-
-    protected static function showProcessUI()
-    {
-        $config = get_config();
-        if ($config['set']['daemonize'] == true) {
-            return false;
-        }
-        echo str_pad("-", 90, '-', STR_PAD_BOTH).PHP_EOL;
-        echo "|".str_pad("启动/关闭", 92, ' ', STR_PAD_BOTH)."|".PHP_EOL;
-        echo str_pad("-", 90, '-', STR_PAD_BOTH).PHP_EOL;
-        echo str_pad("Start success.", 50, ' ', STR_PAD_BOTH).str_pad("php index.php stop", 50, ' ',
-                STR_PAD_BOTH).PHP_EOL;
-        echo str_pad("-", 90, '-', STR_PAD_BOTH).PHP_EOL;
-        echo "|".str_pad("版本信息", 92, ' ', STR_PAD_BOTH)."|".PHP_EOL;
-        echo str_pad("-", 90, '-', STR_PAD_BOTH).PHP_EOL;
-        echo str_pad("Swoole Version:".SWOOLE_VERSION, 50, ' ', STR_PAD_BOTH).str_pad("PHP Version:".PHP_VERSION, 50,
-                ' ', STR_PAD_BOTH).PHP_EOL;
-        echo str_pad("-", 90, '-', STR_PAD_BOTH).PHP_EOL;
-        echo "|".str_pad("IP 信息", 90, ' ', STR_PAD_BOTH)."|".PHP_EOL;
-        echo str_pad("-", 90, '-', STR_PAD_BOTH).PHP_EOL;
-        echo str_pad("IP:".$config['ip'], 50, ' ', STR_PAD_BOTH).str_pad("PORT:".$config['websocket_port'], 50, ' ',
-                STR_PAD_BOTH).PHP_EOL;
-        echo str_pad("-", 90, '-', STR_PAD_BOTH).PHP_EOL;
-        echo "|".str_pad("进程信息", 92, ' ', STR_PAD_BOTH)."|".PHP_EOL;
-        echo str_pad("-", 90, '-', STR_PAD_BOTH).PHP_EOL;
-        echo str_pad("Swoole进程", 20, ' ', STR_PAD_BOTH).str_pad('进程别名', 30, ' ', STR_PAD_BOTH).str_pad('进程ID', 18, ' ',
-                STR_PAD_BOTH).str_pad('父进程ID', 18, ' ', STR_PAD_BOTH).str_pad('用户', 18, ' ', STR_PAD_BOTH).PHP_EOL;
     }
 
     protected static function signalHandler()

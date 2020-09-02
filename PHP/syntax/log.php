@@ -5,9 +5,11 @@
  *
  * 调试非本地环境或分布式环境，通过Log查看变量传递
  * 写入变量值到\var\log\php_super_debug.log
- * @param  mixed  $data     日志数据
- * @param  string $log_path 日志路径
- * @param  string $log_name 日志名称
+ *
+ * @param  mixed   $data      日志数据
+ * @param  string  $log_path  日志路径
+ * @param  string  $log_name  日志名称
+ *
  * @return void
  */
 function super_debug($data, $log_path = '/var/log/', $log_name = 'debug.log')

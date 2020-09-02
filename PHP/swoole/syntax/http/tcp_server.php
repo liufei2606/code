@@ -19,7 +19,7 @@ $serv->on('connect', function ($serv, $fd, $reactor_id) {
 });
 
 $serv->on('receive', function ($serv, $fd, $reactor_id, $data) {
-    $serv->send($fd, "Server: $reactor_id - $fd - Data：" . $data . PHP_EOL);
+    $serv->send($fd, "Server: $reactor_id - $fd - Data：".$data.PHP_EOL);
 });
 
 $serv->on('close', function ($serv, $fd) {

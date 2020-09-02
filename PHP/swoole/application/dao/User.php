@@ -1,8 +1,9 @@
 <?php
+
 namespace dao;
 
-use Family\MVC\Dao;
 use Family\Core\Singleton;
+use Family\MVC\Dao;
 
 class User extends Dao
 {

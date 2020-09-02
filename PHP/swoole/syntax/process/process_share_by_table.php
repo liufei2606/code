@@ -9,8 +9,8 @@ $table->column('age', $table::TYPE_INT, 1);
 $table->create();
 
 // 设置
-$table->set('data', ['id' => 1, 'name'=> 'henry', 'age' => 43]);
-$table['data2'] = ['id' => 2, 'name'=> 'henry', 'age' => 30];
+$table->set('data', ['id' => 1, 'name' => 'henry', 'age' => 43]);
+$table['data2'] = ['id' => 2, 'name' => 'henry', 'age' => 30];
 
 // 获取
 print_r($table->get('data'));

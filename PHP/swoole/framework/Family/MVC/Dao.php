@@ -1,9 +1,10 @@
 <?php
+
 namespace Family\MVC;
 
+use Family\Coroutine\Coroutine;
 use Family\Db\Mysql;
 use Family\Pool\Mysql as MysqlPool;
-use Family\Coroutine\Coroutine;
 
 class Dao
 {
@@ -64,17 +65,9 @@ class Dao
     }
 
     /**
-     * @return mixed
-     * @desc 获取表名
-     */
-    public function getLibName()
-    {
-        return $this->table;
-    }
-
-    /**
-     * @param $id
-     * @param string $fields
+     * @param          $id
+     * @param  string  $fields
+     *
      * @return mixed
      * @desc 通过主键查询记录
      */
@@ -84,9 +77,10 @@ class Dao
     }
 
     /**
-     * @param string $where
-     * @param string $fields
-     * @param null $orderBy
+     * @param  string  $where
+     * @param  string  $fields
+     * @param  null    $orderBy
+     *
      * @return mixed
      * @desc 通过条件查询一条记录，并返回一个entity
      */
@@ -100,31 +94,11 @@ class Dao
     }
 
     /**
-     * @param string $where
-     * @param string $fields
-     * @param null $orderBy
-     * @param int $limit
-     * @return mixed
-     * @desc 通过条件查询记录列表，并返回entity列表
-     */
-    public function fetchAll($where = '1', $fields = '*', $orderBy = null, $limit = 0)
-    {
-        $result = $this->fetchArray($where, $fields, $orderBy, $limit);
-        if (empty($result)) {
-            return $result;
-        }
-        foreach ($result as $index => $value) {
-            $result[$index] = new $this->entity($value);
-        }
-        return $result;
-    }
-
-
-    /**
-     * @param string $where
-     * @param string $fields
-     * @param null $orderBy
-     * @param int $limit
+     * @param  string  $where
+     * @param  string  $fields
+     * @param  null    $orderBy
+     * @param  int     $limit
+     *
      * @return mixed
      * @desc 通过条件查询
      */
@@ -143,19 +117,50 @@ class Dao
     }
 
     /**
-     * @param array $array
+     * @return mixed
+     * @desc 获取表名
+     */
+    public function getLibName()
+    {
+        return $this->table;
+    }
+
+    /**
+     * @param  string  $where
+     * @param  string  $fields
+     * @param  null    $orderBy
+     * @param  int     $limit
+     *
+     * @return mixed
+     * @desc 通过条件查询记录列表，并返回entity列表
+     */
+    public function fetchAll($where = '1', $fields = '*', $orderBy = null, $limit = 0)
+    {
+        $result = $this->fetchArray($where, $fields, $orderBy, $limit);
+        if (empty($result)) {
+            return $result;
+        }
+        foreach ($result as $index => $value) {
+            $result[$index] = new $this->entity($value);
+        }
+        return $result;
+    }
+
+    /**
+     * @param  array  $array
+     *
      * @return bool
      * @desc 插入一条记录
      */
     public function add(array $array)
     {
-        $strFields = '`' . implode('`,`', array_keys($array)) . '`';
-        $strValues = "'" . implode("','", array_values($array)) . "'";
+        $strFields = '`'.implode('`,`', array_keys($array)).'`';
+        $strValues = "'".implode("','", array_values($array))."'";
         $query = "INSERT INTO {$this->getLibName()} ({$strFields}) VALUES ({$strValues})";
         if (!empty($onDuplicate)) {
-            $query .= 'ON DUPLICATE KEY UPDATE ' . $onDuplicate;
+            $query .= 'ON DUPLICATE KEY UPDATE '.$onDuplicate;
         }
-        echo $query . PHP_EOL;
+        echo $query.PHP_EOL;
         $result = $this->db->query($query);
         if (!empty($result['insert_id'])) {
             return $result['insert_id'];
@@ -165,8 +170,9 @@ class Dao
     }
 
     /**
-     * @param array $array
-     * @param $where
+     * @param  array  $array
+     * @param         $where
+     *
      * @return bool
      * @throws \Exception
      * @desc 按条件更新记录
@@ -189,6 +195,7 @@ class Dao
 
     /**
      * @param $where
+     *
      * @return mixed
      * @throws \Exception
      * @desc 按条件删除记录

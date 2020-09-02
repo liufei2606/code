@@ -1,7 +1,8 @@
 <?php
+
 use Swoole\Coroutine as co;
 
-echo "Process start time:" . date('Ymd H:i:s') . PHP_EOL;
+echo "Process start time:".date('Ymd H:i:s').PHP_EOL;
 $workers = [];
 $urls = [
     'http://baidu.com',
@@ -12,9 +13,9 @@ $urls = [
 
 $len = count($urls);
 for ($i = 0; $i < $len; $i++) {
-    $process = new swoole_process(function(swoole_process $worker) use($i, $urls){
+    $process = new swoole_process(function (swoole_process $worker) use ($i, $urls) {
         $context = curlData($urls[$i]);
-        echo $context .PHP_EOL;
+        echo $context.PHP_EOL;
     }, true);
     $pid = $process->start();
     $workers[$pid] = $process;
@@ -24,14 +25,16 @@ foreach ($workers as $process) {
     echo $process->read();
 }
 
-function curlData ($url) {
+function curlData($url)
+{
     sleep(1);
     $context = file_get_contexts($url);
-    $filename = __DIR__ . '/data.txt';
-    co::create(function () use ($filename, $context){
-        $p =  co::writeFile($filename, json_encode($context), FILE_APPEND);
+    $filename = __DIR__.'/data.txt';
+    co::create(function () use ($filename, $context) {
+        $p = co::writeFile($filename, json_encode($context), FILE_APPEND);
         var_dump($p);
     });
-    return $url . ' suceess' . PHP_EOL;
+    return $url.' suceess'.PHP_EOL;
 }
-echo "Process end time:" . date('Ymd H:i:s');
+
+echo "Process end time:".date('Ymd H:i:s');

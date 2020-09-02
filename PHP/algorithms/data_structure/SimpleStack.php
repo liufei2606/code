@@ -5,7 +5,6 @@
  */
 class SimpleStack
 {
-
     private $_stack = [];
     private $_size = 0;
 

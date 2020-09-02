@@ -1,5 +1,6 @@
 <?php
-namespace syntax\oop;
+
+namespace Oop;
 
 # 抽象类与接口实现：
 # 抽象类定义具体实现类的共有属性

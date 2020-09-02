@@ -1,7 +1,8 @@
 <?php
 
-namespace syntax\oop;
+namespace Tests;
 
+use Oop\Card;
 use PHPUnit\Framework\TestCase;
 
 class CardTest extends TestCase
@@ -30,7 +31,7 @@ class CardTest extends TestCase
         return [
             '4 of Hearts' => [new Card('4', 'hearts'), true, 'should match'],
             '5 of Hearts' => [new Card('5', 'hearts'), false, 'should not match'],
-            '4 of Clubs' => [new Card('4', 'clubs'), trueK, 'should not match'],
+            '4 of Clubs' => [new Card('4', 'clubs'), true, 'should not match'],
         ];
     }
 

@@ -12,7 +12,7 @@ class BT
      *
      * @param  Node  $tree
      */
-    public static function preOrderTraverse($tree)
+    public static function preOrderTraverse($tree): void
     {
         if ($tree == null) {
             return;
@@ -27,7 +27,7 @@ class BT
      *
      * @param  Node  $tree
      */
-    public static function midOrderTraverse($tree)
+    public static function midOrderTraverse($tree): void
     {
         if ($tree == null) {
             return;
@@ -42,7 +42,7 @@ class BT
      *
      * @param  Node  $tree
      */
-    public static function postOrderTraverse($tree)
+    public static function postOrderTraverse($tree): void
     {
         if ($tree == null) {
             return;
@@ -58,8 +58,8 @@ $node2 = new Node('B');
 $node3 = new Node('C');
 $node1->left = $node2;
 $node1->right = $node3;
-BST::preOrderTraverse($node1);
+BT::preOrderTraverse($node1);
 printf("========\n");
-BST::midOrderTraverse($node1);
+BT::midOrderTraverse($node1);
 printf("========\n");
-BST::postOrderTraverse($node1);
+BT::postOrderTraverse($node1);

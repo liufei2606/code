@@ -1,6 +1,7 @@
 <?php
 
-namespace Syntax\Oop;
+
+namespace Oop;
 
 abstract class BaseCar implements CarContract
 {

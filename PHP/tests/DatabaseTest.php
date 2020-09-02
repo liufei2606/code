@@ -1,6 +1,6 @@
 <?php
 
-namespace Test;
+namespace Tests;
 
 use PHPUnit\Framework\TestCase;
 
@@ -8,18 +8,18 @@ class DatabaseTest extends TestCase
 {
     protected static $dbh;
 
-    public static function setUpBeforeClass():void
+    public static function setUpBeforeClass(): void
     {
         self::$dbh = new \PDO('sqlite::memory:');
     }
 
-    public function testtSomthing()
-    {
-        $this->markTestIncomplete('something new');
-    }
-
-    public static function tearDownAfterClass():void
+    public static function tearDownAfterClass(): void
     {
         self::$dbh = null;
+    }
+
+    public function testtSomthing(): void
+    {
+        $this->markTestIncomplete('something new');
     }
 }

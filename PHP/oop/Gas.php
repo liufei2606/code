@@ -1,5 +1,6 @@
 <?php
-namespace syntax\oop;
+
+namespace Oop;
 
 class Gas implements Power
 {

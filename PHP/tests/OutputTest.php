@@ -1,12 +1,12 @@
 <?php
 
-namespace Test;
+namespace Tests;
 
 use PHPUnit\Framework\TestCase;
 
 class OutputTest extends TestCase
 {
-    public function testExpectFooActualFoo()
+    public function testExpectFooActualFoo(): void
     {
         $this->expectOutputString('foo');
         print 'foo';

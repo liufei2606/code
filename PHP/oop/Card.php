@@ -1,6 +1,6 @@
 <?php
 
-namespace Syntax\Oop;
+namespace Oop;
 
 class Card
 {
@@ -16,21 +16,21 @@ class Card
     /**
      * @return mixed
      */
-    public function getNumber()
+    public function getSuit()
     {
-        return $this->number;
+        return $this->suit;
+    }
+
+    public function isInMatchingSet(Card $card)
+    {
+        return ($this->getNumber() == $card->getNumber());
     }
 
     /**
      * @return mixed
      */
-    public function getSuit()
+    public function getNumber()
     {
-        return $this->suit;
-    }
-    
-    public function isInMatchingSet(Card $card)
-    {
-        return ($this->getNumber() == $card->getNumber());
+        return $this->number;
     }
 }
