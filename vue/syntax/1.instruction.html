@@ -10,24 +10,27 @@
 
     <body>
         <div id="app">
-            <h3>声明式渲染｜输入处理</h3>
-            <p>Original message: "{{ message }}"</p>
+            <h3>声明式渲染</h3>
+            <!-- 文本插值 -->
+            <p>Original message: "{{ message2 }}"</p>
             <p>Computed reversed message: "{{ reversedMessage }}"</p>
-            <!-- 实现表单输入和应用状态之间的双向绑定 -->
-            <input v-model="message" />
-            <button @click="reverseMess">逆转</button>
-            <!-- raw html -->
-            <!-- <p>Using mustaches: {{ rawHtml }}</p>
-      <p>Using v-html directive: <span v-html="rawHtml"></span></p> -->
-            <br />
 
+            <!-- 绑定元素 attribute -->
             <span v-bind:title="message1">
                 鼠标悬停几秒钟查看此处动态绑定的提示信息！
             </span>
 
+            <!-- 实现表单输入和应用状态之间的双向绑定 -->
+            <h3>处理用户输入|输入和应用状态双向绑定</h3>
+            <p>{{ message }}</p>
+            <input v-model="message" />
+            <button @click="reverseMess">逆转</button>
+            <br />
+
             <h3>条件</h3>
-            <p v-if="type === 'A'">现在你看到我了</p>
-            <p v-else-if="type === 'B'">第二条分支</p>
+            <input v-model="type" />
+            <p v-if="type === 'A'">A:现在你看到我了</p>
+            <p v-else-if="type === 'B'">B:第二条分支</p>
             <p v-else>default show 😢</p>
 
             <h3>循环</h3>
@@ -36,14 +39,18 @@
                     {{index}} - {{ todo.text }}
                 </li>
             </ul>
+
             <ul v-for="set in sets">
                 <li v-for="n in even(set)">{{ n }}</li>
             </ul>
+            <div>
+                <span v-for="n in 10">{{ n }} </span>
+            </div>
 
             <h3>组件渲染</h3>
             <ol>
                 <todo-item
-                    v-for="item in groceryList"
+                    v-for="item in todos"
                     v-bind:todo="item"
                     v-bind:key="item.id"
                 ></todo-item>
@@ -51,7 +58,7 @@
 
             {{ fullName }}
 
-            <h3>Watch</h3>
+            <h3>Watch 侦听属性</h3>
             <p>
                 Ask a yes/no question:
                 <input v-model="question" />
@@ -96,6 +103,7 @@
             props: ["todo"],
             template: "<li>{{todo.key}}  {{ todo.text }}</li>",
         });
+
         Vue.component("my-component", {
             template: '<p class="foo bar">Hi</p>',
         });
@@ -105,6 +113,7 @@
             data: {
                 message: "Hello Vue!",
                 message1: "页面加载于 " + new Date(),
+                message2: "Hello PHP",
                 type: "A",
                 todos: [
                     {
@@ -116,6 +125,10 @@
                     {
                         text: "做个项目",
                     },
+                ],
+                sets: [
+                    [1, 2, 3, 4, 5],
+                    [6, 7, 8, 9, 10],
                 ],
                 groceryList: [
                     {
@@ -140,16 +153,12 @@
                 activeColor: "red",
                 fontSize: 30,
                 loginType: "username",
-                sets: [
-                    [1, 2, 3, 4, 5],
-                    [6, 7, 8, 9, 10],
-                ],
             },
             computed: {
                 // 计算属性的 getter
                 reversedMessage: function () {
                     // `this` 指向 vm 实例
-                    return this.message.split("").reverse().join("");
+                    return this.message2.split("").reverse().join("");
                 },
                 fullName: {
                     get: function () {
@@ -204,12 +213,14 @@
                     });
                 },
             },
+
             watch: {
                 question: function (newQuestion, oldQuestion) {
                     this.answer = "Waiting for you to stop typing...";
                     this.debouncedGetAnswer();
                 },
             },
+
             created: function () {
                 // `_.debounce` 是一个通过 Lodash 限制操作频率的函数。
                 // 在这个例子中，希望限制访问 yesno.wtf/api 的频率

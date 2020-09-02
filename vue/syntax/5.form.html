@@ -6,16 +6,15 @@
         <script src="./../static/js/vue.js"></script>
     </head>
     <body>
-        <label>1.单行文本</label>
         <div id="app">
             <form action="">
+                <label>1.单行文本</label>
                 <p>Message is {{ message }}</p>
                 <input v-model.lazy.trim="message" placeholder="edit me" />
                 <br />
                 <label>Age:</label>
                 <br />
                 <input v-model.number="age" placeholder="Age" />
-
                 <br />
 
                 <label>2.多行文本</label>
@@ -26,17 +25,14 @@
                     v-model="message"
                     placeholder="add Multiline lines"
                 ></textarea>
-
                 <br />
 
-                <label>3.复选框</label>
-
-                <label>单个勾选框</label>
+                <label>3.1单个勾选框</label>
                 <br />
                 <input type="checkbox" id="checkbox" v-model="checked" />
                 <label for="checkbox">{{ checked }}</label>
                 <br />
-                <label>多个勾选框</label>
+                <label>3.2多个勾选框</label>
                 <br />
                 <input
                     type="checkbox"
@@ -61,11 +57,9 @@
                 <label for="mike">Mike</label>
                 <br />
                 <span>Checked names:{{ checkedNames }}</span>
-
                 <hr />
 
                 <label>4.单选按钮</label>
-
                 <input type="radio" id="one" value="one" v-model="picked" />
                 <label for="one">One</label>
                 <br />
@@ -79,7 +73,6 @@
                 <label for="two">Two</label>
                 <br />
                 <span>Picked:{{ picked }}</span>
-
                 <br />
 
                 <label>5.选择列表</label>

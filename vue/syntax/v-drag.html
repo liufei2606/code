@@ -31,19 +31,16 @@
             <div class="two" v-drag>拖拽two</div>
         </div>
 
-        <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+        <script src="../static/js/vue.js"></script>
 
         <script type="text/javascript">
             Vue.directive("drag", {
                 inserted: function (el) {
                     el.onmousedown = function (e) {
                         let l = e.clientX - el.offsetLeft;
-
                         let t = e.clientY - el.offsetTop;
-
                         document.onmousemove = function (e) {
                             el.style.left = e.clientX - l + "px";
-
                             el.style.top = e.clientY - t + "px";
                         };
 

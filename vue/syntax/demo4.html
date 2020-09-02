@@ -52,19 +52,14 @@
 
             new Vue({
                 el: "#app2",
-
                 data: {
                     isLoading: false,
-
                     msg: "",
                 },
-
                 methods: {
                     load: function () {
                         this.isLoading = true;
-
                         var _this = this;
-
                         setTimeout(function () {
                             _this.msg = "我是从服务端获取到的数据";
 

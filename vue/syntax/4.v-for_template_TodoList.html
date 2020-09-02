@@ -8,13 +8,7 @@
 
     <body>
         <div id="todo-list-example">
-            <label for="new-todo">Add a todo</label>
-            <input
-                v-model="newTodoText"
-                v-on:keyup.enter="addNewTodo"
-                placeholder="Add a todo"
-            />
-
+            <!-- 提交替换方法addNewTodo-->
             <form v-on:submit.prevent="addNewTodo">
                 <label for="new-todo">Add a todo:</label>
                 <input
