@@ -14,17 +14,37 @@ class Insertion extends AbstractSort
         if ($len <= 1) {
             return $arr;
         }
-
-        for ($i = 0; $i < $len; $i++) {
-            $pre_i = $i - 1;
+        for ($i = 1; $i < $len; $i++) {
+            $j = $i - 1;
             $current = $arr[$i];
-            while ($pre_i >= 0 && $arr[$pre_i] > $current) {
-                $arr[$pre_i + 1] = $arr[$pre_i];
-                $pre_i -= 1;
+            // 循环不一样写法，思路一样，while 中可以叠加多个判断条件
+            while ($j >= 0 && $arr[$j] > $current) {
+                $arr[$j + 1] = $arr[$j];
+                --$j;
             }
-            $arr[$pre_i + 1] = $current;
+            $arr[$j + 1] = $current;
         }
 
         return $arr;
+    }
+
+    public static function sort1($nums)
+    {
+        // 取未排序区间中元
+        for ($i = 1, $iMax = count($nums); $i < $iMax; $i++) {
+            $value = $nums[$i];
+
+            for ($j = $i - 1; $j >= 0; $j--) {
+                if ($nums[$j] > $value) {
+                    // a[j] 大于 value 后移一位
+                    $nums[$j + 1] = $nums[$j];
+                } else {
+                    break;
+                }
+            }
+            $nums[$j + 1] = $value;
+        }
+
+        return $nums;
     }
 }

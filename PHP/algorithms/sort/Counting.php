@@ -7,7 +7,6 @@ class Counting extends AbstractSort
 {
     public static function sort(array $arr)
     {
-        // TODO: Implement sort() method.
         if (!is_array($arr)) {
             return false;
         }

@@ -27,8 +27,8 @@
             "application/helper.php"
         ],
         "psr-4": {
-            "Test\\": "tests/",
-            "Algorithms\\": "algorithms/"
+          "Tests\\": "tests/",
+          "Algorithms\\": "algorithms/"
         },
         "classmap": [
             "./",

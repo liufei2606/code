@@ -46,10 +46,3 @@ class SimpleStack
         return count($this->_stack);
     }
 }
-
-$stack = new SimpleStack(15);
-echo $stack->isEmpty();  # true
-$stack->push(111);
-$stack->push('学院君');
-echo $stack->pop();  # 学院君
-echo $stack->size();  # 1

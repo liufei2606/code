@@ -1,6 +1,6 @@
 <?php
 
-namespace Algorithm\Bst;
+namespace Algorithms\Bst;
 
 class Node
 {

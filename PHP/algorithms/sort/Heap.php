@@ -37,9 +37,8 @@ class Heap extends AbstractSort
             $largest = $right;
         }
         if ($largest != $i) {
-            parent::array_swap($arr, $i, $largest);
+            self::arraySwap($arr, $i, $largest);
             self::heapify($arr, $largest);
         }
     }
-
 }

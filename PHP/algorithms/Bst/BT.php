@@ -1,8 +1,7 @@
 <?php
 
-namespace Algorithm\Bst;
+namespace Algorithms\Bst;
 
-use Algorithm\Bst\Node;
 
 class BT
 {

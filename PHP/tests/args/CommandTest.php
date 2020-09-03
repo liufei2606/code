@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Test\args;
+namespace Tests\args;
 
 use PHPUnit\Framework\TestCase;
 use Tdd\Args\Commands;

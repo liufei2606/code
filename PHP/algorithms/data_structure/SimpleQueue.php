@@ -36,10 +36,3 @@ class SimpleQueue
         return count($this->_queue);
     }
 }
-
-$queue = new SimpleQueue(5);
-$queue->enqueue(1);
-$queue->enqueue(3);
-$queue->enqueue(5);
-echo $queue->dequeue();  # 1
-echo $queue->size();  # 2
