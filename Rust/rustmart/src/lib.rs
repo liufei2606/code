@@ -1,6 +1,6 @@
 mod pages;
 mod api;
-mod typers;
+mod types;
 mod components;
 mod route;
 mod app;

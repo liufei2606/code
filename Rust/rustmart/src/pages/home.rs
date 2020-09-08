@@ -1,7 +1,7 @@
 use yew::prelude::*;
 use crate::api;
 use crate::components::ProductCard;
-use crate::typers::{CartProduct, Product};
+use crate::types::{CartProduct, Product};
 use anyhow::Error;
 use yew::format::Json;
 use yew::services::fetch::FetchTask;

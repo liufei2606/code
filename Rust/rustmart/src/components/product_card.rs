@@ -1,5 +1,7 @@
 use yew::prelude::*;
-use crate::typers::Product;
+use crate::types::Product;
+use crate::route::Route;
+use yew_router::components::RouterAnchor;
 
 pub struct ProductCard {
     props: Props,
@@ -28,14 +30,17 @@ impl Component for ProductCard {
     }
 
     fn view(&self) -> Html {
+        type Anchor = RouterAnchor<Route>;
         let onclick = self.props.on_add_to_cart.reform(|_| ());
 
         html! {
           <div class="product_card_container">
+            <Anchor route=Route::ProductDetail(self.props.product.id) classes="product_card_anchor">
  <img class="product_card_image" src={&self.props.product.image}/>
      <div class="product_card_name">{&self.props.product.name}</div>
      <div class="product_card_price">{"$"}{&self.props.product.price}</div>
      <button class="product_atc_button" onclick=onclick>{"Add To Cart"}</button>
+            </Anchor>
           </div>
         }
     }
