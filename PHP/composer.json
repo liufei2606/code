@@ -24,9 +24,10 @@
     },
     "autoload": {
         "files": [
-            "application/helper.php"
+            "application/helper.php","helper/CsvIterator.php"
         ],
         "psr-4": {
+            "": "./",
           "Tests\\": "tests/",
           "Algorithms\\": "algorithms/"
         },

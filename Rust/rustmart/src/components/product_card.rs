@@ -1,3 +1,4 @@
+use crate::components::AtcButton;
 use yew::prelude::*;
 use crate::types::Product;
 use crate::route::Route;
@@ -10,7 +11,7 @@ pub struct ProductCard {
 #[derive(Properties, Clone)]
 pub struct Props {
     pub product: Product,
-    pub on_add_to_cart: Callback<()>,
+    pub on_add_to_cart: Callback<Product>,
 }
 
 impl Component for ProductCard {
@@ -31,16 +32,15 @@ impl Component for ProductCard {
 
     fn view(&self) -> Html {
         type Anchor = RouterAnchor<Route>;
-        let onclick = self.props.on_add_to_cart.reform(|_| ());
 
         html! {
           <div class="product_card_container">
-            <Anchor route=Route::ProductDetail(self.props.product.id) classes="product_card_anchor">
- <img class="product_card_image" src={&self.props.product.image}/>
-     <div class="product_card_name">{&self.props.product.name}</div>
-     <div class="product_card_price">{"$"}{&self.props.product.price}</div>
-     <button class="product_atc_button" onclick=onclick>{"Add To Cart"}</button>
-            </Anchor>
+                <Anchor route=Route::ProductDetail(self.props.product.id) classes="product_card_anchor">
+                      <img class="product_card_image" src={&self.props.product.image}/>
+                      <div class="product_card_name">{&self.props.product.name}</div>
+                      <div class="product_card_price">{"$"}{&self.props.product.price}</div>
+                  </Anchor>
+               <AtcButton product=self.props.product.clone() on_add_to_cart=self.props.on_add_to_cart.clone() />
           </div>
         }
     }

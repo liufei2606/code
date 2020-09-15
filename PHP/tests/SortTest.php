@@ -2,14 +2,14 @@
 
 namespace Tests;
 
-use Algorithms\sort\Bubble;
-use Algorithms\sort\Counting;
-use Algorithms\sort\Heap;
-use Algorithms\sort\Insertion;
-use Algorithms\sort\Merge;
-use Algorithms\sort\Quick;
-use Algorithms\sort\Selection;
-use Algorithms\sort\Shell;
+use Algorithms\Sort\Bubble;
+use Algorithms\Sort\Counting;
+use Algorithms\Sort\Heap;
+use Algorithms\Sort\Insertion;
+use Algorithms\Sort\Merge;
+use Algorithms\Sort\Quick;
+use Algorithms\Sort\Selection;
+use Algorithms\Sort\Shell;
 use PHPUnit\Framework\TestCase;
 
 class SortTest extends TestCase

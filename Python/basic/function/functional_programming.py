@@ -60,7 +60,7 @@ print(list(filter(not_empty, ['A', '', 'B', None, 'C', '  '])))
 def _odd_iter():
     n = 1
     while True:
-        n = n+2
+        n = n + 2
         yield n
 
 
@@ -90,14 +90,14 @@ def is_palindrome(s):
 
 output = filter(is_palindrome, range(1, 1000))
 print('1~1000:', list(output))
-if list(filter(is_palindrome, range(1, 200))) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 22, 33, 44, 55, 66, 77, 88, 99, 101, 111, 121, 131, 141, 151, 161, 171, 181, 191]:
+if list(filter(is_palindrome, range(1, 200))) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 22, 33, 44, 55, 66, 77, 88, 99, 101,
+                                                  111, 121, 131, 141, 151, 161, 171, 181, 191]:
     print('测试成功!')
 else:
     print('测试失败!')
 
 # sorted key指定的函数将作用于list的每一个元素上，并根据key函数返回的结果进行排序
 print(sorted(['bob', 'about', 'Zoo', 'Credit'], key=str.lower, reverse=True))
-
 
 L = [('Bob', 75), ('Adam', 92), ('Bart', 66), ('Lisa', 88)]
 
@@ -118,6 +118,7 @@ def lazy_sum(*args):
         for n in args:
             ax = ax + n
         return ax
+
     return sum
 
 
@@ -133,6 +134,7 @@ def count():
     def f(j):
         def g():
             return j * j
+
         return g
 
     fs = []
@@ -154,10 +156,12 @@ print(f(2, 4, 5))
 f = lambda x: x * x
 print(f(5))
 
+
 def build(x, y):
     return lambda: x * x + y * y
 
-print(build(3,4)())
+
+print(build(3, 4)())
 
 ## 偏函数
 int2 = functools.partial(int, base=2)

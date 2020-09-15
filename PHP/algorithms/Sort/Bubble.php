@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Algorithms\sort;
+namespace Algorithms\Sort;
 
 /**
  * Class Bubble

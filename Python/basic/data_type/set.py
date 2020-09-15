@@ -1,7 +1,7 @@
 # set 一组key的集合，但不存储value
 # key不能重复
 
-s = set([1, 1, 2, 2, 3, 3])
+s = {1, 1, 2, 2, 3, 3}
 print(s)  # {1,2,3}
 s.add(4)
 print(s)
