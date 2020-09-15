@@ -1,8 +1,5 @@
 package main.algrithom;
 
-/**
- * @author henry
- */
 public class BinarySearch {
 
     public static int Rank(int key, int[] a) {

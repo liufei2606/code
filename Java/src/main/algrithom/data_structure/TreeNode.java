@@ -1,4 +1,4 @@
-package main.algrithom.tree;
+package main.algrithom.data_structure;
 
 public class TreeNode {
 
@@ -13,5 +13,6 @@ public class TreeNode {
     }
 
     public TreeNode(int parseInt) {
+        this.value = parseInt;
     }
 }

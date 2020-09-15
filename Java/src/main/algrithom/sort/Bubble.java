@@ -38,7 +38,7 @@ public class Bubble {
     // print array to standard output
     private static void show(Comparable[] a) {
         for (int i = 0; i < a.length; i++) {
-            StdRandom.println(a[i]);
+            // StdRandom.println(a[i]);
         }
     }
     /**
@@ -48,8 +48,8 @@ public class Bubble {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        String[] a = StdIn.readAllStrings();
-        Bubble.sort(a);
-        show(a);
+        // String[] a = StdIn.readAllStrings();
+        // Bubble.sort(a);
+        // show(a);
     }
 }

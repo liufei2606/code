@@ -1,16 +1,18 @@
-package main.algrithom;
+package main.algrithom.binaryTree;
 
-import main.algrithom.tree.TreeNode;
+import main.algrithom.data_structure.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class Codec {
 
-    String SEP = ",";
-    String NULL = "#";
+    static String SEP = ",";
+    static String NULL = "#";
 
-    /* 主函数，将二叉树序列化为字符串 */
+    /**
+     *  二叉树序列化为字符串
+     */
     String serialize(TreeNode root) {
         StringBuilder sb = new StringBuilder();
         serialize(root, sb);
@@ -32,7 +34,9 @@ public class Codec {
         serialize(root.right, sb);
     }
 
-    /* 主函数，将字符串反序列化为二叉树结构 */
+    /**
+     * 将字符串反序列化为二叉树结构
+     */
     TreeNode deserialize(String data) {
         // 将字符串转化成列表
         LinkedList<String> nodes = new LinkedList<>();
@@ -100,7 +104,7 @@ public class Codec {
 
     /**
      * 中序遍历
-     * root 的值被夹在两棵子树的中间，也就是在 nod的中间，我们不知道确切的索引位置，所以无法找到 root 节点，也就无法进行反序列化
+     * root 值被夹在两棵子树的中间，也就是在 nod的中间，我们不知道确切的索引位置，所以无法找到 root 节点，也就无法进行反序列化
      */
 
     /* 辅助函数，将二叉树存入 StringBuilder */
@@ -119,9 +123,8 @@ public class Codec {
 
     /**
      * 层级遍历
+     * 将二叉树序列化为字符串
      */
-
-    /* 将二叉树序列化为字符串 */
     String serialize_layer(TreeNode root) {
         if (root == null) return "";
         StringBuilder sb = new StringBuilder();
@@ -147,8 +150,10 @@ public class Codec {
         return sb.toString();
     }
 
-    /* 将字符串反序列化为二叉树结构 */
-    TreeNode deserialize_mid(String data) {
+    /**
+     * 字符串反序列化为二叉树结构
+     */
+    static TreeNode deserialize_mid(String data) {
         if (data.isEmpty()) return null;
         String[] nodes = data.split(SEP);
         // 第一个元素就是 root 的值
@@ -179,6 +184,10 @@ public class Codec {
             }
         }
         return root;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(deserialize_mid("china"));
     }
 }
 

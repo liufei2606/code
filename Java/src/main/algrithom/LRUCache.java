@@ -1,5 +1,8 @@
 package main.algrithom;
 
+import main.algrithom.data_structure.DoubleList;
+import main.algrithom.data_structure.LinkNode;
+
 import java.util.HashMap;
 
 public class LRUCache {
@@ -74,7 +77,7 @@ public class LRUCache {
     void main() {
         /* 缓存容量为 2 */
         LRUCache cache = new LRUCache(2);
-// 你可以把 cache 理解成一个队列
+// 可以把 cache 理解成一个队列
 // 假设左边是队头，右边是队尾
 // 最近使用的排在队头，久未使用的排在队尾
 // 圆括号表示键值对 (key, val)

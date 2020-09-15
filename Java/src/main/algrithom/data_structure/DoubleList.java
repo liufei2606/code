@@ -1,6 +1,6 @@
-package main.algrithom;
+package main.algrithom.data_structure;
 
-class DoubleList {
+public class DoubleList {
     // 头尾虚节点
     private LinkNode head, tail;
     // 链表元素数

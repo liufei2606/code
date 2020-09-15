@@ -1,4 +1,4 @@
-package main.algrithom;
+package main.algrithom.data_structure;
 
 import java.util.Random;
 

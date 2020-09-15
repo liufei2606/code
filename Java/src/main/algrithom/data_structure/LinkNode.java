@@ -1,8 +1,5 @@
-package main.algrithom;
+package main.algrithom.data_structure;
 
-/**
- * @author henry
- */
 public class LinkNode {
 
     public int key, val;
