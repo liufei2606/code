@@ -102,7 +102,7 @@ public class BackTrack {
         int[] nums = new int[]{1, 2, 3};
 
         System.out.print(permute(nums));
-        list<Integer>
+        // list<Integer>
          System.out.print(permute(nums));
         System.out.print(findTargetSumWays(nums, 4));
 
