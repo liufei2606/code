@@ -20,7 +20,9 @@
         "symfony/http-foundation": "^5.1",
         "illuminate/database": "^7.16",
         "illuminate/events": "^7.16",
-      "ext-json": "*"
+      "ext-json": "*",
+        "slim/slim": "^4.5",
+        "slim/psr7": "^1.2"
     },
     "autoload": {
         "files": [
