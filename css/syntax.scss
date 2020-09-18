@@ -1,0 +1,154 @@
+// 简单变量
+$primary-color: #333;
+
+// 引用变量
+body {
+  color: $primary-color;
+}
+
+// List
+$font-stack: ('Helvetica', 'Arial', sans-serif);
+
+body {
+  font: 100% nth($font-stack, 1); // 获取 List 的值，索引从1开始，不是0！
+}
+
+// Map
+$breakpoints: (small: 767px,
+  medium: 992px,
+  large: 1200px);
+
+// 变量作为插入变量需要通过 #{} 引入，通过 map_get 函数从 Map 中获取值
+@media (min-width: #{map-get($breakpoints, small)}) {}
+
+$name: foo;
+$attr: border;
+
+p.#{$name} {
+  #{$attr}-color: #44b336;
+}
+
+// 嵌套
+nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: inline-block;
+  }
+
+  a {
+    display: block;
+    padding: 6px 12px;
+    text-decoration: none;
+  }
+}
+
+// mixin
+// 清除浮动
+@mixin clearfix {
+  zoom: 1;
+
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+    visibility: hidden;
+    font-size: 0;
+    height: 0;
+  }
+}
+
+div {
+  @include clearfix;
+}
+
+// 使用 mixin
+
+//function
+$grid-width: 40px;
+$gutter-width: 10px;
+
+@function grid-width($n) {
+  @return $n * $grid-width+($n - 1) * $gutter-width;
+}
+
+#sidebar {
+  width: grid-width(5);
+}
+
+$type:sass;
+
+// 条件判断，根据不同条件定义不同的样式
+p {
+  @if $type==less {
+    color: green;
+  }
+
+  @else if $type==sass {
+    color: red;
+  }
+
+  @else {
+    color: black;
+  }
+}
+
+// 循环，定义多个样式
+@for $i from 1 through 3 {
+  .item-#{$i} {
+    width: 2em * $i;
+  }
+}
+
+// 遍历，类似 foreach，也是定义多个样式，用于遍历 Map 结构
+@each $header,
+$size in (h1: 2em, h2: 1.5em, h3: 1.2em) {
+  #{$header} {
+    font-size: $size
+  }
+}
+
+// 导入
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// 继承
+// 以%开头的父类不会渲染
+%message-shared {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+}
+
+.message {
+  @extend %message-shared;
+}
+
+.success {
+  @extend %message-shared;
+  border-color: green;
+}
+
+.error {
+  @extend %message-shared;
+  border-color: red;
+}
+
+.warning {
+  @extend %message-shared;
+  border-color: yellow;
+}
