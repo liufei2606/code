@@ -22,8 +22,6 @@ namespace Oop;
 //    $this->value = call_user_func($function, $this->value, $args[0]);
 //    return $this;
 //}
-<?php
-namespace Syntax\Oop;
 
 class Magic
 {
