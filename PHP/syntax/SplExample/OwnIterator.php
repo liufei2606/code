@@ -1,6 +1,9 @@
 <?php
 
-class ownIterator implements Iterator
+/**
+ * 迭代器：实现 Iterator 接口就行
+ */
+class OwnIterator implements Iterator
 {
     private $position = 0;
     private $array = array(
@@ -45,7 +48,7 @@ class ownIterator implements Iterator
     }
 }
 
-$it = new ownIterator;
+$it = new OwnIterator;
 foreach ($it as $key => $value) {
     echo $key.'@@'.$value.PHP_EOL;
 }

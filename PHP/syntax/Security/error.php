@@ -18,7 +18,7 @@ function myErrorHandler($errno, $errstr, $errfile, $errline)
     if (!(error_reporting() & $errno)) {
         return;
     }
-    $logDir = __DIR__."/..".DIRECTORY_SEPARATOR.'logs';
+    $logDir = __DIR__."/..";
     if (!file_exists($logDir)) {
         mkdir($logDir);
     }

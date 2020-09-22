@@ -7,7 +7,6 @@
 
 function djbx33a($str)
 {
-
     $hash = 0;
     $s = md5($str);
     $seed = 5;

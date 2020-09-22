@@ -10,6 +10,7 @@ class Animal
 {
     public $cat = 'cat';
     public static $dog = 'dog';
+
     private $pig = 'pig';
     private static $duck = 'duck';
 }

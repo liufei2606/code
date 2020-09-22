@@ -68,12 +68,12 @@ $foo = 'bar';
 destroy_foo();
 echo $foo;//bar
 
-require('./ShopProduct.php'); # 加载文件
+//require('./ShopProduct.php'); # 加载文件
 
 # __clone实现真正深拷贝
 class Test
 {
-    public $a = 1;
+	public int $a = 1;
 }
 
 class TestOne

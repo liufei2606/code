@@ -50,7 +50,6 @@ var_dump($c === $d);
 # 特殊类型 NULL（包括尚未赋值的变量）
 # 从空标记生成的 SimpleXML 对象
 
-
 // 越靠前优先级越高
 echo 0 ?: 1 ?: 2 ?: 3; //1
 echo 0 ?: 0 ?: 2 ?: 3; //2
@@ -81,13 +80,13 @@ $b = 2;
 $c = 3;
 function add()
 {
-    $d = 4;
-    $c += isset($a) ? 0 : $a++;
-    if ($c > 3) {
-        $d++;
-    }
-    echo $a;
-    return $d;
+	$d = 4;
+	$c += isset($a) ? 0 : $a++;
+	if ($c > 3) {
+		$d++;
+	}
+	echo $a;
+	return $d;
 }
 
 $d = add();
