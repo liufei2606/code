@@ -1,17 +1,11 @@
 <?php
-// use Demo1\BookProduct;
-// use Demo1\CdProduct;
-// use Demo1\ShopProductWriter;
 
-// require 'CdProduct.php';
-// require 'BookProduct.php';
-// require './ShopProductWriter.php';
+use Oop\Popp\BookProduct;
+use Oop\Popp\CdProduct;
+use Oop\Popp\ShopProductWriter;
 
 $cd = new CdProduct('Cd', 'Henry', 'Lee', 40, 70);
-
 $book = new BookProduct('Book', "Wenger", "wenger", 60, 80);
-die(var_dump([$cd, $book]));
-
 $writer = new ShopProductWriter;
 
 $writer->addProduct($cd);

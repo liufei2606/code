@@ -1,48 +1,51 @@
 {
-    "name": "henry/code",
-    "description": "PHP code tests",
-    "authors": [
-        {
-            "name": "Henry",
-            "email": "liboming88@yeah.net"
-        }
-    ],
-    "require": {
-        "twig/twig": "~2.0",
-        "php-amqplib/php-amqplib": "^2.7",
-        "webonyx/graphql-php": "^0.12.4",
-        "workerman/phpsocket.io": "^1.1",
-        "guzzlehttp/guzzle": "^6.3",
-        "phpmailer/phpmailer": "^6.0",
-        "lcobucci/jwt": "^3.2",
-        "monolog/monolog": "^1.24",
-        "elasticsearch/elasticsearch": "^7.7",
-        "symfony/http-foundation": "^5.1",
-        "illuminate/database": "^7.16",
-        "illuminate/events": "^7.16",
-      "ext-json": "*",
-        "slim/slim": "^4.5",
-        "slim/psr7": "^1.2"
-    },
-    "autoload": {
-        "files": [
-            "application/helper.php","helper/CsvIterator.php"
-        ],
-        "psr-4": {
-            "": "./",
-          "Tests\\": "tests/",
-          "Algorithms\\": "algorithms/"
-        },
-        "classmap": [
-            "./",
-            "application",
-            "oop",
-            "helper"
-        ]
-    },
-    "require-dev": {
-        "phpunit/phpunit": "8.5",
-        "behat/behat": "^3.7",
-        "filp/whoops": "^2.7"
-    }
+  "name": "henry/code",
+  "description": "PHP code tests",
+  "authors": [
+	{
+	  "name": "Henry",
+	  "email": "liboming88@yeah.net"
+	}
+  ],
+  "require": {
+	"twig/twig": "~2.0",
+	"php-amqplib/php-amqplib": "^2.7",
+	"webonyx/graphql-php": "^0.12.4",
+	"workerman/phpsocket.io": "^1.1",
+	"guzzlehttp/guzzle": "^6.3",
+	"phpmailer/phpmailer": "^6.0",
+	"lcobucci/jwt": "^3.2",
+	"monolog/monolog": "^1.24",
+	"elasticsearch/elasticsearch": "^7.7",
+	"symfony/http-foundation": "^5.1",
+	"illuminate/database": "^7.16",
+	"illuminate/events": "^7.16",
+	"ext-json": "*",
+	"slim/slim": "^4.5",
+	"slim/psr7": "^1.2"
+  },
+  "autoload": {
+	"files": [
+	  "application/helper.php",
+	  "helper/CsvIterator.php"
+	],
+	"psr-4": {
+	  "": "./",
+	  "Tests\\": "tests/",
+	  "Algorithms\\": "algorithms/",
+	  "Application\\": "application/",
+	  "Oop\\": "Oop/"
+	},
+	"classmap": [
+	  "./",
+	  "application",
+	  "Oop",
+	  "helper"
+	]
+  },
+  "require-dev": {
+	"phpunit/phpunit": "8.5",
+	"behat/behat": "^3.7",
+	"filp/whoops": "^2.7"
+  }
 }

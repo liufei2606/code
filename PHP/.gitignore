@@ -4,3 +4,4 @@ syntax/debug.log
 vendor
 .phpunit.result.cache
 node_modules
+/logs

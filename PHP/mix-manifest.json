@@ -6,6 +6,6 @@
     "/application/public/js/chart.js": "/application/public/js/chart.js",
     "/application/public/js/contact.js": "/application/public/js/contact.js",
     "/application/public/js/table.js": "/application/public/js/table.js",
-    "/application/public/css/fontawesome.css": "/application/public/css/fontawesome.css",
-    "/application/public/css/table.css": "/application/public/css/table.css"
+    "/application/public/css/table.css": "/application/public/css/table.css",
+    "/application/public/css/fontawesome.css": "/application/public/css/fontawesome.css"
 }

@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Oop\Car1;
+use Oop\Trit\Car1;
 
 class CarTest extends TestCase
 {

@@ -3,8 +3,8 @@
 namespace Tests;
 
 use PHPUnit\Framework\TestCase;
-use Oop\Person;
-use Oop\Worker;
+use Oop\Trit\Person;
+use Oop\Trit\Worker;
 
 class WorkerTest extends TestCase
 {

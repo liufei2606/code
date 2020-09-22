@@ -328,3 +328,47 @@ $username = $_GET['user'] ?? 'nobody';
 $bytes = random_bytes(5);
 echo bin2hex($bytes).PHP_EOL;//string(10) "385e33f741"
 echo random_int(100, 999);//int(248)
+
+
+## 作用域
+$x = 5;
+$y = 10;
+function myTest()
+{
+	global $x, $y;
+	$y = $x + $y;
+	echo $y;
+}
+
+myTest(); // 15
+
+function myTest1()
+{
+	static $x = 0;
+	echo $x;
+	$x++;
+}
+
+myTest1(); // 0
+myTest1(); // 1
+myTest1(); // 2
+
+function myTest2($x)
+{
+	echo $x;
+}
+
+myTest2(5); # 5
+
+// 函数内销毁全局变量$foo无效,应使用 $GLOBALS 数组来实现
+function destroy_foo()
+{
+	global $foo;
+	// unset($foo);
+	unset($GLOBALS['bar']);
+	echo $foo;//Notice: Undefined variable: foo
+}
+
+$foo = 'bar';
+destroy_foo();
+echo $foo;

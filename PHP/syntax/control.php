@@ -1,5 +1,5 @@
 <?php
-// 减少对if...else...的使用,提前return异常
+//  减少if...else...的使用,提前return异常
 //　如果是在一个函数里面会先处理异常的情况，然后提前return代码，最后再执行正常的逻辑
 function doSomething($x)
 {
@@ -14,9 +14,9 @@ function doSomething($x)
 }
 
 #!/usr/bin/env php
-print "Hello, Red Hat Developers World from PHP ".PHP_VERSION."\n";
+print "Hello, Red Hat Developers World from PHP " . PHP_VERSION . "\n";
 echo "<h2>Hello First PHP</h2>";
-printf('(%1$2d = %1$04b) = (%2$2d = %2$04b)'.' %3$s (%4$2d = %4$04b)'."\n", $result, $value, '&', $test);
+printf('(%1$2d = %1$04b) = (%2$2d = %2$04b)' . ' %3$s (%4$2d = %4$04b)' . "\n", $result, $value, '&', $test);
 
 $num = 12;
 if ($num % 2 == 0) {
@@ -28,11 +28,11 @@ if ($num % 2 == 0) {
 $a = 0;
 $b = 0;
 if ($a > $b):
-	echo $a." is greater than ".$b;
+	echo $a . " is greater than " . $b;
 elseif ($a == $b): // 注意使用了一个单词的 elseif
-	echo $a." equals ".$b;
+	echo $a . " equals " . $b;
 else:
-	echo $a." is neither greater than or equal to ".$b;
+	echo $a . " is neither greater than or equal to " . $b;
 endif;
 
 switch ($num) {
@@ -83,11 +83,11 @@ echo 'Bar';
 echo 'A' | ' ';
 echo 'a' & '_';
 echo 'a' ^ ' ';
-echo 'A' ^ ' '.PHP_EOL;
+echo 'A' ^ ' ' . PHP_EOL;
 
 // 是否异号
-echo (bool) ((-1 ^ 2) < 0).PHP_EOL;
-echo ((1 ^ 2) < 0).PHP_EOL;
+echo (bool)((-1 ^ 2) < 0) . PHP_EOL;
+echo ((1 ^ 2) < 0) . PHP_EOL;
 
 // switch variable
 $a = 1;
@@ -95,4 +95,28 @@ $b = 3;
 $a ^= $b;
 $b ^= $a;
 $a ^= $b;
-echo $a.' '.$b;
+echo $a . ' ' . $b;
+
+// 通过二维数组生成九九乘法表
+$multi = [];
+for ($j = 0; $j < 9; $j++) {
+	for ($i = 0; $i < 9; $i++) {
+		$n1 = $i + 1;
+		$n2 = $j + 1;
+		if ($n1 < $n2) {  // 摒除重复的记录
+			continue;
+		}
+		$multi[$i][$j] = sprintf("%dx%d=%d", $n2, $n1, $n1 * $n2);
+	}
+}
+
+// 打印九九乘法表
+foreach ($multi as $row) {
+	foreach ($row as $item) {
+		printf("%-8s", $item);  // 位宽为8，左对齐
+	}
+	printf("\n");
+}
+
+//step into
+// add watch

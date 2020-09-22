@@ -41873,7 +41873,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/henry/Workspace/Code/PHP/application/resources/js/table.js */"./application/resources/js/table.js");
+module.exports = __webpack_require__(/*! /Users/henry/Workspace/Code/PHP/application/resources/js/table.js */"./application/resources/js/table.js");
 
 
 /***/ })

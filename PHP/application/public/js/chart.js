@@ -37793,7 +37793,7 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/henry/Workspace/Code/PHP/application/resources/js/chart.js */"./application/resources/js/chart.js");
+module.exports = __webpack_require__(/*! /Users/henry/Workspace/Code/PHP/application/resources/js/chart.js */"./application/resources/js/chart.js");
 
 
 /***/ })
