@@ -1,8 +1,8 @@
 <?php
 
-use Oop\Popp\BookProduct;
-use Oop\Popp\CdProduct;
-use Oop\Popp\ShopProductWriter;
+namespace Oop\Popp;
+
+require_once(__DIR__."/../../vendor/autoload.php");
 
 $cd = new CdProduct('Cd', 'Henry', 'Lee', 40, 70);
 $book = new BookProduct('Book', "Wenger", "wenger", 60, 80);
