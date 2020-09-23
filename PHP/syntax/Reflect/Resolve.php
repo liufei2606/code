@@ -9,7 +9,7 @@ class Resolve
 	public static function make($className)
 	{
 		try {
-			$reflectionClass = new ReflectionClass($className);
+			$reflectionClass = new \ReflectionClass($className);
 			//$reflectionClass->getConstants();
 			//$reflectionClass->getProperties();
 			//$reflectionClass->getMethods();

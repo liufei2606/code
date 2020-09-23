@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace Application\services\Model;
 
 class Car
 {

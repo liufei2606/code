@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controller\Admin;
+namespace Application\services\Http\Controller\Admin;
 
 class DashboardController extends AdminController
 {

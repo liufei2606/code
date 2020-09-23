@@ -1,5 +1,5 @@
 <?php
-$router = new \App\Http\Router();
+$router = new \Application\services\Http\Router();
 
 $router->register('get', '/', 'HomeController@index');
 $router->register('get', 'album', 'AlbumController@list');

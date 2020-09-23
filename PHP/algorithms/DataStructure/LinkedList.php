@@ -1,11 +1,13 @@
 <?php
 
+namespace Algorithms\DataStructure;
+
 /**
  * 通过 PHP 数组模拟实现单链表
  */
 class LinkedList
 {
-    private $list = [];
+	private array $list = [];
 
     // 获取链表指定位置的元素值，从0开始
     public function get($index)

@@ -24,7 +24,7 @@ class PHPTest extends \PHPUnit\Framework\TestCase
 
     public function testMock()
     {
-        $stub = $this->createMock(\App\UserService::class);
+        $stub = $this->createMock(\Application\services\UserService::class);
         $stub->method('get')->willReturn(3);
         $this->assertEquals(3, $stub->get(1));
     }

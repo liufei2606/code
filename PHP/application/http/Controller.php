@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controller;
+namespace Application\services\Http\Controller;
 
-use App\Core\Container;
-use App\Http\Request;
-use App\Http\Session;
-use App\Store\StoreContract;
-use App\View\View;
+use Application\services\Core\Container;
+use Application\services\Http\Request;
+use Application\services\Http\Session;
+use Application\services\Store\StoreContract;
+use Application\services\View\View;
 
 class Controller
 {

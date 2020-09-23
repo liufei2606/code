@@ -1,7 +1,7 @@
 <?php
-namespace App\Store;
+namespace Application\services\Store;
 
-use App\Core\Container;
+use Application\services\Core\Container;
 
 class StoreProvider
 {

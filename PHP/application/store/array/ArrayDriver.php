@@ -1,7 +1,7 @@
 <?php
-namespace App\Store\Arr;
+namespace Application\services\Store\Arr;
 
-use App\Store\StoreContract;
+use Application\services\Store\StoreContract;
 
 class ArrayDriver implements StoreContract
 {

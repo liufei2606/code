@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Printer;
+namespace Application\services\Printer;
 
 class HtmlPrinter implements PrinterContract
 {

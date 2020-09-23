@@ -13,6 +13,7 @@ class TrieTest extends TestCase
         foreach ($strs as $str) {
             $trie->insertStr($str);
         }
+
         self::assertTrue($trie->findStr('Laravel'));
         self::assertFalse($trie->findStr('Laravedffl'));
     }

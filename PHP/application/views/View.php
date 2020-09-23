@@ -1,9 +1,9 @@
 <?php
 
-namespace App\View;
+namespace Application\services\View;
 
-use App\Http\Response;
-use App\View\Engine\ViewEngine;
+use Application\services\Http\Response;
+use Application\services\View\Engine\ViewEngine;
 
 class View
 {

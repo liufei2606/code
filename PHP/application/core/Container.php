@@ -1,5 +1,5 @@
 <?php
-namespace App\Core;
+namespace Application\services\Core;
 
 class Container
 {

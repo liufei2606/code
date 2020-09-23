@@ -3,8 +3,6 @@
 namespace Tests;
 
 use PHPUnit\Framework\TestCase;
-use SimpleQueue;
-use SimpleStack;
 
 class DataStructureTest extends TestCase
 {

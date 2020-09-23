@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Swoole\Websocket;
+namespace Application\services\Swoole\Websocket;
 
 class Test
 {

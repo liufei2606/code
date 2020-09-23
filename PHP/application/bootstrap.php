@@ -2,10 +2,10 @@
 
 namespace App;
 
-use App\Core\Container;
-use App\Http\Exception\ValidationException;
-use App\Http\Response;
-use App\Http\Session;
+use Application\services\Core\Container;
+use Application\services\Http\Exception\ValidationException;
+use Application\services\Http\Response;
+use Application\services\Http\Session;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Container\Container as IlluminateContainer;

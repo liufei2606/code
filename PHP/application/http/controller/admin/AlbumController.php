@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controller\Admin;
+namespace Application\services\Http\Controller\Admin;
 
-use App\Http\Exception\ValidationException;
-use App\Model\Album;
+use Application\services\Http\Exception\ValidationException;
+use Application\services\Model\Album;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class AlbumController extends AdminController

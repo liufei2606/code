@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controller;
+namespace Application\services\Http\Controller;
 
-use App\Http\Exception\ValidationException;
-use App\Http\Response;
-use App\Model\Album;
-use App\Model\Message;
+use Application\services\Http\Exception\ValidationException;
+use Application\services\Http\Response;
+use Application\services\Model\Album;
+use Application\services\Model\Message;
 use Carbon\Carbon;
 
 class HomeController extends Controller

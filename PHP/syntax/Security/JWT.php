@@ -17,8 +17,8 @@ class JWT
      *
      * @param  string  $token
      *
-     * @return \App\Modules\JWT\JWT
-     * @throws \App\Modules\JWT\JWTException
+     * @return \Application\services\Modules\JWT\JWT
+     * @throws \Application\services\Modules\JWT\JWTException
      */
     public static function fromToken(string $token): JWT
     {

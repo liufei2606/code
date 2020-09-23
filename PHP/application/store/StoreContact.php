@@ -1,5 +1,5 @@
 <?php
-namespace App\Store;
+namespace Application\services\Store;
 
 interface StoreContract
 {

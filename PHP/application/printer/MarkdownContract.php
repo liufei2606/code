@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\printer;
+namespace Application\services\printer;
 
 class MarkdownContract
 {

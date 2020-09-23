@@ -1,7 +1,7 @@
 <?php
-namespace App\Store\Mysql;
+namespace Application\services\Store\Mysql;
 
-use App\Store\StoreContract;
+use Application\services\Store\StoreContract;
 
 class MysqlDriver implements StoreContract
 {

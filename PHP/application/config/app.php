@@ -24,9 +24,9 @@ return [
         ],
         'editor' => 'html',  // 支持html和markdown
         'providers' => [
-            \App\Store\StoreProvider::class,
-            \App\Printer\PrinterProvider::class,
-            \App\View\ViewProvider::class,
+            \Application\services\Store\StoreProvider::class,
+            \Application\services\Printer\PrinterProvider::class,
+            \Application\services\View\ViewProvider::class,
         ],
     ],
     'view' => [

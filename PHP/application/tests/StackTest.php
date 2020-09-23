@@ -4,7 +4,7 @@
  * 2、引入autoload.php文件
  * 3、测试案例
  */
-namespace App\tests;
+namespace Application\services\tests;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 define("ROOT_PATH", dirname(__DIR__) . "/");

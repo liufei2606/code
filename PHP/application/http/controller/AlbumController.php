@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controller;
+namespace Application\services\Http\Controller;
 
-use App\Model\Album;
+use Application\services\Model\Album;
 
 class AlbumController extends Controller
 {

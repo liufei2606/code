@@ -1,7 +1,7 @@
 <?php
-namespace App\Printer;
+namespace Application\services\Printer;
 
-use App\Core\Container;
+use Application\services\Core\Container;
 
 class PrinterProvider
 {

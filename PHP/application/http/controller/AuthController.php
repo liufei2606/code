@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controller;
+namespace Application\services\Http\Controller;
 
-use App\Model\User;
+use Application\services\Model\User;
 
-class AuthController extends \App\Http\Controller\Controller
+class AuthController extends \Application\services\Http\Controller\Controller
 {
     public function login()
     {

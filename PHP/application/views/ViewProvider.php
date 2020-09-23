@@ -1,9 +1,9 @@
 <?php
 
-namespace App\View;
+namespace Application\services\View;
 
-use App\Core\Container;
-use App\View\Engine\PhpEngine;
+use Application\services\Core\Container;
+use Application\services\View\Engine\PhpEngine;
 
 class ViewProvider
 {

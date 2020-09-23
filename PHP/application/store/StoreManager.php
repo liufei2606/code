@@ -1,9 +1,9 @@
 <?php
-namespace App\Store;
+namespace Application\services\Store;
 
-use App\Core\Container;
-use App\Store\Arr\ArrayDriver;
-use App\Store\Mysql\MysqlDriver;
+use Application\services\Core\Container;
+use Application\services\Store\Arr\ArrayDriver;
+use Application\services\Store\Mysql\MysqlDriver;
 
 class StoreManager
 {

@@ -1,5 +1,5 @@
 <?php
-namespace App\Http;
+namespace Application\services\Http;
 
 use \Symfony\Component\HttpFoundation\Response as BaseResponse;
 

@@ -1,10 +1,13 @@
 <?php
 
 
-namespace App;
+namespace Application\services;
 
 
 class UserService
 {
-
+	public function get()
+	{
+		return 3;
+	}
 }

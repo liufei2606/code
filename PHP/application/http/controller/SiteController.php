@@ -1,5 +1,5 @@
 <?php
-namespace app\controllers;
+namespace Application\services\controllers;
 
 use sf\web\Controller;
 use Sf;
@@ -8,7 +8,7 @@ class SiteController extends Controller
 {
     public function actionTest()
     {
-        $user = \app\models\User::findAll();
+        $user = \Application\services\models\User::findAll();
         $data = ['code' => 200, 'msg' => 'Success', 'data' => $user];
         echo $this->toJson($data);
     }

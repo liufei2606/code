@@ -132,7 +132,7 @@ class BinarySearch
     /**
      * 二分查找变形版：查找最后一个小于等于给定值的元素（数组中包含重复数据）
      */
-    public static function binary_search_smallerlast($nums, $num)
+    public static function binary_search_smaller_last($nums, $num)
     {
         if (count($nums) <= 1) {
             return 0;
@@ -158,4 +158,3 @@ class BinarySearch
         }
     }
 }
-_

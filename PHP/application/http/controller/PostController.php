@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controller;
+namespace Application\services\Http\Controller;
 
-use App\Model\Post;
+use Application\services\Model\Post;
 
 class PostController extends Controller
 {
@@ -16,7 +16,7 @@ class PostController extends Controller
 
 //        $post = $this->connection->table('posts')->select($id);
         $post = Post::with('album')->findOrFail($id)->toArray();
-        $printer = $this->container->resolve(\App\Printer\PrinterContract::class);
+        $printer = $this->container->resolve(\Application\services\Printer\PrinterContract::class);
 
         if ($this->container->resolve('app.editor') === 'markdown') {
             var_dump($printer->driver('markdown'));

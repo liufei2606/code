@@ -163,6 +163,13 @@
     - Error
     - Exception
 
+## [PHP 全栈工程师指南](https://xueyuanjun.com/books/php-fullstack)
+
+## admin
+
+```
+cp -r node_modules/@fortawesome/fontawesome-free/webfonts application/public
+```
 # 算法
 
 * PHP 底层 SPL 库中也提供了堆栈的实现类 SplStack

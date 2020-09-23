@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Engine;
+namespace Application\services\View\Engine;
 
 interface ViewEngine
 {
