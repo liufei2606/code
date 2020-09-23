@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Tdd;
+namespace Oop;
 
 
 class CardCollection
