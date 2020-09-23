@@ -18,3 +18,6 @@ files/key.pem
 Docker/jenkins
 pkg/
 node_modules
+tool/parcel/dist/
+tool/parcel/.cache/
+
