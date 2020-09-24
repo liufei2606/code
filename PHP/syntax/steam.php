@@ -125,26 +125,6 @@ function getTwoPhraseOranizationById($id)
 	return $selfInfo['title'];
 }
 
-$json = file_get_contents(
-		'http://api.flickr.com/services/feeds/photos_public.gne?format=json'
-);
-
-$handle = fopen('file:///etc/hosts', 'rb');
-while (feof($handle) !== true) {
-	echo fgets($handle);
-}
-fclose($handle);
-
-$requestBody = '{"username":"nonfu"}';
-$context = stream_context_create([
-		'http' => [
-				'method' => 'POST',
-				'header' => "Content-Type: application/json;charset=utf-8;\r\nContent-Length: ".mb_strlen($requestBody),
-				'content' => $requestBody
-		]
-]);
-$response = file_get_contents('https://my-api.com/users', false, $context);
-
 $handle = fopen('test.txt', 'rb');
 stream_filter_append($handle, 'string.toupper');
 while (feof($handle) !== true) {
