@@ -1,4 +1,4 @@
-package main.oop;
+package oop;
 
 public enum Category {
     FOOD(1),

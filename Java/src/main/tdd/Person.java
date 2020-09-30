@@ -1,4 +1,4 @@
-package main.tdd;
+package tdd;
 
 /**
  * @author henry

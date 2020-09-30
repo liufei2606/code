@@ -1,7 +1,7 @@
-package test.tdd;
+package tdd;
 
-import main.tdd.FizzBuzz;
 import org.junit.jupiter.api.Test;
+import tdd.FizzBuzz;
 
 import static org.junit.jupiter.api.Assertions.*;
 

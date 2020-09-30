@@ -1,7 +1,5 @@
 package tdd;
 
-import main.tdd.Person;
-import main.tdd.Calculator;
 import org.junit.jupiter.api.Test;
 import java.util.concurrent.CountDownLatch;
 import static java.time.Duration.ofMillis;

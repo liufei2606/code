@@ -1,4 +1,4 @@
-package main.algrithom.sort;
+package algrithom.sort;
 
 public class Insertion {
     public static void sort(Comparable[] a) {

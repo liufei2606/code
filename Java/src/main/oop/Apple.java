@@ -1,4 +1,4 @@
-package main.oop;
+package oop;
 
 public class Apple extends Fruit {
     int num;

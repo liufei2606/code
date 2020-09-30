@@ -1,6 +1,6 @@
-package main.algrithom;
+package algrithom;
 
-import main.algrithom.data_structure.TreeNode;
+import algrithom.data_structure.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;

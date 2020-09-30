@@ -1,4 +1,4 @@
-package main.oop;
+package oop;
 
 public class LifeCycle {
     // 静态属性

@@ -1,4 +1,4 @@
-package main.oop;
+package oop;
 
 public class SuperMarket {
 }

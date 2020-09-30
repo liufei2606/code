@@ -1,4 +1,4 @@
-package main.oop;
+package oop;
 
 import java.lang.reflect.Field;
 
@@ -7,7 +7,7 @@ import java.lang.reflect.Field;
  */
 public class UseReflection {
     public static void main(String[] args) {
-        Class clazz = main.oop.Merchandise.class;
+        Class clazz = oop.Merchandise.class;
 //        Field countField = clazz.getField('count');
 //        Field countField = clazz.getDeclaredField('count');
 //        countField.get(m100);
