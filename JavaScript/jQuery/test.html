@@ -1,0 +1,12 @@
+<script src="../assets/js/jquery.js"></script>
+	<script>
+	$(function(){
+		$("input[type=button]").click(function(){
+			$('div').each(function(i,item){
+				$(item).html('我是第'+i+'个div');
+			});
+		});
+	});
+</script>
+<div><input type="button" value="遍历div"/></div>
+<input type="button" name="" value="" placeholder="">

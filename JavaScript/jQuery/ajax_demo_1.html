@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<script src="../assets/js/jquery.js"></script>
+<script type="text/javascript">
+	$(function(){
+
+//basic
+		$('input[name=basic]').click(function(){
+			$.ajax({
+				type:'get',
+				url:'ajax_demo_1.php',
+				success:function(msg){
+					$('#res').html(msg);
+				}
+			});
+		});
+/*
+			$.ajax({
+				type:'get',
+				dataType:'xml',
+				url:'',
+				success:function(){
+
+				}
+				});
+
+			$.ajax({
+				type:'get',
+				dataType:'xml',
+				url:'',
+				var str = '';
+				success:function(msg){
+					$(msg).find('book').each(fucntion(i,item){
+						str += $(item).find('name').text();
+					});
+				}
+				});
+//simple JSON
+			$.ajax({
+				type:'get',
+				dataType:'json',
+				url:'ajax_demo_1.php',
+				var str = '';
+				success:function(msg){
+
+				}
+				});
+
+//complicated JSON
+			$.ajax({
+				type:'get',
+				dataType:'json',
+				url:'ajax_demo_1.php',
+
+				success:function(msg){
+					var str = '';
+					$(msg).each(function(i,str){
+						$str += item.name+'--'+item.age;
+					});
+				}
+				});
+//advanced method
+//get
+			$.get('ajax_demo_1',function(msg){
+				var str = '';
+				$(msg).each(function(i,str){
+					$str += item.name+'--'+item.age;
+				});
+			},'json');
+		});
+//post
+			$.post('ajax_demo_1',function(msg){
+				var str = '';
+				$(msg).each(function(i,str){
+					$str += item.name+'--'+item.age;
+				});
+			},'json');
+		});
+*/
+// among domain access
+//jsonp
+		$('#btn').click(function(){
+			$.ajax({
+				type:'get',
+				dataType:'jsonp';
+				jsonp:'fn';
+				url:'http://tp/test.php',
+				success:function(msg){
+					$(msg).each(function(i,item){
+						$str = item.name+'--'+item.age+
+					});
+					$(#res).html(str);
+				}
+			});
+		});
+//$.get()
+		$('#btn').click(function(){
+			$.ajax({
+				type:'get',
+				dataType:'jsonp';
+				jsonp:'fn';
+				url:'http://tp/test.php',
+				success:function(msg){
+					$(msg).each(function(i,item){
+						$str = item.name+'--'+item.age+
+					});
+					$(#res).html(str);
+				}
+			});
+		});
+
+//$,getJSON()
+		$('#btn').click(function(){
+			$.ajax({
+				type:'get',
+				dataType:'jsonp';
+				jsonp:'fn';
+				url:'http://tp/test.php',
+				success:function(msg){
+					$(msg).each(function(i,item){
+						$str = item.name+'--'+item.age+
+					});
+					$(#res).html(str);
+				}
+			});
+		});
+
+//extend fn
+//piugin
+		$.fn.extend(
+			fn1:function(){
+				this.css('background','red');
+			},
+			fn2:function(){
+				this.css('font-size','30px');
+			}
+		);
+		$('#res').click(function(){
+			$(this).fn1();
+			$(this).fn2();
+		});
+	});
+</script>
+
+<style type="text/css">
+	#res{width: 300px;height: 20px;background: yellow;}
+</style>
+
+<body>
+	<h4>Basic��</h4>
+	<input type="button" name ='basic' value="ajax in jQuery" /><br/>
+	<div id="res"></div><hr/>
+
+	Num1:<input type="text" name="num1" value="num1"></input><br/>
+	Num2:<input type="text" name="num2" value="num2"></input><br/>
+	<input type="button" value="addtion"></input>
+
+	<input type="button" value="get JSON"></input>
+
+	Username:<input type="text" name="username"></input><br/>
+	Age:<input type="text" name="age"></input><br/>
+	<input type="button" value="submit"></input>
+
+	<h4>access different domain��</h4>
+
+	<input type="button" name ='basic' value="ajax in jQuery" id="btn" /><br/>
+	<input type="button" name ='basic' value="get" id="btn1" /><br/>
+	<input type="button" name ='basic' value="getJSON" id="btn2" /><br/>
+	<div id="res"></div><hr/>
+</body>
+</html>
