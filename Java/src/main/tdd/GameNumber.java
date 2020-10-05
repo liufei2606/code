@@ -1,2 +1,4 @@
-package tdd;public class GameNumber {
+package tdd;
+
+public class GameNumber {
 }
