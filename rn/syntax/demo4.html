@@ -15,9 +15,20 @@
 	<div id="example"></div>
 
 	<script type="text/babel">
-		// JSX 语法
+		// 封装成组件 component
+		// 必须实现 render 方法，用于输出组件
+		// 组件类的第一个字母必须大写
+		// 只能包含一个顶层标签,可以嵌套
+		// 使用时声明属性:class 属性需要写成 className ，for 属性需要写成 htmlFor
+		// 属性在组件类的 this.props 对象上获取
+		class HelloMessage extends React.Component {
+			render() {
+				return <h1>Hello {this.props.name} <p>I am from {this.props.home} </p></h1>;
+			}
+		}
+
 		ReactDOM.render(
-			<h1>Hello, world!</h1>,
+			<HelloMessage name="henry" home='XinXiang' />,
 			document.getElementById('example')
 		);
 
