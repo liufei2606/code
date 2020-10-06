@@ -1,0 +1,27 @@
+{
+	"presets": ["env", "stage-2", "react"],
+	"plugins": [
+	  [
+		"import", {
+		"libraryName": "antd",
+		"style": true
+	  }
+	  ],
+	  "transform-runtime",
+	  "transform-decorators-legacy"
+	],
+	"env": {
+	  "production": {},
+	  "development": {
+		"plugins": [
+		  [
+			"dva-hmr", {
+			"container": "#app",
+			"quiet": false
+		  }
+		  ]
+		]
+	  }
+	},
+	"comments": false
+  }
