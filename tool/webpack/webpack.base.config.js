@@ -1,6 +1,9 @@
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const {
+	CleanWebpackPlugin
+} = require('clean-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 // 配置常量
 // 源代码的根目录（本地物理文件路径）
@@ -19,25 +22,28 @@ module.exports = {
 
 	entry: {
 		// 注意 entry 中的路径都是相对于 SRC_PATH 的路径
-		vendor: './vendor',
-		a: ['./entry-a'],
-		b: ['./entry-b'],
-		c: ['./entry-c']
+		// vendor: './vendor',
+		// a: ['./entry-a'],
+		// b: ['./entry-b'],
+		// c: ['./entry-c']
+		bundle1: './main1.js',
+		bundle2: './main2.js',
 	},
 
 	output: {
 		path: ASSETS_BUILD_PATH,
 		publicPath: ASSETS_PUBLIC_PATH,
-		filename: './[name].js'
+		filename: './js/[name].js',
 	},
 
 	module: {
-		rules: [{
-				enforce: 'pre', // ESLint 优先级高于其他 JS 相关的 loader
-				test: /\.jsx?$/,
-				exclude: /node_modules/,
-				loader: 'eslint-loader'
-			},
+		rules: [
+			// {
+			// 	enforce: 'pre', // ESLint 优先级高于其他 JS 相关的 loader
+			// 	test: /\.jsx?$/,
+			// 	exclude: /node_modules/,
+			// 	loader: 'eslint-loader'
+			// },
 
 			{
 				test: /\.jsx?$/,
@@ -82,16 +88,20 @@ module.exports = {
 			}
 		]
 	},
+	optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
 
 	plugins: [
 		// 每次打包前，先清空原来目录中的内容
-		new CleanWebpackPlugin([ASSETS_BUILD_PATH], {
-			verbose: false
-		}),
+		new CleanWebpackPlugin(),
+		new ESLintPlugin()
 		// 启用 CommonChunkPlugin
-		new webpack.optimize.CommonsChunkPlugin({
-			names: 'vendor',
-			minChunks: Infinity
-		})
+		// new webpack.optimize.CommonsChunkPlugin({
+		// 	names: 'vendor',
+		// 	minChunks: Infinity
+		// })
 	]
 };

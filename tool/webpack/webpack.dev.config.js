@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 
-// 读取同一目录下的 base config
+// 读取同一目录下 base config
 const config = require('./webpack.base.config');
 
 // 添加 webpack-dev-server 相关的配置项
