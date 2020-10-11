@@ -1,17 +1,17 @@
-unction sum(arr) {
-    return arr.reduce(function (x, y) {
-        return x + y;
-    });
+function sum(arr) {
+	return arr.reduce(function (x, y) {
+		return x + y;
+	});
 }
 sum([1, 2, 3, 4, 5]); // 15
 
 function lazy_sum(arr) {
-    var sum = function () {
-        return arr.reduce(function (x, y) {
-            return x + y;
-        });
-    }
-    return sum;
+	var sum = function () {
+		return arr.reduce(function (x, y) {
+			return x + y;
+		});
+	}
+	return sum;
 }
 var f = lazy_sum([1, 2, 3, 4, 5]); // function sum()
 f(); // 15
@@ -21,13 +21,13 @@ var f2 = lazy_sum([1, 2, 3, 4, 5]);
 f1 === f2; // false
 
 function count() {
-    var arr = [];
-    for (var i=1; i<=3; i++) {
-        arr.push(function () {
-            return i * i;
-        });
-    }
-    return arr;
+	var arr = [];
+	for (var i = 1; i <= 3; i++) {
+		arr.push(function () {
+			return i * i;
+		});
+	}
+	return arr;
 }
 
 var results = count();
@@ -45,15 +45,15 @@ f3(); // 16
 //    return x * x;
 // })(3);
 function count() {
-    var arr = [];
-    for (var i=1; i<=3; i++) {
-        arr.push((function (n) {
-            return function () {
-                return n * n;
-            }
-        })(i));
-    }
-    return arr;
+	var arr = [];
+	for (var i = 1; i <= 3; i++) {
+		arr.push((function (n) {
+			return function () {
+				return n * n;
+			}
+		})(i));
+	}
+	return arr;
 }
 
 var results = count();
@@ -66,13 +66,13 @@ f2(); // 4
 f3(); // 9
 
 function create_counter(initial) {
-    var x = initial || 0;
-    return {
-        inc: function () {
-            x += 1;
-            return x;
-        }
-    }
+	var x = initial || 0;
+	return {
+		inc: function () {
+			x += 1;
+			return x;
+		}
+	}
 }
 var c2 = create_counter(10);
 c2.inc(); // 11
@@ -80,9 +80,9 @@ c2.inc(); // 12
 c2.inc(); // 13
 
 function make_pow(n) {
-    return function (x) {
-        return Math.pow(x, n);
-    }
+	return function (x) {
+		return Math.pow(x, n);
+	}
 }
 
 // 创建两个新函数:
@@ -91,34 +91,84 @@ var pow3 = make_pow(3);
 
 // 定义数字0:
 var zero = function (f) {
-    return function (x) {
-        return x;
-    }
+	return function (x) {
+		return x;
+	}
 };
 
 // 定义数字1:
 var one = function (f) {
-    return function (x) {
-        return f(x);
-    }
+	return function (x) {
+		return f(x);
+	}
 };
 
 // 定义加法:
 function add(n, m) {
-    return function (f) {
-        return function (x) {
-            return m(f)(n(f)(x));
-        }
-    }
+	return function (f) {
+		return function (x) {
+			return m(f)(n(f)(x));
+		}
+	}
 }
 
 var uniqueInterger = function () {
-    var counter = 0;
-    return function () {
-        return ++counter;
-    };
+	var counter = 0;
+	return function () {
+		return ++counter;
+	};
 };
 
 console.log(uniqueInterger());
 console.log(uniqueInterger());
 console.log(uniqueInterger());
+
+// 把f2作为返回值，就可以在f1外部读取它的内部变量了吗
+function f1() {
+	var n = 999;
+
+	function f2() {
+		console.log(n);
+	}
+	return f2;
+}
+
+var result = f1();
+result(); // 999
+
+
+function createIncrementor(start) {
+	return function () {
+		return start++;
+	};
+}
+
+var inc = createIncrementor(5);
+
+inc() // 5
+inc() // 6
+inc() // 7
+
+
+// 封装对象的私有属性和私有方法
+function Person(name) {
+	var _age;
+
+	function setAge(n) {
+		_age = n;
+	}
+
+	function getAge() {
+		return _age;
+	}
+
+	return {
+		name: name,
+		getAge: getAge,
+		setAge: setAge
+	};
+}
+
+var p1 = Person('张三');
+p1.setAge(25);
+p1.getAge() // 25
