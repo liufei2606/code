@@ -27,6 +27,7 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
+     <div :class="$style.hello">Hello World 1! {{msg}}</div>
   </div>
 </template>
 
@@ -35,7 +36,12 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
-  }
+  },
+      data () {
+      return {
+        msg: [0, 1, 3].map((n) => n + 1)
+    }
+    }
 }
 </script>
 
@@ -55,4 +61,9 @@ li {
 a {
   color: #42b983;
 }
+  .hello {
+    background-color: red;
+    width: 300px;
+    height: 300px;
+  }
 </style>
