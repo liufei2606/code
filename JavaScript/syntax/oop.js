@@ -116,3 +116,145 @@ Person.prototype = {
 
 Person.prototype.constructor === Person // false
 Person.prototype.constructor === Object // true
+
+// 好的写法
+C.prototype = {
+	constructor: C,
+	method1: function () {},
+
+};
+
+// 更好的写法
+C.prototype.method1 = function () {};
+
+var obj = Object.create(null);
+typeof obj // "object"
+Object.create(null) instanceof Object // false
+
+// 巧妙地解决，调用构造函数时，忘了加new命令的问题
+function Fubar(foo, bar) {
+	if (this instanceof Fubar) {
+		this._foo = foo;
+		this._bar = bar;
+	} else {
+		return new Fubar(foo, bar);
+	}
+}
+
+function Sub(value) {
+	Super.call(this);
+	this.prop = value;
+}
+
+// 不是直接等于Super.prototype。否则后面对Sub.prototype的操作，会连父类的原型Super.prototype一起修改掉
+Sub.prototype = Object.create(Super.prototype);
+Sub.prototype.constructor = Sub;
+
+function Shape() {
+	this.x = 0;
+	this.y = 0;
+}
+
+Shape.prototype.move = function (x, y) {
+	this.x += x;
+	this.y += y;
+	console.info('Shape moved.');
+};
+
+// 第一步，子类继承父类的实例
+function Rectangle() {
+	Shape.call(this); // 调用父类构造函数
+}
+// 另一种写法
+function Rectangle() {
+	this.base = Shape;
+	this.base();
+}
+
+// 第二步，子类继承父类的原型
+Rectangle.prototype = Object.create(Shape.prototype);
+Rectangle.prototype.constructor = Rectangle;
+
+// 多重继承
+function M1() {
+	this.hello = 'hello';
+}
+
+function M2() {
+	this.world = 'world';
+}
+
+function S() {
+	M1.call(this);
+	M2.call(this);
+}
+
+// 继承 M1
+S.prototype = Object.create(M1.prototype);
+// 继承链上加入 M2
+Object.assign(S.prototype, M2.prototype);
+
+// 指定构造函数
+S.prototype.constructor = S;
+
+var s = new S();
+s.hello // 'hello'
+s.world // 'world'
+
+// 空对象的原型是 Object.prototype
+Object.getPrototypeOf({}) === Object.prototype // true
+
+// Object.prototype 的原型是 null
+Object.getPrototypeOf(Object.prototype) === null // true
+
+// 函数的原型是 Function.prototype
+function f() {}
+Object.getPrototypeOf(f) === Function.prototype // true
+
+var a = {};
+var b = {
+	x: 1
+};
+Object.setPrototypeOf(a, b);
+
+Object.getPrototypeOf(a) === b // true
+a.x // 1
+
+var obj = Object.create({}, {
+	p1: {
+		value: 123,
+		enumerable: true,
+		configurable: true,
+		writable: true,
+	},
+	p2: {
+		value: 'abc',
+		enumerable: true,
+		configurable: true,
+		writable: true,
+	}
+});
+
+// 等同于
+var obj = Object.create({});
+obj.p1 = 123;
+obj.p2 = 'abc';
+
+Object.getOwnPropertyNames(Date)
+
+// 对象拷贝
+function copyObject(orig) {
+	var copy = Object.create(Object.getPrototypeOf(orig));
+	copyOwnPropertiesFrom(copy, orig);
+	return copy;
+}
+
+function copyOwnPropertiesFrom(target, source) {
+	Object
+		.getOwnPropertyNames(source)
+		.forEach(function (propKey) {
+			var desc = Object.getOwnPropertyDescriptor(source, propKey);
+			Object.defineProperty(target, propKey, desc);
+		});
+	return target;
+}
