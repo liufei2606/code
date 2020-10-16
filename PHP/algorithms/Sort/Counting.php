@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Algorithms\Sort;
+namespace Algorithms\Search\Sort;
 
 class Counting extends AbstractSort
 {

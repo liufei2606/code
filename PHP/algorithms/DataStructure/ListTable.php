@@ -1,6 +1,6 @@
 <?php
 
-namespace Algorithms\DataStructure;
+namespace Algorithms\Search\DataStructure;
 
 class ListTable
 {

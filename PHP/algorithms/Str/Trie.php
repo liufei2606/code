@@ -1,9 +1,9 @@
 <?php
 
 
-namespace Algorithms\Str;
+namespace Algorithms\Search\Str;
 
-use Algorithms\DataStructure\TrieNode;
+use Algorithms\Search\DataStructure\TrieNode;
 
 class Trie
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Algorithms\DataStructure;
+namespace Algorithms\Search\DataStructure;
 
-class TrieNode
+class  TrieNode
 {
     public $data;  // 节点字符
 	public array $children = [];  // 存放子节点引用（因为有任意个子节点，所以靠数组来存储）

@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use Algorithms\BinarySearch;
+use Algorithms\Search\BinarySearch;
 use PHPUnit\Framework\TestCase;
 
 class BinarySearchTest extends TestCase

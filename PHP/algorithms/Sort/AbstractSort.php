@@ -1,6 +1,6 @@
 <?php
 
-namespace Algorithms\Sort;
+namespace Algorithms\Search\Sort;
 
 abstract class AbstractSort
 {

@@ -1,14 +1,21 @@
 <?php
 
+
 namespace Algorithms\Search\DataStructure;
 
-class ListNode
+
+class TreeNode
 {
 	public $data = null;
-	public $next = null;
+	public $children = [];
 
 	public function __construct(string $data = null)
 	{
 		$this->data = $data;
+	}
+
+	public function addChildren(TreeNode $node)
+	{
+		$this->children[] = $node;
 	}
 }

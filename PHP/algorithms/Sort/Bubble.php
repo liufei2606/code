@@ -1,7 +1,9 @@
 <?php
 
 
-namespace Algorithms\Sort;
+namespace Algorithms\Search\Sort;
+
+include '../../vendor/autoload.php';
 
 /**
  * Class Bubble
@@ -11,34 +13,66 @@ namespace Algorithms\Sort;
  */
 class Bubble extends AbstractSort
 {
-    public static function sort($nums)
-    {
-        if (!is_array($nums)) {
-            return false;
-        }
+	public static function sort($nums): array
+	{
+		if (!is_array($nums)) {
+			return [];
+		}
 
-        $len = count($nums);
-        if ($len <= 1) {
-            return $nums;
-        }
-        $iMax = count($nums);
+		$len = count($nums);
+		if ($len <= 1) {
+			return $nums;
+		}
+		$iMax = count($nums);
 
-        // 外层控制执行次数
-        for ($i = 0; $i < $iMax; $i++) {
-            //置位没有意义:n-i 次没有换位生效
+		// 外层控制执行次数
+		for ($i = 0; $i < $iMax; $i++) {
+			//置位没有意义:n-i 次没有换位生效
 //            $flag = false;
-            // 内层比较范围[0 ~ n-i) j 与j+1 比较, 次数 n-1 n-2 1
-            for ($j = 0; $j < ($iMax - $i - 1); $j++) {
-                if ($nums[$j] > $nums[$j + 1]) {
-                    self::arraySwap($nums, $j, $j + 1);
+			// 内层比较范围[0 ~ n-i) j 与j+1 比较, 次数 n-1 n-2 1
+			for ($j = 0; $j < ($iMax - $i - 1); $j++) {
+				if ($nums[$j] > $nums[$j + 1]) {
+					self::arraySwap($nums, $j, $j + 1);
 //                    $flag = true;
-                }
-            }
+				}
+			}
 //            if (!$flag) {
 //                break;
 //            }
-        }
+		}
 
-        return $nums;
-    }
+		return $nums;
+	}
+
+	function bubbleSort(array $arr): array
+	{
+		$len = count($arr);
+		$count = 0;
+		$bound = $len - 1;
+		for ($i = 0; $i < $len; $i++) {
+			$swapped = false;
+			$newBound = 0;
+			for ($j = 0; $j < $bound; $j++) {
+				$count++;
+				if ($arr[$j] > $arr[$j + 1]) {
+					$tmp = $arr[$j + 1];
+					$arr[$j + 1] = $arr[$j];
+					$arr[$j] = $tmp;
+					$swapped = true;
+					$newBound = $j;
+				}
+			}
+			$bound = $newBound;
+			if (!$swapped) {
+				break;
+			}
+		}
+		echo $count."\n";
+		return $arr;
+	}
+
 }
+
+$arr = [20, 45, 93, 67, 10, 97, 52, 88, 33, 92];
+$sortedArray = Bubble::sort($arr);
+echo implode(",", $sortedArray);
