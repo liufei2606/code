@@ -1,5 +1,5 @@
 <?php
-namespace Algorithms\Search\DataStructure;
+namespace Algorithms\DataStructure;
 
 /**
  * 通过 PHP 数组实现的队列

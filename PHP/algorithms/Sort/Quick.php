@@ -1,6 +1,6 @@
 <?php
 
-namespace Algorithms\Search\Sort;
+namespace Algorithms\Sort;
 
 include '../../vendor/autoload.php';
 

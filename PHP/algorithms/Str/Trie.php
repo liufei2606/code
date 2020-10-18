@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Algorithms\Search\Str;
+namespace Algorithms\Str;
 
 use Algorithms\Search\DataStructure\TrieNode;
 

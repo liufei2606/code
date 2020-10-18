@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Algorithms;
+namespace Algorithms\Str;
 
 class StringMatch
 {

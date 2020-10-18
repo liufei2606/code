@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Algorithms\Search\DataStructure;
+namespace Algorithms\Tree;
 
 
 class TreeNode

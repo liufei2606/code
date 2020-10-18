@@ -1,6 +1,6 @@
 <?php
 
-namespace Algorithms\Search\DataStructure;
+namespace Algorithms\DataStructure;
 include '../../vendor/autoload.php';
 
 use Iterator;

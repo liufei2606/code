@@ -214,4 +214,17 @@ cp -r node_modules/@fortawesome/fontawesome-free/webfonts application/public
 
 ## 算法
 
-* PHP 底层 SPL 库中也提供了堆栈的实现类 SplStack
+* PHP 底层 SPL 库中
+* SplStack
+* SplFixedArray
+* BST
+    - in-order
+    - pre-order：广度优先
+    - post-order:深度优先
+* 参考
+    - PHP 7 Data Structures and Algorithms
+* 排序
+    - bubble:当前值前面遍历，俩俩比较，最大的放最后面
+    - selection：取出当前值，遍历取出后面中的最小值，放在当前位置
+    - insertion:取出当前值，逆序遍历前面，有大的移到到当前位置
+
