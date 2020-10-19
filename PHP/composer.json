@@ -25,7 +25,8 @@
 	"slim/psr7": "^1.2",
     "willdurand/geocoder": "^4.3",
     "league/csv": "^9.6",
-    "swiftmailer/swiftmailer": "^6.2"
+    "swiftmailer/swiftmailer": "^6.2",
+    "tarsana/functional": "^2.2"
   },
   "autoload": {
 	"files": [
