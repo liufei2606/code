@@ -1,15 +1,14 @@
 <?php
 
-namespace Algorithms\DataStructure;
+namespace Algorithms\LinearList;
+
 include '../../vendor/autoload.php';
 
 use Iterator;
 
-/**
- * 通过 PHP 数组模拟实现单链表
- */
 class LinkedList implements Iterator
 {
+
 	private $_firstNode = null;
 	private $_totalNode = 0;
 	private $_currentNode = null;
@@ -234,45 +233,6 @@ class LinkedList implements Iterator
 		return $this->_currentNode !== null;
 	}
 
-	private array $list = [];
-
-	// 获取链表指定位置的元素值，从0开始
-	public function get($index)
-	{
-		$value = null;
-		reset($this->list);
-		while (current($this->list)) {
-			if (key($this->list) == $index) {
-				$value = current($this->list);
-				break;
-			}
-			next($this->list);
-		}
-
-		return $value;
-	}
-
-	// 在链表指定位置插入值，默认插到链表头部
-	public function add($value, $index = 0)
-	{
-		array_splice($this->list, $index, 0, $value);
-	}
-
-	// 从链表指定位置删除元素
-	public function remove($index)
-	{
-		array_splice($this->list, $index, 1);
-	}
-
-	public function isEmpty()
-	{
-		return !next($this->list);
-	}
-
-	public function size()
-	{
-		return count($this->list);
-	}
 }
 
 //$linkedList = new LinkedList();
@@ -301,3 +261,11 @@ foreach ($BookTitles as $title) {
 for ($BookTitles->rewind(); $BookTitles->valid(); $BookTitles->next()) {
 	echo $BookTitles->current()."\n";
 }
+
+$BookTitles->display();
+$BookTitles->deleteFirst();
+$BookTitles->deleteLast();
+$BookTitles->delete("Introduction to PHP and Data structures");
+$BookTitles->reverse();
+$BookTitles->display();
+echo "2nd Item is: ".$BookTitles->getNthNode(2)->data;

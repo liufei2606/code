@@ -1,6 +1,6 @@
 <?php
 
-namespace Oop\Popp;
+namespace Popp;
 
 class ShopProduct
 {

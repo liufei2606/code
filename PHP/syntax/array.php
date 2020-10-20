@@ -8,10 +8,15 @@ use Oop\Users;
 # 索引数组
 $season = ["summer", "winter", "spring", "autumn"];
 
+$startMemory = memory_get_usage();
 $fruits = [];
 $fruits[] = 'Apple';
 $fruits[] = 'Orange';
 $fruits[] = 'Pear';
+foreach($fruits as $index => $value) {
+	echo "Position ".$index." holds the value ".$value."\n";
+}
+echo memory_get_usage() - $startMemory, " bytes\n";
 
 $fruits[2] = 'Banana';
 print($fruits[0].PHP_EOL);
@@ -40,17 +45,10 @@ foreach ($arr as $k => $v) {
 print_r($arr); # ['a', 'b', 'b']
 
 # 关联数组
-// 所有键名改为全小写或大写,不改变数字索引
-// 如果输入值（array）不是一个数组，就会抛出一个错误警告（E_WARNING）
-$input_array = array("FirSt" => 1, "SecOnd" => 4);
-print_r(array_change_key_case($input_array, CASE_UPPER)); # [[FIRST] => 1 [SECOND] => 4]
-print_r(array_change_key_case($input_array, CASE_LOWER)); # [[first] => 1 [second] => 4]]
-
 $salary = array("Hema" => "350000", "John" => "450000", "Kartik" => "200000");
 $salary["Hema"] = "350000";
 $salary["John"] = "450000";
 $salary["Kartik"] = "200000";
-
 # 计算数组中单元数目，或对象中的属性个数
 echo count($salary);
 
@@ -78,6 +76,34 @@ $array = array(
 	true => "d",
 );
 var_dump($array);
+
+// 混合
+$array = [1,2,3,4,5];
+$mixedArray = [];
+$mixedArray[0] = 200;
+$mixedArray['name'] = "Mixed array";
+$mixedArray[1] = 10.65;
+$mixedArray[2] = ['I', 'am', 'another', 'array'];
+
+$players = [];
+$players[] = ['Name' => "Ronaldo", "Age" => 31, "Country" => "Portugal", "Team" => "Real Madrid"];
+$players[] = ['Name' => "Messi", "Age" => 27, "Country" => "Argentina", "Team" => "Barcelona"];
+$players[] = ['Name' => "Neymar", "Age" => 24, "Country" => "Brazil", "Team" => "Barcelona"];
+$players[] = ['Name' => "Rooney", "Age" => 30, "Country" => "England", "Team" => "Man United"];
+
+foreach($players as $index => $playerInfo) {
+	echo "Info of player # ".($index+1)."\n";
+	foreach($playerInfo as $key => $value) {
+		echo $key.": ".$value."\n";
+	}
+	echo "\n";
+}
+
+// 所有键名改为全小写或大写,不改变数字索引
+// 如果输入值（array）不是一个数组，就会抛出一个错误警告（E_WARNING）
+$input_array = array("FirSt" => 1, "SecOnd" => 4);
+print_r(array_change_key_case($input_array, CASE_UPPER)); # [[FIRST] => 1 [SECOND] => 4]
+print_r(array_change_key_case($input_array, CASE_LOWER)); # [[first] => 1 [second] => 4]]
 
 # 值需要能够作为合法的键名，同一个值出现多次，则最后一个键名将作为它的值，其它键会被丢弃
 print_r(array_flip($input_array)); # [ [1] => FirSt [4] => SecOnd]

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace popp\ch18;
+namespace Popp\ch18;
 
 
 class Validator

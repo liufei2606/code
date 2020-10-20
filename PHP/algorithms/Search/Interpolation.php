@@ -3,6 +3,7 @@
 
 namespace Algorithms\Search;
 
+require '../../vendor/autoload.php';
 
 class Interpolation
 {
@@ -33,3 +34,18 @@ class Interpolation
 	}
 }
 
+$numbers = range(1, 200, 5);
+
+$number = 31;
+if (Interpolation::interpolationSearch($numbers, $number) >= 0) {
+	echo "$number Found \n";
+} else {
+	echo "$number Not found \n";
+}
+
+$number = 196;
+if (Interpolation::interpolationSearch($numbers, $number) >= 0) {
+	echo "$number Found \n";
+} else {
+	echo "$number Not found \n";
+}

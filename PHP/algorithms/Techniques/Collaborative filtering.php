@@ -1,12 +1,5 @@
 <?php
 
-/*
- * Example code for: PHP 7 Data Structures and Algorithms
- *
- * Author: Mizanur rahman <mizanur.rahman@gmail.com>
- *
- */
-
 function pearsonScore(array $reviews, string $person1, string $person2): float
 {
 	$commonItems = array();

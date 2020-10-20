@@ -1,11 +1,5 @@
 <?php
 
-/*
- * Example code for: PHP 7 Data Structures and Algorithms
- *
- * Author: Mizanur rahman <mizanur.rahman@gmail.com>
- *
- */
 
 $startTime = microtime();
 $count = 0;

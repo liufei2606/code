@@ -1,28 +1,23 @@
 <?php
 
-/*
- * Example code for: PHP 7 Data Structures and Algorithms
- *
- * Author: Mizanur rahman <mizanur.rahman@gmail.com>
- *
- */
-
-
 define("N", 9);
 define("UNASSIGNED", 0);
 
-function SolveSudoku(array &$grid): bool {
+function SolveSudoku(array &$grid): bool
+{
 	$row = $col = 0;
 
-	if (!FindUnassignedLocation($grid, $row, $col))
-		return true; // success! no empty space
+	if (!FindUnassignedLocation($grid, $row, $col)) {
+		return true;
+	} // success! no empty space
 
 	for ($num = 1; $num <= N; $num++) {
 		if (isSafe($grid, $row, $col, $num)) {
 			$grid[$row][$col] = $num; // make tentative assignment
 
-			if (SolveSudoku($grid))
-				return true;  // return, if success// return, if success
+			if (SolveSudoku($grid)) {
+				return true;
+			}  // return, if success// return, if success
 
 			$grid[$row][$col] = UNASSIGNED;  // failure, unmake & try again
 		}
@@ -30,31 +25,42 @@ function SolveSudoku(array &$grid): bool {
 	return false; // triggers backtracking
 }
 
-function FindUnassignedLocation(array &$grid, int &$row, int &$col): bool {
-	for ($row = 0; $row < N; $row++)
-		for ($col = 0; $col < N; $col++)
-			if ($grid[$row][$col] == UNASSIGNED)
+function FindUnassignedLocation(array &$grid, int &$row, int &$col): bool
+{
+	for ($row = 0; $row < N; $row++) {
+		for ($col = 0; $col < N; $col++) {
+			if ($grid[$row][$col] == UNASSIGNED) {
 				return true;
+			}
+		}
+	}
 	return false;
 }
 
-function UsedInRow(array &$grid, int $row, int $num): bool {
+function UsedInRow(array &$grid, int $row, int $num): bool
+{
 	return in_array($num, $grid[$row]);
 }
 
-function UsedInColumn(array &$grid, int $col, int $num): bool {
+function UsedInColumn(array &$grid, int $col, int $num): bool
+{
 	return in_array($num, array_column($grid, $col));
 }
 
-function UsedInBox(array &$grid, int $boxStartRow, int $boxStartCol, int $num):bool {
-	for ($row = 0; $row < 3; $row++)
-		for ($col = 0; $col < 3; $col++)
-			if ($grid[$row + $boxStartRow][$col + $boxStartCol] == $num)
+function UsedInBox(array &$grid, int $boxStartRow, int $boxStartCol, int $num): bool
+{
+	for ($row = 0; $row < 3; $row++) {
+		for ($col = 0; $col < 3; $col++) {
+			if ($grid[$row + $boxStartRow][$col + $boxStartCol] == $num) {
 				return true;
+			}
+		}
+	}
 	return false;
 }
 
-function isSafe(array $grid, int $row, int $col, int $num): bool {
+function isSafe(array $grid, int $row, int $col, int $num): bool
+{
 
 	return !UsedInRow($grid, $row, $num) &&
 		!UsedInColumn($grid, $col, $num) &&
@@ -63,9 +69,10 @@ function isSafe(array $grid, int $row, int $col, int $num): bool {
 
 /* A utility function to print grid  */
 
-function printGrid(array $grid) {
+function printGrid(array $grid)
+{
 	foreach ($grid as $row) {
-		echo implode("", $row) . "\n";
+		echo implode("", $row)."\n";
 	}
 }
 
@@ -99,7 +106,8 @@ $grid = [
 	[0, 0, 2, 0, 9, 0, 5, 0, 0]
 ];
 
-if (SolveSudoku($grid) == true)
+if (SolveSudoku($grid) == true) {
 	printGrid($grid);
-else
+} else {
 	echo "No solution exists";
+}

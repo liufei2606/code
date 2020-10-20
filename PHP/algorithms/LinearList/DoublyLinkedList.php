@@ -1,8 +1,24 @@
 <?php
 
 
-namespace Algorithms\DataStructure;
+namespace Algorithms\LinearList;
 
+
+use SplDoublyLinkedList;
+
+class ListNode
+{
+
+	public $data = null;
+	public $next = null;
+	public $prev = null;
+
+	public function __construct(string $data = null)
+	{
+		$this->data = $data;
+	}
+
+}
 
 class DoublyLinkedList
 {
@@ -190,3 +206,17 @@ $BookTitles->delete("Introduction to PHP and Data structures");
 $BookTitles->displayForward();
 $BookTitles->displayBackward();
 //echo "2nd Item is: ".$BookTitles->getNthNode(2)->data;
+
+
+$BookTitles = new SplDoublyLinkedList();
+
+$BookTitles->push("Introduction to Algorithm");
+$BookTitles->push("Introduction to PHP and Data structures");
+$BookTitles->push("Programming Intelligence");
+$BookTitles->push("Mediawiki Administrative tutorial guide");
+$BookTitles->add(1, "Introduction to Calculus");
+$BookTitles->add(3, "Introduction to Graph Theory");
+
+for ($BookTitles->rewind(); $BookTitles->valid(); $BookTitles->next()) {
+	echo $BookTitles->current()."\n";
+}
