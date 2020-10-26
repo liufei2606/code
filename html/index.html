@@ -1,0 +1,246 @@
+<!--  声明为 HTML5 文档 -->
+<!DOCTYPE html>
+<html>
+
+
+<head>
+	<meta charset="utf-8">
+	<title>菜鸟教程(runoob.com)</title>
+	<style type="text/css">
+		div#container {
+			width: 500px
+		}
+
+		div#header {
+			background-color: #99bbbb;
+		}
+
+		div#menu {
+			background-color: #ffff99;
+			height: 200px;
+			width: 100px;
+			float: left;
+		}
+
+		div#content {
+			background-color: #EEEEEE;
+			height: 200px;
+			width: 400px;
+			float: left;
+		}
+
+		div#footer {
+			background-color: #99bbbb;
+			clear: both;
+			text-align: center;
+		}
+
+		h1 {
+			margin-bottom: 0;
+		}
+
+		h2 {
+			margin-bottom: 0;
+			font-size: 14px;
+		}
+
+		ul {
+			margin: 0;
+		}
+
+		li {
+			list-style: none;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>我的第一个标题</h1>
+	<p>我的第一个段落。</p>
+
+	<table>
+		<tr>
+			<td>内容</td>
+		</tr>
+	</table>
+
+	<!-- // 锚点 -->
+	<a href="#tips">有用的提示</a>
+	<a name="tips">基本的注意事项 - 有用的提示</a>
+	<a href="javascript:void(0)" onclick="(function() {
+         window.open('', '_blank');
+         location.reload();
+         })()">click</a>
+
+	<h4>横跨两列的单元格：</h4>
+	<table border="1">
+		<tr>
+			<th>姓名</th>
+			<th colspan="2">电话</th>
+		</tr>
+		<tr>
+			<td>Bill Gates</td>
+			<td>555 77 854</td>
+			<td>555 77 855</td>
+		</tr>
+	</table>
+
+	<h4>横跨两行的单元格：</h4>
+	<table border="1">
+		<tr>
+			<th>姓名</th>
+			<td>Bill Gates</td>
+		</tr>
+		<tr>
+			<th rowspan="2">电话</th>
+			<td>555 77 854</td>
+		</tr>
+		<tr>
+			<td>555 77 855</td>
+		</tr>
+	</table>
+
+	<table width="100%" border="1">
+		<col align="left" />
+		<col align="left" />
+		<col align="right" />
+		<tr>
+			<th>ISBN</th>
+			<th>Title</th>
+			<th>Price</th>
+		</tr>
+		<tr>
+			<td>3476896</td>
+			<td>My first HTML</td>
+			<td>$53</td>
+		</tr>
+	</table>
+
+	<table width="100%" border="1">
+		<colgroup span="2" align="left"></colgroup>
+		<colgroup align="right" style="color:#0000FF;"></colgroup>
+		<tr>
+			<th>ISBN</th>
+			<th>Title</th>
+			<th>Price</th>
+		</tr>
+		<tr>
+			<td>3476896</td>
+			<td>My first HTML</td>
+			<td>$53</td>
+		</tr>
+	</table>
+
+	<dl>
+		<dt>计算机</dt>
+		<dd>用来计算的仪器 ... ...</dd>
+		<dt>显示器</dt>
+		<dd>以视觉方式显示信息的装置 ... ...</dd>
+	</dl>
+
+	<p><span>some text.</span>some other text.</p>
+
+	<div id="container">
+		<div id="header">
+			<h1>Main Title of Web Page</h1>
+		</div>
+		<div id="menu">
+			<h2>Menu</h2>
+			<ul>
+				<li>HTML</li>
+				<li>CSS</li>
+				<li>JavaScript</li>
+			</ul>
+		</div>
+		<div id="content">Content goes here</div>
+		<div id="footer">Copyright W3School.com.cn</div>
+	</div>
+
+	<table width="500" border="0">
+		<tr>
+			<td colspan="2" style="background-color:#99bbbb;">
+				<h1>Main Title of Web Page</h1>
+			</td>
+		</tr>
+
+		<tr valign="top">
+			<td style="background-color:#ffff99;width:100px;text-align:top;">
+				<b>Menu</b><br />
+				HTML<br />
+				CSS<br />
+				JavaScript
+			</td>
+			<td style="background-color:#EEEEEE;height:200px;width:400px;text-align:top;">
+				Content goes here</td>
+		</tr>
+
+		<tr>
+			<td colspan="2" style="background-color:#99bbbb;text-align:center;">
+				Copyright W3School.com.cn</td>
+		</tr>
+	</table>
+
+	<form action="HTML_submit" method="get" accept-charset="utf-8">
+
+		First name: <input type="text" name="firstname" /> <br />
+		Last name: <input type="text" name="lastname" /> <br />
+
+		<input type="radio" name="sex" value="male" /> Male <br />
+		<input type="radio" name="sex" value="female" /> Female <br />
+
+		<label for="male">Male</label>
+		<input type="radio" name="sex" id="male" />
+		<br />
+		<label for="female">Female</label>
+		<input type="radio" name="sex" id="female" />
+
+		<input type="checkbox" name="bike" /> I have a bike <br />
+		<input type="checkbox" name="car" /> I have a car <br />
+
+		<input type="password">
+		<input type="hidden">
+
+		<select name="cars">
+			<option value="volvo">Volvo</option>
+			<option value="saab">Saab</option>
+			<option value="fiat">Fiat</option>
+			<option value="audi" selected="selected">Audi</option>
+		</select>
+
+		<select>
+			<optgroup label="Swedish Cars">
+				<option value="volvo">Volvo</option>
+				<option value="saab">Saab</option>
+			</optgroup>
+			<optgroup label="German Cars">
+				<option value="mercedes">Mercedes</option>
+				<option value="audi">Audi</option>
+			</optgroup>
+		</select>
+
+		<textarea rows="10" cols="30">
+  The cat was playing in the garden.
+
+  <input type="button" value="Hello world!">
+
+  <fieldset>
+      <legend>健康信息</legend>
+      身高：<input type="text" />
+      体重：<input type="text" />
+  </fieldset>
+
+  <input type="submit" value="Submit" />
+</form>
+
+<blockquote>
+Text quoted from some source.
+</blockquote>
+
+<address>
+Address 1<br>
+Address 2<br>
+City<br>
+</address>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<form action="https://example.com/api" method="post">
+		<label for="username">用户名：</label>
+		<input type="text" id="username" name="username">
+		<label for="username"><abbr title="required">*</abbr></label>
+
+		<input type="search" id="mySearch" name="q" placeholder="输入搜索词……" required>
+		<input type="submit" value="搜索">
+
+		<input type="checkbox" id="agreement" name="agreement" checked>
+		<fieldset>
+			<legend>你的兴趣</legend>
+			<div>
+				<input type="checkbox" id="coding" name="interest" value="coding">
+				<label for="coding">编码</label>
+			</div>
+			<div>
+				<input type="checkbox" id="music" name="interest" value="music">
+				<label for="music">音乐</label>
+			</div>
+		</fieldset>
+
+		<label for="agreement">是否同意</label>
+		<input type="reset" value="重置">
+		<input type="image" alt="登陆" src="login-button.png">
+
+		<input type="email" size="40" list="defaultEmails">
+
+		<datalist id="defaultEmails">
+			<option value="jbond007@mi6.defence.gov.uk">
+			<option value="jbourne@unknown.net">
+			<option value="nfury@shield.org">
+			<option value="tony@starkindustries.com">
+			<option value="hulk@grrrrrrrr.arg">
+		</datalist>
+
+		<input type="password" id="pass" name="password" minlength="8" required>
+
+		<input type="range" id="start" name="volume" min="0" max="11" list="tickmarks">
+
+		<datalist id="tickmarks">
+			<option value="0" label="0%">
+			<option value="10">
+			<option value="20">
+			<option value="30">
+			<option value="40">
+			<option value="50" label="50%">
+			<option value="60">
+			<option value="70">
+			<option value="80">
+			<option value="90">
+			<option value="100" label="100%">
+		</datalist>
+
+		<fieldset>
+			<legend>学生情况登记</legend>
+			<p>年龄：<input type="text" name="age"></p>
+			<p>性别：<input type="text" name="gender"></p>
+		</fieldset>
+
+		<input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+		<small>Format: 123-456-7890</small>
+
+		<input type="color" id="background" name="background" value="#e66465">
+		<input type="date" id="start" name="start" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+
+		<input type="time" id="appt" name="appt" min="9:00" max="18:00" required>
+		<small>营业时间上午9点到下午6点</small>
+		<input type="month" id="start" name="start" min="2018-03" value="2018-05">
+		<input type="week" name="week" id="camp-week" min="2018-W18" max="2018-W26" required>
+		<input type="datetime-local" id="meeting-time" name="meeting-time" value="2018-06-12T19:30"
+			min="2018-06-07T00:00" max="2018-06-14T00:00">
+
+		<label for="pet-select">宠物：</label>
+		<select id="pet-select" name="pet-select">
+			<option value="" selected>--请选择一项--</option>
+			<option value="dog">狗</option>
+			<option value="cat">猫</option>
+			<option value="others">其他</option>
+		</select>
+
+		<label>宠物：
+			<select name="pets" multiple size="4">
+				<optgroup label="四条腿的宠物">
+					<option value="dog">狗</option>
+					<option value="cat">猫</option>
+				</optgroup>
+				<optgroup label="鸟类">
+					<option value="parrot">鹦鹉</option>
+					<option value="thrush">画眉</option>
+				</optgroup>
+			</select>
+		</label>
+
+		<textarea id="story" name="story" rows="5" cols="33">
+			这是一个很长的故事。
+		</textarea>
+
+		<progress id="file" max="100" value="70"> 70% </progress>
+		<p>烤箱的当前温度是<meter min="200" max="500" value="350"> 350 度</meter>。</p>
+
+		<input type="submit" value="提交">
+	</form>
+
+	<form action="https://example.com/api" enctype="multipart/form-data" method="post">
+		用户名：<input type="text" name="submit-name"><br>
+		文件：<input type="file" name="files"><br>
+		<input type="submit" value="上传"> <input type="reset" value="清除">
+	</form>
+</body>
+
+</html>

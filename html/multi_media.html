@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<video src="example.mp4" controls width="400" height="400" autoplay loop muted poster="poster.png">
+
+		<source src="example.mp4" type="video/mp4">
+		<source src="example.webm" type="video/webm">
+		<track label="英文" kind="subtitles" src="subtitles_en.vtt" srclang="en">
+		<track label="中文" kind="subtitles" src="subtitles_cn.vtt" srclang="cn" default>
+		<p>你的浏览器不支持 HTML5 视频，请下载<a href="example.mp4">视频文件</a>。</p>
+	</video>
+
+	<object type="application/pdf" data="/media/examples/In-CC0.pdf" width="250" height="200">
+	</object>
+
+	<object width="420" height="360" classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B"
+		codebase="http://www.apple.com/qtactivex/qtplugin.cab">
+		<param name="src" value="bird.wav" />
+		<param name="controller" value="true" />
+	</object>
+
+	<object width="420" height="360" classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B"
+		codebase="http://www.apple.com/qtactivex/qtplugin.cab">
+		<param name="src" value="movie.mp4" />
+		<param name="controller" value="true" />
+	</object>
+
+	<object width="400" height="40" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/
+pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0">
+		<param name="SRC" value="bookmark.swf">
+		<embed src="bookmark.swf" width="400" height="40"></embed>
+	</object>
+
+	<object height="100" width="100" data="song.mp3"></object>
+	<!-- html5 标签 -->
+	<audio controls="controls">
+		<source src="song.mp3" type="audio/mp3" />
+		<source src="song.ogg" type="audio/ogg" />
+		<embed height="100" width="100" src="song.mp3" />
+	</audio>
+
+	<video width="320" height="240" controls="controls">
+		<source src="movie.mp4" type="video/mp4" />
+		<source src="movie.ogg" type="video/ogg" />
+		<source src="movie.webm" type="video/webm" />
+		<object data="movie.mp4" width="320" height="240">
+			<embed src="movie.swf" width="320" height="240" />
+		</object>
+	</video>
+</body>
+
+</html>

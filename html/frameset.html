@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<frameset rows="10%,*">
+	<frame src="header.html">
+		<frameset cols="120,*">
+			<frame name="table" src="table.html" noresize='noresize' scrolling='no'>
+				<frame name="content" src="frame_a.html">
+		</frameset>
+</frameset>
+
+<frameset cols="25%,50%,25%">
+	<frame src="../example/html/frame_a.html" noresize="noresize">
+		<frame src="../example/html/frame_b.html">
+			<frame src="../example/html/frame_c.html">
+
+				<noframes>
+
+					<body>您的浏览器无法处理框架！</body>
+				</noframes>
+</frameset>
+
+<frameset rows="25%,50%,25%">
+	<frame src="../example/html/frame_a.html">
+		<frame src="../example/html/frame_b.html">
+			<frame src="../example/html/frame_c.html">
+</frameset>
+
+<frameset rows="50%,50%">
+	<frame src="../example/html/frame_a.html">
+		<frameset cols="25%,75%">
+			<frame src="../example/html/frame_b.html">
+				<frame src="../example/html/frame_c.html">
+		</frameset>
+</frameset>
+
+</html>
