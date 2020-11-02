@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>选择器</title>
+	<link rel="stylesheet" href="./selector.css">
+</head>
+
+<body>
+	<h4>基本选择器</h4>
+	<div class="box">class=box</div>
+	<hr>
+	<div id="box">id=box</div>
+
+	<h4>组合选择器</h4>
+	<div class="box">
+		<h4>class为box的后代h4元素(用空格分开,所有后代)</h4>
+		<h4>class为box的后代h4元素</h4>
+	</div>
+
+	<div>
+		<h4>div的子元素h4(通过&lt;分开,只有子一级)<span>孙子元素没有应用属性</span></h4>
+	</div>
+	<hr>
+
+	<h5>块元素属性</h5>
+	<span>行内元素熟悉</span>
+	<span>行内元素熟悉</span>
+	<span>行内元素熟悉</span>
+	<span>行内元素熟悉</span>
+	<span>行内元素熟悉</span>
+
+	<h4>伪选择器</h4>
+	<a href="#">全局样式</a>
+	<a class="al">局部样式</a>
+
+	<h2 class="box">CSS属性</h2>
+	<span>今日新闻</span>
+	<span id="news">左浮动</span>
+	<hr>
+
+	<!-- 实例,清除浮动 -->
+	<div class="box" style="width:100%; clear: both;">
+		<div class="title">
+			<h2>信息</h2>
+		</div>
+		<div class="content">
+			<h4>基础班</h4>
+			<ul>
+				<li><a href="#"></a><span>第一期</span></li>
+				<li><a href="#"></a><span>第二期</span></li>
+				<li><a href="#"></a><span>第三期</span></li>
+				<li><a href="#"></a><span>第四期</span></li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="background">
+		<p>CSS背景属性</p>
+		<p>
+			北京时间8月10日19点35分，2017赛季中超第21轮的焦点战在秦皇岛奥体中心展开角逐，河北华夏幸福坐镇主场迎战上海上港。上半场埃尔克森首开纪录，下半场拉维奇扳平，高准翼反超，胡尔克助攻贺惯绝平。最终全场比赛结束，河北华夏幸福主场2-2战平上海上港，武磊屡失良机。积分榜方面，上港积42分落后恒大5分，华夏积33分升至第6。
+		</p>
+	</div>
+
+	<button>伪元素</button>
+
+	<!-- BEM -->
+	<a class="btn btn--big btn--orange" href="http://css-tricks.com">
+		<span class="btn__price">$9.99</span>
+		<span class="btn__text">Subscribe</span>
+	</a>
+
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+
+	<h1>:nth-child()</h1>
+	<p>Paragraph one.</p>
+	<p>Paragraph two.</p>
+	<p>Paragraph three.</p>
+	<p>Paragraph four.</p>
+	<p>Paragraph five.</p>
+	<p>Paragraph six.</p>
+</body>
+
+</html>

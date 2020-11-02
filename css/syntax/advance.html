@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		:root {
+			--base: #ffc600;
+			--spacing: 10px;
+			--blur: 10px;
+			--text-color: green;
+
+			--brand-color: red;
+			--header-text-color: var(--brand-color);
+
+			--container-width: 1000px;
+			max-width: calc(var(--container-width) / 2);
+		}
+
+		img {
+			padding: var(--spacing);
+			background: var(--base);
+			-webkit-filter: blur(var(--blur));
+			filter: blur(var(--blur));
+		}
+
+		.quote {
+			--t-padding: 20;
+			padding-top: calc(var(--t-padding) * 1px);
+		}
+
+		foo {
+			padding: var(--gutter, 10px 0 0 5px);
+
+			/* 占据3行高度，下沉2行高度 */
+			initial-letter: 3.0 2;
+		}
+
+		* {
+			color: var(--text-color);
+		}
+
+		@supports not (display: grid) {
+			/* // 不支持网格布局
+			// 老式浏览器代码 */
+		}
+
+		@supports (display: grid) {
+			/* // 支持网格布局
+			// 新式浏览器代码 */
+		}
+
+		html {
+			-webkit-filter: grayscale(100%);
+			filter: grayscale(100%);
+		}
+
+		.circle {
+			width: 250px;
+			height: 250px;
+			background-color: #40a977;
+			border-radius: 50%;
+			float: left;
+			-webkit-shape-outside: circle();
+			shape-outside: circle();
+		}
+	</style>
+
+</head>
+
+<body>
+	<p class="circle"></p>
+</body>
+<script>
+	// 取得变量值
+	var styles = window.getComputedStyle(document.documentElement);
+	var bgValue = String(styles.getPropertyValue('--background')).trim();
+
+	// 设置变量值
+	document.documentElement.style.setProperty('--background', 'black');
+	// 另一种写法
+	document.documentElement.style.setProperty('--h-color', 'var(--p-color)');
+
+	// get the inputs
+	const inputs = [].slice.call(document.querySelectorAll('.controls input'));
+
+	// listen for changes
+	inputs.forEach(input => input.addEventListener('change', handleUpdate));
+	inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+
+	function handleUpdate(e) {
+		// append 'px' to the end of spacing and blur variables
+		const suffix = (this.id === 'base' ? '' : 'px');
+		document.documentElement.style.setProperty(`--${this.id}`, this.value + suffix);
+	}
+
+</script>
+
+</html>

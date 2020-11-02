@@ -1,0 +1,15 @@
+div {
+	column-count: 4;
+	/* column-width: 100px; */
+	column-gap: 20px;
+	column-rule: 2px solid #33c;
+	column-fill: auto;
+
+	break-inside: avoid;
+	break-before: avoid-column;
+	break-after: column;
+}
+
+h2 {
+	column-span: all;
+}

@@ -1,0 +1,161 @@
+body {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+ul,
+li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.container {
+	display: flex;
+	width: 100px;
+	height: 100px;
+	margin: 10px;
+	background: #333;
+	border-radius: 10px;
+}
+
+/* 单项目：首行居中对齐 */
+#two {
+	justify-content: center;
+}
+
+/* 单项目：首行右对齐 */
+#three {
+	justify-content: flex-end;
+}
+
+/* 单项目：中行左对齐 */
+#four {
+	align-items: center;
+}
+
+/* 单项目：垂直居中对齐 */
+#five {
+	justify-content: center;
+	align-items: center;
+}
+
+/* 单项目：中行右对齐 */
+#six {
+	justify-content: flex-end;
+	align-items: center;
+}
+
+/* 单项目：尾行左对齐 */
+#seven {
+	justify-content: flex-start;
+	align-items: flex-end;
+}
+
+/* 单项目：尾行居中对齐 */
+#eight {
+	justify-content: center;
+	align-items: flex-end;
+}
+
+/* 单项目：尾行右对齐 */
+#nine {
+	justify-content: flex-end;
+	align-items: flex-end;
+}
+
+/* 双项目：首行两端对齐 */
+#two-one {
+	justify-content: space-between;
+}
+
+/* 双项目：首列两端对齐 */
+#two-two {
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+/* 双项目：中列两端对齐 */
+#two-three {
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+}
+
+/* 双项目：尾列两端对齐 */
+#two-four {
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: space-between;
+}
+
+/* 双项目：首行左对齐，中行居中对齐 */
+#two-five {
+	/* flex-direction: column; */
+	align-items: flex-start;
+	/* justify-content: space-between; */
+}
+
+/* 三项目：对角线布局 */
+
+/* 四项目：首行排满，尾行右对齐 */
+#four-one {
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-content: space-between;
+}
+
+/* 四项目：四角对齐 */
+#four-two {
+	flex-wrap: wrap;
+	align-content: space-between;
+}
+
+.four-two {
+	flex-basis: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+/* 六项目：首行排满，尾行排满 */
+#six-one {
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-content: space-between;
+}
+
+/* 六项目：首列排满，尾列排满 */
+#six-two {
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-content: space-between;
+}
+
+/* 六项目：首行两端对齐，中行居中，尾行排满 */
+#six-three {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: space-between;
+}
+
+.six-three {
+	flex-basis: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.six-three:nth-child(2) {
+	justify-content: center;
+}
+
+.six-three:nth-child(3) {
+	justify-content: space-between;
+}
+
+.container li {
+	height: 30px;
+	width: 30px;
+	background: #fff;
+	border-radius: 50px;
+}

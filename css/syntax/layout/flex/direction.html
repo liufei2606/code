@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+            width: 900px;
+            height: 250px;
+            background-color: blue;
+        }
+
+        .first,
+        .second,
+        .third {
+            width: 250px;
+            height: 60px;
+            text-align: center;
+        }
+
+        .first {
+            background-color: chocolate;
+        }
+
+        .second {
+            background-color: bisque;
+        }
+
+        .third {
+            background-color: blueviolet;
+        }
+
+        #container_1 {
+            flex-direction: row;
+            background-color: #5b4e5b;
+        }
+
+        #container_2 {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #container_3 {
+            display: flex;
+            flex-direction: row-reverse;
+        }
+
+        #container_4 {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+    </style>
+</head>
+
+<body>
+    <p>flex-direction: row</p>
+    <div class='container' id='contianer_1'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+    </div>
+    <p>flex-direction: row-reverse</p>
+    <div class='container' id='container_3'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+    </div>
+
+    <p>flex-direction: column</p>
+    <div class='container' id='container_2'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+    </div>
+
+    <p>flex-direction: column-reverse</p>
+    <div class='containerflex-wrap' id='container_4'>
+        <div class='first'>弹性元素1</div>
+        <div class='second'>弹性元素2</div>
+        <div class='third'>弹性元素3</div>
+    </div>
+</body>
+
+</html>

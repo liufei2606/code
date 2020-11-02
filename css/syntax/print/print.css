@@ -1,0 +1,50 @@
+p {
+	margin: 1em 0;
+}
+
+@media screen {
+	/* 只对屏幕浏览有效 */
+}
+
+@media print {
+
+	/* 只对打印有效 */
+	h1 {
+		font-size: 16pt;
+	}
+
+	.related-articles {
+		display: none;
+	}
+
+	/* 打印出链接的网址 */
+	a[href]:after {
+		content: "("attr(href) ")";
+	}
+}
+
+h1 {
+	/* 总是在 h1 元素之前分页 */
+	page-break-before: always;
+}
+
+section.city-map {
+	/* 在元素之前和之后分页，即该元素单独占据一页 */
+	page-break-before: always;
+	page-break-after: always;
+}
+
+table {
+	/* 表格尽可能不要分页 */
+	page-break-inside: avoid;
+}
+
+p {
+	/* 某个段落出现在上一页的结尾少于3行（比如只有两行），那么该段落全部移到下一页显示 */
+	orphans: 3;
+	widows: 2;
+}
+
+@page: first {
+	margin: 0;
+}

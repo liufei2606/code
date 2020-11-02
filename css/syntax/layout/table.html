@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		td {
+			height: 80px;
+			width: 100px;
+			display: table-cell;
+			vertical-align: middle;
+		}
+
+		body {
+			min-height: 100%;
+			display: table;
+			width: 100%;
+			text-align: center;
+		}
+
+		.header {
+			display: table-row;
+			height: 1px;
+			background-color: chartreuse;
+		}
+
+
+		.main {
+			min-height: 100%;
+			display: table;
+			width: 100%;
+		}
+
+		.box {
+			display: table-cell;
+			border: 1em;
+		}
+
+		.sidebar {
+			width: 15%;
+		}
+
+
+		.footer {
+			display: table-row;
+			height: 30px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="header">Header</div>
+
+	<div class="main">
+		<div class="box sidebar">Left-sidebar</div>
+		<table class="box content">
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+			</tr>
+			<tr>
+				<td>10</td>
+				<td>11</td>
+				<td>12</td>
+			</tr>
+			<tr>
+				<td>13</td>
+				<td>14</td>
+				<td>15</td>
+			</tr>
+		</table>
+		<div class="box sidebar">Right-sidebar</div>
+	</div>
+
+	<div class="footer">Footer</div>
+</body>
+
+</html>

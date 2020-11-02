@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link rel="stylesheet" href="./layout.css" type="text/css" />
+</head>
+
+<body>
+	<h2>圣杯布局 Holy Grail Layout</h2>
+	<div class="wrapper">
+
+		<header class="main-header">header</header>
+
+		<div class="main-content">
+			<p>伸缩容器：一个设有“display:flex”或“display:inline-flex”的元素</p>
+			<p>伸缩项目：伸缩容器的子元素 主轴、主轴方向：用户代理沿着一个伸缩容器的主轴配置伸缩项目，主轴是主轴方向的延伸。</p>
+			<p>主轴起点、主轴终点：伸缩项目的配置从容器的主轴起点边开始，往主轴终点边结束。</p>
+			<p>主轴长度、主轴长度属性：伸缩项目的在主轴方向的宽度或高度就是项目的主轴长度，伸缩项目的主轴长度属性是width或height属性，由哪一个对着主轴方向决定。</p>
+			<p>侧轴、侧轴方向：与主轴垂直的轴称作侧轴，是侧轴方向的延伸。</p>
+			<p>侧轴起点、侧轴终点：填满项目的伸缩行的配置从容器的侧轴起点边开始，往侧轴终点边结束。</p>
+			<p>侧轴长度、侧轴长度属性：伸缩项目的在侧轴方向的宽度或高度就是项目的侧轴长度，伸缩项目的侧轴长度属性是「width」或「height」属性，由哪一个对着侧轴方向决定。</p>
+			</p>
+		</div>
+
+		<nav class="nav">
+			<ul>
+				<li><a href="javascript:void 0;">home</a></li>
+				<li><a href="javascript:void 0;">help</a></li>
+				<li><a href="javascript:void 0;">find</a></li>
+				<li><a href="javascript:void 0;">search</a></li>
+			</ul>
+		</nav>
+
+		<section class="sec">
+			section
+		</section>
+
+		<footer class="main-footer">footer</footer>
+
+	</div>
+
+	<h1>输入框的布局</h1>
+	<div class="InputAddOn">
+		<span class="InputAddOn-item">Tips</span>
+		<input class="InputAddOn-field">
+		<button class="InputAddOn-item">Search</button>
+	</div>
+
+	<h1>悬挂式布局</h1>
+	<div class="Media">
+		<img class="Media-figure" src="../../../../assets/images/1.jpg" alt="">
+		<p class="Media-body">与主轴垂直的轴称作侧轴，是侧轴方向的延伸</p>
+	</div>
+
+	<h1>固定底栏</h1>
+	<div class="Site">
+		<header>Header</header>
+		<main class="Site-content">大有作为</main>
+		<footer>联系方式</footer>
+	</div>
+
+	<h1>两栏式布局</h1>
+	<div class="wrapper1">
+		<section class="main-column" />
+		<aside class="sidebar" />
+	</div>
+</body>
+
+</html>

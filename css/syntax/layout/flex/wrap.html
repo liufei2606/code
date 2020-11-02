@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		.container{
+			display: flex;
+			width: 600px;
+			height: 150px;
+			background-color: aqua;
+		}
+
+		.first,
+		.second,
+		.third {
+			width: 250px;
+			height: 60px;
+			text-align: center;
+		}
+
+		.first {
+			background-color: chocolate;
+		}
+
+		.second {
+			background-color: bisque;
+		}
+
+		.third {
+			background-color: blueviolet;
+		}
+
+		.row {
+			flex-direction: row;
+		}
+
+		.row-reverse {
+			flex-direction: row-reverse;
+		}
+
+		.column {
+			flex-direction: column;
+		}
+
+		.column-reverse {
+			flex-direction: column-reverse;
+		}
+
+		#container_11,
+		#container_21,
+		#container_31,
+		#container_41 {
+			flex-wrap: nowrap;
+		}
+
+		#container_12,
+		#container_22,
+		#container_32,
+		#container_42 {
+			flex-wrap: wrap;
+		}
+
+		#container_13,
+		#container_23,
+		#container_33,
+		#container_43 {
+			flex-wrap: wrap-reverse;
+		}
+
+		#container_2 {
+			display: flex;
+			flex-direction: column;
+		}
+
+		#container_3 {
+			display: flex;
+			flex-direction: row-reverse;
+		}
+
+		#container_4 {
+			display: flex;
+			flex-direction: column-reverse;
+		}
+	</style>
+</head>
+
+<body>
+	<h5>flex-direction: row > flex-wrap: nowarp</h5>
+	<div class='containerrow' id='container_11'>
+		<div class='first'>弹性元素1</div>
+		<div class='second'>弹性元素2</div>
+		<div class='third'>弹性元素3</div>
+	</div>
+
+	<h5>flex-direction: row > flex-wrap: warp</h5>
+	<div class='containerrow' id='container_12'>
+		<div class='first'>弹性元素1</div>
+		<div class='second'>弹性元素2</div>
+		<div class='third'>弹性元素3</div>
+	</div>
+
+	<h5>flex-direction: row > flex-wrap: warp-reverse</h5>
+	<div class='containerrow' id='container_13'>
+		<div class='first'>弹性元素1</div>
+		<div class='second'>弹性元素2</div>
+		<div class='third'>弹性元素3</div>
+	</div>
+
+	<h5>flex-direction: row-reverse > flex-wrap: nowarp</h5>
+	<div class='containerrow-reverse' id='container_31'>
+		<div class='first'>弹性元素1</div>
+		<div class='second'>弹性元素2</div>
+		<div class='third'>弹性元素3</div>
+	</div>
+	<h5>flex-direction: row-reverse > flex-wrap: warp</h5>
+	<div class='containerrow-reverse' id='container_32'>
+		<div class='first'>弹性元素1</div>
+		<div class='second'>弹性元素2</div>
+		<div class='third'>弹性元素3</div>
+	</div>
+	<h5>flex-direction: row-reverse > flex-wrap: warp-reverse</h5>
+	<div class='containerrow-reverse' id='container_33'>
+		<div class='first'>弹性元素1</div>
+		<div class='second'>弹性元素2</div>
+		<div class='third'>弹性元素3</div>
+	</div>
+
+	<h5>flex-direction: column > flex-wrap: nowarp</h5>
+	<div class='containercolumn' id='container_21'>
+		<div class='first'>弹性元素1</div>
+		<div class='second'>弹性元素2</div>
+		<div class='third'>弹性元素3</div>
+	</div>
+	<h5>flex-direction: column > flex-wrap: warp</h5>
+	<div class='containercolumn' id='container_22'>
+		<div class='first'>弹性元素1</div>
+		<div class='second'>弹性元素2</div>
+		<div class='third'>弹性元素3</div>
+	</div>
+	<h5>flex-direction: column > flex-wrap: warp-reverse</h5>
+	<div class='containercolumn' id='container_23'>
+		<div class='first'>弹性元素1</div>
+		<div class='second'>弹性元素2</div>
+		<div class='third'>弹性元素3</div>
+	</div>
+
+	<h5>flex-direction: column-reverse > flex-wrap: nowarp</h5>
+	<div class='containercolumn-reverse' id='container_41'>
+		<div class='first'>弹性元素1</div>
+		<div class='second'>弹性元素2</div>
+		<div class='third'>弹性元素3</div>
+	</div>
+	<h5>flex-direction: column-reverse > flex-wrap: warp</h5>
+	<div class='containercolumn-reverse' id='container_42'>
+		<div class='first'>弹性元素1</div>
+		<div class='second'>弹性元素2</div>
+		<div class='third'>弹性元素3</div>
+	</div>
+	<h5>flex-direction: column-reverse > flex-wrap: nowarp-warp-reverse</h5>
+	<div class='containercolumn-reverse' id='container_43'>
+		<div class='first'>弹性元素1</div>
+		<div class='second'>弹性元素2</div>
+		<div class='third'>弹性元素3</div>
+	</div>
+</body>
+
+</html>

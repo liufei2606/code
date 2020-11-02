@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		h2 {
+			height: 200px;
+			float: left;
+		}
+
+		h3 {
+			clear: left;
+		}
+
+		.outer {
+			border: 1px solid #ccc;
+			background: #fc9;
+			color: #fff;
+			margin: 50px auto;
+			padding: 50px;
+		}
+
+		.div1 {
+			width: 80px;
+			height: 80px;
+			background: red;
+			float: left;
+		}
+
+		.div2 {
+			width: 80px;
+			height: 80px;
+			background: blue;
+			float: left;
+		}
+
+		.div3 {
+			width: 80px;
+			height: 280px;
+			background: sienna;
+			float: right;
+		}
+
+		.clear {
+			clear: both;
+			height: 0;
+			line-height: 0;
+			font-size: 0
+		}
+	</style>
+</head>
+
+<body>
+	<div>
+		<h2>float</h2>
+		Hello World
+	</div>
+	<h3>clear float</h3>
+
+	<div class="outer">
+		<div class="div1">1</div>
+		<div class="div2">2</div>
+		<div class="div3">3</div>
+		<div class="clear"></div>
+	</div>
+</body>
+
+</html>
