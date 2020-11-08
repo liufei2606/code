@@ -1,0 +1,22 @@
+filebeat.inputs:
+- type: log
+  enabled: true
+  backoff: "1s"
+  tail_files: false
+  paths:
+    - /usr/local/var/log/nginx/code.access.log
+  fields:
+    filetype: log_nginxjson
+  fields_under_root: true
+- type: log
+  enabled: true
+  backoff: "1s"
+  tail_files: false
+  paths:
+    - /var/log/system.log
+  fields:
+    filetype: log_system
+  fields_under_root: true
+output.logstash:
+  enabled: true
+  hosts: ["localhost:5044"]

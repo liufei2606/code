@@ -1,0 +1,18 @@
+
+filebeat.inputs:
+- type: log
+  enabled: true
+  backoff: "1s"
+  tail_files: false
+  paths:
+    - /usr/local/var/log/nginx/code.access.log
+  fields:
+    filetype: log_nginxjson
+  fields_under_root: true
+
+output.redis:
+  enabled: true
+  hosts: ["localhost:6379"]
+  key: nginx
+  db: 0
+  datatype: list
