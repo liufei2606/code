@@ -8,7 +8,7 @@ var listener2 = function () {
 	console.log('监听器listener2执行');
 }
 
-function onlyOnce () {
+function onlyOnce() {
 	console.log("You'll never see this again");
 	emitter.removeListener("some_event", onlyOnce);
 }
@@ -23,10 +23,10 @@ emitter.once('some_event', function (msg) {
 });
 emitter.addListener('some_event', listener2);
 emitter.on("some_event", onlyOnce);
-var eventListeners = EventEmitter.listenerCount(emitter, 'some_event');
+var eventListeners = EventEmitter.listenerCount('some_event');
 console.log(eventListeners + '个监听器监听连接事件');
 
-// 触发事件
+// 触发事件  事件参数作为回调函数参数传递
 emitter.emit('some_event', 'hello', 'world');
 console.log('\n=====================\n')
 
@@ -42,7 +42,7 @@ emitter.removeAllListeners("some_event");
 eventListeners = EventEmitter.listenerCount(emitter, 'some_event');
 console.log(eventListeners + '个监听器监听连接事件');
 
-console.log('=====================')
+console.log('========通过原型部接口=============')
 
 function Dog(name) {
 	this.name = name;
@@ -65,7 +65,7 @@ setTimeout(function () {
 	simon.removeAllListeners('bark');
 }, 1000);
 
-console.log('=====================')
+console.log('==========通过继承部署事件===========')
 
 var Radio = require('./radio.js');
 var station = {
@@ -84,7 +84,7 @@ radio.on('close', function (station) {
 	console.log('"%s" FM %s 关闭', station.name, station.freq);
 });
 
-console.log('=====================')
+console.log('=========错误捕获============')
 
 emitter.on('beep', function () {
 	console.log('beep');
@@ -104,3 +104,18 @@ try {
 }
 
 console.log('after emit');
+
+console.log('=========Events 默认事件类型============')
+
+emitter.on("newListener", function (evtName) {
+	console.log("New Listener: " + evtName);
+});
+
+emitter.on("removeListener", function (evtName) {
+	console.log("Removed Listener: " + evtName);
+});
+
+function foo() { }
+
+emitter.on("save-user", foo);
+emitter.removeListener("save-user", foo);

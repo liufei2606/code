@@ -1,10 +1,13 @@
-
 const http = require('http');
 const url = require('url');
+const fs = require('fs')
 
 const server = http.createServer(function (request, response) {
 	const { query } = url.parse(request.url, true);
 	console.log(request.method + ': ' + request.url);
+
+	var pathname = url.parse(request.url).pathname;
+	console.log("Request for " + pathname + " received.");
 
 	if (request.method === 'POST') {
 		let data = '';
@@ -66,3 +69,30 @@ server1.on('request', (request, response) => {
 server1.listen(PORT, () => {
 	console.log(`starting server at port ${PORT}`);
 });
+
+
+const server2 = http.createServer((request, response) => {
+	// response.end('hello ...')
+	const { url, method, headers } = request
+	if (url === '/' && method === 'GET') {
+		// 静态页面服务
+		fs.readFile('index.html', (err, data) => {
+			response.statusCode = 200
+			response.setHeader('Content-Type', 'text/html')
+			response.end(data)
+		})
+	} else if (url === '/users' && method === 'GET') {
+		// Ajax服务
+		response.writeHead(200, {
+			'Content-Type': 'application/json'
+		})
+		response.end(JSON.stringify({
+			name: 'laowang'
+		}))
+	} else if (method === 'GET' && headers.accept.indexOf('image/*') !== -1) {
+		// 图片文件服务
+		fs.createReadStream('./' + url).pipe(response)
+	}
+
+})
+server2.listen(3000)
