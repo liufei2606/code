@@ -1,0 +1,25 @@
+body {
+    background-color: red;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+.red {
+    background-color: red;
+}
+
+
+/* 脱离模块化约束而使用全局的声明（即效果跟普通css相同） */
+
+:global(.gold) {
+    background-color: gold;
+}
+
+
+/* 使用模块化化处理 */
+
+:local(.aqua) {
+    background-color: aqua;
+}

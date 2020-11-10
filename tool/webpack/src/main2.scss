@@ -1,0 +1,8 @@
+@import './global';
+.red {
+    background-color: red;
+}
+
+.localRed {
+    background-color: $base-color;
+}
