@@ -7,6 +7,8 @@ const server = http.createServer(function (request, response) {
 	console.log(request.method + ': ' + request.url);
 
 	var pathname = url.parse(request.url).pathname;
+
+	var params = url.parse(req.url, true).query;
 	console.log("Request for " + pathname + " received.");
 
 	if (request.method === 'POST') {

@@ -20,7 +20,6 @@ callbackFunction((err, ret) => {
 	err && err.hasOwnProperty('reason') && err.reason === null;  // true
 });
 
-
 function Base() {
 	this.name = 'base';
 	this.base = 1991;
