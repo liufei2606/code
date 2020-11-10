@@ -1,16 +1,16 @@
 <?php
-include "bootstrap.php";
+include "./bootstrap.php";
 
 // add
 $options = array
 (
 	'hostname' => SOLR_SERVER_HOSTNAME,
-	'login' => SOLR_SERVER_USERNAME,
-	'password' => SOLR_SERVER_PASSWORD,
+//	'login' => SOLR_SERVER_USERNAME,
+//	'password' => SOLR_SERVER_PASSWORD,
 	'port' => SOLR_SERVER_PORT,
 );
 
-$client = new \SolrClient($options);
+$client = new SolrClient($options);
 
 $doc = new SolrInputDocument();
 
@@ -21,6 +21,7 @@ $doc->addField('cat', 'Lucene');
 $updateResponse = $client->addDocument($doc);
 
 print_r($updateResponse->getResponse());
+die;
 
 ## merge
 $doc = new SolrDocument();
@@ -146,5 +147,27 @@ $updateResponse = $client->query($query);
 $response_array = $updateResponse->getResponse();
 
 $facet_data = $response_array->facet_counts->facet_fields;
+
+print_r($facet_data);
+
+
+
+$query->addFacetDateField('manufacturedate_dt');
+
+$query->setFacetDateStart('2006-02-13T00:00:00Z');
+
+$query->setFacetDateEnd('2012-02-13T00:00:00Z');
+
+$query->setFacetDateGap('+1YEAR');
+
+$query->setFacetDateHardEnd(1);
+
+$query->addFacetDateOther('before');
+
+$updateResponse = $client->query($query);
+
+$response_array = $updateResponse->getResponse();
+
+$facet_data = $response_array->facet_counts->facet_dates;
 
 print_r($facet_data);
